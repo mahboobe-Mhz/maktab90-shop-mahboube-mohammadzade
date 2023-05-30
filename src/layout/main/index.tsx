@@ -5,6 +5,7 @@ const MainLayout = () => {
         <>
          <h1>MainLayout</h1> 
          <Link to={routes.USERS.shopping}>shopping</Link>
+         <Link to={routes.AUTH.index}>login</Link>
          <Outlet/>
          </>
     );

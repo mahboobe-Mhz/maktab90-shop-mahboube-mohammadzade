@@ -8,8 +8,7 @@ const MainLayout = () => {
         }}>
          <h1>MainLayout</h1> 
          <Link to='/auth/login'>shopping</Link>
-         <Link to={routes.ADMIN.index}>login</Link>
-       
+         <Link to={routes.ADMIN.index}>login</Link>  
          <Link to={routes.USERS.cart}>cart</Link>
          <Link to={routes.USERS.checkout}>checkout</Link>
          <Link to={routes.USERS.shopping}>shopping</Link>

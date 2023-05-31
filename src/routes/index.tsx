@@ -11,7 +11,9 @@ const ProductsManagement = React.lazy(()=> import('../screens/main/admin/product
 const InventoryControl = React.lazy(()=> import('../screens/main/admin/inventory-control'))
 const OrdersManagement = React.lazy(()=> import('../screens/main/admin/orders-management'))
 const LoginScreen = React.lazy(()=> import('../screens/auth/login'))
-
+import Cookies from 'universal-cookie';
+ 
+const cookies = new Cookies();
 export const routes =  {
     AUTH:{
         index:'/auth/login',
@@ -32,10 +34,13 @@ export const routes =  {
     }
 }
 
-const user = (localStorage.getItem('user'));
-console.log(user);
+//const user = (localStorage.getItem('user'));
+const user= cookies.get("user")
 
-const parsedUser = user ? JSON.parse(user) : {}
+
+//const parsedUser = user ? JSON.parse(user) : {}
+const parsedUser = user||{}
+
 export const router = createBrowserRouter([
     {
         path:'/',

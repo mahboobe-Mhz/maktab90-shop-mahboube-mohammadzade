@@ -29,3 +29,22 @@ export type LoginUserType = {
         message:string;
     }>
 }
+export type RegisterUserType = {
+    payload:{
+        firstname: string;
+        lastname: string;
+        username: string;
+        password:string;
+        phoneNumber:string;
+        address: string;
+    },
+    response:{
+    status:string;
+    token:{accessToken:number;refreshToken:number};
+    data:{user:string}
+};
+error:AxiosError<{
+    status:string;
+    message:string;
+}>
+}

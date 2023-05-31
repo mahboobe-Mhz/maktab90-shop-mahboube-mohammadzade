@@ -17,9 +17,9 @@ export const routes =  {
         index:'/auth/login',
     },
     ADMIN:{
-        index:'admin/products',
-        inventory:'admin/inventory',
-        orders:'admin/orders'
+        index:'/admin/products',
+        inventory:'/admin/inventory',
+        orders:'/admin/orders'
      
    
     },
@@ -27,11 +27,15 @@ export const routes =  {
         shopping:'shopping',
         single:'shopping/single-product',
         cart:'cart',
-        checkout:'cart/checkout',
+        checkout:'/cart/checkout',
        
     }
 }
 
+const user = (localStorage.getItem('user'));
+console.log(user);
+
+const parsedUser = user ? JSON.parse(user) : {}
 export const router = createBrowserRouter([
     {
         path:'/',
@@ -47,7 +51,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:routes.USERS.cart,
-                element:<Cart/>,
+                element:parsedUser?.role==="USER"?<Cart/>:<Navigate to={routes.AUTH.index}/>,
                 children:[
                    {
                     path:routes.USERS.checkout,
@@ -61,7 +65,7 @@ export const router = createBrowserRouter([
     },
     {
         path:'/admin',
-        element:<AdminLayout/>,
+        element:parsedUser?.role==="ADMIN"? <AdminLayout/>:<Navigate to={routes.AUTH.index}/>,
         children:[{
             path:routes.ADMIN.index,
             element:<ProductsManagement/>

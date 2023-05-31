@@ -20,7 +20,7 @@ const useLogin = () => {
             localStorage.setItem('accessToken' ,  data.token.accessToken)
             localStorage.setItem('refreshToken', data.token.refreshToken)
             localStorage.setItem('user', JSON.stringify(data.data.user));
-            navigate('/')
+            navigate('/admin')
         },
         onError:(err) =>{
             manageErrors({err, setError})

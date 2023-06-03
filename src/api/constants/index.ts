@@ -25,7 +25,7 @@ instance.interceptors.request.use((config) => {
   
     (error) => {
       const config = error.config;
-      console.log("config", config)
+      console.log("config", config.response)
       if (error.response.status === 401 && !config.sent) {
         config.sent = true;
         if (config.url !==  "/auth/token" && config.url !== "/auth/login") {

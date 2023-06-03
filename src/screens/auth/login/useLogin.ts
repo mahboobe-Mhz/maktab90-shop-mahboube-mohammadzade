@@ -25,6 +25,8 @@ const useLogin = () => {
   });
   const { mutate } = useLoginUser({
     onSuccess: (data: any) => {
+      console.log("success");
+      
       cookies.set("user", data.data.user, { path: "/" });
       cookies.set("refreshToken", data.token.refreshToken, { path: "/" });
       cookies.set("accessToken", data.token.accessToken, { path: "/" });

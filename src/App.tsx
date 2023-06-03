@@ -11,11 +11,11 @@ function App() {
 
   return (
     <>
-     <Provider store={store}>
+     {/* <Provider store={store}> */}
      <QueryClientProvider client={queryClient}>
    <RouterProvider router={router}/>
    </QueryClientProvider>
-   </Provider>
+   {/* </Provider> */}
     </>
   )
 }

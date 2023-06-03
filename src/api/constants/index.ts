@@ -1,21 +1,16 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
+import Cookies from "universal-cookie";
 
 const baseURL = 'http://127.0.0.1:8000/api';
-
+const cookies = new Cookies();
 export const request = axios.create({
     baseURL,
 })
 
-
-
-///////
-
 request.interceptors.request.use((config) => {
 
-
-    //get-new-token => refresh token
-    if (config.url !== "/get-new-token") {
-      const accessToken = localStorage.getItem("accessToken");
+    if (config.url !== "/token") {
+      const accessToken = cookies.get("accessToken")
       config.headers.Authorization = accessToken;
     }
     return config;
@@ -33,11 +28,11 @@ request.interceptors.request.use((config) => {
       console.log("config", config)
       if (error.response.status === 401 && !config.sent) {
         config.sent = true;
-        if (config.url !== "/get-new-token") {
+        if (config.url !== "/token") {
           const refreshToken = localStorage.getItem("refreshToken");
           request
             .post(
-              "/get-new-token",
+              "/token",
               {},
               {
                 headers: {
@@ -52,7 +47,7 @@ request.interceptors.request.use((config) => {
               config.headers.Authorization = accessToken;
               return request(config);
             });
-        } else if (config.url === "/get-new-token") {
+        } else if (config.url === "/token") {
           localStorage.removeItem("accessToken");
           localStorage.removeItem("refreshToken");
           location.href = "/login";

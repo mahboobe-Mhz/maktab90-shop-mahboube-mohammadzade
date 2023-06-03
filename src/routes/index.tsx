@@ -1,5 +1,7 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
+import {SuspenseView} from "./components/suspense";
 import React from "react";
+import Cookies from 'universal-cookie';
 const AuthLayout = React.lazy(()=> import('../layout/auth'))
 const MainLayout = React.lazy(()=> import('../layout/main'))
 const ShowProducts = React.lazy(()=> import('../screens/main/users/show-Products'))
@@ -11,7 +13,7 @@ const ProductsManagement = React.lazy(()=> import('../screens/main/admin/product
 const InventoryControl = React.lazy(()=> import('../screens/main/admin/inventory-control'))
 const OrdersManagement = React.lazy(()=> import('../screens/main/admin/orders-management'))
 const LoginScreen = React.lazy(()=> import('../screens/auth/login'))
-import Cookies from 'universal-cookie';
+
  
 const cookies = new Cookies();
 export const routes =  {
@@ -27,40 +29,50 @@ export const routes =  {
     },
     USERS:{
         shopping:'shopping',
-        single:'shopping/single-product',
+        single:`shopping/:id`,
         cart:'cart',
         checkout:'/cart/checkout',
        
     }
 }
-
-//const user = (localStorage.getItem('user'));
 const user= cookies.get("user")
-
-
-//const parsedUser = user ? JSON.parse(user) : {}
 const parsedUser = user||{}
-
 export const router = createBrowserRouter([
     {
         path:'/',
-        element:<MainLayout/>,
+        element: 
+        <SuspenseView>
+        <MainLayout/>
+        </SuspenseView>,
         children:[
             {
                 path:routes.USERS.shopping,
-                element:<ShowProducts/>
+                element:
+                <SuspenseView>
+                <ShowProducts/>
+                </SuspenseView>
             },
             {
                 path:routes.USERS.single,
-                element:<ShowSingleProduct/>
+                element:
+                <SuspenseView>
+                <ShowSingleProduct/>
+                </SuspenseView>
             },
             {
                 path:routes.USERS.cart,
-                element:parsedUser?.role==="USER"?<Cart/>:<Navigate to={routes.AUTH.index}/>,
+                element:parsedUser?.role==="USER"?
+                <SuspenseView>
+                <Cart/>
+                </SuspenseView>
+                :<Navigate to={routes.AUTH.index}/>,
                 children:[
                    {
                     path:routes.USERS.checkout,
-                    element:<Checkout/>,
+                    element:
+                    <SuspenseView>
+                    <Checkout/>
+                    </SuspenseView>
                    }
                 ]
             },
@@ -73,13 +85,22 @@ export const router = createBrowserRouter([
         element:parsedUser?.role==="ADMIN"? <AdminLayout/>:<Navigate to={routes.AUTH.index}/>,
         children:[{
             path:routes.ADMIN.index,
-            element:<ProductsManagement/>
+            element:
+            <SuspenseView>
+            <ProductsManagement/>
+            </SuspenseView>
         },{
             path:routes.ADMIN.inventory,
-            element:<InventoryControl/>
+            element:
+            <SuspenseView>
+            <InventoryControl/>
+            </SuspenseView>
         },{
             path:routes.ADMIN.orders,
-            element:<OrdersManagement/>
+            element:
+            <SuspenseView>
+            <OrdersManagement/>
+            </SuspenseView>
         },
        
     ]
@@ -87,11 +108,17 @@ export const router = createBrowserRouter([
     },
     {
         path:'/auth',
-        element:<AuthLayout/>,
+        element:
+        <SuspenseView>
+        <AuthLayout/>
+        </SuspenseView>,
         children:[
             {
                 path:routes.AUTH.index,
-                element:<LoginScreen/>,
+                element:
+                <SuspenseView>
+                <LoginScreen/>
+                </SuspenseView>,
             }
         ]
     }

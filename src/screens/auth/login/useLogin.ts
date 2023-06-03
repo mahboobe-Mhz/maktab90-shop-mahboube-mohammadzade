@@ -25,9 +25,6 @@ const useLogin = () => {
   });
   const { mutate } = useLoginUser({
     onSuccess: (data: any) => {
-      // localStorage.setItem('accessToken' ,  data.token.accessToken)
-      // localStorage.setItem('refreshToken', data.token.refreshToken)
-
       cookies.set("user", data.data.user, { path: "/" });
       cookies.set("refreshToken", data.token.refreshToken, { path: "/" });
       cookies.set("accessToken", data.token.accessToken, { path: "/" });

@@ -1,22 +1,22 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios from "axios";
 import Cookies from "universal-cookie";
 
 const baseURL = 'http://127.0.0.1:8000/api';
 const cookies = new Cookies();
-export const request = axios.create({
+export const instance = axios.create({
     baseURL,
 })
 
-request.interceptors.request.use((config) => {
+instance.interceptors.request.use((config) => {
 
-    if (config.url !== "/token") {
+    if (config.url !== "/auth/token") {
       const accessToken = cookies.get("accessToken")
-      config.headers.Authorization = accessToken;
+      config.headers.Authorization = "Bearer " + accessToken
     }
     return config;
   });
   
-  request.interceptors.response.use(
+  instance.interceptors.response.use(
     (response) => {
       return response;
     },
@@ -28,29 +28,26 @@ request.interceptors.request.use((config) => {
       console.log("config", config)
       if (error.response.status === 401 && !config.sent) {
         config.sent = true;
-        if (config.url !== "/token") {
-          const refreshToken = localStorage.getItem("refreshToken");
-          request
+        if (config.url !==  "/auth/token" && config.url !== "/auth/login") {
+          const refreshToken = cookies.get("refreshToken")
+          instance
             .post(
-              "/token",
-              {},
-              {
-                headers: {
-                  Authorization: refreshToken,
-                },
-              }
+              "/auth/token",
+              {refreshToken},
+            
             )
             .then((res) => {
-              const accessToken = res.data.accessToken;
-              localStorage.setItem("accessToken", accessToken);
-              localStorage.setItem("refreshToken", res.data.refreshToken);
-              config.headers.Authorization = accessToken;
-              return request(config);
+              const accessToken = res.data.token.accessToken;
+         
+             // cookies.set("refreshToken",res.data.token.refreshToken, { path: "/" });
+             cookies.set("accessToken", accessToken, { path: "/" });
+              config.headers.Authorization = "Bearer " + accessToken
+              return instance(config);
             });
-        } else if (config.url === "/token") {
-          localStorage.removeItem("accessToken");
-          localStorage.removeItem("refreshToken");
-          location.href = "/login";
+        } else if (config.url === " /auth/token") {
+          cookies.remove("accessToken");
+          cookies.remove("refreshToken");
+          location.href = "auth/login";
         }
       }
     }

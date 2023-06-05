@@ -2,7 +2,7 @@ import { Navigate, createBrowserRouter } from "react-router-dom";
 import {SuspenseView} from "./components/suspense";
 import React from "react";
 import Cookies from 'universal-cookie';
-const AuthLayout = React.lazy(()=> import('../layout/auth'))
+
 const MainLayout = React.lazy(()=> import('../layout/main'))
 const ShowProducts = React.lazy(()=> import('../screens/main/users/show-Products'))
 const ShowSingleProduct = React.lazy(()=> import('../screens/main/users/show-single-product'))
@@ -17,9 +17,7 @@ const LoginScreen = React.lazy(()=> import('../screens/auth/login'))
  
 const cookies = new Cookies();
 export const routes =  {
-    AUTH:{
-        index:'/auth/login',
-    },
+
     ADMIN:{
         index:'/admin/products',
         inventory:'/admin/inventory',
@@ -28,6 +26,7 @@ export const routes =  {
    
     },
     USERS:{
+        index:'/auth/login',
         shopping:'shopping',
         single:`shopping/:id`,
         cart:'cart',
@@ -45,6 +44,13 @@ export const router = createBrowserRouter([
         <MainLayout/>
         </SuspenseView>,
         children:[
+            {
+                path:routes.USERS.index,
+                element:
+                <SuspenseView>
+                <LoginScreen/>
+                </SuspenseView>,
+            },
             {
                 path:routes.USERS.shopping,
                 element:
@@ -65,7 +71,7 @@ export const router = createBrowserRouter([
                 <SuspenseView>
                 <Cart/>
                 </SuspenseView>
-                :<Navigate to={routes.AUTH.index}/>,
+                :<Navigate to={routes.USERS.index}/>,
                 children:[
                    {
                     path:routes.USERS.checkout,
@@ -82,7 +88,8 @@ export const router = createBrowserRouter([
     },
     {
         path:'/admin',
-        element:parsedUser?.role==="ADMIN"? <AdminLayout/>:<Navigate to={routes.AUTH.index}/>,
+       // element:parsedUser?.role==="ADMIN"? <AdminLayout/>:<Navigate to={routes.AUTH.index}/>,
+       element: <AdminLayout/>,
         children:[{
             path:routes.ADMIN.index,
             element:
@@ -106,20 +113,5 @@ export const router = createBrowserRouter([
     ]
 
     },
-    {
-        path:'/auth',
-        element:
-        <SuspenseView>
-        <AuthLayout/>
-        </SuspenseView>,
-        children:[
-            {
-                path:routes.AUTH.index,
-                element:
-                <SuspenseView>
-                <LoginScreen/>
-                </SuspenseView>,
-            }
-        ]
-    }
+   
 ])

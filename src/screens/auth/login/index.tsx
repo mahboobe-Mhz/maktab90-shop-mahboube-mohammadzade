@@ -26,7 +26,7 @@ const LoginScreen = () => {
           label="password"
           InputProps={{ ...register("password") }}
         />
-        <Button type="submit">Submit</Button>
+        <Button sx={{color:"blue"}} type="submit">Submit</Button>
       </Box>
     </>
   );

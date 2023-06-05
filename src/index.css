@@ -1,9 +1,13 @@
+@import url('/src/style/headerStyle.css');
 html,body,#root{
     height: 100vh;
 }
 .loading{
-
     position: fixed;
     right:50%;
     top:50%
+}
+@font-face {
+    font-family:"nimkat" ;
+    src: url("src/assets/font/Nimkat.ttf");
 }

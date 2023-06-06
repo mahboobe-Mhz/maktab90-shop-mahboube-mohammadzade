@@ -6,7 +6,6 @@ import ArrowRight from '@mui/icons-material/ArrowRight';
 const NestedMenuItem = React.forwardRef((props, ref) => {
     const {
         parentMenuOpen,
-    
         label,
         rightIcon = <ArrowRight style={{ fontSize: 16 }} />,
         keepOpen,
@@ -17,7 +16,7 @@ const NestedMenuItem = React.forwardRef((props, ref) => {
         ContainerProps: ContainerPropsProp = {},
         rightAnchored,
         ...MenuItemProps
-    } = props;
+    }:any = props;
 
     const { ref: containerRefProp, ...ContainerProps } =
         ContainerPropsProp;
@@ -35,7 +34,7 @@ const NestedMenuItem = React.forwardRef((props, ref) => {
 
     const [isSubMenuOpen, setIsSubMenuOpen] = React.useState(false);
 
-    const handleMouseEnter = (event) => {
+    const handleMouseEnter = (event:any) => {
         setIsSubMenuOpen(true);
 
         if (ContainerProps?.onMouseEnter) {
@@ -43,7 +42,7 @@ const NestedMenuItem = React.forwardRef((props, ref) => {
         }
     };
 
-    const handleMouseLeave = (event) => {
+    const handleMouseLeave = (event:any) => {
         setIsSubMenuOpen(false);
 
         if (ContainerProps?.onMouseLeave) {
@@ -62,7 +61,7 @@ const NestedMenuItem = React.forwardRef((props, ref) => {
         return false;
     };
 
-    const handleFocus = (event) => {
+    const handleFocus = (event:any) => {
         if (event.target === containerRef.current) {
             setIsSubMenuOpen(true);
         }
@@ -72,7 +71,7 @@ const NestedMenuItem = React.forwardRef((props, ref) => {
         }
     };
 
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event:any) => {
         if (event.key === 'Escape') {
             return;
         }

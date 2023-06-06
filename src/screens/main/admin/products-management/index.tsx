@@ -22,13 +22,13 @@ const ProductsManagement = () => {
                 <Typography> محصولات</Typography>
                 <Button sx={{color:"#ffff", paddingX:"30px", bgcolor:"secondary.main", borderRadius:"50px"}}> افزودن محصول</Button>
             </Box>
-            <Box sx={{display:"flex", gap:"30px", padding:"20px", color:"gray"}}>
-                <Typography sx={{":hover":{}}}> تمام محصولات</Typography>
-                <Typography sx={{":hover":{}}}> اتمام موجودی</Typography>
-                <Typography sx={{":hover":{}}}>بدون قیمت</Typography>
-                <Typography sx={{":hover":{}}}>زباله دان</Typography>
+            <Box sx={{display:"flex", gap:"30px", padding:"20px", color:"gray" , height:"70px" }}>
+                <Typography sx={{":hover":{   cursor: 'pointer', borderBottom:"solid" , borderColor:"secondary.main"}}}> تمام محصولات</Typography>
+                <Typography sx={{":hover":{cursor: 'pointer', borderBottom:"solid" , borderColor:"secondary.main"}}}> اتمام موجودی</Typography>
+                <Typography sx={{":hover":{cursor: 'pointer', borderBottom:"solid" , borderColor:"secondary.main"}}}>بدون قیمت</Typography>
+                <Typography sx={{":hover":{cursor: 'pointer', borderBottom:"solid" , borderColor:"secondary.main"}}}>زباله دان</Typography>
             </Box>
-            <Box>
+            <Box >
                <DataTable/> 
             </Box>
         </Box>

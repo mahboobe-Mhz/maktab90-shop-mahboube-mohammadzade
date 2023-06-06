@@ -1,8 +1,14 @@
 import { Box } from "@mui/material";
 
 const ProductsManagement = () => {
-    return ( <Box>
+    return ( <Box sx={{display:"flex"}}>
         <Box>
+        <Box>
+
+        </Box>
+        <Box>
+
+        </Box>
         
         </Box>
         <Box>

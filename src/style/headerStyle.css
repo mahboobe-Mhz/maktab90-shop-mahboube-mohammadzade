@@ -24,8 +24,8 @@
 .icon{
     width: 20px;
 }
-.changColor:hover{
-    color: #fd6e54;
-    cursor: "pointer",
-
+.flashIcon{
+margin-top: 5px;
 }
+
+    

@@ -1,6 +1,12 @@
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../../routes";
+
 const LoginScreen = () => {
   //  const { handleLoginUser, register, handleSubmit, errors } = useLogin();
-  
+  const navigate = useNavigate();
+  const ChangePage =()=>{
+    navigate(routes.ADMIN.inventory)
+  }
     return (
       <div className="h-full w-full flex justify-center items-center">
         <span className="border p-1 border-gray-900 rounded-full fixed top-[90px] left-[50px]">
@@ -23,7 +29,7 @@ const LoginScreen = () => {
     
       </div>
     
-        <button className= "w-[30%]  bg-[#ffff] hover:bg-blue-dark text-[#fd6e54] font-bold pb-1  rounded-full " type="submit">
+        <button onClick={ChangePage} className= "w-[30%]  bg-[#ffff] hover:bg-blue-dark text-[#fd6e54] font-bold pb-1  rounded-full " type="submit">
        ورود
         </button>
   

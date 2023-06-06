@@ -13,12 +13,13 @@ const ProductsManagement = React.lazy(()=> import('../screens/main/admin/product
 const InventoryControl = React.lazy(()=> import('../screens/main/admin/inventory-control'))
 const OrdersManagement = React.lazy(()=> import('../screens/main/admin/orders-management'))
 const LoginScreen = React.lazy(()=> import('../screens/auth/login'))
-
+const MainAdminPage= React.lazy(()=> import('../screens/main/admin/mainPage'))
  
 const cookies = new Cookies();
 export const routes =  {
 
     ADMIN:{
+        main:'/admin/mainPage',
         index:'/admin/products',
         inventory:'/admin/inventory',
         orders:'/admin/orders'
@@ -90,28 +91,34 @@ export const router = createBrowserRouter([
         path:'/admin',
        // element:parsedUser?.role==="ADMIN"? <AdminLayout/>:<Navigate to={routes.AUTH.index}/>,
        element: <AdminLayout/>,
-        children:[{
-            path:routes.ADMIN.index,
-            element:
-            <SuspenseView>
-            <ProductsManagement/>
-            </SuspenseView>
-        },{
-            path:routes.ADMIN.inventory,
-            element:
-            <SuspenseView>
-            <InventoryControl/>
-            </SuspenseView>
-        },{
-            path:routes.ADMIN.orders,
-            element:
-            <SuspenseView>
-            <OrdersManagement/>
-            </SuspenseView>
-        },
-       
+        children:[
+            {
+                path:routes.ADMIN.main,
+                element:
+                <SuspenseView>
+                <MainAdminPage/>
+                </SuspenseView>
+            },
     ]
 
+    },     {
+        path:routes.ADMIN.index,
+        element:
+        <SuspenseView>
+        <ProductsManagement/>
+        </SuspenseView>
+    },{
+        path:routes.ADMIN.inventory,
+        element:
+        <SuspenseView>
+        <InventoryControl/>
+        </SuspenseView>
+    },{
+        path:routes.ADMIN.orders,
+        element:
+        <SuspenseView>
+        <OrdersManagement/>
+        </SuspenseView>
     },
    
 ])

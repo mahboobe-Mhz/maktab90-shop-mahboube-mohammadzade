@@ -1,5 +1,5 @@
 const AdminTable = () => {
-    return (  );
+    return (  <></>);
 }
  
 export default AdminTable;

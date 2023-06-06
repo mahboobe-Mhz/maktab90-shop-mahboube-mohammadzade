@@ -99,9 +99,11 @@ export const router = createBrowserRouter([
                 <MainAdminPage/>
                 </SuspenseView>
             },
+         
+       
     ]
 
-    },     {
+    },   {
         path:routes.ADMIN.index,
         element:
         <SuspenseView>

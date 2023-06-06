@@ -1,6 +1,7 @@
 import { Box,Typography ,Button} from "@mui/material";
 import SideBar from "../../../../components/adminComponent/sideBar";
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import DataTable from "../../../../components/adminComponent/adminTable";
 
 const ProductsManagement = () => {
     return ( <Box sx={{display:"flex", direction:"rtl"}}>
@@ -21,8 +22,14 @@ const ProductsManagement = () => {
                 <Typography> محصولات</Typography>
                 <Button sx={{color:"#ffff", paddingX:"30px", bgcolor:"secondary.main", borderRadius:"50px"}}> افزودن محصول</Button>
             </Box>
+            <Box sx={{display:"flex", gap:"30px", padding:"20px", color:"gray"}}>
+                <Typography sx={{":hover":{}}}> تمام محصولات</Typography>
+                <Typography sx={{":hover":{}}}> اتمام موجودی</Typography>
+                <Typography sx={{":hover":{}}}>بدون قیمت</Typography>
+                <Typography sx={{":hover":{}}}>زباله دان</Typography>
+            </Box>
             <Box>
-                
+               <DataTable/> 
             </Box>
         </Box>
             

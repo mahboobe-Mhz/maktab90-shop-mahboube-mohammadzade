@@ -18,6 +18,7 @@ const ProductsTable= React.lazy(()=> import('../components/adminComponent/showTa
 const CategoryTable= React.lazy(()=> import('../components/adminComponent/categoryTable'))
 const LabelTable= React.lazy(()=> import('../components/adminComponent/labelTable'))
 const Comments= React.lazy(()=> import('../components/adminComponent/comments'))
+const Reports= React.lazy(()=> import('../components/adminComponent/reportsPage'))
 
 
 
@@ -33,7 +34,8 @@ export const routes =  {
         products:'/admin/index/products',
          category:'/admin/index/category',
          label:'/admin/index/label',
-         comments:"/admin/index/comments"
+         comments:"/admin/index/comments",
+         reports:"/admin/index/reports"
 
       
    
@@ -154,7 +156,14 @@ export const router = createBrowserRouter([
             <SuspenseView>
           <Comments/>
             </SuspenseView>
+        },{
+            path:routes.ADMIN.reports,
+            element:
+            <SuspenseView>
+          <Reports/>
+            </SuspenseView>
         },
+       
        
        
        

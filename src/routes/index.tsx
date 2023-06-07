@@ -15,6 +15,9 @@ const OrdersManagement = React.lazy(()=> import('../components/adminComponent/or
 const LoginScreen = React.lazy(()=> import('../screens/auth/login'))
 const MainAdminPage= React.lazy(()=> import('../screens/main/admin/mainPage'))
 const ProductsTable= React.lazy(()=> import('../components/adminComponent/showTable'))
+const CategoryTable= React.lazy(()=> import('../components/adminComponent/categoryTable'))
+
+
 
  
 const cookies = new Cookies();
@@ -25,7 +28,8 @@ export const routes =  {
         index:'/admin/index',
         inventory:'/admin/inventory',
         orders:'/admin/index/orders',
-        products:'/admin/index/products'
+        products:'/admin/index/products',
+        category:'/admin/index/category'
       
    
     },
@@ -127,6 +131,14 @@ export const router = createBrowserRouter([
             <OrdersManagement/>
             </SuspenseView>
         },
+        {
+            path:routes.ADMIN.category,
+            element:
+            <SuspenseView>
+          <CategoryTable/>
+            </SuspenseView>
+        },
+       
        
           
         ]

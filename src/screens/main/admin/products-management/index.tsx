@@ -1,9 +1,8 @@
 import { Box,Typography ,Button} from "@mui/material";
 import SideBar from "../../../../components/adminComponent/sideBar";
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
-
-import {useState} from 'react'
 import ShowTableBox from "../../../../components/adminComponent/showTable";
+import { Outlet } from "react-router-dom";
 const ProductsManagement = () => {
     return ( <Box sx={{display:"flex", direction:"rtl"}}>     
         <Box>
@@ -16,7 +15,7 @@ const ProductsManagement = () => {
                 <Typography>  فروشگاه</Typography>
                
             </Box>
-            <ShowTableBox/>
+            <Outlet/>
         </Box>
     </Box> );
 }

@@ -11,19 +11,22 @@ const Checkout = React.lazy(()=> import('../screens/main/users/checkout'))
 const AdminLayout = React.lazy(()=> import('../layout/admin'))
 const ProductsManagement = React.lazy(()=> import('../screens/main/admin/products-management'))
 const InventoryControl = React.lazy(()=> import('../screens/main/admin/inventory-control'))
-const OrdersManagement = React.lazy(()=> import('../screens/main/admin/orders-management'))
+const OrdersManagement = React.lazy(()=> import('../components/adminComponent/orderTable'))
 const LoginScreen = React.lazy(()=> import('../screens/auth/login'))
 const MainAdminPage= React.lazy(()=> import('../screens/main/admin/mainPage'))
+const ProductsTable= React.lazy(()=> import('../components/adminComponent/showTable'))
+
  
 const cookies = new Cookies();
 export const routes =  {
 
     ADMIN:{
         main:'/admin/mainPage',
-        index:'/admin/products',
+        index:'/admin/index',
         inventory:'/admin/inventory',
-        orders:'/admin/orders'
-     
+        orders:'/admin/index/orders',
+        products:'/admin/index/products'
+      
    
     },
     USERS:{
@@ -108,19 +111,30 @@ export const router = createBrowserRouter([
         element:
         <SuspenseView>
         <ProductsManagement/>
-        </SuspenseView>
+        </SuspenseView>,
+        children:[
+            {
+            path:routes.ADMIN.products,
+            element:
+            <SuspenseView>
+            <ProductsTable/>
+            </SuspenseView>,
+        },
+        {
+            path:routes.ADMIN.orders,
+            element:
+            <SuspenseView>
+            <OrdersManagement/>
+            </SuspenseView>
+        },
+       
+          
+        ]
     },{
         path:routes.ADMIN.inventory,
         element:
         <SuspenseView>
         <InventoryControl/>
         </SuspenseView>
-    },{
-        path:routes.ADMIN.orders,
-        element:
-        <SuspenseView>
-        <OrdersManagement/>
-        </SuspenseView>
-    },
-   
+    }
 ])

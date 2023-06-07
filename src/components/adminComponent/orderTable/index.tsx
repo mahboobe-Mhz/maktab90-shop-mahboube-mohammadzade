@@ -12,10 +12,11 @@ const ShowTableBox = () => {
                 <Input placeholder="جستجو" sx={{width:"100%", outline:"none" }}  type="text" ></Input>
                 </Box>
             <Box sx={{display:"flex", gap:"30px", padding:"20px", color:"gray" , height:"70px" }}>
-                <Typography sx={{":hover":{   cursor: 'pointer', borderBottom:"solid" , borderColor:"secondary.main"}}}> تمام محصولات</Typography>
-                <Typography sx={{":hover":{cursor: 'pointer', borderBottom:"solid" , borderColor:"secondary.main"}}}> اتمام موجودی</Typography>
-                <Typography sx={{":hover":{cursor: 'pointer', borderBottom:"solid" , borderColor:"secondary.main"}}}>بدون قیمت</Typography>
-                <Typography sx={{":hover":{cursor: 'pointer', borderBottom:"solid" , borderColor:"secondary.main"}}}>زباله دان</Typography>
+                <Typography sx={{":hover":{   cursor: 'pointer', borderBottom:"solid" , borderColor:"secondary.main"}}}> تمام سفارشات</Typography>
+                <Typography sx={{":hover":{cursor: 'pointer', borderBottom:"solid" , borderColor:"secondary.main"}}}>  در انتظار پرداخت</Typography>
+                <Typography sx={{":hover":{cursor: 'pointer', borderBottom:"solid" , borderColor:"secondary.main"}}}>سفارشات منتظر تایید </Typography>
+                <Typography sx={{":hover":{cursor: 'pointer', borderBottom:"solid" , borderColor:"secondary.main"}}}> سفارشات تایید شده</Typography>
+                <Typography sx={{":hover":{cursor: 'pointer', borderBottom:"solid" , borderColor:"secondary.main"}}}> سفارشات حذف شده</Typography>
             </Box>
             <Box >
                <DataTable/> 

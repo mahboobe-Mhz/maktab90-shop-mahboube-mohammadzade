@@ -16,6 +16,7 @@ const LoginScreen = React.lazy(()=> import('../screens/auth/login'))
 const MainAdminPage= React.lazy(()=> import('../screens/main/admin/mainPage'))
 const ProductsTable= React.lazy(()=> import('../components/adminComponent/showTable'))
 const CategoryTable= React.lazy(()=> import('../components/adminComponent/categoryTable'))
+const LabelTable= React.lazy(()=> import('../components/adminComponent/labelTable'))
 
 
 
@@ -29,7 +30,9 @@ export const routes =  {
         inventory:'/admin/inventory',
         orders:'/admin/index/orders',
         products:'/admin/index/products',
-        category:'/admin/index/category'
+         category:'/admin/index/category',
+         label:'/admin/index/label',
+
       
    
     },
@@ -137,7 +140,14 @@ export const router = createBrowserRouter([
             <SuspenseView>
           <CategoryTable/>
             </SuspenseView>
+        },  {
+            path:routes.ADMIN.label,
+            element:
+            <SuspenseView>
+          <LabelTable/>
+            </SuspenseView>
         },
+       
        
        
           

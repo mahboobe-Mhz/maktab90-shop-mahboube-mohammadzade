@@ -5,7 +5,7 @@ const LoginScreen = () => {
   //  const { handleLoginUser, register, handleSubmit, errors } = useLogin();
   const navigate = useNavigate();
   const ChangePage =()=>{
-    navigate(routes.ADMIN.inventory)
+    navigate(routes.ADMIN.main)
   }
     return (
       <div className="h-full w-full flex justify-center items-center">

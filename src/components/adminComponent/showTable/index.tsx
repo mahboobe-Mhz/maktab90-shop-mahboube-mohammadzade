@@ -3,8 +3,8 @@ import SearchIcon from '@mui/icons-material/Search';
 
 import EnhancedTable from "../productsTable";
 const ShowTableBox = () => {
-    return ( <>
-    <Box sx={{display:"flex", justifyContent:"space-between", marginTop:"20px", bgcolor:"#ffff", alignItems:"center", paddingX:"20px", paddingY:"5px", borderRadius:"20px"}}>
+    return ( <Box sx={{ height:"90%"}}>
+    <Box sx={{display:"flex", justifyContent:"space-between", bgcolor:"#ffff", alignItems:"center", paddingX:"20px", paddingY:"5px", borderRadius:"20px"}}>
                 <Typography> محصولات</Typography>
                 <Button sx={{color:"#ffff", paddingX:"30px", bgcolor:"secondary.main", borderRadius:"50px"}}> افزودن محصول</Button>
             </Box>
@@ -22,7 +22,7 @@ const ShowTableBox = () => {
             <Box >
                <EnhancedTable/> 
             </Box>
-    </> );
+    </Box> );
 }
  
 export default ShowTableBox;

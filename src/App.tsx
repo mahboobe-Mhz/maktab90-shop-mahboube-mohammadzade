@@ -14,14 +14,14 @@ function App() {
 
   return (
     <>
-     {/* <Provider store={store}> */}
+      <Provider store={store}> 
      <ThemeProvider theme={Theme}>
      <QueryClientProvider client={queryClient}>
    <RouterProvider router={router}/>
  
    </QueryClientProvider>
    </ThemeProvider>
-   {/* </Provider> */}
+    </Provider> 
     </>
   )
 }

@@ -1,12 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { routes } from "../../../routes";
+import useLogin from "./useLogin";
 
 const LoginScreen = () => {
-  //  const { handleLoginUser, register, handleSubmit, errors } = useLogin();
-  const navigate = useNavigate();
-  const ChangePage =()=>{
-    navigate(routes.ADMIN.main)
-  }
+   const { handleLoginUser, register, handleSubmit, errors } = useLogin();
+
+ 
+
     return (
       <div className="h-full w-full flex justify-center items-center">
         <span className="border p-1 border-gray-900 rounded-full fixed top-[90px] left-[50px]">
@@ -19,19 +19,19 @@ const LoginScreen = () => {
         <label className="block mt-10 pr-5 text-[#ffff] text-sm font-bold mb-2" >
          نام کاربری
         </label>
-        <input className=" bg-[#fd6e54] shadow appearance-none border rounded-full w-full py-2 px-3 text-grey-darker" id="username" type="text" />
+        <input className=" bg-[#fd6e54] shadow appearance-none border rounded-full w-full py-2 px-3 text-grey-darker " {...register('username')} id="username" type="text" />
       </div>
       <div className="mb-6">
         <label className="block pr-5 text-[#ffff] text-sm font-bold mb-2">
          رمز عبور
         </label>
-        <input className=" bg-[#fd6e54] shadow appearance-none border border-red rounded-full w-full py-2 px-3 text-grey-darker mb-3" id="password" type="password" />
+        <input className=" bg-[#fd6e54] shadow appearance-none border border-red rounded-full w-full py-2 px-3 text-grey-darker mb-3" id="password" {...register('password')} type="password" />
     
       </div>
-    
-        <button onClick={ChangePage} className= "w-[30%]  bg-[#ffff] hover:bg-blue-dark text-[#fd6e54] font-bold pb-1  rounded-full " type="submit">
+  
+       <button type="submit"  className= "w-[30%]  bg-[#ffff] hover:bg-blue-dark text-[#fd6e54] font-bold pb-1  rounded-full ">
        ورود
-        </button>
+       </button>
   
   </form>
      </div>

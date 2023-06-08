@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import { ThemeProvider } from '@emotion/react';
 import { Theme } from './theme';
-
+import './index.css'
 const queryClient = new QueryClient();
 function App() {
 

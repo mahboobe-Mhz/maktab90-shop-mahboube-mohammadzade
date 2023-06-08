@@ -8,10 +8,11 @@ import { addBreadCrumb } from "../../../../redux/slice/appSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { routes } from "../../../../routes";
+import AdminHeader from "../../../../components/adminComponent/adminHeader";
 const MainPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  return (
+  return (<>  <AdminHeader/>
     <Grid
       sx={{ paddingY: "20px", paddingX: "30px", direction: "rtl" }}
       container
@@ -128,6 +129,7 @@ const MainPage = () => {
         </Paper>
       </Grid>
     </Grid>
+    </>
   );
 };
 

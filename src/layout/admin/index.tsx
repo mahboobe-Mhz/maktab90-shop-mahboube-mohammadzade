@@ -8,7 +8,10 @@ const AdminLayout = () => {
        <AdminHeader/>
         <Link to={routes.ADMIN.inventory}>inventory</Link>
          <Link to={routes.ADMIN.orders}>orders</Link>
+         <div>
          <Outlet/> 
+         </div>
+        
          </>  );
 }
  

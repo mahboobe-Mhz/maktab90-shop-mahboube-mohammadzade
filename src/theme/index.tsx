@@ -13,11 +13,12 @@ export const Theme= createTheme({
         secondary:{
             main:"#fd6e54"
            
-        }
-    },
-    typography:{
-        fontFamily:"nimkat",
+        },
         
+         
+    },   typography:{
+        fontFamily:"nimkat",
     }
+
 })
     

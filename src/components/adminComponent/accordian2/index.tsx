@@ -45,6 +45,7 @@ export default function ControlledAccordions2() {
                 })
               ),
                 navigate(routes.ADMIN.orders);
+
             }}
             variant="text"
             sx={{

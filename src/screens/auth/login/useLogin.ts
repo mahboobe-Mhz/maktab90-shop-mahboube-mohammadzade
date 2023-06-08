@@ -33,7 +33,7 @@ const useLogin = () => {
       const user = cookies.get("user");
       
       
-      user.role === "ADMIN" ? navigate("/admin/products") : navigate("/cart");
+      user.role === "ADMIN" ? navigate("/admin/index/products") : navigate("/cart");
     },
     onError: (err) => {
       manageErrors({ err, setError });

@@ -5,11 +5,12 @@ import ShowTableBox from "../../../../components/adminComponent/showTable";
 import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { storeAppState } from "../../../../redux/slice/appSlice";
+
 const ProductsManagement = () => {
   const AppState = useSelector(storeAppState);
 
   const name = AppState.BreadCrumb;
-
+  
   return (
     <Box sx={{ display: "flex", direction: "rtl", height: "100%" }}>
       <Box>

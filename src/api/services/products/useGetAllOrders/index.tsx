@@ -2,11 +2,11 @@ import { useQuery } from "react-query";
 import { instance } from "../../../constants";
 
 
-const useGetAllSubOrders = () => {
-    return useQuery('getAllSubCategories' , async()=>{
+const useGetAllOrders = () => {
+    return useQuery('getAllOrders' , async()=>{
      const res =   await instance.get('/orders')
      return res.data
     })
 }
  
-export default useGetAllSubOrders;
+export default useGetAllOrders;

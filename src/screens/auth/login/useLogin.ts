@@ -10,8 +10,8 @@ import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
 const LoginSchema = yup.object({
-  username: yup.string(),
-  password: yup.string(),
+  username: yup.string().required("نام کاربری را وارد کنید"),
+  password: yup.string().required("پسورد را وارد کنید"),
 });
 const useLogin = () => {
   const navigate = useNavigate();
@@ -23,6 +23,8 @@ const useLogin = () => {
   } = useForm<LoginUserType["payload"]>({
     resolver: yupResolver(LoginSchema),
   });
+  console.log(errors);
+  
   const { mutate } = useLoginUser({
     onSuccess: (data: any) => {
       console.log("success");

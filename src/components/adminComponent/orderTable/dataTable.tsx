@@ -18,7 +18,7 @@ interface Props{
     data6:string;
    
   }>
-  title:Array<[
+  title:[
     name1:string,
     name2:string,
     name3:string,
@@ -26,9 +26,6 @@ interface Props{
     name5?:string,
     name6?:string
   ]
-    
-     
-  >
 }
 
 export default function BasicOrderTable({rows,title}:Props) {
@@ -55,15 +52,12 @@ export default function BasicOrderTable({rows,title}:Props) {
               key={row._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-         
               <TableCell align="center">{row._id}</TableCell>
               <TableCell align="center">{row.totalPrice}</TableCell>
-              <TableCell align="center">{row.user}</TableCell>
+              <TableCell align="center">{row.user.firstname}</TableCell>
               <TableCell align="center">{row.totalPrice }</TableCell>
               <TableCell align="center">{row.deliveryStatus?" ارسال شده":"در حال بررسی"}</TableCell>
               <TableCell align="center">{row.deliveryDate}</TableCell>
-           
-             
             </TableRow>
           ))}
         </TableBody>

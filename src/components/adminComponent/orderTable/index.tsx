@@ -1,15 +1,17 @@
 import { Box,Typography ,Button,Input} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 
-import useGetAllSubOrders from "../../../api/services/products/useGetAllOrders";
+import useGetAllOrders from "../../../api/services/products/useGetAllOrders";
 import { useState } from "react";
 import BasicOrderTable from "./dataTable";
 
 
 const ShowTableBox = () => {
-    const { data, isLoading } =  useGetAllSubOrders()
+    const { data, isLoading } =  useGetAllOrders()
     const [dataList, setDataList]=useState()
-    console.log(data.data.orders);
+
+
+
     
     return ( <>
     <Box sx={{display:"flex", justifyContent:"space-between", marginTop:"20px", bgcolor:"#ffff", alignItems:"center", paddingX:"20px", paddingY:"5px", borderRadius:"20px"}}>
@@ -28,10 +30,10 @@ const ShowTableBox = () => {
                 <Typography sx={{":hover":{cursor: 'pointer', borderBottom:"solid" , borderColor:"secondary.main"}}}> سفارشات حذف شده</Typography>
             </Box>
             <Box >
-            {isLoading ? <div> loading...</div> :     
+           {isLoading ? <div> loading...</div> :     
                
-               <BasicOrderTable rows={dataList || data.data.orders} title={["شناسه"," پرداخت","مشتری","جمع کل","وضعیت","تاریخ"]}/>
- }
+               <BasicOrderTable rows={ data.data.orders} title={["شناسه"," پرداخت","مشتری","جمع کل","وضعیت","تاریخ"]}/>
+ } 
             </Box>
     </> );
 }

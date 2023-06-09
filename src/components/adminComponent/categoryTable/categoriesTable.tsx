@@ -9,6 +9,8 @@ import {Paper, Box} from '@mui/material';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import { current } from '@reduxjs/toolkit';
+import useGetAllSubCategory from '../../../api/services/products/useGetAllSubCategory';
 interface Props{
   rows:Array<{
  _id:string;
@@ -19,11 +21,10 @@ interface Props{
 }
 
 export default function BasicCategoryTable({rows}:Props) {
-  const showSub=(e)=>{
-   
-    console.log(e.target.id);
-    
-    
+  const { data, isLoading } =  useGetAllSubCategory()
+  const showSub=(event)=>{ 
+    console.log(event?.currentTarget.id);
+
   }
   return (
     <TableContainer sx={{ height:400}} component={Paper}>
@@ -32,6 +33,7 @@ export default function BasicCategoryTable({rows}:Props) {
         <TableBody>
           {rows?.map((row) => (
             <TableRow
+        
               key={row._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
@@ -41,7 +43,7 @@ export default function BasicCategoryTable({rows}:Props) {
                 <Box >
                < DeleteOutlineOutlinedIcon sx={{color:"secondary.main"}}/>
               <ModeEditOutlineOutlinedIcon sx={{color:"secondary.main"}}/>
-              <MenuOutlinedIcon onClick={showSub} sx={{color:"secondary.main"}}/>
+              <MenuOutlinedIcon     onClick={showSub} id={row._id} sx={{color:"secondary.main"}}/>
                 </Box>
               </TableCell>
           

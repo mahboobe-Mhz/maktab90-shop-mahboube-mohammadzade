@@ -1,17 +1,42 @@
 import { Box,Typography ,Button, Input,TextField,TableBody} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import BasicTable from "../productsTable/useTable";
-import useGetAllProducts from "../../../api/services/products/useGetAllProducts";
+import * as React from 'react';
 import { useEffect, useState } from "react";
+import PaginationControlled from "../../pagination";
+import useGetPaginationProducts from "../../../api/services/products/usePaginationProducts";
+import axios from "axios";
 
 
 
 
 
 const ShowTableBox = () => {
+    const [page, setPage] = React.useState(1)
+    const [countPage , setCountPage]=React.useState(2)
+    const [allData , setAllData]=useState()
 
-   const { data, isLoading } =  useGetAllProducts()
- 
+   const { data, isLoading,refetch } =useGetPaginationProducts(page,10)
+   React.useEffect(()=>{
+    const req = axios.get(`http://localhost:8000/api/products`)
+      req.then(res =>{
+          const lengthCat= Number((res.data.data.products.length)/4)
+          const correctNum =parseInt(lengthCat)
+          console.log(correctNum);
+          
+          setAllData(res.data.data.products)
+          setCountPage(lengthCat)
+      })
+    
+  },[data])
+
+  React.useEffect(()=>{
+      refetch()
+  },[page])
+  console.log(page);
+  
+  !isLoading && console.log(data);
+  
    const [dataList, setDataList]=useState()
 
    const quantityFun=()=>{
@@ -51,7 +76,7 @@ const ShowTableBox = () => {
                
               <BasicTable rows={dataList|| data.data.products} title={["عکس محصول","نام محصول","قیمت","موجودی","توضیحات"]}/>
 }
-             
+        <PaginationControlled  setPage={setPage} page={page} countPage={countPage}/>
             </Box>
     </Box> );
 }

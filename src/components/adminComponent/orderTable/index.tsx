@@ -32,7 +32,7 @@ const ShowTableBox = () => {
             <Box >
            {isLoading ? <div> loading...</div> :     
                
-               <BasicOrderTable rows={ data.data.orders} title={["شناسه"," پرداخت","مشتری","جمع کل","وضعیت","تاریخ"]}/>
+               <BasicOrderTable rows={data.data.orders} title={["شناسه"," پرداخت","مشتری","جمع کل","وضعیت","تاریخ"]}/>
  } 
             </Box>
     </> );

@@ -23,19 +23,17 @@ const useLogin = () => {
   } = useForm<LoginUserType["payload"]>({
     resolver: yupResolver(LoginSchema),
   });
-  console.log(errors);
+
   
   const { mutate } = useLoginUser({
     onSuccess: (data: any) => {
-      console.log("success");
-      
       cookies.set("user", data.data.user, { path: "/" });
       cookies.set("refreshToken", data.token.refreshToken, { path: "/" });
       cookies.set("accessToken", data.token.accessToken, { path: "/" });
       const user = cookies.get("user");
       
       
-      user.role === "ADMIN" ? navigate("/admin/index/products") : navigate("/cart");
+      user.role === "ADMIN" ? navigate("/admin/mainPage") : navigate("/cart");
     },
     onError: (err) => {
       manageErrors({ err, setError });

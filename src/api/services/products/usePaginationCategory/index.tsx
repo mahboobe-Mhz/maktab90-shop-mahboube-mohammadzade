@@ -6,9 +6,9 @@ interface Props{
     limit: number
 }
 
-const useGetPaginationCategory = ({page , limit}:Props) => {
+const useGetPaginationCategory = (page , limit) => {
     return useQuery('getPaginationCategories' , async()=>{
-     const res =   await axios.get(`/http://127.0.0.1:8000/apicategories?page=${page}&limit=${limit}`)
+     const res =   await axios.get(`http://127.0.0.1:8000/api/categories?page=${page}&limit=${limit}`)
      return res.data
     })
 }

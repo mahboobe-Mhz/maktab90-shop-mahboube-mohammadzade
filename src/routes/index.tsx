@@ -52,7 +52,7 @@ export const routes =  {
     }
 }
 const user= cookies.get("user")
-const parsedUser = user||{}
+const userRol = user||{}
 export const router = createBrowserRouter([
     {
         path:'/',
@@ -84,7 +84,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:routes.USERS.cart,
-                element:parsedUser?.role==="USER"?
+                element:userRol?.role==="USER"?
                 <SuspenseView>
                 <Cart/>
                 </SuspenseView>
@@ -104,81 +104,80 @@ export const router = createBrowserRouter([
 
     },
    
-       // element:parsedUser?.role==="ADMIN"? <AdminLayout/>:<Navigate to={routes.AUTH.index}/>,
- 
      
-            {
-                path:routes.ADMIN.main,
-                element:<MainAdminPage/>    }
-                ,{
-                    path:routes.ADMIN.inventory,
+     {
+              path:"/admin",
+               element:userRol?.role==="ADMIN"? <AdminLayout/>:<Navigate to={routes.USERS.index}/>,
+                children:[
+                    {
+                        path:routes.ADMIN.main,
+                        element:<MainAdminPage/>    }
+                        ,{
+                            path:routes.ADMIN.inventory,
+                            element:
+                            <SuspenseView>
+                            <InventoryControl/>
+                            </SuspenseView>
+                        }
+                 
+            
+        
+            ,   {
+                path:routes.ADMIN.index,
+                element:
+                <SuspenseView>
+                <ProductsManagement/>
+                </SuspenseView>,
+                children:[
+                    {
+                    path:routes.ADMIN.products,
                     element:
                     <SuspenseView>
-                    <InventoryControl/>
+                    <ProductsTable/>
+                    </SuspenseView>,
+                },
+                {
+                    path:routes.ADMIN.orders,
+                    element:
+                    <SuspenseView>
+                    <OrdersManagement/>
                     </SuspenseView>
-                }
-         
-    
-
-    ,   {
-        path:routes.ADMIN.index,
-        element:
-        <SuspenseView>
-        <ProductsManagement/>
-        </SuspenseView>,
-        children:[
-            {
-            path:routes.ADMIN.products,
-            element:
-            <SuspenseView>
-            <ProductsTable/>
-            </SuspenseView>,
-        },
-        {
-            path:routes.ADMIN.orders,
-            element:
-            <SuspenseView>
-            <OrdersManagement/>
-            </SuspenseView>
-        },
-        {
-            path:routes.ADMIN.category,
-            element:
-            <SuspenseView>
-          <CategoryTable/>
-            </SuspenseView>
-        },  {
-            path:routes.ADMIN.label,
-            element:
-            <SuspenseView>
-          <LabelTable/>
-            </SuspenseView>
-        }, {
-            path:routes.ADMIN.comments,
-            element:
-            <SuspenseView>
-          <Comments/>
-            </SuspenseView>
-        },{
-            path:routes.ADMIN.reports,
-            element:
-            <SuspenseView>
-          <Reports/>
-            </SuspenseView>
-        },{
-            path:routes.ADMIN.discount,
-            element:
-            <SuspenseView>
-          <Discounts/>
-            </SuspenseView>
-        },
-       
-       
-       
-       
-       
-       
-          
-        ]
-    }
+                },
+                {
+                    path:routes.ADMIN.category,
+                    element:
+                    <SuspenseView>
+                  <CategoryTable/>
+                    </SuspenseView>
+                },  {
+                    path:routes.ADMIN.label,
+                    element:
+                    <SuspenseView>
+                  <LabelTable/>
+                    </SuspenseView>
+                }, {
+                    path:routes.ADMIN.comments,
+                    element:
+                    <SuspenseView>
+                  <Comments/>
+                    </SuspenseView>
+                },{
+                    path:routes.ADMIN.reports,
+                    element:
+                    <SuspenseView>
+                  <Reports/>
+                    </SuspenseView>
+                },{
+                    path:routes.ADMIN.discount,
+                    element:
+                    <SuspenseView>
+                  <Discounts/>
+                    </SuspenseView>
+                },
+                  
+                ]
+            }
+                ]
+     },
+           
 ])

@@ -5,7 +5,6 @@ import useLogin from "./useLogin";
 const LoginScreen = () => {
    const { handleLoginUser, register, handleSubmit, errors } = useLogin();
 
- console.log(errors);
  
 
     return (

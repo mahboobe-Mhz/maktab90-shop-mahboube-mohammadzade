@@ -7,6 +7,7 @@ import useLoginUser from "../../../api/services/auth/useLoginUser";
 import { manageErrors } from "../../../utils/manageErrors";
 import { useCallback } from "react";
 import Cookies from "universal-cookie";
+import { routes } from "../../../routes";
 
 const cookies = new Cookies();
 const LoginSchema = yup.object({
@@ -30,10 +31,8 @@ const useLogin = () => {
       cookies.set("user", data.data.user, { path: "/" });
       cookies.set("refreshToken", data.token.refreshToken, { path: "/" });
       cookies.set("accessToken", data.token.accessToken, { path: "/" });
-      const user = cookies.get("user");
-      
-      
-      user.role === "ADMIN" ? navigate("/admin/mainPage") : navigate("/cart");
+      const user = cookies.get("user");   
+      user.role === "ADMIN" ? navigate(routes.ADMIN.main) : navigate("/cart");
     },
     onError: (err) => {
       manageErrors({ err, setError });

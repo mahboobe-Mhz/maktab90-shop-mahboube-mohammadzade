@@ -5,11 +5,13 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-
+import {Paper,Box} from '@mui/material';
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 interface Props{
   rows:Array<{
-    id:string;
+    ـid:string;
     name:string;
     images:any;
     price:number;
@@ -30,7 +32,7 @@ interface Props{
 
 export default function BasicTable({rows,title}:Props) {
   return (
-    <TableContainer sx={{ height:400}} component={Paper}>
+    <TableContainer  component={Paper}>
       <Table sx={{ minWidth: 650 ,}} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -44,7 +46,7 @@ export default function BasicTable({rows,title}:Props) {
            
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody >
           {rows?.map((row) => (
             <TableRow
               key={row.name}
@@ -57,6 +59,19 @@ export default function BasicTable({rows,title}:Props) {
               <TableCell align="center">{row.price}</TableCell>
               <TableCell align="center">{row.quantity}</TableCell>
               <TableCell align="center">{row.description}</TableCell>
+              <TableCell align="center">   <Box>
+                    <DeleteOutlineOutlinedIcon
+                      sx={{ color: "secondary.main" }}
+                    />
+                    <ModeEditOutlineOutlinedIcon
+                      sx={{ color: "secondary.main" }}
+                    />
+                    <MenuOutlinedIcon
+                    
+                      id={row._id}
+                      sx={{ color: "secondary.main" }}
+                    />
+                  </Box></TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -17,8 +17,9 @@ const ShowTableBox = () => {
         React.useEffect(()=>{
           const req = axios.get(`http://localhost:8000/api/categories`)
             req.then(res =>{
-                const lengthCat=res.data.data.categories.length
-                setCountPage(lengthCat/2)
+                const lengthCat=res.data.data.categories.length/2
+                const paesNum=Math.round(lengthCat)
+                setCountPage(paesNum)
             })
           
         },[data])
@@ -27,6 +28,7 @@ const ShowTableBox = () => {
             refetch()
         },[page])
      
+        !isLoading&& console.log(countPage);
         
 
     return ( <>

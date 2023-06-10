@@ -16,19 +16,19 @@ const ShowTableBox = () => {
     const [countPage , setCountPage]=React.useState(2)
     const [allData , setAllData]=useState()
 
-   const { data, isLoading,refetch } =useGetPaginationProducts(page,10)
+   const { data, isLoading,refetch } =useGetPaginationProducts(page,5)
    React.useEffect(()=>{
     const req = axios.get(`http://localhost:8000/api/products`)
       req.then(res =>{
-          const lengthCat= Number((res.data.data.products.length)/4)
-          const correctNum =parseInt(lengthCat)
+          const lengthCat= (res.data.data.products.length)/4
+          const correctNum =Math.round(lengthCat)
           console.log(correctNum);
           
           setAllData(res.data.data.products)
-          setCountPage(lengthCat)
+          setCountPage(correctNum)
       })
     
-  },[data])
+  },[page])
 
   React.useEffect(()=>{
       refetch()
@@ -67,11 +67,11 @@ const ShowTableBox = () => {
                 <Typography onClick={quantityFun} sx={{":hover":{cursor: 'pointer', borderBottom:"solid" , borderColor:"secondary.main"}}}>بدون قیمت</Typography>
                 <Typography sx={{":hover":{cursor: 'pointer', borderBottom:"solid" , borderColor:"secondary.main"}}}>زباله دان</Typography>
             </Box>
-                <Box sx={{width:"100%",display:"flex", borderRadius:"50px" ,bgcolor:"#ffff",marginBottom:"10px", paddingX:"20px",}}>
+                <Box sx={{width:"100%",display:"flex", borderRadius:"50px" ,bgcolor:"#ffff",marginBottom:"5px", paddingX:"20px",}}>
                     <SearchIcon sx={{fill:"gray", marginTop:"3px"}}/> 
                 <Input placeholder="جستجو" sx={{width:"100%", outline:"none" }}  type="text" ></Input>
                 </Box>
-            <Box >
+            <Box sx={{marginBottom:3}}>
        {isLoading ? <div> loading...</div> :     
                
               <BasicTable rows={dataList|| data.data.products} title={["عکس محصول","نام محصول","قیمت","موجودی","توضیحات"]}/>

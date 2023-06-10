@@ -1,11 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
-import { routes } from "../../../routes";
 import useLogin from "./useLogin";
+import { ToastContainer } from "react-toastify";
+
 
 const LoginScreen = () => {
    const { handleLoginUser, register, handleSubmit, errors } = useLogin();
 
- 
+
 
     return (
       <div className="h-full w-full flex justify-center items-center">
@@ -19,14 +19,14 @@ const LoginScreen = () => {
         <label className="block mt-10 pr-5 text-[#ffff] text-sm font-bold mb-2" >
          نام کاربری
         </label>
-        <input  className=" bg-[#fd6e54] shadow appearance-none border rounded-full w-full py-2 px-3 text-grey-darker " {...register('username')} id="username" type="text" />
+        <input   className=" bg-[#fd6e54] shadow appearance-none border rounded-full w-full py-2 px-3 text-grey-darker " {...register('username')} id="username" type="text" />
       <span className="text-red-200"> {errors? errors.username?.message : ""}</span>
       </div>
       <div className="mb-6">
         <label className="block pr-5 text-[#ffff] text-sm font-bold mb-2">
          رمز عبور
         </label>
-        <input className=" bg-[#fd6e54] shadow appearance-none border border-red rounded-full w-full py-2 px-3 text-grey-darker mb-3" id="password" {...register('password')} type="password" />
+        <input  className=" bg-[#fd6e54] shadow appearance-none border border-red rounded-full w-full py-2 px-3 text-grey-darker mb-3" id="password" {...register('password')} type="password" />
         <span className="text-red-200"> {errors? errors.password?.message : ""}</span>
       </div>
   
@@ -35,6 +35,18 @@ const LoginScreen = () => {
        </button>
   
   </form>
+  <ToastContainer
+position="top-right"
+autoClose={2000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
      </div>
     );
   };

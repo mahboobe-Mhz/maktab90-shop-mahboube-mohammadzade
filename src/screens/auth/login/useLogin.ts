@@ -11,8 +11,8 @@ import { routes } from "../../../routes";
 
 const cookies = new Cookies();
 const LoginSchema = yup.object({
-  username: yup.string().required("نام کاربری را وارد کنید"),
-  password: yup.string().required("پسورد را وارد کنید"),
+  username: yup.string().required("نام کاربری را وارد کنید").matches(RegExp('admin'), 'نام کاربری را صحیح وارد'),
+  password: yup.string().required("پسورد را وارد کنید").matches(RegExp('admin1234'), 'پسورد را صحیح وارد'),
 });
 const useLogin = () => {
   const navigate = useNavigate();

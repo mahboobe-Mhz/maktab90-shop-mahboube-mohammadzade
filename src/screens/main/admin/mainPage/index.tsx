@@ -12,7 +12,8 @@ import AdminHeader from "../../../../components/adminComponent/adminHeader";
 const MainPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  return (<>  <AdminHeader/>
+  return (<Box sx={{width:"100%" , height:"100%"}}> 
+   <AdminHeader/>
     <Grid
       sx={{ paddingY: "20px", paddingX: "30px", direction: "rtl" }}
       container
@@ -129,7 +130,7 @@ const MainPage = () => {
         </Paper>
       </Grid>
     </Grid>
-    </>
+    </Box>
   );
 };
 

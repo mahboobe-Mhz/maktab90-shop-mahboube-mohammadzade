@@ -1,14 +1,15 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import Menu from "../../kit/nestedMenu/menu";
-import { useState } from "react";
+import {  useNavigate } from "react-router-dom";
+import { routes } from "../../../routes";
 
 const RightPartOfMainLayout = () => {
-  const [flag, setFlag] = useState(false);
 
-  const handleClick = () => {
-    setFlag(!flag);
-    console.log(flag);
+  const Navigate = useNavigate();
+  const navigateLogin = () => {
+    Navigate(routes.ADMIN.login)
+
   };
   return (
     <Box
@@ -50,6 +51,7 @@ const RightPartOfMainLayout = () => {
       </Typography>
       <Typography>.</Typography>
       <Typography
+      onClick={navigateLogin}
         sx={{
           "&:hover": {
             cursor: "pointer",

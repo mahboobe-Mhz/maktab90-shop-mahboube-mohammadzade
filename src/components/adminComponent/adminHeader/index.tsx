@@ -1,6 +1,12 @@
 import {  Box, Grid } from "@mui/material";
+import {  useNavigate } from "react-router-dom";
+import { routes } from "../../../routes";
 
 const AdminHeader = () => {
+    const Navigate = useNavigate();
+    const navigateHome =()=>{
+        Navigate("/")
+    }
     return ( <div className="">
         <Grid sx={{paddingTop:"10px", paddingX:"20px",paddingBottom:"10px", direction:"rtl"  , boxShadow:"0px 2px 5px gray"}} container  spacing={5}>
         <Grid item md={4}>
@@ -22,7 +28,7 @@ const AdminHeader = () => {
             <h4>خروج</h4>
          
             <span className="flashIcon" >
-        <img width={20} src="/icons/icon-02.svg"></img>
+        <img width={20} onClick={navigateHome} src="/icons/icon-02.svg"></img>
         </span>
              </Grid>
 

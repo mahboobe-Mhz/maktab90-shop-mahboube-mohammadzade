@@ -48,6 +48,7 @@ const Price = React.lazy(
 const cookies = new Cookies();
 export const routes = {
   ADMIN: {
+    login: "/admin/auth/login",
     main: "/admin/mainPage",
     index: "/admin/index",
     orders: "/admin/index/orders",
@@ -60,7 +61,7 @@ export const routes = {
     price:"/admin/index/price"
   },
   USERS: {
-    index: "/auth/login",
+
     shopping: "shopping",
     single: `shopping/:id`,
     cart: "cart",
@@ -78,14 +79,7 @@ export const router = createBrowserRouter([
       </SuspenseView>
     ),
     children: [
-      {
-        path: routes.USERS.index,
-        element: (
-          <SuspenseView>
-            <LoginScreen />
-          </SuspenseView>
-        ),
-      },
+      
       {
         path: routes.USERS.shopping,
         element: (
@@ -132,9 +126,17 @@ export const router = createBrowserRouter([
       userRol?.role === "ADMIN" ? (
         <AdminLayout />
       ) : (
-        <Navigate to={routes.USERS.index} />
+        <Navigate to={routes.ADMIN.login} />
       ),
     children: [
+      {
+        path: routes.ADMIN.login,
+        element: (
+          <SuspenseView>
+            <LoginScreen />
+          </SuspenseView>
+        ),
+      },
       {
         path: routes.ADMIN.main,
         element: <MainAdminPage />,

@@ -41,6 +41,9 @@ const Reports = React.lazy(
 const Discounts = React.lazy(
   () => import("../components/adminComponent/discountPage")
 );
+const Price = React.lazy(
+  () => import("../components/adminComponent/price&inventory")
+);
 
 const cookies = new Cookies();
 export const routes = {
@@ -54,6 +57,7 @@ export const routes = {
     comments: "/admin/index/comments",
     reports: "/admin/index/reports",
     discount: "/admin/index/discounts",
+    price:"/admin/index/price"
   },
   USERS: {
     index: "/auth/login",
@@ -148,6 +152,13 @@ export const router = createBrowserRouter([
             element: (
               <SuspenseView>
                 <ProductsTable />
+              </SuspenseView>
+            ),
+          },  {
+            path: routes.ADMIN.price,
+            element: (
+              <SuspenseView>
+                <Price/>
               </SuspenseView>
             ),
           },

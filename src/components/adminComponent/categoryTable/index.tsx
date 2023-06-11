@@ -12,14 +12,14 @@ const ShowTableBox = () => {
     const [page, setPage] = React.useState(1)
     const [countPage , setCountPage]=React.useState(2)
     
-    const { data, isLoading ,refetch } = useGetPaginationCategory(page,countPage)
+    const { data, isLoading ,refetch } = useGetPaginationCategory(page,5)
 
         React.useEffect(()=>{
           const req = axios.get(`http://localhost:8000/api/categories`)
             req.then(res =>{
-                const lengthCat=res.data.data.categories.length/2
-                const paesNum=Math.round(lengthCat)
-                setCountPage(paesNum)
+                const lengthCat=res.data.data.categories.length/5
+                const intNum=Math.round(lengthCat)
+                setCountPage(intNum)
             })
           
         },[data])
@@ -44,6 +44,11 @@ const ShowTableBox = () => {
              <Box sx={{marginTop:2}}>
             {isLoading ? <div> loading...</div> :       
                <BasicCategoryTable rows={data.data.categories} />} 
+                <PaginationControlled 
+          setPage={setPage}
+          page={page}
+          countPage={countPage}
+        />
             </Box> 
      
     </> );

@@ -5,30 +5,32 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import {Paper,Box} from '@mui/material';
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 
 interface Props{
   rows:Array<{
- 
-    _id:string;
-    totalPrice:string;
-    user:string;
-    deliveryStatus:string;
-    deliveryDate:string;
-    data6:string;
-   
+   _id:string;
+    name:string;
+    images:any;
+    price:number;
+    quantity:number;
+    description:string
   }>
-  title:[
-    name1:string,
+  title:Array<[
+    name1:string|undefined,
     name2:string,
     name3:string,
     name4?:string,
-    name5?:string,
-    name6?:string
+    name5?:string
   ]
+    
+     
+  >
 }
 
-export default function BasicOrderTable({rows,title}:Props) {
+export default function BasicTable({rows,title}:Props) {
   return (
     <TableContainer  component={Paper}>
       <Table sx={{ minWidth: 650 ,}} aria-label="simple table">
@@ -39,25 +41,29 @@ export default function BasicOrderTable({rows,title}:Props) {
             <TableCell align="center">  {title[1]}</TableCell>
             <TableCell align="center">  {title[2]}</TableCell>
             <TableCell align="center">  {title[3]}</TableCell>
-            <TableCell align="center">  {title[4]}</TableCell>
-            <TableCell align="center">  {title[5]}</TableCell>
-         
+            
    
            
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody >
           {rows?.map((row) => (
             <TableRow
-              key={row._id}
+              key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="center">{row._id}</TableCell>
-              <TableCell align="center">{row.totalPrice}</TableCell>
-              <TableCell align="center">{row.user.firsname}</TableCell>
-              <TableCell align="center">{row.totalPrice }</TableCell>
-              <TableCell align="center">{row.deliveryStatus?" ارسال شده":"در حال بررسی"}</TableCell>
-              <TableCell align="center">{row.deliveryDate}</TableCell>
+             
+              <TableCell align="center">{row.name}</TableCell>
+              <TableCell align="center">{row.price}</TableCell>
+              <TableCell align="center">{row.quantity}</TableCell>
+            
+              <TableCell align="center">   <Box>
+                   
+                    <ModeEditOutlineOutlinedIcon
+                      sx={{ color: "secondary.main" }}
+                    />
+                
+                  </Box></TableCell>
             </TableRow>
           ))}
         </TableBody>

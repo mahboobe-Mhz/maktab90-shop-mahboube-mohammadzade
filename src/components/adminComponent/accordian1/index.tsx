@@ -64,6 +64,27 @@ export default function ControlledAccordions() {
             onClick={() => {
               dispatch(
                 addBreadCrumb({
+                  BreadCrumb: " قیمت و موجودی",
+                })
+              ),
+                navigate(routes.ADMIN.price);
+            }}
+            variant="text"
+            sx={{
+              width: "100%",
+              color: "#ffff",
+              fontFamily: "nimkat",
+              paddingLeft: "100px",
+            }}
+          >
+          قیمت و موجودی
+          </Button>
+        </AccordionDetails>
+        <AccordionDetails>
+          <Button
+            onClick={() => {
+              dispatch(
+                addBreadCrumb({
                   BreadCrumb: "دسته ها",
                 })
               ),

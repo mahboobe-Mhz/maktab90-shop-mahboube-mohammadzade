@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 interface Props{
-  countPage:number
+  countPage:number|undefined
   page:number
   setPage:any
 }
@@ -14,7 +14,7 @@ export default function PaginationControlled( {countPage,page,setPage}:Props) {
   };
 
   return (
-    <Stack spacing={2}>
+    <Stack sx={{marginTop:2}} spacing={2}>
 
       <Pagination count={countPage} page={page} onChange={handleChange} />
     </Stack>

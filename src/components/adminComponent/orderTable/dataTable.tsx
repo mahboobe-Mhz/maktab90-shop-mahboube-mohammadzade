@@ -30,7 +30,7 @@ interface Props{
 
 export default function BasicOrderTable({rows,title}:Props) {
   return (
-    <TableContainer sx={{ height:400}} component={Paper}>
+    <TableContainer  component={Paper}>
       <Table sx={{ minWidth: 650 ,}} aria-label="simple table">
         <TableHead>
           <TableRow>

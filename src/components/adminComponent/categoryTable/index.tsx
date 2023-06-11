@@ -45,7 +45,7 @@ const ShowTableBox = () => {
             {isLoading ? <div> loading...</div> :       
                <BasicCategoryTable rows={data.data.categories} />} 
             </Box> 
-            <PaginationControlled  setPage={setPage} page={page} countPage={countPage}/>
+     
     </> );
 }
  

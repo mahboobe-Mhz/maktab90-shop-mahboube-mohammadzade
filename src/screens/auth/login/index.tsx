@@ -4,9 +4,6 @@ import { ToastContainer } from "react-toastify";
 
 const LoginScreen = () => {
    const { handleLoginUser, register, handleSubmit, errors } = useLogin();
-
-
-
     return (
       <div className="h-full w-full flex justify-center items-center">
         <span className="border p-1 border-gray-900 rounded-full fixed top-[90px] left-[50px]">

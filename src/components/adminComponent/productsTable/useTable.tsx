@@ -8,10 +8,10 @@ import TableRow from '@mui/material/TableRow';
 import {Paper,Box} from '@mui/material';
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+
 interface Props{
   rows:Array<{
-    ـid:string;
+   _id:string;
     name:string;
     images:any;
     price:number;
@@ -19,7 +19,7 @@ interface Props{
     description:string
   }>
   title:Array<[
-    name1:string,
+    name1:string|undefined,
     name2:string,
     name3:string,
     name4?:string,
@@ -41,7 +41,8 @@ export default function BasicTable({rows,title}:Props) {
             <TableCell align="center">  {title[1]}</TableCell>
             <TableCell align="center">  {title[2]}</TableCell>
             <TableCell align="center">  {title[3]}</TableCell>
-            <TableCell align="center">  {title[4]}</TableCell>
+             <TableCell align="center">  {title[4]}</TableCell>
+             <TableCell align="center">  {title[5]}</TableCell>
    
            
           </TableRow>
@@ -66,11 +67,7 @@ export default function BasicTable({rows,title}:Props) {
                     <ModeEditOutlineOutlinedIcon
                       sx={{ color: "secondary.main" }}
                     />
-                    <MenuOutlinedIcon
-                    
-                      id={row._id}
-                      sx={{ color: "secondary.main" }}
-                    />
+                
                   </Box></TableCell>
             </TableRow>
           ))}

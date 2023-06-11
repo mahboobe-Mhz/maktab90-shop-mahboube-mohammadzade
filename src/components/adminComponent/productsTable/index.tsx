@@ -9,7 +9,7 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import BasicTable from "./useTable";
 import * as React from "react";
-import {  useState } from "react";
+import { useState } from "react";
 import PaginationControlled from "../../pagination";
 import useGetPaginationProducts from "../../../api/services/products/usePaginationProducts";
 import axios from "axios";
@@ -28,22 +28,20 @@ const ShowTableBox = () => {
       setCountPage(correctNum);
     });
   }, []);
-
-  React.useEffect(() => {
-    refetch();
-    !isLoading && setDataList(data.data.products)
-  }, [page]);
-
-console.log(dataList);
+  setTimeout(() => {
+    refetch()
+    !isLoading && setDataList(data.data.products);
+}, 100);
+  console.log(dataList);
 
   const quantityFun = () => {
     const newDataList = data.data.products;
-    const ZiroQuantity = newDataList.filter((item:any) => item.quantity === 0);
+    const ZiroQuantity = newDataList.filter((item: any) => item.quantity === 0);
     setDataList(ZiroQuantity);
   };
   const priceFun = () => {
     const newDataList = data.data.products;
-    const priceLess = newDataList.filter((item:any) => item.price === 0);
+    const priceLess = newDataList.filter((item: any) => item.price === 0);
     setDataList(priceLess);
   };
   const allProducts = () => {
@@ -158,13 +156,20 @@ console.log(dataList);
         ></Input>
       </Box>
       <Box sx={{ marginBottom: 3 }}>
-        {!isLoading  &&
+        {!isLoading && (
           <BasicTable
             rows={dataList || data.data.products}
-            title={["عکس محصول", "نام محصول", "قیمت", "موجودی", "توضیحات","عملیات"]}
+            title={[
+              "عکس محصول",
+              "نام محصول",
+              "قیمت",
+              "موجودی",
+              "توضیحات",
+              "عملیات",
+            ]}
           />
-        }
-        <PaginationControlled 
+        )}
+        <PaginationControlled
           setPage={setPage}
           page={page}
           countPage={countPage}

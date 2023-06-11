@@ -8,9 +8,9 @@ const RightPartOfMainLayout = () => {
 
   const Navigate = useNavigate();
   const navigateLogin = () => {
-    Navigate(routes.ADMIN.login)
-
-  };
+    setTimeout(() => {
+      Navigate(routes.ADMIN.login) }, 100);
+    }
   return (
     <Box
       sx={{ display: "flex", direction: "rtl", gap: "7px", padding: "20px" }}

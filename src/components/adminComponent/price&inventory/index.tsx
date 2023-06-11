@@ -25,11 +25,11 @@ import useGetPaginationProducts from "../../../api/services/products/usePaginati
         setCountPage(correctNum);
       });
     }, []);
-  
-  useEffect(() => {
-      refetch();
-      !isLoading && setDataList(data.data.products)
-    }, [page]);
+  setTimeout(() => {
+    refetch();
+    !isLoading && setDataList(data.data.products)
+  }, 100);
+
   
   console.log(dataList);
   

@@ -20,11 +20,11 @@ const ShowTableBox = () => {
       setCountPage(correctNum);
     });
   }, []);
+setTimeout(() => {
+  refetch();
+  !isLoading && setDataList(data.data.orders);
+}, 100);
 
-  React.useEffect(() => {
-    refetch();
-    !isLoading && setDataList(data.data.orders);
-  }, [page]);
   const allOrders = () => {
     const newDataList = data.data.orders;
     setDataList(newDataList);

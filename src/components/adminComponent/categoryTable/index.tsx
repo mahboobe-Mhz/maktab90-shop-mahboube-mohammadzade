@@ -2,15 +2,14 @@ import { Box,Typography ,Button,Input} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import BasicCategoryTable from "./categoriesTable";
 import * as React from 'react';
-import PaginationLink from "../../pagination";
 import PaginationControlled from "../../pagination";
 import axios from "axios";
 import useGetPaginationCategory from "../../../api/services/products/usePaginationCategory";
 
 const ShowTableBox = () => {
-
+    const [dataList, setDataList] = React.useState();
     const [page, setPage] = React.useState(1)
-    const [countPage , setCountPage]=React.useState(2)
+    const [countPage , setCountPage]=React.useState(1)
     
     const { data, isLoading ,refetch } = useGetPaginationCategory(page,5)
 
@@ -23,12 +22,12 @@ const ShowTableBox = () => {
             })
           
         },[data])
-
-        React.useEffect(()=>{
+        setTimeout(() => {
             refetch()
-        },[page])
-     
-        !isLoading&& console.log(countPage);
+           !isLoading && setDataList(data.data.categories)
+        }, 100);
+   
+      
         
 
     return ( <>
@@ -43,7 +42,7 @@ const ShowTableBox = () => {
        
              <Box sx={{marginTop:2}}>
             {isLoading ? <div> loading...</div> :       
-               <BasicCategoryTable rows={data.data.categories} />} 
+               <BasicCategoryTable rows={dataList || data.data.categories} />} 
                 <PaginationControlled 
           setPage={setPage}
           page={page}

@@ -58,10 +58,9 @@ export const routes = {
     comments: "/admin/index/comments",
     reports: "/admin/index/reports",
     discount: "/admin/index/discounts",
-    price:"/admin/index/price"
+    price: "/admin/index/price",
   },
   USERS: {
-
     shopping: "shopping",
     single: `shopping/:id`,
     cart: "cart",
@@ -79,7 +78,6 @@ export const router = createBrowserRouter([
       </SuspenseView>
     ),
     children: [
-      
       {
         path: routes.USERS.shopping,
         element: (
@@ -156,11 +154,12 @@ export const router = createBrowserRouter([
                 <ProductsTable />
               </SuspenseView>
             ),
-          },  {
+          },
+          {
             path: routes.ADMIN.price,
             element: (
               <SuspenseView>
-                <Price/>
+                <Price />
               </SuspenseView>
             ),
           },

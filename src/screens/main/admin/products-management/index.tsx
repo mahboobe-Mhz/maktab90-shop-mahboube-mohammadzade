@@ -11,7 +11,7 @@ const ProductsManagement = () => {
   const name = AppState.BreadCrumb;
 
   return (
-    <Box sx={{ display: "flex", direction: "rtl", height: "100%" }}>
+    <Box sx={{ display: "flex", direction: "rtl", height: "100%", width:"100%" }}>
       <Box>
         <SideBar />
       </Box>

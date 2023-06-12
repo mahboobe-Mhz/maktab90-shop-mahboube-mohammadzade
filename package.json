@@ -18,6 +18,7 @@
     "@mui/x-data-grid": "^6.6.0",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
+    "ckbox": "^1.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.44.2",

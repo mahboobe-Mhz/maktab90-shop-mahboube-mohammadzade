@@ -3,13 +3,11 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Paper, Box } from "@mui/material";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import { current } from "@reduxjs/toolkit";
 import useGetAllSubCategory from "../../../api/services/products/useGetAllSubCategory";
 import { useDispatch } from "react-redux";
 import { setModal } from "../../../redux/slice/appSlice";
@@ -26,13 +24,13 @@ export default function BasicCategoryTable({ rows }: Props) {
   const [subCatData, steSubCatData] = React.useState();
   const { data, isLoading } = useGetAllSubCategory();
 
-  const showSub = (event) => {
+  const showSub = (event:any) => {
     const categoryId = event.currentTarget.id;
     dispatch(setModal({ Modal: true }));
 
     const dataCat = !isLoading && data.data.subcategories;
     const FindCatData =
-      !isLoading && dataCat.filter((item) => item.category === categoryId);
+      !isLoading && dataCat.filter((item:any) => item.category === categoryId);
     steSubCatData(FindCatData);
   };
 

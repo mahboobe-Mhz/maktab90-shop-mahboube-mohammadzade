@@ -44,7 +44,9 @@ const Discounts = React.lazy(
 const Price = React.lazy(
   () => import("../components/adminComponent/price&inventory")
 );
-
+const AddProducts = React.lazy(
+  () => import("../components/adminComponent/productsTable/addProducts")
+);
 const cookies = new Cookies();
 export const routes = {
   ADMIN: {
@@ -59,6 +61,7 @@ export const routes = {
     reports: "/admin/index/reports",
     discount: "/admin/index/discounts",
     price: "/admin/index/price",
+    addProduct:"/admin/index/addProduct",
   },
   USERS: {
     shopping: "shopping",
@@ -102,7 +105,7 @@ export const router = createBrowserRouter([
               <Cart />
             </SuspenseView>
           ) : (
-            <Navigate to={routes.USERS.index} />
+            <Navigate to={"/"} />
           ),
         children: [
           {
@@ -120,12 +123,12 @@ export const router = createBrowserRouter([
 
   {
     path: "/admin",
-    element:
-      userRol?.role === "ADMIN" ? (
-        <AdminLayout />
-      ) : (
-        <Navigate to={routes.ADMIN.login} />
-      ),
+    element: <AdminLayout />,
+      // userRol?.role === "ADMIN" ? (
+      //   <AdminLayout />
+      // ) : (
+      //   <Navigate to={routes.ADMIN.login} />
+      // ),
     children: [
       {
         path: routes.ADMIN.login,
@@ -208,6 +211,13 @@ export const router = createBrowserRouter([
             element: (
               <SuspenseView>
                 <Discounts />
+              </SuspenseView>
+            ),
+          },{
+            path: routes.ADMIN.addProduct,
+            element: (
+              <SuspenseView>
+                <AddProducts />
               </SuspenseView>
             ),
           },

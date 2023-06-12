@@ -13,13 +13,15 @@ import { useState } from "react";
 import PaginationControlled from "../../pagination";
 import useGetPaginationProducts from "../../../api/services/products/usePaginationProducts";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../../routes";
 
 const ShowTableBox = () => {
   const [page, setPage] = React.useState(1);
   const [countPage, setCountPage] = React.useState<number>();
   const [dataList, setDataList] = useState();
   const { data, isLoading, refetch } = useGetPaginationProducts(page, 5);
-
+  const navigate= useNavigate()
   React.useEffect(() => {
     const req = axios.get(`http://localhost:8000/api/products`);
     req.then((res) => {
@@ -32,7 +34,7 @@ const ShowTableBox = () => {
     refetch()
     !isLoading && setDataList(data.data.products);
 }, 100);
-  console.log(dataList);
+
 
   const quantityFun = () => {
     const newDataList = data.data.products;
@@ -48,6 +50,9 @@ const ShowTableBox = () => {
     const newDataList = data.data.products;
     setDataList(newDataList);
   };
+  const NavigateAddProduct=()=>{
+    navigate(routes.ADMIN.addProduct)
+  }
 
   return (
     <Box sx={{ height: "90%" }}>
@@ -67,6 +72,7 @@ const ShowTableBox = () => {
           محصولات
         </Typography>
         <Button
+        onClick={NavigateAddProduct}
           sx={{
             color: "#ffff",
             paddingX: "30px",

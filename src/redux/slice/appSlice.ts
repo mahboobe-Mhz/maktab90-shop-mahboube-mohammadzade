@@ -3,12 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface CounterState {
   BreadCrumb: string;
   Modal:boolean;
+  ModalInfoProducts:boolean
 
 }
 
 const initialState: CounterState = {
   BreadCrumb: "",
   Modal:false,
+  ModalInfoProducts:false
  
 };
 
@@ -21,11 +23,13 @@ export const AppSlice = createSlice({
     },  
       setModal: (state, action) => {
       state.Modal =action.payload.Modal
+    },   setProductsModal: (state, action) => {
+      state.ModalInfoProducts =action.payload.ModalInfoProducts
     }, 
   
   }
 });
-export const { addBreadCrumb ,setModal} = AppSlice.actions;
+export const { addBreadCrumb ,setModal,setProductsModal} = AppSlice.actions;
 
 export const storeAppState = (state: any) => state.storeState;
 

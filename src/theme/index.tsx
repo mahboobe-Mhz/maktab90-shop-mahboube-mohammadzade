@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material/styles';
 
 
 export const Theme= createTheme({
-    direction:"rtl",
+    direction: 'rtl',
     palette:{
         primary:{
             main:"#0000",

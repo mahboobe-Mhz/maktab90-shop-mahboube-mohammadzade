@@ -15,7 +15,7 @@ const ProductsManagement = () => {
       <Box>
         <SideBar />
       </Box>
-      <Box sx={{ padding: "15px", bgcolor: "#F3F3F5", width: "100%" ,height:"100%"}}>
+      <Box sx={{ padding: "15px", bgcolor: "#F3F3F5", width: "100%" ,overflowY:"scroll"}}>
         <Box sx={{ display: "flex" }}>
           <Typography sx={{ color: "secondary.main" }}> برنامه ها</Typography>
           <KeyboardArrowLeftIcon />

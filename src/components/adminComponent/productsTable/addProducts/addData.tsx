@@ -5,17 +5,21 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { setProductsModal, storeAppState } from "../../../../redux/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 import NewDataModal from './newInfo';
+import { Products } from '../../../../api/interface/products';
+interface Props{
+  setFormValue:any
+  formValue:any
+}
 
-
-const AddData = () => {
+const AddData = ({setFormValue,formValue}:Props) => {
   const dispatch = useDispatch();
-    const openModal =()=>{
-      console.log("hi");
-      
+    const openModal =()=>{  
       dispatch(setProductsModal({ModalInfoProducts: true })
       )
     }
- 
+ const addData=(event:React.ChangeEvent<HTMLInputElement>)=>{
+  setFormValue({...formValue,name:event.currentTarget.value})
+ }
     return (  
         <Box  sx={{
         bgcolor:"#ffff" , borderRadius:"20px", marginTop:2}}>
@@ -29,17 +33,20 @@ const AddData = () => {
      </Box>
         <Box sx={{borderBottom:"solid", borderColor:"secondary.light"}}>
         <Box dir="rtl" display={"flex"} justifyContent={"space-between"}  padding={1.5} >
-      <TextField dir={"rtl"} sx={{width:"60%"}} label="عنوان*" variant="standard"  />
+      <TextField onChange={addData} dir={"rtl"} sx={{width:"60%"}} label="عنوان*" variant="standard"  />
       <TextField  sx={{width:"30%"}} label="روبان" variant="standard" helperText="به عنوان مثال: فروش ویژه" />
       
     </Box>
     <Box >
     <CKEditor 
+  
         editor={ClassicEditor} 
         data={"این محصول..."} 
         onChange={(event, editor) => { 
-          const data = editor.getData(); 
-          console.log( {  data } );
+          const value = editor.getData(); 
+          console.log(value);
+          
+          setFormValue({...formValue,description:value})
         }} 
       /> 
     </Box>

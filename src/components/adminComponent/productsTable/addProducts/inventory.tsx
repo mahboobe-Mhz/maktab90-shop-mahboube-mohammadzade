@@ -4,12 +4,22 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-const InventoryProducts = () => {
+import { Products } from '../../../../api/interface/products';
+interface Props{
+  setFormValue:any
+  formValue:Products
+}
+const InventoryProducts = ({setFormValue,formValue}:Props)=> {
     const [age, setAge] = React.useState('');
 
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value as string);
+    console.log(age);
+    
   };
+  const addInventory =(event:React.ChangeEvent<HTMLInputElement>)=>{
+    setFormValue({...formValue ,quantity:event.currentTarget.value})
+  }
     return (  <Box sx={{
         bgcolor:"#ffff" , borderRadius:"20px", marginTop:1, paddingBottom:4
     }}>
@@ -27,15 +37,15 @@ const InventoryProducts = () => {
     label="  موجودی"
     onChange={handleChange}
   >
-    <MenuItem value={10}>موجود در انبار</MenuItem>
-    <MenuItem value={20}>اتمام موجودی</MenuItem>
-    <MenuItem value={30}>تماس بگیرید</MenuItem>
-    <MenuItem value={30}> به زودی</MenuItem>
-    <MenuItem value={30}> استعلام قیمت</MenuItem>
+    <MenuItem value={"موجود درانبار"}>موجود در انبار</MenuItem>
+    <MenuItem value={"اتمام موجودی"}>اتمام موجودی</MenuItem>
+    <MenuItem value={"تماس بکیرید"}>تماس بگیرید</MenuItem>
+    <MenuItem value={"بزودی"}> به زودی</MenuItem>
+    <MenuItem value={"استعلام قیمت"}> استعلام قیمت</MenuItem>
   </Select>
 </FormControl>
 
-<TextField id="standard-basic" label="کد کالا" variant="standard" />
+<TextField id="standard-basic" onChange={addInventory}  label="تعداد کالا" variant="standard" />
 <TextField id="standard-basic" label="بارکد" variant="standard" />
 <TextField id="standard-basic" label="وزن" variant="standard" />
 <Typography sx={{alignSelf:"center" ,marginTop:2}}>kg</Typography>

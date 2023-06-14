@@ -22,3 +22,8 @@ html,body,#root{
     min-height: 200px;
     direction: rtl;
 }
+.imageUpload>input[type="file"]{
+    visibility:hidden;
+  width:0;
+  height:0
+}

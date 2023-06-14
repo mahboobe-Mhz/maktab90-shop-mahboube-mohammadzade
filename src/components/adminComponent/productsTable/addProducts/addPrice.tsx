@@ -1,7 +1,13 @@
 import {Box ,Typography,TextField,FormControlLabel,Button} from '@mui/material'
 import Switch from '@mui/material/Switch';
 import {useState} from "react"
-const AddPrice = () => {
+import { Products } from '../../../../api/interface/products';
+interface Props{
+    setFormValue:any
+    formValue:Products
+}
+
+const AddPrice = ({setFormValue,formValue}:Props) => {
     const [checked, setChecked] = useState(false);
     const [price, setPrice] = useState(0);
     const [discount, setDiscount] = useState(0);
@@ -9,6 +15,7 @@ const AddPrice = () => {
 
     const handleSetValue =(e:any)=>{
         setPrice(e.currentTarget.value)
+        setFormValue({...formValue,price:price})
     }
     const showDiscountBox=(event:any)=>{
         setChecked(event.target.checked);    
@@ -16,6 +23,7 @@ const AddPrice = () => {
    
     const saveDiscount =(event:any)=>{
         setDiscount(event.target.value)
+
     }
     const showDiscount =(event:any)=>{
         event.preventDefault()

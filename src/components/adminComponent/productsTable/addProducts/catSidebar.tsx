@@ -1,7 +1,15 @@
 import { TextField, Box, Typography ,FormControlLabel,Checkbox} from "@mui/material";
 import { useState } from "react";
+import useGetAllCategory from "../../../../api/services/products/useGetAllCategory";
+import SubCatSide from "./subCatSide";
 const CatSidebar = () => {
     const [showSub, setShowSub]=useState(false)
+    const { data, isLoading } = useGetAllCategory();
+  const catData = !isLoading && data.data.categories
+    const handelCheckBox =(event)=>{
+      console.log(event.currentTarget.label);
+      
+    }
     const handelShowLabel =()=>{
         setShowSub(true)
 
@@ -26,20 +34,15 @@ const CatSidebar = () => {
         </Box>
         {!showSub&&
               <Box sx={{display:"flex", flexDirection:"column"}} >
-              <FormControlLabel control={<Checkbox  color="secondary" />} label="کالای خواب" />
-              <FormControlLabel control={<Checkbox  color="secondary" />} label=" مبلمان اداری" />
-              <FormControlLabel control={<Checkbox  color="secondary" />} label=" مبلمان و اکسسوری" />
-              <FormControlLabel control={<Checkbox  color="secondary" />} label=" لوستر  و تجهیزات روشنایی" />
-       
+              {!isLoading && catData?.map((item:any)=>
+               <FormControlLabel key={item._id} onChange={handelCheckBox} control={<Checkbox  color="secondary" />} label={item.name} />
+              )
+              }
               </Box>
         }
      
        {showSub&&
-         <Box sx={{display:"flex", flexDirection:"column"}}>
-               <FormControlLabel control={<Checkbox  color="secondary" />} label=" تشک" />
-       <FormControlLabel control={<Checkbox  color="secondary" />} label="  بالشت" />
-       <FormControlLabel control={<Checkbox  color="secondary" />} label="  تخت " />
-         </Box>
+       <SubCatSide/>
        }
        <Box sx={{borderTop:"solid", borderColor:"secondary.light" ,}}>
         <Box sx={{ paddingX:3 }}>

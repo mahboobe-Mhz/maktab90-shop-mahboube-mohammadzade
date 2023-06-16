@@ -5,13 +5,18 @@ import { Products } from '../../../../api/interface/products';
 interface Props{
   setFormValue:any
   formValue:Products
+  resetForm:any
 }
-const ProductsSize = ({setFormValue,formValue}:Props)=> {
+const ProductsSize = ({setFormValue,formValue,resetForm}:Props)=> {
+  const [size, setSize]=React.useState("")
 const addSize =(event:React.ChangeEvent<HTMLInputElement>)=>{
-  setFormValue({...formValue,size:event.currentTarget.value})
+  setSize(event.currentTarget.value)
+  setFormValue({...formValue,size:size})
 }
 
-
+React.useEffect(()=>{
+  setSize("")
+},[resetForm])
 
     return (  <Box sx={{
         bgcolor:"#ffff" , borderRadius:"20px", marginTop:1, paddingBottom:4

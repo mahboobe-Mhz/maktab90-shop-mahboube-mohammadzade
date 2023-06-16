@@ -15,44 +15,74 @@ import useGetPaginationProducts from "../../../api/services/products/usePaginati
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../../routes";
+import { useDispatch } from "react-redux";
+import { setEditData } from "../../../redux/slice/appSlice";
 
 const ShowTableBox = () => {
-  const [page, setPage] = React.useState(1);
+
+  const [filter,setFilter]=React.useState("");
+  const [page, setPage] = React.useState(2);
   const [countPage, setCountPage] = React.useState<number>();
   const [dataList, setDataList] = useState();
-  const { data, isLoading, refetch } = useGetPaginationProducts(page, 5);
+  const { data, isLoading, refetch } = useGetPaginationProducts(page, 5,filter);
   const navigate= useNavigate()
+
+  //first render
   React.useEffect(() => {
     const req = axios.get(`http://localhost:8000/api/products`);
     req.then((res) => {
-      const lengthCat = res.data.data.products.length / 4;
-      const correctNum = Math.round(lengthCat);
+      const lengthCat = res.data.data.products.length / 5;     
+      const correctNum = Math.round(lengthCat);     
+      !isLoading &&setDataList(data.data.products);
       setCountPage(correctNum);
     });
   }, []);
-  setTimeout(() => {
-    refetch()
-    !isLoading && setDataList(data.data.products);
-}, 100);
 
-
+  //for pagination
+  React.useEffect(()=>{
+        refetch()
+   !isLoading && setDataList(data.data.products);
+    console.log(page);  
+  },[page])
+setTimeout(()=>{ 
+  !isLoading && setDataList(data.data.products);
+},200)
+//filter
   const quantityFun = () => {
-    const newDataList = data.data.products;
-    const ZiroQuantity = newDataList.filter((item: any) => item.quantity === 0);
-    setDataList(ZiroQuantity);
+    const req = axios.get(`http://localhost:8000/api/products?quantity=23`);
+    req.then((res) => {
+      const lengthCat = res.data.data.products?.length/5;     
+      const correctNum= Math.round(lengthCat);
+      setCountPage(correctNum);
+    })
+    setPage(1)
+    setFilter("quantity=23")
   };
   const priceFun = () => {
-    const newDataList = data.data.products;
-    const priceLess = newDataList.filter((item: any) => item.price === 0);
-    setDataList(priceLess);
+    setPage(1)
+    setFilter("price=0")
+    const req = axios.get(`http://localhost:8000/api/products?price=0`);
+    req.then((res) => {
+      const lengthCat = res.data.data.products?.length/5;     
+      const correctNum= Math.round(lengthCat);
+      setCountPage(correctNum);
+    })
+  
   };
   const allProducts = () => {
-    const newDataList = data.data.products;
-    setDataList(newDataList);
+    setFilter("")
+    setPage(1)
+    const req = axios.get(`http://localhost:8000/api/products`);
+    req.then((res) => {
+      const lengthCat = res.data.data.products?.length/5;     
+      const correctNum= Math.round(lengthCat);
+      setCountPage(correctNum);
+    })
   };
   const NavigateAddProduct=()=>{
     navigate(routes.ADMIN.addProduct)
   }
+//get edited data
 
   return (
     <Box sx={{ height: "90%" }}>
@@ -108,7 +138,7 @@ const ShowTableBox = () => {
           تمام محصولات
         </Typography>
         <Typography
-          onClick={priceFun}
+          onClick={quantityFun}
           sx={{
             ":hover": {
               cursor: "pointer",
@@ -121,7 +151,7 @@ const ShowTableBox = () => {
           اتمام موجودی
         </Typography>
         <Typography
-          onClick={quantityFun}
+          onClick={priceFun}
           sx={{
             ":hover": {
               cursor: "pointer",
@@ -164,6 +194,7 @@ const ShowTableBox = () => {
       <Box sx={{ marginBottom: 3 }}>
         {!isLoading && (
           <BasicTable
+
             rows={dataList || data.data.products}
             title={[
               "عکس محصول",

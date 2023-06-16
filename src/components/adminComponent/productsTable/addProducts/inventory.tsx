@@ -8,18 +8,22 @@ import { Products } from '../../../../api/interface/products';
 interface Props{
   setFormValue:any
   formValue:Products
+  resetForm:any
 }
-const InventoryProducts = ({setFormValue,formValue}:Props)=> {
+const InventoryProducts = ({setFormValue,formValue,resetForm}:Props)=> {
     const [age, setAge] = React.useState('');
+    const [quantity,setQuantity]= React.useState('')
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
-    console.log(age);
-    
+    setAge(event.target.value as string);   
   };
   const addInventory =(event:React.ChangeEvent<HTMLInputElement>)=>{
-    setFormValue({...formValue ,quantity:event.currentTarget.value})
+    setQuantity(event.currentTarget.value)
+    setFormValue({...formValue ,quantity:quantity})
   }
+  React.useEffect(()=>{
+    setQuantity("")
+},[resetForm])
     return (  <Box sx={{
         bgcolor:"#ffff" , borderRadius:"20px", marginTop:1, paddingBottom:4
     }}>
@@ -45,7 +49,7 @@ const InventoryProducts = ({setFormValue,formValue}:Props)=> {
   </Select>
 </FormControl>
 
-<TextField id="standard-basic" onChange={addInventory}  label="تعداد کالا" variant="standard" />
+<TextField id="standard-basic" value={quantity}  onChange={addInventory}  label="تعداد کالا" variant="standard" />
 <TextField id="standard-basic" label="بارکد" variant="standard" />
 <TextField id="standard-basic" label="وزن" variant="standard" />
 <Typography sx={{alignSelf:"center" ,marginTop:2}}>kg</Typography>

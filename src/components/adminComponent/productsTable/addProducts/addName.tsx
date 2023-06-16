@@ -5,21 +5,38 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { setProductsModal, storeAppState } from "../../../../redux/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 import NewDataModal from './newInfo';
+import {useState,useEffect} from 'react'
 import { Products } from '../../../../api/interface/products';
 interface Props{
   setFormValue:any
   formValue:any
+  resetForm:any
 }
 
-const AddData = ({setFormValue,formValue}:Props) => {
+const AddData = ({setFormValue,formValue, resetForm}:Props) => {
+  const [name , setName]=useState("")
+  const [description, setDescription]=useState("")
   const dispatch = useDispatch();
+  const appState = useSelector(storeAppState);
     const openModal =()=>{  
       dispatch(setProductsModal({ModalInfoProducts: true })
       )
     }
  const addData=(event:React.ChangeEvent<HTMLInputElement>)=>{
-  setFormValue({...formValue,name:event.currentTarget.value})
+  setName(event.currentTarget.value)
+  setFormValue({...formValue,name:name})
  }
+ useEffect(()=>{
+  setName("")
+  setDescription("")
+},[resetForm])
+
+
+
+useEffect(()=>{
+  setName(appState.selectEditData.name)
+},[appState.selectEditData.name])
+
     return (  
         <Box  sx={{
         bgcolor:"#ffff" , borderRadius:"20px", marginTop:2}}>
@@ -33,7 +50,7 @@ const AddData = ({setFormValue,formValue}:Props) => {
      </Box>
         <Box sx={{borderBottom:"solid", borderColor:"secondary.light"}}>
         <Box dir="rtl" display={"flex"} justifyContent={"space-between"}  padding={1.5} >
-      <TextField onChange={addData} dir={"rtl"} sx={{width:"60%"}} label="عنوان*" variant="standard"  />
+      <TextField value={name} onChange={addData} type='text' dir={"rtl"} sx={{width:"60%"}} label="عنوان*" variant="standard"  />
       <TextField  sx={{width:"30%"}} label="روبان" variant="standard" helperText="به عنوان مثال: فروش ویژه" />
       
     </Box>
@@ -41,12 +58,11 @@ const AddData = ({setFormValue,formValue}:Props) => {
     <CKEditor 
   
         editor={ClassicEditor} 
-        data={"این محصول..."} 
+        data={description} 
         onChange={(event, editor) => { 
-          const value = editor.getData(); 
-          console.log(value);
-          
+          const value = editor.getData();         
           setFormValue({...formValue,description:value})
+          setDescription(value)
         }} 
       /> 
     </Box>

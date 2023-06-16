@@ -8,6 +8,12 @@ import TableRow from '@mui/material/TableRow';
 import {Paper,Box} from '@mui/material';
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
+import { useNavigate } from 'react-router';
+import { routes } from '../../../routes';
+import { useDispatch } from 'react-redux';
+import { setEditData } from '../../../redux/slice/appSlice';
+import axios from 'axios';
+
 
 interface Props{
   rows:Array<{
@@ -24,13 +30,33 @@ interface Props{
     name3:string,
     name4?:string,
     name5?:string
-  ]
-    
-     
+  ]  
   >
+
 }
 
 export default function BasicTable({rows,title}:Props) {
+  const navigate= useNavigate()
+  const dispatch= useDispatch()
+  const [editId ,setEditId] =React.useState("")
+  const [shi ,setShi] =React.useState(false)
+  const handelEdit=(event)=>{
+    setEditId(event.currentTarget.id)
+    setTimeout(() => {
+           navigate(routes.ADMIN.addProduct)
+    }, 100);
+
+    setShi(!shi)
+    
+  }
+  React.useEffect(()=>{
+    const req =  axios.get(`http://localhost:8000/api/products/${editId}`);
+    req.then((res) => {dispatch(setEditData({
+      selectEditData:res.data.data.product
+    }))})
+  },[shi])
+
+
   return (
     <TableContainer  component={Paper}>
       <Table sx={{ minWidth: 650 ,}} aria-label="simple table">
@@ -50,7 +76,7 @@ export default function BasicTable({rows,title}:Props) {
         <TableBody >
           {rows?.map((row) => (
             <TableRow
-              key={row.name}
+              key={row._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell align="center" component="th" scope="row">
@@ -62,9 +88,12 @@ export default function BasicTable({rows,title}:Props) {
               <TableCell align="center">{row.description}</TableCell>
               <TableCell align="center">   <Box>
                     <DeleteOutlineOutlinedIcon
+                
                       sx={{ color: "secondary.main" }}
                     />
                     <ModeEditOutlineOutlinedIcon
+                        id={row._id}
+                    onClick={handelEdit}
                       sx={{ color: "secondary.main" }}
                     />
                 

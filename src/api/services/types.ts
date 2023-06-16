@@ -48,3 +48,8 @@ error:AxiosError<{
     message:string;
 }>
 }
+export type AddNewProductType = {
+    payload:any;
+    response:unknown;
+    error:unknown
+}

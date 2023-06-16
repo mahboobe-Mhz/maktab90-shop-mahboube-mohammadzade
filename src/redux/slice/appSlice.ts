@@ -4,13 +4,15 @@ export interface CounterState {
   BreadCrumb: string;
   Modal:boolean;
   ModalInfoProducts:boolean
+  selectEditData:[]
 
 }
 
 const initialState: CounterState = {
   BreadCrumb: "",
   Modal:false,
-  ModalInfoProducts:false
+  ModalInfoProducts:false,
+  selectEditData:[]
  
 };
 
@@ -25,11 +27,13 @@ export const AppSlice = createSlice({
       state.Modal =action.payload.Modal
     },   setProductsModal: (state, action) => {
       state.ModalInfoProducts =action.payload.ModalInfoProducts
+    },   setEditData: (state, action) => {
+      state.selectEditData =action.payload.selectEditData
     }, 
   
   }
 });
-export const { addBreadCrumb ,setModal,setProductsModal} = AppSlice.actions;
+export const { addBreadCrumb ,setModal,setProductsModal,setEditData} = AppSlice.actions;
 
 export const storeAppState = (state: any) => state.storeState;
 

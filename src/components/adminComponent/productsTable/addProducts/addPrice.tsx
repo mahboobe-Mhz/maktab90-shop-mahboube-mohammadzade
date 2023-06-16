@@ -1,13 +1,14 @@
 import {Box ,Typography,TextField,FormControlLabel,Button} from '@mui/material'
 import Switch from '@mui/material/Switch';
-import {useState} from "react"
+import {useState,useEffect} from "react"
 import { Products } from '../../../../api/interface/products';
 interface Props{
     setFormValue:any
     formValue:Products
+    resetForm:any
 }
 
-const AddPrice = ({setFormValue,formValue}:Props) => {
+const AddPrice = ({setFormValue,formValue,resetForm}:Props) => {
     const [checked, setChecked] = useState(false);
     const [price, setPrice] = useState(0);
     const [discount, setDiscount] = useState(0);
@@ -32,6 +33,9 @@ const AddPrice = ({setFormValue,formValue}:Props) => {
 
      
     }
+    useEffect(()=>{
+        setPrice(0)
+    },[resetForm])
     return (  <Box sx={{
         bgcolor:"#ffff" , borderRadius:"20px", marginTop:1, paddingBottom:4
     }}>

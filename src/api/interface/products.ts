@@ -4,8 +4,15 @@ export interface Products{
         quantity:string
         brand:string
         description:string
-        thumbnail:string
+        thumbnail:[]
         images:[]
         category:string
         subcategory:string
 }
+export interface Category {
+    _id: string;
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+    slugname: string;
+    }

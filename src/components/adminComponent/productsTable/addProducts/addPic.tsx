@@ -46,11 +46,6 @@ useEffect(()=>{
     
     console.log(appState.selectEditData.images);
   },[appState.selectEditData])
-
-
-console.log(showImage);
-
-
     return (  <Box sx={{
         bgcolor:"#ffff" , borderRadius:"20px"
     }}>

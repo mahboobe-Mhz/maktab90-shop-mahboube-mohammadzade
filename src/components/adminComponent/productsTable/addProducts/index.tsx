@@ -26,6 +26,7 @@ const AddProducts = () => {
     const ProductsData=new FormData()
     const handleSubmit =(event:React.FormEvent<HTMLFormElement>)=>{
         event.preventDefault()
+      console.log(formValue);
        
       event.currentTarget.reset()
         for(let i= 0; i<formValue.images.length; i++){

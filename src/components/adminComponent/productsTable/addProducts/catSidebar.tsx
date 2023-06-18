@@ -8,7 +8,7 @@ interface Props{
   resetForm:any
 }
 const CatSidebar = ({setFormValue,formValue,resetForm}:Props) => {
- 
+  const [state , setState]=useState(false)
     const [showSub, setShowSub]=useState(false)
     const [catSelect, setCatSelect]=useState("")
     const { data, isLoading } = useGetAllCategory();
@@ -16,8 +16,9 @@ const CatSidebar = ({setFormValue,formValue,resetForm}:Props) => {
   const [checkedState, setCheckedState] = useState(
     new Array(catData?.length).fill(false));
 
-    const handelCheckBox =(event:any,position:number)=>{
-      setCatSelect(event.currentTarget.parentElement.parentElement.id); 
+    const handelCheckBox =(e:any,position:number)=>{
+      setState(!state)
+     setCatSelect(e.target.id);      
       const updatedCheckedState = checkedState.map((item:any, index:number) =>
       index === position ? !item : false
     );
@@ -26,8 +27,8 @@ const CatSidebar = ({setFormValue,formValue,resetForm}:Props) => {
     }
 
     useEffect(()=>{  
-       const catName =!isLoading &&  catData?.find((item:any) => item._id ===catSelect )
-      setFormValue({...formValue,category:catName})
+       const productData =!isLoading &&  catData?.find((item:any) => item._id ===catSelect )  
+      setFormValue({...formValue,category:productData._id})
       },[catSelect])
 //reset form
 useEffect(()=>{
@@ -58,7 +59,7 @@ useEffect(()=>{
         {!showSub&&
               <Box sx={{display:"flex", flexDirection:"column"}} >
               {!isLoading && catData?.map((item:any,index:any)=>
-               <FormControlLabel id={item._id} key={item._id} control={<Checkbox  checked={checkedState[index]} onChange={()=>handelCheckBox(event,index)}  color="secondary" />} label={item.name} />
+               <FormControlLabel  key={item._id} control={<Checkbox id={item._id}  checked={checkedState[index]} onChange={()=>handelCheckBox(event,index)}  color="secondary" />} label={item.name} />
               )
               }
               </Box>
@@ -66,7 +67,7 @@ useEffect(()=>{
      
        {showSub&&
    
-        <SubCatSide catSelect={catSelect} setFormValue={setFormValue} formValue={formValue}/>
+        <SubCatSide catSelect={catSelect} setFormValue={setFormValue} formValue={formValue} state={state} resetForm={resetForm} />
   
      
        }

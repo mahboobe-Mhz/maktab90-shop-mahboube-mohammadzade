@@ -13,22 +13,29 @@ const CatSidebar = ({setFormValue,formValue,resetForm}:Props) => {
     const [catSelect, setCatSelect]=useState("")
     const { data, isLoading } = useGetAllCategory();
   const catData = !isLoading && data.data.categories
+  const [checkedState, setCheckedState] = useState(
+    new Array(catData?.length).fill(false));
 
-    const handelCheckBox =(event:any)=>{
-      setCatSelect(event.currentTarget.parentElement.parentElement.id);    
-
+    const handelCheckBox =(event:any,position:number)=>{
+      setCatSelect(event.currentTarget.parentElement.parentElement.id); 
+      const updatedCheckedState = checkedState.map((item:any, index:number) =>
+      index === position ? !item : false
+    );
+    setCheckedState(updatedCheckedState);
 
     }
-    useEffect(()=>{   const catName =!isLoading &&  catData?.find((item:any) => item._id ===catSelect )
+
+    useEffect(()=>{  
+       const catName =!isLoading &&  catData?.find((item:any) => item._id ===catSelect )
       setFormValue({...formValue,category:catName})
-
       },[catSelect])
-   
-      
-
+//reset form
+useEffect(()=>{
+  setCheckedState([false,false,false,false])
+},[resetForm])
+//for show subCategory
     const handelShowLabel =()=>{
         setShowSub(true)
-
     }
     const handelHideLabel =()=>{
         setShowSub(false)
@@ -50,8 +57,8 @@ const CatSidebar = ({setFormValue,formValue,resetForm}:Props) => {
         </Box>
         {!showSub&&
               <Box sx={{display:"flex", flexDirection:"column"}} >
-              {!isLoading && catData?.map((item:any)=>
-               <FormControlLabel id={item._id} key={item._id} control={<Checkbox onChange={handelCheckBox}  color="secondary" />} label={item.name} />
+              {!isLoading && catData?.map((item:any,index:any)=>
+               <FormControlLabel id={item._id} key={item._id} control={<Checkbox  checked={checkedState[index]} onChange={()=>handelCheckBox(event,index)}  color="secondary" />} label={item.name} />
               )
               }
               </Box>

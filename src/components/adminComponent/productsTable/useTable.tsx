@@ -39,14 +39,14 @@ export default function BasicTable({rows,title}:Props) {
   const navigate= useNavigate()
   const dispatch= useDispatch()
   const [editId ,setEditId] =React.useState("")
-  const [shi ,setShi] =React.useState(false)
+  const [state ,setState] =React.useState(false)
   const handelEdit=(event)=>{
     setEditId(event.currentTarget.id)
     setTimeout(() => {
            navigate(routes.ADMIN.addProduct)
     }, 100);
 
-    setShi(!shi)
+    setState(!state)
     
   }
   React.useEffect(()=>{
@@ -54,7 +54,7 @@ export default function BasicTable({rows,title}:Props) {
     req.then((res) => {dispatch(setEditData({
       selectEditData:res.data.data.product
     }))})
-  },[shi])
+  },[state])
 
 
   return (

@@ -4,6 +4,8 @@ import SegmentIcon from '@mui/icons-material/Segment';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import { useState,useRef,useEffect } from 'react';
 import { Products } from '../../../../api/interface/products';
+import { useSelector } from 'react-redux';
+import { storeAppState } from '../../../../redux/slice/appSlice';
 interface Props{
     setFormValue:any
     formValue:Products
@@ -15,17 +17,18 @@ const AddPic = ({setFormValue,formValue ,resetForm}:Props) => {
     const [image , setImage]=useState([])
     const [showImage , setShowImage]=useState([])
     const hiddenFileInput = useRef(null);
+    const appState = useSelector(storeAppState);
+
+
     const handleClick = ()=> {
         hiddenFileInput.current?.click();
       };
     const handleImageSelect =(event :React.ChangeEvent<HTMLInputElement>)=>{
-        console.log(event.target.files);
-        
         if(event.target.files){
              const filesArray=Array.from(event.target.files).map((file)=>URL.createObjectURL(file)) 
             setShowImage(filesArray)         
-            setImage(Array.from(event.target.files))                     
-        }
+            setImage(Array.from(event.target.files))     
+               }
     }
     useEffect(()=>{
         setShowImage([])
@@ -33,6 +36,21 @@ const AddPic = ({setFormValue,formValue ,resetForm}:Props) => {
     useEffect(()=>{
         setFormValue({...formValue,images:image})   
     },[image])
+//handel edit
+useEffect(()=>{
+    if(appState.selectEditData.images){
+        const editImage= appState.selectEditData.images.map((item:string)=>`http://localhost:8000/images/products/images/${item}`) 
+        console.log(editImage);
+        setShowImage(editImage)
+    }   
+    
+    console.log(appState.selectEditData.images);
+  },[appState.selectEditData])
+
+
+console.log(showImage);
+
+
     return (  <Box sx={{
         bgcolor:"#ffff" , borderRadius:"20px"
     }}>
@@ -52,7 +70,7 @@ const AddPic = ({setFormValue,formValue ,resetForm}:Props) => {
         </div>
     
         <Box sx={{display:"flex", gap:"10px" , overflowX:"scroll"}}>
-        {showImage && showImage.map((item:any)=><img src={item} width={100} />)
+        {showImage && showImage.map((item:any)=><img key={item} src={item} width={100} />)
       } 
         </Box>
      

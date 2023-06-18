@@ -44,9 +44,7 @@ const AddProducts = () => {
         setResetForm(!resetForm)
     }
     const handelCancel =()=>{
-        setResetForm(!resetForm)
-            
-     
+        setResetForm(!resetForm)        
     }
     return ( <Box component={"form"}  id='form' onSubmit={handleSubmit}  sx={{direction:"rtl", color:"secondary.contrastText"}}>
         <Box display={'flex'} gap={2} marginBottom={2} sx={{direction:"ltr"}} paddingLeft={2}>

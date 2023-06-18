@@ -11,8 +11,6 @@ const SubCatSide = ({catSelect,setFormValue,formValue}:Props) => {
     const [showSubCat, setShowSubCat]=useState([]) 
     const [SubCatSelect, setSubCatSelect]=useState([]) 
     const { data, isLoading } = useGetAllSubCategory();   
-    console.log(catSelect);
-
     const handelCheckBox =(event :any)=>{
        setSubCatSelect(event.currentTarget.parentElement.parentElement.id)
        const subCatName =!isLoading && showSubCat.find((item:any) => item._id === SubCatSelect )

@@ -3,8 +3,6 @@ import {
   Typography,
   Button,
   Input,
-  TextField,
-  TableBody,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import BasicTable from "./useTable";
@@ -21,7 +19,7 @@ import { setEditData } from "../../../redux/slice/appSlice";
 const ShowTableBox = () => {
 
   const [filter,setFilter]=React.useState("");
-  const [page, setPage] = React.useState(2);
+  const [page, setPage] = React.useState(1);
   const [countPage, setCountPage] = React.useState<number>();
   const [dataList, setDataList] = useState();
   const { data, isLoading, refetch } = useGetPaginationProducts(page, 5,filter);
@@ -33,22 +31,19 @@ const ShowTableBox = () => {
     req.then((res) => {
       const lengthCat = res.data.data.products.length / 5;     
       const correctNum = Math.round(lengthCat);     
-      !isLoading &&setDataList(data.data.products);
       setCountPage(correctNum);
     });
   }, []);
 
-  //for pagination
+  //for pagination-
   React.useEffect(()=>{
-        refetch()
-   !isLoading && setDataList(data.data.products);
-    console.log(page);  
-  },[page])
-setTimeout(()=>{ 
-  !isLoading && setDataList(data.data.products);
-},200)
+        refetch()  
+  },[page,filter])
+
 //filter
   const quantityFun = () => {
+    console.log("quantity");
+    
     const req = axios.get(`http://localhost:8000/api/products?quantity=23`);
     req.then((res) => {
       const lengthCat = res.data.data.products?.length/5;     
@@ -57,6 +52,7 @@ setTimeout(()=>{
     })
     setPage(1)
     setFilter("quantity=23")
+
   };
   const priceFun = () => {
     setPage(1)
@@ -66,8 +62,7 @@ setTimeout(()=>{
       const lengthCat = res.data.data.products?.length/5;     
       const correctNum= Math.round(lengthCat);
       setCountPage(correctNum);
-    })
-  
+    })  
   };
   const allProducts = () => {
     setFilter("")
@@ -195,7 +190,7 @@ setTimeout(()=>{
         {!isLoading && (
           <BasicTable
 
-            rows={dataList || data.data.products}
+            rows={ data.data.products}
             title={[
               "عکس محصول",
               "نام محصول",

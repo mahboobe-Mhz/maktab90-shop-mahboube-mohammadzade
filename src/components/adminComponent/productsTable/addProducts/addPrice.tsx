@@ -2,6 +2,8 @@ import {Box ,Typography,TextField,FormControlLabel,Button} from '@mui/material'
 import Switch from '@mui/material/Switch';
 import {useState,useEffect} from "react"
 import { Products } from '../../../../api/interface/products';
+import { useSelector } from 'react-redux';
+import { storeAppState } from '../../../../redux/slice/appSlice';
 interface Props{
     setFormValue:any
     formValue:Products
@@ -13,7 +15,7 @@ const AddPrice = ({setFormValue,formValue,resetForm}:Props) => {
     const [price, setPrice] = useState(0);
     const [discount, setDiscount] = useState(0);
     const [discountPrice, setDiscountPrice] = useState<number>();
-
+    const appState = useSelector(storeAppState);
     const handleSetValue =(e:any)=>{
         setPrice(e.currentTarget.value)
         setFormValue({...formValue,price:price})
@@ -31,11 +33,16 @@ const AddPrice = ({setFormValue,formValue,resetForm}:Props) => {
         const newPrice = Math.floor(price*discount*0.01) 
         setDiscountPrice(newPrice)
 
-     
     }
+//reset form
     useEffect(()=>{
         setPrice(0)
     },[resetForm])
+//handel edit
+useEffect(()=>{
+    setPrice(appState.selectEditData.price)
+  },[appState.selectEditData])
+
     return (  <Box sx={{
         bgcolor:"#ffff" , borderRadius:"20px", marginTop:1, paddingBottom:4
     }}>

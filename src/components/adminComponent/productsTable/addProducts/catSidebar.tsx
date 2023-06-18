@@ -2,22 +2,30 @@ import { TextField, Box, Typography ,FormControlLabel,Checkbox} from "@mui/mater
 import { useState,useEffect } from "react";
 import useGetAllCategory from "../../../../api/services/products/useGetAllCategory";
 import SubCatSide from "./subCatSide";
+import { useSelector } from "react-redux";
+import { storeAppState } from "../../../../redux/slice/appSlice";
+import axios from "axios";
 interface Props{
   setFormValue:any
   formValue:any
   resetForm:any
 }
+interface catIndex{
+  index?:any
+}
 const CatSidebar = ({setFormValue,formValue,resetForm}:Props) => {
-  const [state , setState]=useState(false)
+  const [subState , setSubState]=useState([])
+  const [subData , setSubData]=useState([])
+  const [catIndex , setCatIndex]=useState<catIndex>()
     const [showSub, setShowSub]=useState(false)
     const [catSelect, setCatSelect]=useState("")
     const { data, isLoading } = useGetAllCategory();
+    const appState = useSelector(storeAppState);
   const catData = !isLoading && data.data.categories
   const [checkedState, setCheckedState] = useState(
     new Array(catData?.length).fill(false));
 
     const handelCheckBox =(e:any,position:number)=>{
-      setState(!state)
      setCatSelect(e.target.id);      
       const updatedCheckedState = checkedState.map((item:any, index:number) =>
       index === position ? !item : false
@@ -28,7 +36,7 @@ const CatSidebar = ({setFormValue,formValue,resetForm}:Props) => {
 
     useEffect(()=>{  
        const productData =!isLoading &&  catData?.find((item:any) => item._id ===catSelect )  
-      setFormValue({...formValue,category:productData._id})
+      setFormValue({...formValue,category:productData?._id})
       },[catSelect])
 //reset form
 useEffect(()=>{
@@ -41,7 +49,30 @@ useEffect(()=>{
     const handelHideLabel =()=>{
         setShowSub(false)
     }
-    return ( <Box  bgcolor={"#ffff"} borderRadius={"20px"} paddingBottom={2}>
+///handel edit
+ useEffect(()=>{
+  const res = axios.get(`http://127.0.0.1:8000/api/categories`)
+        res.then(response => (
+    response.data.data.categories.find((item:any,index:number) =>{if(item._id ===appState.selectEditData.category._id) 
+      setCatIndex(index)} )))  
+    setTimeout(() => {
+      const updatedCheckedState = checkedState.map(( item:any ,index:number) =>  index === catIndex ? true : false  )
+
+    setCheckedState(updatedCheckedState);
+    console.log(updatedCheckedState);
+    }, 200);
+ },[appState.selectEditData])
+
+//subcategory data
+useEffect(()=>{
+  const res = axios.get(`http://127.0.0.1:8000/api/subcategories`)
+res.then(response=>setSubState(response.data.data.subcategories) )
+setSubData(subState.filter((item:any)=> item.category ===catSelect))
+},[catSelect])
+
+   
+   
+   return ( <Box  bgcolor={"#ffff"} borderRadius={"20px"} paddingBottom={2}>
         <Box sx={{borderBottom:"solid", borderColor:"secondary.light" ,}}>
         <Box sx={{display:"flex", gap:"30px", paddingX:3 , justifyContent:"space-around"}}>
         {
@@ -67,7 +98,8 @@ useEffect(()=>{
      
        {showSub&&
    
-        <SubCatSide catSelect={catSelect} setFormValue={setFormValue} formValue={formValue} state={state} resetForm={resetForm} />
+        <SubCatSide catSelect={catSelect} setFormValue={setFormValue} formValue={formValue}
+        subData={subData} resetForm={resetForm} />
   
      
        }

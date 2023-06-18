@@ -42,16 +42,14 @@ const ShowTableBox = () => {
 
 //filter
   const quantityFun = () => {
-    console.log("quantity");
-    
-    const req = axios.get(`http://localhost:8000/api/products?quantity=23`);
+    const req = axios.get(`http://localhost:8000/api/products?quantity=0`);
     req.then((res) => {
       const lengthCat = res.data.data.products?.length/5;     
       const correctNum= Math.round(lengthCat);
       setCountPage(correctNum);
     })
     setPage(1)
-    setFilter("quantity=23")
+    setFilter("quantity=0")
 
   };
   const priceFun = () => {

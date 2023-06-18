@@ -11,41 +11,57 @@ import {
   import axios from "axios";
 import useGetPaginationProducts from "../../../api/services/products/usePaginationProducts";
   
-  const priceTable = () => {
+  const PriceTable = () => {
     const [page, setPage] =useState(1);
     const [countPage, setCountPage] =useState<number>();
-    const [dataList, setDataList] =useState();
-    const { data, isLoading, refetch } = useGetPaginationProducts(page, 5);
+    const [filterData, setFilterData] =useState("");
+    const { data, isLoading, refetch } = useGetPaginationProducts(page, 5,filterData);
   
    useEffect(() => {
       const req = axios.get(`http://localhost:8000/api/products`);
       req.then((res) => {
-        const lengthCat = res.data.data.products.length / 4;
+        const lengthCat = res.data.data.products.length / 5;
         const correctNum = Math.round(lengthCat);
         setCountPage(correctNum);
       });
     }, []);
-  setTimeout(() => {
-    refetch();
-    !isLoading && setDataList(data.data.products)
-  }, 100);
-
-  
-  console.log(dataList);
+ useEffect(()=>{
+  refetch()
+ },[page,filterData])
   
     const quantityFun = () => {
-      const newDataList = data.data.products;
-      const ZiroQuantity = newDataList.filter((item:any) => item.quantity === 0);
-      setDataList(ZiroQuantity);
+      setPage(1)
+      setFilterData('quantity=0')
+      const req = axios.get(`http://localhost:8000/api/products?quantity=0`);
+      req.then((res) => {
+        const lengthCat = res.data.data.products?.length/5;     
+        const correctNum= Math.round(lengthCat);
+        setCountPage(correctNum);
+      })
+    
+   
     };
     const priceFun = () => {
-      const newDataList = data.data.products;
-      const priceLess = newDataList.filter((item:any) => item.price === 0);
-      setDataList(priceLess);
+      setPage(1)
+      setFilterData("price=0")
+      const req = axios.get(`http://localhost:8000/api/products?price=0`);
+      req.then((res) => {
+        const lengthCat = res.data.data.products?.length/5;     
+        const correctNum= Math.round(lengthCat);
+        setCountPage(correctNum);
+      })  
+
     };
     const allProducts = () => {
-      const newDataList = data.data.products;
-      setDataList(newDataList);
+      setFilterData("")
+      setPage(1)
+      const req = axios.get(`http://localhost:8000/api/products`);
+      req.then((res) => {
+        const lengthCat = res.data.data.products?.length/5;     
+        const correctNum= Math.round(lengthCat);
+        setCountPage(correctNum);
+      })
+
     };
   
     return (
@@ -147,7 +163,7 @@ import useGetPaginationProducts from "../../../api/services/products/usePaginati
         <Box sx={{ marginBottom: 3 }}>
           {!isLoading  &&
             <BasicTable
-              rows={dataList || data.data.products}
+              rows={ data.data.products}
               title={[ "نام محصول", "قیمت", "موجودی","عملیات"]}
             />
           }
@@ -161,5 +177,5 @@ import useGetPaginationProducts from "../../../api/services/products/usePaginati
     );
   };
   
-  export default priceTable;
+  export default PriceTable;
   

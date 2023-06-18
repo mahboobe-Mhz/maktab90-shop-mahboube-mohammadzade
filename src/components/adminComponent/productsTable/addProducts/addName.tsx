@@ -35,7 +35,7 @@ const AddData = ({setFormValue,formValue, resetForm}:Props) => {
 
 useEffect(()=>{
   setName(appState.selectEditData.name)
-},[appState.selectEditData.name])
+},[appState.selectEditData])
 
     return (  
         <Box  sx={{

@@ -9,16 +9,9 @@ const MainLayout = () => {
     <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <MainHeader />
       <Box sx={{ flex: "1", width: "100%", height: "100%" }}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100%",
-          }}
-        >
+    
           <Outlet />
-        </Box>
+     
       </Box>
       <Box>
         <MainFooter />

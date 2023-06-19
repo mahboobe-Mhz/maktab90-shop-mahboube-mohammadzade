@@ -8,7 +8,13 @@ export default {
     extend: {
       fontFamily: {
         Sans: ['nimkat'] 
-     }
+     },
+     textColor:{
+      "secondary":"#fd6e54"
+    },
+    backgroundColor:{
+      "secondary":"#fd6e54"
+    },
     },
   },
   plugins: [],

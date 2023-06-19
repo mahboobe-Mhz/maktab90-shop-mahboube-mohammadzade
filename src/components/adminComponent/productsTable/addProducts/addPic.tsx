@@ -6,16 +6,17 @@ import { useState,useRef,useEffect } from 'react';
 import { Products } from '../../../../api/interface/products';
 import { useSelector } from 'react-redux';
 import { storeAppState } from '../../../../redux/slice/appSlice';
+
 interface Props{
     setFormValue:any
     formValue:Products
     resetForm:any
+    register:any
 }
 
-const AddPic = ({setFormValue,formValue ,resetForm}:Props) => {
-
+const AddPic = ({setFormValue,formValue ,resetForm,register}:Props) => {  
     const [image , setImage]=useState([])
-    const [showImage , setShowImage]=useState([])
+    const [showImage , setShowImage]=useState()
     const hiddenFileInput = useRef(null);
     const appState = useSelector(storeAppState);
 
@@ -30,6 +31,7 @@ const AddPic = ({setFormValue,formValue ,resetForm}:Props) => {
             setImage(Array.from(event.target.files))     
                }
     }
+
     useEffect(()=>{
         setShowImage([])
     },[resetForm])
@@ -38,14 +40,13 @@ const AddPic = ({setFormValue,formValue ,resetForm}:Props) => {
     },[image])
 //handel edit
 useEffect(()=>{
-    if(appState.selectEditData.images){
-        const editImage= appState.selectEditData.images.map((item:string)=>`http://localhost:8000/images/products/images/${item}`) 
-        console.log(editImage);
-        setShowImage(editImage)
-    }   
-    
-    console.log(appState.selectEditData.images);
-  },[appState.selectEditData])
+
+   
+        const editImage= appState.selectEditData?.images.map((item:string)=>`http://localhost:8000/images/products/images/${item}`) 
+         setShowImage(editImage)
+
+  
+  },[appState.isEdit])
     return (  <Box sx={{
         bgcolor:"#ffff" , borderRadius:"20px"
     }}>
@@ -59,7 +60,7 @@ useEffect(()=>{
 <Box sx={{padding:1.5}}>
     <Box sx={{ marginTop:"10px" , display:"flex", gap:"10px"}}>
         <div className='imageUpload' onClick={handleClick}>
-        <input name='image'  ref={hiddenFileInput} type='file' multiple onChange={handleImageSelect}>
+        <input onChange={handleImageSelect}  ref={hiddenFileInput} type='file' multiple >
         </input>
         <AddAPhotoIcon sx={{border:"solid", borderColor:"secondary.main", color:"secondary.main",width:100, height:100,padding:2}}/> 
         </div>

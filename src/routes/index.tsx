@@ -4,8 +4,8 @@ import React, { Suspense } from "react";
 import Cookies from "universal-cookie";
 
 const MainLayout = React.lazy(() => import("../layout/main"));
-const ShowProducts = React.lazy(
-  () => import("../screens/main/users/show-Products")
+const Home = React.lazy(
+  () => import("../screens/main/users/home")
 );
 const ShowSingleProduct = React.lazy(
   () => import("../screens/main/users/show-single-product")
@@ -64,7 +64,7 @@ export const routes = {
     addProduct:"/admin/index/addProduct",
   },
   USERS: {
-    shopping: "shopping",
+    shopping: "home",
     single: `shopping/:id`,
     cart: "cart",
     checkout: "/cart/checkout",
@@ -85,7 +85,7 @@ export const router = createBrowserRouter([
         path: routes.USERS.shopping,
         element: (
           <SuspenseView>
-            <ShowProducts />
+            <Home />
           </SuspenseView>
         ),
       },

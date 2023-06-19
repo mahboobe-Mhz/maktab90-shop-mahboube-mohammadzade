@@ -41,7 +41,7 @@ const SubCatSide = ({catSelect,setFormValue,formValue,subData ,resetForm}:Props)
 useEffect(()=>{
 
 !isLoading && data.data.subcategories.find((item:any,index:number) =>
-{if(item._id ===appState.selectEditData.subcategory._id) setSuBIndex(index) }
+{if(item._id ===appState.selectEditData?.subcategory._id) setSuBIndex(index) }
   )
   
     setTimeout(() => {

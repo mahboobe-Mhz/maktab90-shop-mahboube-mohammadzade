@@ -9,11 +9,12 @@ interface Props{
   setFormValue:any
   formValue:any
   resetForm:any
+  register:any
 }
 interface catIndex{
   index?:any
 }
-const CatSidebar = ({setFormValue,formValue,resetForm}:Props) => {
+const CatSidebar = ({setFormValue,formValue,resetForm,register}:Props) => {
   const [subState , setSubState]=useState([])
   const [subData , setSubData]=useState([])
   const [catIndex , setCatIndex]=useState<catIndex>()
@@ -53,7 +54,7 @@ useEffect(()=>{
  useEffect(()=>{
   const res = axios.get(`http://127.0.0.1:8000/api/categories`)
         res.then(response => (
-    response.data.data.categories.find((item:any,index:number) =>{if(item._id ===appState.selectEditData.category._id) 
+    response.data.data.categories.find((item:any,index:number) =>{if(item._id ===appState.selectEditData?.category._id) 
       setCatIndex(index)} )))  
     setTimeout(() => {
       const updatedCheckedState = checkedState.map(( item:any ,index:number) =>  index === catIndex ? true : false  )
@@ -90,7 +91,8 @@ setSubData(subState.filter((item:any)=> item.category ===catSelect))
         {!showSub&&
               <Box sx={{display:"flex", flexDirection:"column"}} >
               {!isLoading && catData?.map((item:any,index:any)=>
-               <FormControlLabel  key={item._id} control={<Checkbox id={item._id}  checked={checkedState[index]} onChange={()=>handelCheckBox(event,index)}  color="secondary" />} label={item.name} />
+               <FormControlLabel  key={item._id} control={<Checkbox id={item._id}  checked={checkedState[index]} 
+               onChange={()=>handelCheckBox(event,index)}  color="secondary" />} label={item.name} />
               )
               }
               </Box>

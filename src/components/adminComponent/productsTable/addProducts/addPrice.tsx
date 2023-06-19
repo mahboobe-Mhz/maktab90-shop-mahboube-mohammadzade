@@ -8,9 +8,10 @@ interface Props{
     setFormValue:any
     formValue:Products
     resetForm:any
+    register:any
 }
 
-const AddPrice = ({setFormValue,formValue,resetForm}:Props) => {
+const AddPrice = ({setFormValue,formValue,resetForm,register}:Props) => {
     const [checked, setChecked] = useState(false);
     const [price, setPrice] = useState(0);
     const [discount, setDiscount] = useState(0);
@@ -38,10 +39,7 @@ const AddPrice = ({setFormValue,formValue,resetForm}:Props) => {
     useEffect(()=>{
         setPrice(0)
     },[resetForm])
-//handel edit
-useEffect(()=>{
-    setPrice(appState.selectEditData.price)
-  },[appState.selectEditData])
+
 
     return (  <Box sx={{
         bgcolor:"#ffff" , borderRadius:"20px", marginTop:1, paddingBottom:4
@@ -54,7 +52,7 @@ useEffect(()=>{
      </Box> 
      <Box padding={1.5} display={"flex"} gap={2}>
         <Box display={"flex"} gap={2} >
-        <TextField dir={"ltr"} id="standard-basic" value={price} onChange={handleSetValue} label="*قیمت" variant="standard" />
+        <TextField dir={"ltr"} id="standard-basic" {...register("price")}   label="*قیمت" variant="standard" />
      <Typography marginTop={4}>تومان</Typography>
         </Box>
     

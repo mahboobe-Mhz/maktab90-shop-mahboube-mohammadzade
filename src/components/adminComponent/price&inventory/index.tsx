@@ -20,7 +20,7 @@ import useGetPaginationProducts from "../../../api/services/products/usePaginati
    useEffect(() => {
       const req = axios.get(`http://localhost:8000/api/products`);
       req.then((res) => {
-        const lengthCat = res.data.data.products.length / 5;
+        const lengthCat = res.data.data.products.length / 4;
         const correctNum = Math.round(lengthCat);
         setCountPage(correctNum);
       });
@@ -34,7 +34,7 @@ import useGetPaginationProducts from "../../../api/services/products/usePaginati
       setFilterData('quantity=0')
       const req = axios.get(`http://localhost:8000/api/products?quantity=0`);
       req.then((res) => {
-        const lengthCat = res.data.data.products?.length/5;     
+        const lengthCat = res.data.data.products?.length/4;     
         const correctNum= Math.round(lengthCat);
         setCountPage(correctNum);
       })
@@ -46,7 +46,7 @@ import useGetPaginationProducts from "../../../api/services/products/usePaginati
       setFilterData("price=0")
       const req = axios.get(`http://localhost:8000/api/products?price=0`);
       req.then((res) => {
-        const lengthCat = res.data.data.products?.length/5;     
+        const lengthCat = res.data.data.products?.length/4;     
         const correctNum= Math.round(lengthCat);
         setCountPage(correctNum);
       })  
@@ -63,7 +63,7 @@ import useGetPaginationProducts from "../../../api/services/products/usePaginati
       })
 
     };
-  
+
     return (
       <Box sx={{ height:"100%" }}>
         <Box
@@ -88,8 +88,9 @@ import useGetPaginationProducts from "../../../api/services/products/usePaginati
               bgcolor: "secondary.main",
               borderRadius: "50px",
             }}
+
           >
-          
+        
         ذخیره
           </Button>
         </Box>

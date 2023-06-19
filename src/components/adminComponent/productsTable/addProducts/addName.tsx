@@ -2,7 +2,7 @@ import {Box ,Typography,TextField} from '@mui/material'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic"; 
 import { CKEditor } from "@ckeditor/ckeditor5-react"; 
-import { setProductsModal, storeAppState } from "../../../../redux/slice/appSlice";
+import { setEditData, setProductsModal, storeAppState } from "../../../../redux/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 import NewDataModal from './newInfo';
 import {useState,useEffect} from 'react'
@@ -11,9 +11,11 @@ interface Props{
   setFormValue:any
   formValue:any
   resetForm:any
+  register:any
+  error:any
 }
 
-const AddData = ({setFormValue,formValue, resetForm}:Props) => {
+const AddData = ({setFormValue,formValue, resetForm,register,error}:Props) => {
   const [name , setName]=useState("")
   const [description, setDescription]=useState("")
   const dispatch = useDispatch();
@@ -22,10 +24,10 @@ const AddData = ({setFormValue,formValue, resetForm}:Props) => {
       dispatch(setProductsModal({ModalInfoProducts: true })
       )
     }
- const addData=(event:React.ChangeEvent<HTMLInputElement>)=>{
-  setName(event.currentTarget.value)
-  setFormValue({...formValue,name:name})
- }
+//  const addData=(event:React.ChangeEvent<HTMLInputElement>)=>{
+//   setName(event.currentTarget.value)
+//   setFormValue({...formValue,name:name})
+//  }
  useEffect(()=>{
   setName("")
   setDescription("")
@@ -33,9 +35,10 @@ const AddData = ({setFormValue,formValue, resetForm}:Props) => {
 
 
 
-useEffect(()=>{
-  setName(appState.selectEditData.name)
-},[appState.selectEditData])
+// useEffect(()=>{
+//   setName(appState.selectEditData?.name)
+//  // setDescription(appState.selectEditData?.description)
+// },[appState.selectEditData])
 
     return (  
         <Box  sx={{
@@ -50,19 +53,19 @@ useEffect(()=>{
      </Box>
         <Box sx={{borderBottom:"solid", borderColor:"secondary.light"}}>
         <Box dir="rtl" display={"flex"} justifyContent={"space-between"}  padding={1.5} >
-      <TextField value={name} onChange={addData} type='text' dir={"rtl"} sx={{width:"60%"}} label="عنوان*" variant="standard"  />
+      <TextField {...register("name")}  type='text' dir={"rtl"} sx={{width:"60%"}} label="عنوان*" variant="standard"  />
       <TextField  sx={{width:"30%"}} label="روبان" variant="standard" helperText="به عنوان مثال: فروش ویژه" />
       
     </Box>
     <Box >
     <CKEditor 
-  
+
         editor={ClassicEditor} 
         data={description} 
         onChange={(event, editor) => { 
           const value = editor.getData();         
-          setFormValue({...formValue,description:value})
-          setDescription(value)
+         setFormValue({...formValue,description:value})
+        setDescription(value)
         }} 
       /> 
     </Box>

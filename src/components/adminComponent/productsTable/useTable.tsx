@@ -10,9 +10,10 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import { useNavigate } from 'react-router';
 import { routes } from '../../../routes';
-import { useDispatch } from 'react-redux';
-import { setEditData } from '../../../redux/slice/appSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { setEditData, setIsEditing, storeAppState } from '../../../redux/slice/appSlice';
 import axios from 'axios';
+import { instance } from '../../../api/constants';
 
 
 interface Props{
@@ -32,22 +33,25 @@ interface Props{
     name5?:string
   ]  
   >
+  refetch:any
 
 }
 
-export default function BasicTable({rows,title}:Props) {
+export default function BasicTable({rows,title,refetch}:Props) {
   const navigate= useNavigate()
   const dispatch= useDispatch()
+
   const [editId ,setEditId] =React.useState("")
   const [state ,setState] =React.useState(false)
   const handelEdit=(event)=>{
     setEditId(event.currentTarget.id)
+
     setTimeout(() => {
            navigate(routes.ADMIN.addProduct)
     }, 100);
 
     setState(!state)
-    
+    dispatch(setIsEditing({isEdit:true}))
   }
   React.useEffect(()=>{
     const req =  axios.get(`http://localhost:8000/api/products/${editId}`);
@@ -56,6 +60,12 @@ export default function BasicTable({rows,title}:Props) {
     }))})
   },[state])
 
+  const handelDelete =(event)=>{
+    console.log(event.currentTarget.id);
+    
+    instance({ method:"DELETE", url:`/products/${event.currentTarget.id}`})
+    refetch()
+  }
 
   return (
     <TableContainer  component={Paper}>
@@ -88,7 +98,8 @@ export default function BasicTable({rows,title}:Props) {
               <TableCell align="center">{row.description}</TableCell>
               <TableCell align="center">   <Box>
                     <DeleteOutlineOutlinedIcon
-                
+                       id={row._id}
+                    onClick={handelDelete}
                       sx={{ color: "secondary.main" }}
                     />
                     <ModeEditOutlineOutlinedIcon

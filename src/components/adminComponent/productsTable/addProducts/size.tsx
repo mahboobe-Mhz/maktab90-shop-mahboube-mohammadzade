@@ -8,22 +8,20 @@ interface Props{
   setFormValue:any
   formValue:Products
   resetForm:any
+  register:any
 }
-const ProductsSize = ({setFormValue,formValue,resetForm}:Props)=> {
+const ProductsSize = ({setFormValue,formValue,resetForm,register}:Props)=> {
   const [size, setSize]=React.useState("")
   const appState = useSelector(storeAppState);
-const addSize =(event:React.ChangeEvent<HTMLInputElement>)=>{
-  setSize(event.currentTarget.value)
-  setFormValue({...formValue,size:size})
-}
+// const addSize =(event:React.ChangeEvent<HTMLInputElement>)=>{
+//   setSize(event.currentTarget.value)
+//   setFormValue({...formValue,size:size})
+// }
 
 React.useEffect(()=>{
   setSize("")
 },[resetForm])
-//handel edit
-React.useEffect(()=>{
-  setSize(appState.selectEditData.size)
-},[appState.selectEditData])
+
 
 
     return (  <Box sx={{
@@ -34,7 +32,7 @@ React.useEffect(()=>{
         </Box>
         <Box padding={1.5}>
         <Box display={"flex"} gap={2} width={"100%"}>
-<TextField value={size} onChange={addSize} id="standard-basic" label="عرض " variant="standard" />
+<TextField {...register("size")}  id="standard-basic" label="عرض " variant="standard" />
 <Typography sx={{alignSelf:"center" ,marginTop:2}}>CM</Typography>
 <TextField id="standard-basic" label="ارتفاع" variant="standard" />
 <Typography sx={{alignSelf:"center" ,marginTop:2}}>CM</Typography>

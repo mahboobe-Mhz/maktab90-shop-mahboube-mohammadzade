@@ -13,8 +13,8 @@ import useGetPaginationProducts from "../../../api/services/products/usePaginati
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../../routes";
-import { useDispatch } from "react-redux";
-import { setEditData } from "../../../redux/slice/appSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setEditData, setIsEditing, storeAppState } from "../../../redux/slice/appSlice";
 
 const ShowTableBox = () => {
 
@@ -24,12 +24,12 @@ const ShowTableBox = () => {
   const [dataList, setDataList] = useState();
   const { data, isLoading, refetch } = useGetPaginationProducts(page, 5,filter);
   const navigate= useNavigate()
-
+  const dispatch = useDispatch()
   //first render
   React.useEffect(() => {
     const req = axios.get(`http://localhost:8000/api/products`);
     req.then((res) => {
-      const lengthCat = res.data.data.products.length / 5;     
+      const lengthCat = res.data.data.products.length / 4;     
       const correctNum = Math.round(lengthCat);     
       setCountPage(correctNum);
     });
@@ -73,7 +73,8 @@ const ShowTableBox = () => {
     })
   };
   const NavigateAddProduct=()=>{
-    navigate(routes.ADMIN.addProduct)
+    dispatch(setIsEditing({isEdit:false})) 
+       navigate(routes.ADMIN.addProduct)
   }
 //get edited data
 
@@ -187,7 +188,7 @@ const ShowTableBox = () => {
       <Box sx={{ marginBottom: 3 }}>
         {!isLoading && (
           <BasicTable
-
+          refetch={refetch}
             rows={ data.data.products}
             title={[
               "عکس محصول",

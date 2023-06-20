@@ -15,6 +15,13 @@ export default {
     backgroundColor:{
       "secondary":"#fd6e54"
     },
+    borderColor:{
+      "secondary":"#fd6e54"
+    },
+    backgroundImage: {
+      'char': "url('public/picture/صندلی.jpg')",
+      'footer-texture': "url('/img/footer-texture.png')",
+    }
     },
   },
   plugins: [],

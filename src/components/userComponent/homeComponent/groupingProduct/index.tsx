@@ -7,7 +7,10 @@ const GroupingProduct = () => {
  res.then(response=>setCatData(response.data.data.categories)
  ) },[])
  console.log(catData);
- 
+ const navigateToCat =()=>{
+  console.log("hi");
+  
+ }
     return ( <div className="flex flex-col items-center mt-5 direction gap-5  mb-12">
          <h1 className="text-secondary text-4xl  font-bold mb-5"> دسته بندی محصولات</h1>
  
@@ -15,7 +18,7 @@ const GroupingProduct = () => {
         {
         catData && catData.map(item=>
           <div className="flex mt-16">
-          <div className=" relative group   w-[200px]"> 
+          <div className=" relative group  w-[200px]" id={item._id} data-user={item.slugname} onClick={navigateToCat}> 
           <img className=" opacity-0 photo object-cover
            absolute text-center top-[-5px] right-5" height={60}  width={100} 
            src={`http://localhost:8000/images/categories/icons/${item.icon}`}></img>

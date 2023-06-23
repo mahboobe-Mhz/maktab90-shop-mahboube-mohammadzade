@@ -14,6 +14,8 @@ useEffect(()=>{
     
     },[useParam])
 
+    console.log(selectProduct);
+    console.log(useParam);
     
     return ( 
     <div dir="rtl"> 

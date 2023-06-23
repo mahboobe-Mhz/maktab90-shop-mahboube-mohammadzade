@@ -11,12 +11,18 @@ const CategoryScreen = () => {
      //   const url = window.location.href;
     const useParam=useParams()
   const catName=useParam.id?.split("_")[0]
+  const catId=useParam.id?.split("_")[0]
+
     
 const[selectProduct,setSelectProduct]=useState([])
+const[selectCategory,setSelectCategory]=useState([])
+const[selectSubCategory,setSelectSubCategory]=useState([])
 
 useEffect(()=>{
  
 axios.get(`http://localhost:8000/api/products?category=${catName}`).then(res=>setSelectProduct(res.data.data.products))
+axios.get(`http://localhost:8000/api/categories/${catId}`).then(res=>setSelectCategory(res.data.data.category))
+axios.get(`http://localhost:8000/api/subcategories?category=${catId}`).then(res=>setSelectSubCategory(res.data.data.subcategories))
 
 },[useParam])
 
@@ -26,30 +32,26 @@ axios.get(`http://localhost:8000/api/products?category=${catName}`).then(res=>se
     <div dir="rtl" > 
          <MainHeader />
          <div className="mx-2">
-         <div className="mt-5">
-         <img width="100%" className="rounded-3xl h-[200px]" src="/picture/تصویربالایصفحه.png"/>
+         <div className="mt-5 relative">
+    <img width="100%" className="rounded-3xl h-[200px]" src={`http://localhost:8000/images/categories/icons/${selectCategory.icon}`}/> 
+    <h1 className="absolute z-10 bottom-20 left-3 text-2xl font-bold text-secondary ">{selectCategory.name}</h1>
          </div>
 
 <div className="flex mt-10">
   <div className="w-[300px]">
     <h1 className="text-xl font-semibold  border-b-2 border-black pb-2"> دسته بندی محصولات</h1>
     <div className="mt-3 flax flex-col gap-1 ">
-    <div className="mb-2">
+      {selectSubCategory.map(item=><div className="mb-2">
     <input type="checkbox"/>
-      <span> صندلی اموزشی کودک</span>
-    </div>
-    <div  className="mb-2" >
-    <input type="checkbox"/>
-      <span> صندلی اموزشی کودک</span>
-    </div>
-    <div  className="mb-2" >
-    <input type="checkbox"/>
-      <span> صندلی اموزشی کودک</span>
-    </div>
+      <span> {item.name}</span>
+    </div> )}
+    
+  
+   
     </div>
   </div>
   <div className="px-10 flex  gap-5">
-    {selectProduct.map(item=>   <ProductCart  photo={item.images[0]} name={item.name} price={item.price}/>)}
+    {selectProduct.map(item=>   <ProductCart  productSelect={item}/>)}
  
   </div>
 </div>

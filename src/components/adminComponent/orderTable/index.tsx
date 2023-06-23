@@ -89,7 +89,7 @@ const ShowTableBox = () => {
           }}
         >
           {" "}
-          افزودن محصول
+     ذخیره
         </Button>
       </Box>
       <Box

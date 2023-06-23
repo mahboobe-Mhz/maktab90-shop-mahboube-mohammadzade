@@ -54,7 +54,7 @@ export default function BasicOrderTable({rows,title}:Props) {
             >
               <TableCell align="center">{row._id}</TableCell>
               <TableCell align="center">{row.totalPrice}</TableCell>
-              <TableCell align="center">{row.user.firsname}</TableCell>
+              <TableCell align="center">{row.user.firstname}</TableCell>
               <TableCell align="center">{row.totalPrice }</TableCell>
               <TableCell align="center">{row.deliveryStatus?" ارسال شده":"در حال بررسی"}</TableCell>
               <TableCell align="center">{row.deliveryDate}</TableCell>

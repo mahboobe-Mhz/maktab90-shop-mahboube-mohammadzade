@@ -21,7 +21,7 @@ const ShowTableBox = () => {
   const [filter,setFilter]=React.useState("");
   const [page, setPage] = React.useState(1);
   const [countPage, setCountPage] = React.useState<number>();
-  const [dataList, setDataList] = useState();
+  const [fetch, setFetch] = useState(false);
   const { data, isLoading, refetch } = useGetPaginationProducts(page, 5,filter);
   const navigate= useNavigate()
   const dispatch = useDispatch()
@@ -38,7 +38,7 @@ const ShowTableBox = () => {
   //for pagination-
   React.useEffect(()=>{
         refetch()  
-  },[page,filter])
+  },[page,filter,fetch])
 
 //filter
   const quantityFun = () => {
@@ -188,7 +188,8 @@ const ShowTableBox = () => {
       <Box sx={{ marginBottom: 3 }}>
         {!isLoading && (
           <BasicTable
-          refetch={refetch}
+          fetch={fetch}
+          setFetch={setFetch}
             rows={ data.data.products}
             title={[
               "عکس محصول",

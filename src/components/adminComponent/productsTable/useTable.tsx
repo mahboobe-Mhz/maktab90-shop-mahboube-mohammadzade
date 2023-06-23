@@ -13,7 +13,8 @@ import { routes } from '../../../routes';
 import { useDispatch, useSelector } from 'react-redux';
 import { setEditData, setIsEditing, storeAppState } from '../../../redux/slice/appSlice';
 import axios from 'axios';
-import { instance } from '../../../api/constants';
+
+import useDeleteProduct from '../../../api/services/products/useDeleteProduct';
 
 
 interface Props{
@@ -33,16 +34,18 @@ interface Props{
     name5?:string
   ]  
   >
-  refetch:any
-
+  setFetch:any
+  fetch:boolean
 }
 
-export default function BasicTable({rows,title,refetch}:Props) {
+export default function BasicTable({rows,title,setFetch,fetch}:Props) {
   const navigate= useNavigate()
   const dispatch= useDispatch()
-
+  const [deletionError, setDeletionError] = React.useState(null);
+  const { mutate, isLoading: isDeleting }= useDeleteProduct(setDeletionError)
   const [editId ,setEditId] =React.useState("")
   const [state ,setState] =React.useState(false)
+ 
   const handelEdit=(event)=>{
     setEditId(event.currentTarget.id)
 
@@ -60,11 +63,9 @@ export default function BasicTable({rows,title,refetch}:Props) {
     }))})
   },[state])
 
-  const handelDelete =(event)=>{
-    console.log(event.currentTarget.id);
-    
-    instance({ method:"DELETE", url:`/products/${event.currentTarget.id}`})
-    refetch()
+  const HandelDelete =(event)=>{
+ mutate(event.currentTarget.id) 
+
   }
 
   return (
@@ -99,7 +100,7 @@ export default function BasicTable({rows,title,refetch}:Props) {
               <TableCell align="center">   <Box>
                     <DeleteOutlineOutlinedIcon
                        id={row._id}
-                    onClick={handelDelete}
+                    onClick={HandelDelete}
                       sx={{ color: "secondary.main" }}
                     />
                     <ModeEditOutlineOutlinedIcon

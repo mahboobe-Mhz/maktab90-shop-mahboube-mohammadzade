@@ -1,17 +1,22 @@
+
+import * as React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
-import SwiperNavButton from './swiperNavButton';
+import { LeftArrow, RightArrow } from '../../../kit/Arrow';
 const TopSwiper = () => {
+  
     return (
     <div className=' relative , w-[80%px] ' >
        <Swiper
         spaceBetween={0}
         slidesPerView="auto"
         modules={[Navigation, Pagination, A11y]}
-      //  navigation
-       // pagination={{ clickable: true }}
-      //  scrollbar={{ draggable: true }}
+        navigation={{
+          prevEl:`.pervPage` ,
+          nextEl:`.nextPage`
+        }}
+
    
       >
         <SwiperSlide className=' h-[500px]'><img className='rounded-3xl' style={{width:"100%", height:"500px"}} src='public/picture/IMG_7177.JPG'/></SwiperSlide>
@@ -19,7 +24,12 @@ const TopSwiper = () => {
         <SwiperSlide><img style={{width:"100%", height:"500px"}} src='public/picture/IMG_7177.JPG'/></SwiperSlide>
         <SwiperSlide><img style={{width:"100%", height:"500px"}}  src='public/picture/IMG_7177.JPG'/></SwiperSlide>
         <div className=' absolute bottom-[100px] z-10 right-[100px]'>
-        <SwiperNavButton/>
+        <div className="flex gap-5">
+        <span  
+        className=" pervPage hover:cursor-pointer focus:outline-none" > <LeftArrow  /></span>
+        <span 
+         className=" nextPage hover:cursor-pointer focus:outline-none"  > <RightArrow  /></span>
+    </div>
         </div>
    
    

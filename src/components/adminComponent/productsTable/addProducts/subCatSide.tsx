@@ -20,11 +20,12 @@ const SubCatSide = ({catSelect,setFormValue,formValue,subData ,resetForm}:Props)
       new Array(subData?.length).fill(false));
    
 
+console.log(formValue);
 
 
     const handelCheckBox =(e:any,position:number)=>{
        setSubCatSelect(e.target.id)
-       const subCatName =!isLoading && subData.find((item:any) => item._id === SubCatSelect );
+       const subCatName =!isLoading && subData.find((item:any) => item._id === e.target.id );
        !isLoading && setFormValue({...formValue,subcategory:subCatName?._id})    
        const updatedCheckedState = checkedState.map((item:any, index:number) =>
        index === position ? !item : false
@@ -40,16 +41,14 @@ const SubCatSide = ({catSelect,setFormValue,formValue,subData ,resetForm}:Props)
 
 useEffect(()=>{
 
-!isLoading && data.data.subcategories.find((item:any,index:number) =>
-{if(item._id ===appState.selectEditData?.subcategory._id) setSuBIndex(index) }
-  )
-  
-    setTimeout(() => {
-      const updatedCheckedState = checkedState.map(( item:any ,index:number) =>  index === subIndex ? true : false  )
-
+const indexId=!isLoading && data.data.subcategories.findIndex((item:any) =>
+item._id ===appState.selectEditData?.subcategory._id) 
+ const updatedCheckedState = checkedState.map(( item:any ,index:number) =>  index === indexId ? true : false  )
+ !isLoading &&console.log( data.data.subcategories);
+console.log(appState.selectEditData?.subcategory._id);
+console.log(indexId);
     setCheckedState(updatedCheckedState);
-    console.log(updatedCheckedState);
-    }, 200);
+  
  },[appState.selectEditData])
 
 

@@ -1,0 +1,14 @@
+
+.photo:hover{
+
+    animation: move-in-steps 3s forwards;
+  }
+
+  @keyframes move-in-steps {
+    0% {
+      opacity: 10%;
+    }
+    100% {
+        opacity: 100%;
+    }
+  }

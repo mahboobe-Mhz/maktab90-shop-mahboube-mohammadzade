@@ -1,23 +1,24 @@
-import { TextField, Box, Typography ,FormControlLabel,Checkbox} from "@mui/material";
+import { TextField, Box, Typography ,FormControlLabel,Checkbox, Radio} from "@mui/material";
 import { useState,useEffect } from "react";
 import useGetAllCategory from "../../../../api/services/products/useGetAllCategory";
 import SubCatSide from "./subCatSide";
 import { useSelector } from "react-redux";
 import { storeAppState } from "../../../../redux/slice/appSlice";
 import axios from "axios";
+import { Controller } from "react-hook-form";
 interface Props{
   setFormValue:any
   formValue:any
   resetForm:any
   register:any
+  errors:any
+  control:any
 }
-interface catIndex{
-  index?:any
-}
-const CatSidebar = ({setFormValue,formValue,resetForm,register}:Props) => {
+
+const CatSidebar = ({setFormValue,formValue,resetForm,register,errors,control}:Props) => {
   const [subState , setSubState]=useState([])
   const [subData , setSubData]=useState([])
-  const [catIndex , setCatIndex]=useState<catIndex>()
+  const [catIndex , setCatIndex]=useState<number|undefined>()
     const [showSub, setShowSub]=useState(false)
     const [catSelect, setCatSelect]=useState("")
     const { data, isLoading } = useGetAllCategory();
@@ -64,6 +65,7 @@ useEffect(()=>{
     }, 200);
  },[appState.selectEditData])
 
+
 //subcategory data
 useEffect(()=>{
   const res = axios.get(`http://127.0.0.1:8000/api/subcategories`)
@@ -71,7 +73,9 @@ res.then(response=>setSubState(response.data.data.subcategories) )
 setSubData(subState.filter((item:any)=> item.category ===catSelect))
 },[catSelect])
 
-   
+
+
+
    
    return ( <Box  bgcolor={"#ffff"} borderRadius={"20px"} paddingBottom={2}>
         <Box sx={{borderBottom:"solid", borderColor:"secondary.light" ,}}>
@@ -91,13 +95,35 @@ setSubData(subState.filter((item:any)=> item.category ===catSelect))
         {!showSub&&
               <Box sx={{display:"flex", flexDirection:"column"}} >
               {!isLoading && catData?.map((item:any,index:any)=>
-               <FormControlLabel  key={item._id} control={<Checkbox id={item._id}  checked={checkedState[index]} 
-               onChange={()=>handelCheckBox(event,index)}  color="secondary" />} label={item.name} />
+                 <Controller
+                 name={item.name}
+                 control={control}
+         
+                 render={({field})=>(
+        
+                    <FormControlLabel
+                key={item._id}
+                 control={       
+                  <Radio 
+                //  value={item._id}
+                  id={item._id} 
+                         {...field}
+                  checked={checkedState[index]} 
+                onChange={()=>handelCheckBox(event,index)}  
+                color="secondary" />
+            } 
+          
+               label={item.name} />
+                 )
+               
+               }
+                 />
+              
               )
               }
               </Box>
         }
-     
+
        {showSub&&
    
         <SubCatSide catSelect={catSelect} setFormValue={setFormValue} formValue={formValue}

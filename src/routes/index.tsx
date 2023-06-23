@@ -3,7 +3,7 @@ import { SuspenseView } from "./components/suspense";
 import React, { Suspense } from "react";
 import Cookies from "universal-cookie";
 
-const MainLayout = React.lazy(() => import("../layout/main"));
+
 const Home = React.lazy(
   () => import("../screens/main/users/home")
 );
@@ -47,6 +47,10 @@ const Price = React.lazy(
 const AddProducts = React.lazy(
   () => import("../components/adminComponent/productsTable/addProducts")
 );
+const CategoryScreen = React.lazy(
+  () => import("../screens/main/users/categoryScreen")
+);
+
 const cookies = new Cookies();
 export const routes = {
   ADMIN: {
@@ -64,8 +68,10 @@ export const routes = {
     addProduct:"/admin/index/addProduct",
   },
   USERS: {
-    shopping: "home",
-    single: `shopping/:id`,
+    shopping: "/",
+    ShowProducts:'/products',
+    filterCat:"/products/:id",
+    single: `/product/:id`,
     cart: "cart",
     checkout: "/cart/checkout",
   },
@@ -73,14 +79,7 @@ export const routes = {
 const user = cookies.get("user");
 const userRol = user || {};
 export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: (
-      <SuspenseView>
-        <MainLayout />
-      </SuspenseView>
-    ),
-    children: [
+ 
       {
         path: routes.USERS.shopping,
         element: (
@@ -88,15 +87,35 @@ export const router = createBrowserRouter([
             <Home />
           </SuspenseView>
         ),
+
+      },{
+        path: routes.USERS.ShowProducts,
+      
+        children:[
+          {
+            path: routes.USERS.filterCat,
+            element: (
+              <SuspenseView>
+                <CategoryScreen />
+              </SuspenseView>
+            ),
+          }, 
+        ]
+      }, {
+        path: '/product',
+        children:[
+          {
+            path: routes.USERS.single,
+            element: (
+              <SuspenseView>
+                <ShowSingleProduct />
+              </SuspenseView>
+            ),
+          },
+        ]
       },
-      {
-        path: routes.USERS.single,
-        element: (
-          <SuspenseView>
-            <ShowSingleProduct />
-          </SuspenseView>
-        ),
-      },
+    
+    
       {
         path: routes.USERS.cart,
         element:
@@ -118,8 +137,8 @@ export const router = createBrowserRouter([
           },
         ],
       },
-    ],
-  },
+    
+  
 
   {
     path: "/admin",

@@ -1,6 +1,9 @@
-@import url('/src/style/headerStyle.css');
+
 @import url('/src/style/sidebarStyle.css');
 @import url('/src/style/adminMainPart.css');
+@import url('/src/style/groupProduct.css');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -5,8 +5,12 @@ import { Box } from "@mui/system";
 import InputAdornment from "@mui/material/InputAdornment";
 import TuneIcon from '@mui/icons-material/Tune';
 
-export default function ComboBox() {
-  return (<Box sx={{marginTop:"10px"}}>
+export default function SearchBox({setState}:any) {
+  return (<div
+  className="   transition-all duration-500"
+  
+  onMouseLeave={()=>setState(false)}
+  >
     <Autocomplete
       disablePortal
       id="combo-box-demo"
@@ -34,7 +38,7 @@ export default function ComboBox() {
       
     />
 
-    </Box>
+    </div>
   );
 }
 

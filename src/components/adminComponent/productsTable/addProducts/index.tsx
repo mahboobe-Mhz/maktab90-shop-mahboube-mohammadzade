@@ -30,13 +30,14 @@ const AddProducts = () => {
         category:"",
         subcategory:""
     })
-    const[defaultValues,setDefaultValue]=useState<Products>()
-   
+
     const {mutate} = useAddNewProduct({})
     const ProductsData=new FormData()
   
       const {
         register,
+        getValues,
+        control,
         handleSubmit,
         formState: { errors },
         watch,
@@ -103,6 +104,7 @@ const AddProducts = () => {
     const handelCancel =()=>{
         setResetForm(!resetForm)    
         dispatch(setIsEditing({isEdit:false}))    
+        navigate(routes.ADMIN.products)
     }
 
 
@@ -123,7 +125,7 @@ const AddProducts = () => {
     <InventoryProducts setFormValue={setFormValue} formValue={formValue}  resetForm={resetForm} register={register} error={errors} />
     <ProductsSize setFormValue={setFormValue} formValue={formValue}  resetForm={resetForm}  register={register} error={errors}/>
     </Box>
-        <Box width={"30%"}><CatSidebar setFormValue={setFormValue} formValue={formValue} resetForm={resetForm} register={register}  /></Box>
+        <Box width={"30%"}><CatSidebar setFormValue={setFormValue} formValue={formValue} resetForm={resetForm} getValues={getValues} control={control} errors={errors} /></Box>
         </Box>
 
 

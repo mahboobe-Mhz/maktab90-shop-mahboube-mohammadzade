@@ -1,12 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import useLogin from "./useLogin";
 import { ToastContainer } from "react-toastify";
 
 
 const LoginScreen = () => {
+  const navigate = useNavigate();
+  const naivgateHome=()=>{
+    navigate('/home')
+  }
    const { handleLoginUser, register, handleSubmit, errors } = useLogin();
     return (
       <div className="h-full w-full flex justify-center items-center">
-        <span className="border p-1 border-gray-900 rounded-full fixed top-[90px] left-[50px]">
+        <span onClick={naivgateHome} className="border p-1 border-gray-900 rounded-full fixed top-[90px] left-[50px]">
         <img width={20} src="/icons/icon-02.svg"></img>
         </span>
   

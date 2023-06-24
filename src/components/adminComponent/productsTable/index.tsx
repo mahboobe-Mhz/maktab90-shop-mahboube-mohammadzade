@@ -29,8 +29,8 @@ const ShowTableBox = () => {
   React.useEffect(() => {
     const req = axios.get(`http://localhost:8000/api/products`);
     req.then((res) => {
-      const lengthCat = res.data.data.products.length / 4;     
-      const correctNum = Math.round(lengthCat);     
+      const lengthCat = res.data.data.products.length / 4 +0.26;     
+      const correctNum = Number((lengthCat).toFixed())    
       setCountPage(correctNum);
 
       

@@ -39,6 +39,9 @@ interface Props{
 }
 
 export default function BasicTable({rows,title,setFetch,fetch}:Props) {
+console.log(rows);
+
+  
   const navigate= useNavigate()
   const dispatch= useDispatch()
   const [deletionError, setDeletionError] = React.useState(null);

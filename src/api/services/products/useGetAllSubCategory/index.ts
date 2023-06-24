@@ -5,7 +5,7 @@ import axios from "axios";
 
 const useGetAllSubCategory = () => {
     return useQuery('getAllSubCategories' , async()=>{
-     const res =   await axios.get('http://127.0.0.1:8000/api/subcategories')
+     const res =   await axios.get('http://127.0.0.1:8000/api/subcategories?sort=-createdAt')
      return res.data
     })
 }

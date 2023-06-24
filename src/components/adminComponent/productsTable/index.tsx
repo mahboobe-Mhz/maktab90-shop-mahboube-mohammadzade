@@ -50,8 +50,8 @@ const ShowTableBox = () => {
   const quantityFun = () => {
     const req = axios.get(`http://localhost:8000/api/products?quantity=0`);
     req.then((res) => {
-      const lengthCat = res.data.data.products?.length/5;     
-      const correctNum= Math.round(lengthCat);
+      const lengthCat = res.data.data.products.length / 4 +0.26;     
+      const correctNum = Number((lengthCat).toFixed())    
       setCountPage(correctNum);
 
     })
@@ -64,8 +64,8 @@ const ShowTableBox = () => {
     setFilter("price=0")
     const req = axios.get(`http://localhost:8000/api/products?price=0`);
     req.then((res) => {
-      const lengthCat = res.data.data.products?.length/5;     
-      const correctNum= Math.round(lengthCat);
+      const lengthCat = res.data.data.products.length / 4 +0.26;     
+      const correctNum = Number((lengthCat).toFixed())    
       setCountPage(correctNum);
     })  
   };
@@ -74,8 +74,8 @@ const ShowTableBox = () => {
     setPage(1)
     const req = axios.get(`http://localhost:8000/api/products`);
     req.then((res) => {
-      const lengthCat = res.data.data.products?.length/5;     
-      const correctNum= Math.round(lengthCat);
+      const lengthCat = res.data.data.products.length / 4 +0.26;     
+      const correctNum = Number((lengthCat).toFixed())    
       setCountPage(correctNum);
     })
   };

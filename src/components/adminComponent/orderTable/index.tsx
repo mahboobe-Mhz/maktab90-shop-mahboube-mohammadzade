@@ -12,57 +12,72 @@ import useGetPaginationOrders from "../../../api/services/products/useGetAllpagi
 const ShowTableBox = () => {
   const [page, setPage] = React.useState(1);
   const [filter,setFilter]=React.useState("");
-  const { data, isLoading, refetch } = useGetPaginationOrders(page,5,filter);
-
+  const { data, isLoading, refetch } = useGetPaginationOrders(page,4,filter);
   const [countPage, setCountPage] = React.useState<number>();
-  const [dataList, setDataList] = useState();
+
   React.useEffect(() => {
     const req = axios.get(`http://localhost:8000/api/orders`);
     req.then((res) => {
-      const lengthCat = res.data.data.orders.length / 4;
-      const correctNum = Math.round(lengthCat);
+      const lengthCat = res.data.data.products.length / 4 +0.26;     
+      const correctNum = Number((lengthCat).toFixed())    
       setCountPage(correctNum);
     });
-  }, []);
 
+  }, []);
+  React.useEffect(()=>{
+    console.log('refetch');
+    setTimeout(() => {
+      refetch()  
+    }, 100);
+    
+  },[page,filter])
   const allOrders = () => {
     setFilter("")
     setPage(1)
     const req = axios.get(`http://localhost:8000/api/orders`);
     req.then((res) => {
-      const lengthCat = res.data.data.products?.length/5;     
-      const correctNum= Math.round(lengthCat);
+      const lengthCat = res.data.data.products.length / 4 +0.26;     
+      const correctNum = Number((lengthCat).toFixed())    
       setCountPage(correctNum);
     })
+    refetch()
   };
   const notPay = () => {
     setPage(1)
     setFilter("price=0")
     const req = axios.get(`http://localhost:8000/api/orders?price=0`);
     req.then((res) => {
-      const lengthCat = res.data.data.orders?.length/5;     
-      const correctNum= Math.round(lengthCat);
+      const lengthCat = res.data.data.products.length / 4 +0.26;     
+      const correctNum = Number((lengthCat).toFixed())    
       setCountPage(correctNum);
     })  
+    refetch()
   };
   const notAcceptOrders = () => {
-    const newDataList = data.data.orders;
-    const notAcceptOrders = newDataList.filter(
-      (item: any) => item.deliveryStatus === false
-    );
-    setDataList(notAcceptOrders);
-
+    setPage(1)
+    setFilter("deliveryStatus=false")
+    const req = axios.get(`http://localhost:8000/api/orders?deliveryStatus=false`);
+    req.then((res) => {
+      const lengthCat = res.data.data.products.length / 4 +0.26;     
+      const correctNum = Number((lengthCat).toFixed())    
+      setCountPage(correctNum);
+    })  
+    refetch()
     
   };
   const acceptOrders = () => {
-    const newDataList = data.data.orders;
-    const acceptOrders = newDataList.filter(
-      (item: any) =>  item.deliveryStatus === true
-    );
-    setDataList(acceptOrders);
+    setPage(1)
+    setFilter("deliveryStatus=true")
+    const req = axios.get(`http://localhost:8000/api/orders?deliveryStatus=true`);
+    req.then((res) => {
+      const lengthCat = res.data.data.products.length / 4 +0.26;     
+      const correctNum = Number((lengthCat).toFixed())    
+      setCountPage(correctNum);
+    })  
+    refetch()
+    
   };
 
-  !isLoading && console.log(data.data.orders);
 
   return (
     <Box sx={{ height: "90%" }}>

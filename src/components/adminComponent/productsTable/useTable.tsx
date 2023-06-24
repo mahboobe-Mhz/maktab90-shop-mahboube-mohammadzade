@@ -35,25 +35,22 @@ interface Props{
     name5?:string
   ]  
   >
-  setFetch:any
-  fetch:boolean
+  refetch:any
 }
 
-export default function BasicTable({rows,title,setFetch,fetch}:Props) {
-console.log(rows);
+export default function BasicTable({rows,title,refetch}:Props) {
 
-  
   const navigate= useNavigate()
   const dispatch= useDispatch()
   const [deletionError, setDeletionError] = React.useState(null);
   const { mutate, isLoading: isDeleting }= useDeleteProduct(setDeletionError)
   const [editId ,setEditId] =React.useState("")
   const [state ,setState] =React.useState(false)
-  const [isDelete ,setIsDelete] =React.useState(false)
   const [titleText ,setTitleText]=React.useState("")
+  const [deleteId ,setDeleteId]=React.useState()
 
  
-  const handelEdit=(event)=>{
+  const handelEdit=(event:any)=>{
     setEditId(event.currentTarget.id)
 
     setTimeout(() => {
@@ -73,13 +70,13 @@ console.log(rows);
   const HandelDelete =(event:any)=>{
     dispatch(setNotMOdal({ notModal: true }));  
     isDeleting?setTitleText(`برخورد کرده ایید  ${deletionError}   به مشکل`):setTitleText(`اطمینان  دارید ؟ ${event.target.dataset.user}  ایا از حذف `)
-    isDelete && mutate(event.currentTarget.id) 
-    setIsDelete(false)
-    setFetch(!fetch)
+    setDeleteId(event.currentTarget.id)
   }
-
+const deleteItem=()=>{
+ mutate(deleteId) 
+}
   return (<Box>
-    <NotificationModal titleText={titleText} setIsDelete={setIsDelete}/>
+    <NotificationModal titleText={titleText} deleteItem={deleteItem}     refetch={refetch}/>
     <TableContainer  component={Paper}>
       <Table sx={{ minWidth: 650 ,}} aria-label="simple table">
         <TableHead>

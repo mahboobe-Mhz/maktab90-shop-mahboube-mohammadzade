@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setNotMOdal, storeAppState } from '../../../redux/slice/appSlice';
 interface Props{
     titleText:string
-    setIsDelete:any
+    deleteItem:any
+    refetch:any
 }
 const style = {
   position: 'absolute' as 'absolute',
@@ -21,14 +22,18 @@ const style = {
   p: 4,
 };
 
-export default function NotificationModal({titleText,setIsDelete}:Props) {
+export default function NotificationModal({titleText,deleteItem, refetch}:Props) {
     const dispatch = useDispatch();
     const appState = useSelector(storeAppState);
-
-  const handleClose = () =>  dispatch(setNotMOdal({ notModal: false }));
+  const handleClose = () => { 
+    dispatch(setNotMOdal({ notModal: false }));} 
   const handelFunction=()=>{
     dispatch(setNotMOdal({ notModal: false }));
-    setIsDelete(true)
+    deleteItem()
+    setTimeout(() => {
+      refetch()
+    }, 200);
+
   }
 
   return (

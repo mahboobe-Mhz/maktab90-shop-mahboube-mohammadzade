@@ -50,6 +50,9 @@ const AddProducts = React.lazy(
 const CategoryScreen = React.lazy(
   () => import("../screens/main/users/categoryScreen")
 );
+const ErrorPage= React.lazy(
+  () => import("../screens/main/404")
+);
 
 const cookies = new Cookies();
 export const routes = {
@@ -243,5 +246,8 @@ export const router = createBrowserRouter([
         ],
       },
     ],
-  },
+  },{
+    path: "*",
+    element: <ErrorPage />,
+  }
 ]);

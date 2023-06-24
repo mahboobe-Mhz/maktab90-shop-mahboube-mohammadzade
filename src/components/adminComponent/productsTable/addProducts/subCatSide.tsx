@@ -13,18 +13,11 @@ interface Props{
 }
 const SubCatSide = ({catSelect,setFormValue,formValue,subData ,resetForm}:Props) => { 
   const appState = useSelector(storeAppState);
-    const [subIndex, setSuBIndex]=useState() 
-    const [SubCatSelect, setSubCatSelect]=useState([]) 
     const { data, isLoading } = useGetAllSubCategory();   
     const [checkedState, setCheckedState] = useState(
-      new Array(subData?.length).fill(false));
-   
-
-console.log(formValue);
-
-
+      new Array(subData?.length).fill(false))
     const handelCheckBox =(e:any,position:number)=>{
-       setSubCatSelect(e.target.id)
+
        const subCatName =!isLoading && subData.find((item:any) => item._id === e.target.id );
        !isLoading && setFormValue({...formValue,subcategory:subCatName?._id})    
        const updatedCheckedState = checkedState.map((item:any, index:number) =>

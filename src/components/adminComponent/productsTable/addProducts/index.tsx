@@ -9,7 +9,7 @@ import CatSidebar from './catSidebar';
 import { Products } from '../../../../api/interface/products';
 import useAddNewProduct from '../../../../api/services/products/useAddNewProduct';
 import { useDispatch, useSelector } from 'react-redux';
-import { setIsEditing, storeAppState } from '../../../../redux/slice/appSlice';
+import {setIsEditing, storeAppState } from '../../../../redux/slice/appSlice';
 import { instance } from '../../../../api/constants';
 import { useNavigate } from 'react-router';
 import { routes } from '../../../../routes';
@@ -93,7 +93,7 @@ const AddProducts = () => {
         mutate(ProductsData)
         }
 
-       
+
     navigate(routes.ADMIN.products)
     setResetForm(!resetForm)
     }

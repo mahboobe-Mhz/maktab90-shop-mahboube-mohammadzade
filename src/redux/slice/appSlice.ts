@@ -8,6 +8,7 @@ export interface CounterState {
   selectEditData:[]
   notModal:boolean
 
+
 }
 
 const initialState: CounterState = {
@@ -16,7 +17,8 @@ const initialState: CounterState = {
   ModalInfoProducts:false,
   isEdit:false,
   selectEditData:[],
-  notModal:false
+  notModal:false,
+
 };
 
 export const AppSlice = createSlice({
@@ -36,7 +38,7 @@ export const AppSlice = createSlice({
       state.isEdit =action.payload.isEdit
     },  setNotMOdal: (state, action) => {
       state.notModal =action.payload.notModal
-    }, 
+    }
   
   }
 });

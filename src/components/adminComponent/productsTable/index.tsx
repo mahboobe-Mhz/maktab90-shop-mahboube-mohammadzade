@@ -13,18 +13,18 @@ import useGetPaginationProducts from "../../../api/services/products/usePaginati
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../../routes";
-import { useDispatch, useSelector } from "react-redux";
-import { setEditData, setIsEditing, storeAppState } from "../../../redux/slice/appSlice";
+import { useDispatch } from "react-redux";
+import { setEditData, setIsEditing } from "../../../redux/slice/appSlice";
 
 const ShowTableBox = () => {
 
   const [filter,setFilter]=React.useState("");
   const [page, setPage] = React.useState(1);
   const [countPage, setCountPage] = React.useState<number>();
-  const [fetch, setFetch] = useState(false);
   const { data, isLoading, refetch } = useGetPaginationProducts(page, 4,filter);
   const navigate= useNavigate()
   const dispatch = useDispatch()
+
   //first render
   React.useEffect(() => {
     const req = axios.get(`http://localhost:8000/api/products`);
@@ -39,8 +39,12 @@ const ShowTableBox = () => {
 
   //for pagination-
   React.useEffect(()=>{
-        refetch()  
-  },[page,filter,fetch])
+    console.log('refetch');
+    setTimeout(() => {
+      refetch()  
+    }, 100);
+    
+  },[page,filter])
 
 //filter
   const quantityFun = () => {
@@ -191,7 +195,7 @@ const ShowTableBox = () => {
       <Box sx={{ marginBottom: 3 }}>
         {!isLoading && (
           <BasicTable
-          fetch={fetch}
+    
           refetch={refetch}
             rows={ data.data.products}
             title={[

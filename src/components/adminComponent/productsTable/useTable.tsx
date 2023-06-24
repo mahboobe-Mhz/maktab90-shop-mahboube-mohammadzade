@@ -11,10 +11,11 @@ import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutl
 import { useNavigate } from 'react-router';
 import { routes } from '../../../routes';
 import { useDispatch, useSelector } from 'react-redux';
-import { setEditData, setIsEditing, storeAppState } from '../../../redux/slice/appSlice';
+import { setEditData, setIsEditing, setNotMOdal, storeAppState } from '../../../redux/slice/appSlice';
 import axios from 'axios';
 
 import useDeleteProduct from '../../../api/services/products/useDeleteProduct';
+import NotificationModal from '../../kit/notModal';
 
 
 interface Props{
@@ -48,6 +49,9 @@ console.log(rows);
   const { mutate, isLoading: isDeleting }= useDeleteProduct(setDeletionError)
   const [editId ,setEditId] =React.useState("")
   const [state ,setState] =React.useState(false)
+  const [isDelete ,setIsDelete] =React.useState(false)
+  const [titleText ,setTitleText]=React.useState("")
+
  
   const handelEdit=(event)=>{
     setEditId(event.currentTarget.id)
@@ -66,12 +70,16 @@ console.log(rows);
     }))})
   },[state])
 
-  const HandelDelete =(event)=>{
- mutate(event.currentTarget.id) 
-
+  const HandelDelete =(event:any)=>{
+    dispatch(setNotMOdal({ notModal: true }));  
+    isDeleting?setTitleText(`برخورد کرده ایید  ${deletionError}   به مشکل`):setTitleText(`اطمینان  دارید ؟ ${event.target.dataset.user}  ایا از حذف `)
+    isDelete && mutate(event.currentTarget.id) 
+    setIsDelete(false)
+    setFetch(!fetch)
   }
 
-  return (
+  return (<Box>
+    <NotificationModal titleText={titleText} setIsDelete={setIsDelete}/>
     <TableContainer  component={Paper}>
       <Table sx={{ minWidth: 650 ,}} aria-label="simple table">
         <TableHead>
@@ -104,10 +112,12 @@ console.log(rows);
                     <DeleteOutlineOutlinedIcon
                        id={row._id}
                     onClick={HandelDelete}
+                    data-user={row.name}
                       sx={{ color: "secondary.main" }}
                     />
                     <ModeEditOutlineOutlinedIcon
                         id={row._id}
+                        data-user={row.name}
                     onClick={handelEdit}
                       sx={{ color: "secondary.main" }}
                     />
@@ -117,6 +127,6 @@ console.log(rows);
           ))}
         </TableBody>
       </Table>
-    </TableContainer>
+    </TableContainer></Box>
   );
 }

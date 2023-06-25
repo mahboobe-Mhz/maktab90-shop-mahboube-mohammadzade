@@ -3,6 +3,7 @@ import {
   Typography,
   Button,
   Input,
+  
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import BasicTable from "./useTable";
@@ -13,17 +14,23 @@ import useGetPaginationProducts from "../../../api/services/products/usePaginati
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../../routes";
-import { useDispatch } from "react-redux";
-import { setEditData, setIsEditing } from "../../../redux/slice/appSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setEditData, setIsEditing, storeAppState } from "../../../redux/slice/appSlice";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const ShowTableBox = () => {
+  const AppState = useSelector(storeAppState);
 
   const [filter,setFilter]=React.useState("");
   const [page, setPage] = React.useState(1);
   const [countPage, setCountPage] = React.useState<number>();
-  const { data, isLoading, refetch } = useGetPaginationProducts(page, 4,filter);
+  const { data, isLoading, refetch ,isError} = useGetPaginationProducts(page, 4,filter);
+
+  
   const navigate= useNavigate()
   const dispatch = useDispatch()
+
 
   //first render
   React.useEffect(() => {
@@ -32,9 +39,13 @@ const ShowTableBox = () => {
       const lengthCat = res.data.data.products.length / 4 +0.26;     
       const correctNum = Number((lengthCat).toFixed())    
       setCountPage(correctNum);
-
-      
     });
+    if(isError){
+      toast.error('خطایی روی داده دوباره تلاش کنید', {
+        position: "top-right" });
+    }
+    console.log(AppState.errorMessage);
+    
   }, [data]);
 
   //for pagination-
@@ -87,6 +98,7 @@ const ShowTableBox = () => {
 
   return (
     <Box sx={{ height: "90%" }}>
+            <ToastContainer />
       <Box
         sx={{
           display: "flex",

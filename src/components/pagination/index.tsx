@@ -17,6 +17,7 @@ export default function PaginationControlled( {countPage,page,setPage}:Props) {
     <Stack sx={{marginTop:2}} spacing={2}>
 
       <Pagination count={countPage} page={page} onChange={handleChange} />
+      
     </Stack>
   );
 }

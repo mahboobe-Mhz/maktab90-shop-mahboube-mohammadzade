@@ -7,22 +7,27 @@ import BasicOrderTable from "./dataTable";
 import PaginationControlled from "../../pagination";
 import axios from "axios";
 import useGetPaginationOrders from "../../../api/services/products/useGetAllpaginatonOrders";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ShowTableBox = () => {
   const [page, setPage] = React.useState(1);
   const [filter,setFilter]=React.useState("");
-  const { data, isLoading, refetch } = useGetPaginationOrders(page,4,filter);
+  const { data, isLoading, refetch , isError} = useGetPaginationOrders(page,4,filter);
   const [countPage, setCountPage] = React.useState<number>();
+
 
   React.useEffect(() => {
     const req = axios.get(`http://localhost:8000/api/orders`);
     req.then((res) => {
-      const lengthCat = res.data.data.products.length / 4 +0.26;     
+      const lengthCat = (res.data.data.orders.length) / 4 +0.26;     
       const correctNum = Number((lengthCat).toFixed())    
       setCountPage(correctNum);
     });
-
+    if(isError){
+      toast.error('خطایی روی داده دوباره تلاش کنید', {
+        position: "top-right" });
+    }
   }, []);
   React.useEffect(()=>{
     console.log('refetch');
@@ -36,7 +41,7 @@ const ShowTableBox = () => {
     setPage(1)
     const req = axios.get(`http://localhost:8000/api/orders`);
     req.then((res) => {
-      const lengthCat = res.data.data.products.length / 4 +0.26;     
+      const lengthCat = res.data.data.orders.length / 4 +0.26;     
       const correctNum = Number((lengthCat).toFixed())    
       setCountPage(correctNum);
     })
@@ -47,7 +52,7 @@ const ShowTableBox = () => {
     setFilter("price=0")
     const req = axios.get(`http://localhost:8000/api/orders?price=0`);
     req.then((res) => {
-      const lengthCat = res.data.data.products.length / 4 +0.26;     
+      const lengthCat = res.data.data.orders.length / 4 +0.26;     
       const correctNum = Number((lengthCat).toFixed())    
       setCountPage(correctNum);
     })  
@@ -58,7 +63,7 @@ const ShowTableBox = () => {
     setFilter("deliveryStatus=false")
     const req = axios.get(`http://localhost:8000/api/orders?deliveryStatus=false`);
     req.then((res) => {
-      const lengthCat = res.data.data.products.length / 4 +0.26;     
+      const lengthCat = res.data.data.orders.length / 4 +0.26;     
       const correctNum = Number((lengthCat).toFixed())    
       setCountPage(correctNum);
     })  
@@ -81,6 +86,7 @@ const ShowTableBox = () => {
 
   return (
     <Box sx={{ height: "90%" }}>
+              <ToastContainer />
       <Box
         sx={{
           display: "flex",

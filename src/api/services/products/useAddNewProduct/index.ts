@@ -8,6 +8,7 @@ const useAddNewProduct = (options:UseMutationOptions<AddNewProductType['payload'
         ...options,
         mutationFn:addNewProductService
     })
+    
 }
  
 export default useAddNewProduct;

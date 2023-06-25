@@ -7,7 +7,7 @@ import axios from "axios";
 import useGetPaginationCategory from "../../../api/services/products/usePaginationCategory";
 
 const ShowTableBox = () => {
-    const [dataList, setDataList] = React.useState();
+
     const [page, setPage] = React.useState(1)
     const [countPage , setCountPage]=React.useState(1)
     
@@ -21,14 +21,10 @@ const ShowTableBox = () => {
                 setCountPage(correctNum)
             })
           
-        },[data])
-        setTimeout(() => {
+        },[])
+        React.useEffect(()=>{
             refetch()
-           !isLoading && setDataList(data.data.categories)
-        }, 100);
-   
-      
-        
+        },[page])
 
     return ( <>
     <Box sx={{display:"flex", justifyContent:"space-between", bgcolor:"#ffff", alignItems:"center", paddingX:"20px", paddingY:"5px", borderRadius:"20px"}}>
@@ -42,7 +38,7 @@ const ShowTableBox = () => {
        
              <Box sx={{marginTop:2}}>
             {isLoading ? <div> loading...</div> :       
-               <BasicCategoryTable rows={dataList || data.data.categories} />} 
+               <BasicCategoryTable rows={data.data.categories} />} 
                 <PaginationControlled 
           setPage={setPage}
           page={page}

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { boolean } from "yup";
 
 export interface CounterState {
   BreadCrumb: string;
@@ -7,7 +8,7 @@ export interface CounterState {
   isEdit:boolean
   selectEditData:[]
   notModal:boolean
-
+  errorMessage:boolean
 
 }
 
@@ -18,7 +19,7 @@ const initialState: CounterState = {
   isEdit:false,
   selectEditData:[],
   notModal:false,
-
+  errorMessage:false
 };
 
 export const AppSlice = createSlice({
@@ -38,11 +39,13 @@ export const AppSlice = createSlice({
       state.isEdit =action.payload.isEdit
     },  setNotMOdal: (state, action) => {
       state.notModal =action.payload.notModal
+    },  setErrorMessage: (state, action) => {
+      state.errorMessage =action.payload.errorMessage
     }
   
   }
 });
-export const { addBreadCrumb ,setModal,setProductsModal,setEditData,setIsEditing,setNotMOdal} = AppSlice.actions;
+export const { addBreadCrumb ,setModal,setProductsModal,setEditData,setIsEditing,setNotMOdal,setErrorMessage} = AppSlice.actions;
 
 export const storeAppState = (state: any) => state.storeState;
 

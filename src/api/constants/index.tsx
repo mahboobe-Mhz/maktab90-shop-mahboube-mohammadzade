@@ -1,6 +1,7 @@
 import axios from "axios";
 import Cookies from "universal-cookie";
 
+
 const baseURL = 'http://127.0.0.1:8000/api';
 const cookies = new Cookies();
 export const instance = axios.create({
@@ -17,6 +18,7 @@ instance.interceptors.request.use((config) => {
   });
   
   instance.interceptors.response.use(
+
     (response) => {
       return response;
     },
@@ -24,9 +26,10 @@ instance.interceptors.request.use((config) => {
     // 401
   
     (error) => {
-      const config = error.config;
-      console.log("config", config.response)
+      const config = error;
+      console.log("config", config.message)
       if (error.response.status === 401 && !config.sent) {
+
         config.sent = true;
         if (config.url !==  "/auth/token" && config.url !== "/auth/login") {
           const refreshToken = cookies.get("refreshToken")
@@ -49,6 +52,9 @@ instance.interceptors.request.use((config) => {
           cookies.remove("refreshToken");
           location.href = "auth/login";
         }
+      }else if (error.response.status === 400 && !config.sent){
+        console.log(error.response.status );
+  
       }
     }
   );

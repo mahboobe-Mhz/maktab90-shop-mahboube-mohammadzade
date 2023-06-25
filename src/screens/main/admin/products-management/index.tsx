@@ -8,10 +8,12 @@ import { storeAppState } from "../../../../redux/slice/appSlice";
 const ProductsManagement = () => {
   const AppState = useSelector(storeAppState);
 
+
   const name = AppState.BreadCrumb;
 
   return (
     <Box sx={{ display: "flex", direction: "rtl", height: "100%", width:"100%" }}>
+
       <Box>
         <SideBar />
       </Box>

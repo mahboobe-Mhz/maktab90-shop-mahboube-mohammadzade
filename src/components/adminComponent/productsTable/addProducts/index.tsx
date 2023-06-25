@@ -9,11 +9,12 @@ import CatSidebar from './catSidebar';
 import { Products } from '../../../../api/interface/products';
 import useAddNewProduct from '../../../../api/services/products/useAddNewProduct';
 import { useDispatch, useSelector } from 'react-redux';
-import {setIsEditing, storeAppState } from '../../../../redux/slice/appSlice';
+import {setErrorMessage, setIsEditing, storeAppState } from '../../../../redux/slice/appSlice';
 import { instance } from '../../../../api/constants';
 import { useNavigate } from 'react-router';
 import { routes } from '../../../../routes';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 const AddProducts = () => {
     const dispatch= useDispatch()
     const navigate= useNavigate()
@@ -31,8 +32,12 @@ const AddProducts = () => {
         subcategory:""
     })
 
-    const {mutate} = useAddNewProduct({})
+    const {mutate,isError,isSuccess,status} = useAddNewProduct({})
+
     const ProductsData=new FormData()
+ 
+
+ 
   
       const {
         register,
@@ -60,6 +65,7 @@ const AddProducts = () => {
          
     const onSubmit =(data:any)=>{
         console.log(data);
+        console.log(isError);
         
         if(appState.isEdit){
             for(let i= 0; i<formValue.images.length; i++){
@@ -91,6 +97,9 @@ const AddProducts = () => {
         ProductsData.append('subcategory',formValue.subcategory)
         ProductsData.append('brand',formValue.brand)
         mutate(ProductsData)
+        dispatch(setErrorMessage({errorMessage:isError}))
+            console.log(isSuccess);
+            console.log(status);
         }
 
 

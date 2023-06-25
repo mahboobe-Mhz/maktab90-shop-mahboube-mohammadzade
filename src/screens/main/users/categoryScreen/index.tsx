@@ -33,7 +33,8 @@ axios.get(`http://localhost:8000/api/subcategories?category=${catId}`).then(res=
          <MainHeader />
          <div className="mx-2">
          <div className="mt-5 relative">
-    <img width="100%" className="rounded-3xl h-[200px]" src={`http://localhost:8000/images/categories/icons/${selectCategory.icon}`}/> 
+
+    <img width="100%" className="rounded-3xl h-[200px]" src='picture\صندلی.jpg'/> 
     <h1 className="absolute z-10 bottom-20 left-3 text-2xl font-bold text-secondary ">{selectCategory.name}</h1>
          </div>
 

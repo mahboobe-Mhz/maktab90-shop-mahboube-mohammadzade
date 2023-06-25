@@ -5,7 +5,7 @@ import MainHeader from "../../../../components/userComponent/layoutHeader";
 import MainFooter from "../../../../components/userComponent/mainFooter";
 
 const Home = () => {
-    return ( <div className="w-[100%] flex flex-col  gap-10">
+    return ( <div className="w-[100%] flex flex-col  gap-10 " dir="rtl">
         <MainHeader />
     <TopOfHome/>
     <SearchProducts/>

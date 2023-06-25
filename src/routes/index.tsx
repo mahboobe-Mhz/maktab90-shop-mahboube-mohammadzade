@@ -72,10 +72,10 @@ export const routes = {
   },
   USERS: {
     shopping: "/",
-    ShowProducts:'/products',
-    filterCat:"/products/:id",
+    ShowProducts:'/category',
+    filterCat:"/category/:id",
     single: `/product/:id`,
-    cart: "cart",
+    cart: "/cart",
     checkout: "/cart/checkout",
   },
 };
@@ -93,7 +93,6 @@ export const router = createBrowserRouter([
 
       },{
         path: routes.USERS.ShowProducts,
-      
         children:[
           {
             path: routes.USERS.filterCat,
@@ -121,14 +120,16 @@ export const router = createBrowserRouter([
     
       {
         path: routes.USERS.cart,
-        element:
-          userRol?.role === "USER" ? (
-            <SuspenseView>
-              <Cart />
-            </SuspenseView>
-          ) : (
-            <Navigate to={"/"} />
-          ),
+        element:(<SuspenseView>   
+          <Cart />
+        </SuspenseView>),
+          // userRol?.role === "USER" ? (
+          //   <SuspenseView>
+          //     <Cart />
+          //   </SuspenseView>
+          // ) : (
+          //   <Navigate to={"/"} />
+          // ),
         children: [
           {
             path: routes.USERS.checkout,

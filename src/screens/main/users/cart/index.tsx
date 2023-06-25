@@ -7,8 +7,8 @@ const Cart = () => {
                <MainHeader />
                <div className="p-10">
                 <h1 className="text-3xl font-bold mb-10">سبد خرید</h1>
-                <div className=" flex gap-4 mb-10">
-                    <div className="border rounded-2xl border-black w-[70%]">
+                <div className=" md:flex gap-4 mb-10 ">
+                    <div className="border rounded-2xl border-black md:w-[70%]">
                         <div className="p-4 space-y-5">
                             <div className="flex justify-between border-b border-black pb-3 px-4"> 
                                 <span className="font-semibold">محصول</span>
@@ -20,7 +20,7 @@ const Cart = () => {
                                
                             </div>
                             <div className="flex justify-between border-b border-black pb-3 px-4 w-full"> 
-                           <div className="flex w-[40%]">
+                           <div className="flex md:w-[40%]">
                            <img className="border rounded-2xl " width={80} height={80} src="/picture/تخت.jpg"/>
                                 <div className="flex flex-col pr-3">
                                     <span className="font-bold">تخت کودک</span>
@@ -28,7 +28,7 @@ const Cart = () => {
                                     <span className="text-xs"> تک نفره</span>
                                 </div>
                            </div>
-                           <div className="flex justify-around w-[60%] mt-4">
+                           <div className="flex justify-around md:w-[60%] mt-4">
                               <span className=" border border-black px-2 h-8 rounded-full w-[100px]">
                               <span className="mx-1  text-xl "> + </span>
                                <span className="mx-1   "> 2</span>

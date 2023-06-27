@@ -2,6 +2,7 @@
 @import url('/src/style/sidebarStyle.css');
 @import url('/src/style/adminMainPart.css');
 @import url('/src/style/groupProduct.css');
+@import url('/src/style/radioInput.css');
 
 
 @tailwind base;

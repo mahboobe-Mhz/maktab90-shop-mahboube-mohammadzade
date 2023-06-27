@@ -1,7 +1,7 @@
 export interface Products{
     name?:string
         price?:string
-        quantity?:string
+        quantity?:number
         brand?:string
         description?:string
         thumbnail?:[]

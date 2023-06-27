@@ -8,16 +8,21 @@ import store from './redux/store';
 import { ThemeProvider } from '@emotion/react';
 import { Theme } from './theme';
 import './index.css'
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
+const persistor =persistStore(store)
+
 const queryClient = new QueryClient();
 function App() {
-
-
   return (
     <>
       <Provider store={store}> 
      <ThemeProvider theme={Theme}>
      <QueryClientProvider client={queryClient}>
-   <RouterProvider router={router}/>
+      <PersistGate  persistor={persistor}>
+      <RouterProvider router={router}/>
+      </PersistGate>
+ 
  
    </QueryClientProvider>
    </ThemeProvider>

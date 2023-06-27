@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
-import { Navigation, Pagination, A11y } from 'swiper';
+import { Navigation, Pagination, A11y ,Autoplay} from 'swiper';
 import 'swiper/swiper-bundle.min.css';
 import useGetPaginationProducts from '../../../../api/services/products/usePaginationProducts';
 import { useState } from 'react';
@@ -17,24 +17,30 @@ const ProductsSlider = () => {
   navigate(`/product/${event.currentTarget.id}_${event.currentTarget.dataset.user}`)
  }
     return (
-    <div className='w-[80%]  ' >
+    <div className='w-[80%] mt-10 ' >
        <Swiper
         spaceBetween={2}
         slidesPerView={4}
-        modules={[Navigation, Pagination, A11y]}
+
+
        // navigation
-       pagination={{ clickable: true }}
+      // pagination={{ clickable: true }}
       // scrollbar={{ draggable: true }}
-   
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
+      modules={[Navigation, Pagination, A11y,Autoplay]}
       >    
         {!isLoading && value.map((product:any, index:number)=>
           <SwiperSlide id={product._id} data-user={product.slugname}   onClick={showSingleProduct}>
-          <div className='flex flex-col items-center'>
-        {index%2==0 ?  <img  className='h-[280px]  w-[200px] border rounded-3xl'  src={`http://localhost:8000/images/products/images/${product.images?.[0]}`}/>: <img  className='h-[200px]  w-[200px] border rounded-3xl'  src={`http://localhost:8000/images/products/images/${product.images?.[0]}`}/>} 
-          <div className='flex flex-col items-center gap-2'>
-              <span className='font-semibold'> {product.name}  </span>
+          <div className='flex flex-col items-center '>
+        {index%2==0 ?  <img  className='h-[280px]  w-[300px] shadow-lg border rounded-3xl ' width={150}  src={`http://localhost:8000/images/products/images/${product.images?.[0]}`}/>:
+         <img  className='h-[200px]  w-[200px] border shadow-lg rounded-3xl'  src={`http://localhost:8000/images/products/images/${product.images?.[0]}`}/>} 
+          <div className='flex flex-col mt-3 items-center gap-2'>
+              <span className='font-semibold w-40 text-center'> {product.name}  </span>
               <div className='flex gap-5'>
-              <s className='text-sm text-gray-400'>851000 تومان</s>
+          
               <span className='text-sm'>{product.price}تومان</span>
               </div>
               
@@ -42,7 +48,7 @@ const ProductsSlider = () => {
           </div>
         </SwiperSlide>
         )}
-  
+
       </Swiper>
     
     </div>

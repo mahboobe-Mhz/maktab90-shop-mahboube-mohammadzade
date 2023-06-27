@@ -5,7 +5,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import {Paper,Box} from '@mui/material';
+import {Paper,Box, Typography} from '@mui/material';
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import { useNavigate } from 'react-router';
@@ -104,7 +104,13 @@ const deleteItem=()=>{
               <TableCell align="center">{row.name}</TableCell>
               <TableCell align="center">{row.price}</TableCell>
               <TableCell align="center">{row.quantity}</TableCell>
-              <TableCell align="center">{row.description}</TableCell>
+              <TableCell  align="center">
+                <Typography sx={{width:"400px",height:"50px",overflow:"hidden"}}>
+                {row.description}
+                </Typography>
+           
+                
+                </TableCell>
               <TableCell align="center">   <Box>
                     <DeleteOutlineOutlinedIcon
                        id={row._id}

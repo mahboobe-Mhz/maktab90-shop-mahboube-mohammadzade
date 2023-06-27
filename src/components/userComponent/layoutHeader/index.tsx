@@ -20,6 +20,9 @@ const MainHeader = () => {
   const navigateCart=()=>{
     navigate('/cart')
   }
+  const navigateUserLogin=()=>{
+    navigate('/login')
+  }
     return ( 
  
       <div className="grid grid-cols-2 md:grid-cols-3 direction pt-2 border-b shadow-md border-black">
@@ -50,7 +53,7 @@ const MainHeader = () => {
 </div>
          
           <img className=""  width={20} src="/icons/icon-03.svg"></img>
-          <img className=""  width={20} src="/icons/icon-01.svg"></img>
+          <img onClick={navigateUserLogin} className=""  width={20} src="/icons/icon-01.svg"></img>
           </div>
           <div>
     

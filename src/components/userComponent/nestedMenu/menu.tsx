@@ -29,7 +29,7 @@ const DropDownMenu = () => {
   setAnchorEl(null)
 
  // navigate(`/products/${event.currentTarget.dataset.user}`)
- navigate(`/category/${event.currentTarget.id}_${event.currentTarget.dataset.user}`)
+ navigate(`/category/${event.currentTarget.id}_${event.currentTarget.dataset.user}_page_1`)
 
  }
 

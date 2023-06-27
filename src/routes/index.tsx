@@ -3,10 +3,7 @@ import { SuspenseView } from "./components/suspense";
 import React, { Suspense } from "react";
 import Cookies from "universal-cookie";
 
-
-const Home = React.lazy(
-  () => import("../screens/main/users/home")
-);
+const Home = React.lazy(() => import("../screens/main/users/home"));
 const ShowSingleProduct = React.lazy(
   () => import("../screens/main/users/show-single-product")
 );
@@ -19,7 +16,9 @@ const ProductsManagement = React.lazy(
 const OrdersManagement = React.lazy(
   () => import("../components/adminComponent/orderTable")
 );
-const LoginScreen = React.lazy(() => import("../screens/auth/login"));
+const LoginScreen = React.lazy(
+  () => import("../screens/auth/login/adminLogin/adminLogin")
+);
 const MainAdminPage = React.lazy(
   () => import("../screens/main/admin/mainPage")
 );
@@ -50,8 +49,12 @@ const AddProducts = React.lazy(
 const CategoryScreen = React.lazy(
   () => import("../screens/main/users/categoryScreen")
 );
-const ErrorPage= React.lazy(
-  () => import("../screens/main/404")
+const SubCategoryScreen = React.lazy(
+  () => import("../screens/main/users/subCategoryScreen")
+);
+const ErrorPage = React.lazy(() => import("../screens/main/404"));
+const LoginUserPage = React.lazy(
+  () => import("../screens/auth/login/userLogin/index")
 );
 
 const cookies = new Cookies();
@@ -68,90 +71,99 @@ export const routes = {
     reports: "/admin/control/reports",
     discount: "/admin/control/discounts",
     price: "/admin/control/price",
-    addProduct:"/admin/control/addProduct",
+    addProduct: "/admin/control/addProduct",
   },
   USERS: {
     shopping: "/",
-    ShowProducts:'/category',
-    filterCat:"/category/:id",
+    ShowProducts: "/category",
+    filterCat: "/category/:id",
     single: `/product/:id`,
     cart: "/cart",
-    checkout: "/cart/checkout",
+    checkout: "/checkout",
+    showSubCat: "/subCategory",
+    showSubCatProducts: "/subCategory:id",
+    login: "/login",
   },
 };
 const user = cookies.get("user");
 const userRol = user || {};
 export const router = createBrowserRouter([
- 
+  {
+    path: routes.USERS.shopping,
+    element: (
+      <SuspenseView>
+        <Home />
+      </SuspenseView>
+    ),
+  },
+  {
+    path: routes.USERS.ShowProducts,
+    children: [
       {
-        path: routes.USERS.shopping,
+        path: routes.USERS.filterCat,
         element: (
           <SuspenseView>
-            <Home />
+            <CategoryScreen />
           </SuspenseView>
         ),
-
-      },{
-        path: routes.USERS.ShowProducts,
-        children:[
-          {
-            path: routes.USERS.filterCat,
-            element: (
-              <SuspenseView>
-                <CategoryScreen />
-              </SuspenseView>
-            ),
-          }, 
-        ]
-      }, {
-        path: '/product',
-        children:[
-          {
-            path: routes.USERS.single,
-            element: (
-              <SuspenseView>
-                <ShowSingleProduct />
-              </SuspenseView>
-            ),
-          },
-        ]
       },
-    
-    
+    ],
+  },
+  {
+    path: routes.USERS.showSubCat,
+    children: [
       {
-        path: routes.USERS.cart,
-        element:(<SuspenseView>   
-          <Cart />
-        </SuspenseView>),
-          // userRol?.role === "USER" ? (
-          //   <SuspenseView>
-          //     <Cart />
-          //   </SuspenseView>
-          // ) : (
-          //   <Navigate to={"/"} />
-          // ),
-        children: [
-          {
-            path: routes.USERS.checkout,
-            element: (
-              <SuspenseView>
-                <Checkout />
-              </SuspenseView>
-            ),
-          },
-        ],
+        path: routes.USERS.showSubCatProducts,
+        element: (
+          <SuspenseView>
+            <SubCategoryScreen />
+          </SuspenseView>
+        ),
       },
-    
-  
+    ],
+  },
+  {
+    path: "/product",
+    children: [
+      {
+        path: routes.USERS.single,
+        element: (
+          <SuspenseView>
+            <ShowSingleProduct />
+          </SuspenseView>
+        ),
+      },
+    ],
+  },
+
+  {
+    path: routes.USERS.cart,
+    element:
+    userRol?.role === "USER" ? (
+      <SuspenseView>
+        <Cart />
+      </SuspenseView>
+    ) : (
+      <Navigate to={"/login"} />
+    ),
+  },
+  {
+    path: routes.USERS.checkout,
+    element: (
+      <SuspenseView>
+        <Checkout />
+      </SuspenseView>
+    ),
+  },
 
   {
     path: "/admin",
     element: <AdminLayout />,
-      // userRol?.role === "ADMIN" ? (
-      //   <AdminLayout />
-      // ) : (
-      //   <Navigate to={routes.ADMIN.login} />
-      // ),
+    // userRol?.role === "ADMIN" ? (
+    //   <AdminLayout />
+    // ) : (
+    //   <Navigate to={routes.ADMIN.login} />
+    // ),
     children: [
       {
         path: routes.ADMIN.login,
@@ -236,7 +248,8 @@ export const router = createBrowserRouter([
                 <Discounts />
               </SuspenseView>
             ),
-          },{
+          },
+          {
             path: routes.ADMIN.addProduct,
             element: (
               <SuspenseView>
@@ -247,8 +260,17 @@ export const router = createBrowserRouter([
         ],
       },
     ],
-  },{
+  },
+  {
     path: "*",
     element: <ErrorPage />,
-  }
+  },
+  {
+    path: routes.USERS.login,
+    element: (
+      <SuspenseView>
+        <LoginUserPage />
+      </SuspenseView>
+    ),
+  },
 ]);

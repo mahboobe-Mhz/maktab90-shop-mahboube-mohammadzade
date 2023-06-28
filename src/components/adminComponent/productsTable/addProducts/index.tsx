@@ -1,4 +1,4 @@
-import {Box ,Typography,Button} from '@mui/material'
+import {Box ,Typography,Button, TextField} from '@mui/material'
 import {useState,useEffect} from 'react'
 import AddPic from './addPic';
 import AddData from './addName';
@@ -15,11 +15,16 @@ import { useNavigate } from 'react-router';
 import { routes } from '../../../../routes';
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
+import SubCatSide from './subCatSide';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 const AddProducts = () => {
     const dispatch= useDispatch()
     const navigate= useNavigate()
     const appState = useSelector(storeAppState);
     const [resetForm,setResetForm]=useState(false)
+
+    const [subData , setSubData]=useState()
     const [formValue ,setFormValue]=useState({
         name:"",
         price:"",
@@ -36,18 +41,22 @@ const AddProducts = () => {
 
     const ProductsData=new FormData()
  
+    const schema = yup.object({
+        price: yup.number(),
+        quantity: yup.number(),
 
+      })
  
   
       const {
-        register,
-        getValues,
+        register, 
         control,
         handleSubmit,
         formState: { errors },
-        watch,
       setValue
-      } = useForm()
+      } = useForm({
+        resolver: yupResolver(schema)
+      })
 
         useEffect(()=>{
             if(appState.isEdit){        
@@ -58,26 +67,23 @@ const AddProducts = () => {
                setValue("images",appState.selectEditData.images) 
                setValue("thumbnail",appState.selectEditData.thumbnail) 
                setValue("category",appState.selectEditData.category) 
-             
-
             }
         },[])
          
     const onSubmit =(data:any)=>{
         console.log(data);
-        console.log(isError);
         
         if(appState.isEdit){
             for(let i= 0; i<formValue.images.length; i++){
                 ProductsData.append('images',formValue.images[i])
             }
-            ProductsData.append('thumbnail',formValue.images[0])
+        
         ProductsData.append('description',appState.selectEditData.description)
         ProductsData.append('name',data.name)
         ProductsData.append('price',data.price)
         ProductsData.append('quantity',data.quantity)
-        ProductsData.append('category',appState.selectEditData.category._id)
-        ProductsData.append('subcategory',appState.selectEditData.subcategory._id)
+        ProductsData.append('category',data.category)
+        ProductsData.append('subcategory',data.subcategory)
         ProductsData.append('brand',appState.selectEditData.brand)   
         instance({ method:"PATCH", data:ProductsData, url:`/products/${appState.selectEditData._id}`})
         dispatch(setIsEditing({isEdit:false}))
@@ -93,13 +99,12 @@ const AddProducts = () => {
         ProductsData.append('name',data.name)
         ProductsData.append('price',data.price)
         ProductsData.append('quantity',data.quantity)
-        ProductsData.append('category',formValue.category)
-        ProductsData.append('subcategory',formValue.subcategory)
+        ProductsData.append('category',data.category)
+        ProductsData.append('subcategory',data.subcategory)
         ProductsData.append('brand',formValue.brand)
         mutate(ProductsData)
         dispatch(setErrorMessage({errorMessage:isError}))
-            console.log(isSuccess);
-            console.log(status);
+  
         }
 
 
@@ -128,13 +133,24 @@ const AddProducts = () => {
         </Box>
         <Box display={'flex'} gap={2} >
         <Box width={"70%"}>      
-    <AddPic setFormValue={setFormValue} watch={watch} formValue={formValue} resetForm={resetForm}  register={register} error={errors}/>
-    <AddData setFormValue={setFormValue} formValue={formValue}  resetForm={resetForm}  register={register} error={errors}/>   
-    <AddPrice setFormValue={setFormValue} formValue={formValue} resetForm={resetForm}  register={register} error={errors}/>
-    <InventoryProducts setFormValue={setFormValue} formValue={formValue}  resetForm={resetForm} register={register} error={errors} />
-    <ProductsSize setFormValue={setFormValue} formValue={formValue}  resetForm={resetForm}  register={register} error={errors}/>
+    <AddPic setFormValue={setFormValue}  formValue={formValue} resetForm={resetForm}  register={register} errors={errors}/>
+    <AddData setFormValue={setFormValue}  formValue={formValue}  resetForm={resetForm}  register={register} errors={errors}/>   
+    <AddPrice  resetForm={resetForm}  register={register} errors={errors}/>
+    <InventoryProducts   resetForm={resetForm} register={register} errors={errors} />
+    <ProductsSize  register={register} errors={errors}/>
     </Box>
-        <Box width={"30%"}><CatSidebar setFormValue={setFormValue} formValue={formValue} resetForm={resetForm} getValues={getValues} control={control} errors={errors} /></Box>
+        <Box width={"30%"}><CatSidebar  control={control} errors={errors} setSubData={setSubData} />
+        <SubCatSide subData={subData} 
+        resetForm={resetForm} errors={errors} control={control}/>
+        
+       <Box sx={{borderTop:"solid", borderColor:"secondary.light" ,bgcolor:"white",paddingY:"5px", borderRadius:"20px"}}>
+        <Box sx={{ paddingX:3 }}>
+        <Typography>برچسب</Typography>
+         <TextField sx={{color:"secondary.main"}} id="standard-basic" label="یک برچسب وارد کنید" variant="standard" />
+        </Box>
+       
+         </Box>
+        </Box>
         </Box>
 
 

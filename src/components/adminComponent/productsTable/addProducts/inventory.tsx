@@ -8,12 +8,12 @@ import { Products } from '../../../../api/interface/products';
 import { useSelector } from 'react-redux';
 import { storeAppState } from '../../../../redux/slice/appSlice';
 interface Props{
-  setFormValue:any
-  formValue:Products
+
   resetForm:any
   register:any
+  errors:any
 }
-const InventoryProducts = ({setFormValue,formValue,resetForm,register}:Props)=> {
+const InventoryProducts = ({resetForm,register,errors}:Props)=> {
     const [age, setAge] = React.useState('');
     const [quantity,setQuantity]= React.useState('')
     const appState = useSelector(storeAppState);
@@ -21,10 +21,7 @@ const InventoryProducts = ({setFormValue,formValue,resetForm,register}:Props)=> 
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value as string);   
   };
-  // const addInventory =(event:React.ChangeEvent<HTMLInputElement>)=>{
-  //   setQuantity(event.currentTarget.value)
-  //   setFormValue({...formValue ,quantity:quantity})
-  // }
+
   React.useEffect(()=>{
     setQuantity("")
 },[resetForm])
@@ -56,8 +53,10 @@ const InventoryProducts = ({setFormValue,formValue,resetForm,register}:Props)=> 
     <MenuItem value={"استعلام قیمت"}> استعلام قیمت</MenuItem>
   </Select>
 </FormControl>
-
-<TextField id="standard-basic" name='quantity'  {...register("quantity")}    label="تعداد کالا" variant="standard" />
+<Box>
+<TextField id="standard-basic"  {...register("quantity",{required:true})}   label="تعداد کالا" variant="standard" />
+{errors.quantity?.type === 'required' && <p style={{color:'red',fontSize:"10px"}} role="alert">تعداد محصول را وارد کنید</p>}
+</Box>
 <TextField id="standard-basic" label="بارکد" variant="standard" />
 <TextField id="standard-basic" label="وزن" variant="standard" />
 <Typography sx={{alignSelf:"center" ,marginTop:2}}>kg</Typography>

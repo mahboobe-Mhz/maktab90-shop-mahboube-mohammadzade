@@ -6,7 +6,7 @@ import useLoginUsers from "./useLogin";
 const UserLogin = () => {
   const navigate = useNavigate();
   const naivgateHome = () => {
-    navigate("/home");
+    navigate("/");
   };
   const { handleLoginUser, register, handleSubmit, errors } = useLoginUsers();
   return (

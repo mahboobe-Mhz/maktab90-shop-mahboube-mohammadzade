@@ -5,8 +5,18 @@ import { routes } from "../../../routes";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import SearchBox from "../../kit/searchBox";
+import { useSelector } from "react-redux";
+import { storeAppState } from "../../../redux/slice/appSlice";
+import Cookies from "universal-cookie";
+import UserInfo from "../userInfo";
 const MainHeader = () => {
   const navigate = useNavigate();
+  const appState = useSelector(storeAppState);
+  const cookies = new Cookies();
+  const user = cookies.get("user");
+console.log(user);
+
+  
   const[state,setState]=useState(false)
   const navigateAdmin =()=>{
     setTimeout(() => {
@@ -20,9 +30,8 @@ const MainHeader = () => {
   const navigateCart=()=>{
     navigate('/cart')
   }
-  const navigateUserLogin=()=>{
-    navigate('/login')
-  }
+
+
     return ( 
  
       <div className="grid grid-cols-2 md:grid-cols-3 direction pt-2 border-b shadow-md border-black">
@@ -51,9 +60,17 @@ const MainHeader = () => {
         onMouseOver={()=>setState(true)}
           width={20} src="/icons/icon-04.svg"></img>}
 </div>
-         
-          <img className=""  width={20} src="/icons/icon-03.svg"></img>
-          <img onClick={navigateUserLogin} className=""  width={20} src="/icons/icon-01.svg"></img>
+         <span onClick={navigateCart} className="mt-3 relative">
+          {user?.role==="USER"?<span className="absolute bottom-8 right-3 bg-secondary rounded-full
+           text-white px-[5px] text-xs pb-[6px] h-4">{appState.OrderData.length}</span>: <span></span>}
+          
+         <img className=""  width={20} src="/icons/icon-03.svg"></img>
+         </span>
+
+      <UserInfo/>
+        
+
+       
           </div>
           <div>
     

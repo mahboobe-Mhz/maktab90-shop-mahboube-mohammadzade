@@ -55,6 +55,12 @@ const SubCategoryScreen = React.lazy(
 const ErrorPage = React.lazy(() => import("../screens/main/404"));
 const LoginUserPage = React.lazy(
   () => import("../screens/auth/login/userLogin/index")
+);const PaymentPage = React.lazy(
+  () => import("../screens/main/users/payment")
+);const SuccessPaymentPage = React.lazy(
+  () => import("../screens/main/users/successPayment")
+);const UnSuccessPaymentPage = React.lazy(
+  () => import("../screens/main/users/unsuccessPayment")
 );
 
 const cookies = new Cookies();
@@ -74,7 +80,7 @@ export const routes = {
     addProduct: "/admin/control/addProduct",
   },
   USERS: {
-    shopping: "/",
+    home: "/",
     ShowProducts: "/category",
     filterCat: "/category/:id",
     single: `/product/:id`,
@@ -83,13 +89,18 @@ export const routes = {
     showSubCat: "/subCategory",
     showSubCatProducts: "/subCategory:id",
     login: "/login",
+    payment:"/payment",
+    successPaymen:"/successPaymen",
+    unSuccessPayment:"/unSuccessPayment"
   },
 };
 const user = cookies.get("user");
 const userRol = user || {};
+console.log(userRol);
+
 export const router = createBrowserRouter([
   {
-    path: routes.USERS.shopping,
+    path: routes.USERS.home,
     element: (
       <SuspenseView>
         <Home />
@@ -139,10 +150,11 @@ export const router = createBrowserRouter([
   {
     path: routes.USERS.cart,
     element:
-    userRol?.role === "USER" ? (
+    userRol?.role == "USER"? (
       <SuspenseView>
-        <Cart />
-      </SuspenseView>
+        <Cart/>
+        </SuspenseView>
+
     ) : (
       <Navigate to={"/login"} />
     ),
@@ -158,16 +170,18 @@ export const router = createBrowserRouter([
 
   {
     path: "/admin",
-    element: <AdminLayout />,
-    // userRol?.role === "ADMIN" ? (
-    //   <AdminLayout />
-    // ) : (
-    //   <Navigate to={routes.ADMIN.login} />
-    // ),
+    element: 
+    userRol?.role == "ADMIN" ? (
+      <AdminLayout />
+    ) : (
+      <Navigate to={routes.ADMIN.login} />
+    ),
     children: [
       {
+    
         path: routes.ADMIN.login,
-        element: (
+        element: 
+        (
           <SuspenseView>
             <LoginScreen />
           </SuspenseView>
@@ -270,6 +284,27 @@ export const router = createBrowserRouter([
     element: (
       <SuspenseView>
         <LoginUserPage />
+      </SuspenseView>
+    ),
+  }, {
+    path: routes.USERS.payment,
+    element: (
+      <SuspenseView>
+        <PaymentPage/>
+      </SuspenseView>
+    ),
+  },{
+    path: routes.USERS.successPaymen,
+    element: (
+      <SuspenseView>
+        <SuccessPaymentPage/>
+      </SuspenseView>
+    ),
+  },{
+    path: routes.USERS.unSuccessPayment,
+    element: (
+      <SuspenseView>
+        <UnSuccessPaymentPage/>
       </SuspenseView>
     ),
   },

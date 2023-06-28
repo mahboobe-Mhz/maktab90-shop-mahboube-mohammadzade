@@ -12,7 +12,7 @@ import { useState } from "react";
 import PaginationControlled from "../../pagination";
 import useGetPaginationProducts from "../../../api/services/products/usePaginationProducts";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { routes } from "../../../routes";
 import { useDispatch, useSelector } from "react-redux";
 import { setEditData, setIsEditing, storeAppState } from "../../../redux/slice/appSlice";
@@ -21,16 +21,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const ShowTableBox = () => {
   const AppState = useSelector(storeAppState);
-
   const [filter,setFilter]=React.useState("");
   const [page, setPage] = React.useState(1);
   const [countPage, setCountPage] = React.useState<number>();
   const { data, isLoading, refetch ,isError} = useGetPaginationProducts(page, 4,filter);
-
-  
   const navigate= useNavigate()
   const dispatch = useDispatch()
-
+  const useParam=useParams()
 
   //first render
   React.useEffect(() => {
@@ -44,18 +41,18 @@ const ShowTableBox = () => {
       toast.error('خطایی روی داده دوباره تلاش کنید', {
         position: "top-right" });
     }
-    console.log(AppState.errorMessage);
+
     
   }, [data]);
 
   //for pagination-
   React.useEffect(()=>{
-    console.log('refetch');
+
     setTimeout(() => {
       refetch()  
     }, 100);
     
-  },[page,filter])
+  },[page,filter,useParam])
 
 //filter
   const quantityFun = () => {

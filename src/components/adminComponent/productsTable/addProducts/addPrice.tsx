@@ -5,22 +5,19 @@ import { Products } from '../../../../api/interface/products';
 import { useSelector } from 'react-redux';
 import { storeAppState } from '../../../../redux/slice/appSlice';
 interface Props{
-    setFormValue:any
-    formValue:Products
+  
     resetForm:any
     register:any
+    errors:any
 }
 
-const AddPrice = ({setFormValue,formValue,resetForm,register}:Props) => {
+const AddPrice = ({resetForm,register,errors}:Props) => {
     const [checked, setChecked] = useState(false);
     const [price, setPrice] = useState(0);
     const [discount, setDiscount] = useState(0);
     const [discountPrice, setDiscountPrice] = useState<number>();
     const appState = useSelector(storeAppState);
-    const handleSetValue =(e:any)=>{
-        setPrice(e.currentTarget.value)
-        setFormValue({...formValue,price:price})
-    }
+  
     const showDiscountBox=(event:any)=>{
         setChecked(event.target.checked);    
     }
@@ -51,11 +48,12 @@ const AddPrice = ({setFormValue,formValue,resetForm,register}:Props) => {
       
      </Box> 
      <Box padding={1.5} display={"flex"} gap={2}>
+        <Box sx={{display:"flex", flexDirection:"column"}}>
         <Box display={"flex"} gap={2} >
-        <TextField dir={"ltr"} id="standard-basic" {...register("price")}   label="*قیمت" variant="standard" />
+        <TextField dir={"ltr"} id="standard-basic" {...register("price",{required:true})}   label="*قیمت" variant="standard" />
      <Typography marginTop={4}>تومان</Typography>
         </Box>
-    
+        {errors.price?.type === 'required' && <p style={{color:'red',fontSize:"10px"}} role="alert">قیمت محصول را وارد کنید</p>}</Box>
      <FormControlLabel sx={{marginTop:"25px"}} control={<Switch onChange={showDiscountBox} checked={checked}  color="secondary"/>} label="حراج" />       
      </Box>
      {checked &&

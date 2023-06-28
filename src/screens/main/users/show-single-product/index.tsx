@@ -28,10 +28,11 @@ const ShowSingleProduct = () => {
   const appState = useSelector(storeAppState);
   const[selectProduct,setSelectProduct]=useState({})
   const[orderCount,setOrderCount]=useState(0)
+  const[totalPrice,setTotalPrice]=useState()
   const orderInfo ={
     image:selectProduct.images,
     name:selectProduct.name,
-    price:selectProduct.price,
+    price:totalPrice,
     orderNUm:orderCount,
     quantity:selectProduct.quantity
   }
@@ -42,7 +43,9 @@ useEffect(()=>{
     axios.get(`http://localhost:8000/api/products/${productId}`).then(res=>{setSelectProduct(res.data.data.product)})
     
     },[useParam])
-
+useEffect(()=>{
+  setTotalPrice(selectProduct.price*orderCount)
+},[orderCount])
     
 const insertToCart =()=>{
   if(orderCount>0){
@@ -62,6 +65,7 @@ const insertToCart =()=>{
   })
   }
  }
+    console.log( Number(totalPrice).toLocaleString("fa-IR"));
     
     return ( 
     <div dir="rtl"> 
@@ -86,7 +90,7 @@ const insertToCart =()=>{
     <span className="border border-black rounded-full px-2 py-1">انتخاب ابعاد</span>
    </div>
     <div className="flex justify-between  ">
-      <span className="mt-2 font-semibold">  {   Number(selectProduct?.price).toLocaleString("fa-IR")}  تومان </span>
+      <span className="mt-2 font-semibold">  {   Number(totalPrice||selectProduct.price).toLocaleString("fa-IR")}  تومان </span>
 
   
       <div className="flex gap-10">

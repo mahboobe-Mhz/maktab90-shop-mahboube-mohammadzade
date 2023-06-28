@@ -3,15 +3,15 @@ import useLogin from "./useLogin";
 import { ToastContainer } from "react-toastify";
 
 
-const LoginScreen = () => {
+const AdminLoginScreen = () => {
   const navigate = useNavigate();
-  const naivgateHome=()=>{
-    navigate('/home')
+  const navigateHome=()=>{
+    navigate('/')
   }
    const { handleLoginUser, register, handleSubmit, errors } = useLogin();
     return (
       <div className="h-full w-full flex justify-center items-center">
-        <span onClick={naivgateHome} className="border p-1 border-gray-900 rounded-full fixed top-[90px] left-[50px]">
+        <span onClick={navigateHome} className="border p-1 border-gray-900 rounded-full fixed top-[90px] left-[50px]">
         <img width={20} src="/icons/icon-02.svg"></img>
         </span>
   
@@ -53,5 +53,5 @@ theme="light"
     );
   };
   
-  export default LoginScreen;
+  export default AdminLoginScreen;
   

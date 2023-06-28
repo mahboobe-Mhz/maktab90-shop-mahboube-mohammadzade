@@ -9,9 +9,12 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addBreadCrumb } from "../../../redux/slice/appSlice";
 import { routes } from "../../../routes";
+import LogoutIcon from '@mui/icons-material/Logout';
+import Cookies from "universal-cookie";
 const SideBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const cookies = new Cookies();
   return (
     <Box
       sx={{
@@ -94,6 +97,25 @@ const SideBar = () => {
           }}
         >
           <EqualizerIcon sx={{ width: "30px" }} /> گزارشات
+        </Button>
+        <Button
+          onClick={() => {
+        
+              navigate('/');
+              cookies.remove('user')
+              cookies.remove('refreshToken')
+              cookies.remove('accessToken')
+
+
+          }}
+          sx={{
+            color: "#ffff",
+            paddingY: "15px",
+            paddingLeft: "115px",
+            fontSize: "16px",
+          }}
+        >
+         <LogoutIcon sx={{paddingLeft:"3px"}}/> خروج از پنل ادمین
         </Button>
       </Box>
     </Box>

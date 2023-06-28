@@ -12,11 +12,11 @@ interface Props{
   formValue:any
   resetForm:any
   register:any
-  error:any
+  errors:any
 }
 
-const AddData = ({setFormValue,formValue, resetForm,register,error}:Props) => {
-  const [name , setName]=useState("")
+const AddData = ({setFormValue,formValue, resetForm,register,errors}:Props) => {
+  
   const [description, setDescription]=useState("")
   const dispatch = useDispatch();
   const appState = useSelector(storeAppState);
@@ -24,21 +24,9 @@ const AddData = ({setFormValue,formValue, resetForm,register,error}:Props) => {
       dispatch(setProductsModal({ModalInfoProducts: true })
       )
     }
-//  const addData=(event:React.ChangeEvent<HTMLInputElement>)=>{
-//   setName(event.currentTarget.value)
-//   setFormValue({...formValue,name:name})
-//  }
- useEffect(()=>{
-  setName("")
-  setDescription("")
-},[resetForm])
 
 
 
-// useEffect(()=>{
-//   setName(appState.selectEditData?.name)
-//  // setDescription(appState.selectEditData?.description)
-// },[appState.selectEditData])
 
     return (  
         <Box  sx={{
@@ -53,13 +41,18 @@ const AddData = ({setFormValue,formValue, resetForm,register,error}:Props) => {
      </Box>
         <Box sx={{borderBottom:"solid", borderColor:"secondary.light"}}>
         <Box dir="rtl" display={"flex"} justifyContent={"space-between"}  padding={1.5} >
-      <TextField {...register("name")}  type='text' dir={"rtl"} sx={{width:"60%"}} label="عنوان*" variant="standard"  />
+          <Box sx={{display:"flex",flexDirection:"column", width:"100%"}}>
+          <TextField {...register("name",{ required: true })}  type='text' dir={"rtl"} sx={{width:"60%"}} label="عنوان*" variant="standard"  />
+      {errors.name?.type === 'required' && <p style={{color:'red',fontSize:"10px"}} role="alert">نام محصول را وارد کنید</p>}
+          </Box>
+ 
       <TextField  sx={{width:"30%"}} label="روبان" variant="standard" helperText="به عنوان مثال: فروش ویژه" />
-      
+   
     </Box>
+
     <Box >
     <CKEditor 
-
+  
         editor={ClassicEditor} 
         data={description} 
         onChange={(event, editor) => { 

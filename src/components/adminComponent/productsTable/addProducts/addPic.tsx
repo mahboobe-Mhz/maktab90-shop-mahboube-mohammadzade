@@ -9,16 +9,18 @@ import { storeAppState } from '../../../../redux/slice/appSlice';
 
 interface Props{
     setFormValue:any
-    formValue:Products
+    formValue:any
     resetForm:any
     register:any
+    errors:any
 }
 
-const AddPic = ({setFormValue,formValue ,resetForm,register}:Props) => {  
+const AddPic = ({setFormValue,formValue ,resetForm,register,errors}:Props) => {  
     const [image , setImage]=useState([])
     const [showImage , setShowImage]=useState()
     const hiddenFileInput = useRef(null);
     const appState = useSelector(storeAppState);
+
 
 
     const handleClick = ()=> {
@@ -30,6 +32,7 @@ const AddPic = ({setFormValue,formValue ,resetForm,register}:Props) => {
             setShowImage(filesArray)         
             setImage(Array.from(event.target.files))     
                }
+            
     }
 
     useEffect(()=>{
@@ -60,7 +63,7 @@ useEffect(()=>{
 <Box sx={{padding:1.5}}>
     <Box sx={{ marginTop:"10px" , display:"flex", gap:"10px"}}>
         <div className='imageUpload' onClick={handleClick}>
-        <input onChange={handleImageSelect}  ref={hiddenFileInput} type='file' multiple >
+        <input onChange={handleImageSelect}      ref={hiddenFileInput} type='file' multiple >
         </input>
         <AddAPhotoIcon sx={{border:"solid", borderColor:"secondary.main", color:"secondary.main",width:100, height:100,padding:2}}/> 
         </div>
@@ -69,11 +72,13 @@ useEffect(()=>{
         {showImage && showImage.map((item:any)=><img key={item} src={item} width={100} />)
       } 
         </Box>
-     
+  
     </Box>
 
  </Box>
         <Box></Box>
+    
+       
     </Box > );
 }
  

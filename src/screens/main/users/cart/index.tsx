@@ -13,28 +13,19 @@ const Cart = () => {
     const navigate=useNavigate()
     const dispatch = useDispatch();
     const appState = useSelector(storeAppState);
-    const[orderCount,setOrderCount]=useState(appState.OrderData.orderNUm)
-    const[totalPayment,setTotalPayment]=useState<number>(0)
-    const PlusOrderHandle=()=>{
-        appState.OrderData.quantity > orderCount && setOrderCount(orderCount+1)
-        if(orderCount===appState.OrderData.quantity ){
-          toast.warning('بیشتر از این ندارم😊', {
-            position: toast.POSITION.TOP_RIGHT
-        })
-        }
-       }
+
+
 
 const handleDelete =(event:any)=>{
     const newAppState=appState.OrderData
     newAppState.splice(event.currentTarget.id,1) 
-    console.log(newAppState);
-
-        dispatch(setOrderData({OrderData:newAppState}))
-        console.log(appState.OrderData);
+     dispatch(setOrderData({OrderData:newAppState}))
+    
 }
-useEffect(()=>{
-    appState.OrderData.map((item:any)=>{setTotalPayment(totalPayment+Number(item.price))})
-},[])
+
+const result=appState.OrderData.reduce( ( sum:number, { price }:any ) => sum + price , 0)
+
+
 const handleCheckout =()=>{
     navigate( routes.USERS.checkout,)
 }
@@ -65,19 +56,16 @@ const handleCheckout =()=>{
                                 </div>
                            </div>
                            <div className="flex justify-around md:w-[60%] mt-4">
-                              <span className=" border border-black px-2 h-8 rounded-full w-[100px]">
-                              <span className="mx-1  text-xl hover:cursor-pointer" > + </span>
-                               <span className="mx-1 "> {item.orderNUm} </span>
-                               <span className="mx-1  text-xl hover:cursor-pointer " > -</span>
-                              </span>
-                                <span>{item.price} تومان</span>
+                           <span className="mx-1 "> {Number(item.orderNUm).toLocaleString("fa-IR")} </span>
+                            
+                                <span>{Number(item.price*item.orderNUm).toLocaleString("Fa-IR") }  تومان</span>
                                 <span id={index} onClick={handleDelete}><DeleteOutlineRoundedIcon/></span>
                             </div> 
                             </div>)}
                           
                         </div>
                     </div>
-                    <div className="border rounded-2xl border-black w-[30%]">
+                    <div className="border rounded-2xl border-black md:w-[30%]">
                     <div className="p-4">
                         <h3 className="font-semibold mb-5">جمع کل سبد خرید</h3>
                         <div className=" space-y-3 text-semibold">
@@ -87,7 +75,7 @@ const handleCheckout =()=>{
                             </div>
                             <div className="flex justify-between">
                                 <span>جمع جزء</span>
-                                <span>{totalPayment} تومان</span>
+                                <span>{Number(result).toLocaleString("Fa-IR") } تومان</span>
                             </div>
                             <div className="flex justify-between  border-b-2 pb-3 border-black ">
                                 <span> تخفیف (۱۰٪)</span>
@@ -95,7 +83,7 @@ const handleCheckout =()=>{
                             </div>
                             <div className="flex justify-between">
                                 <span> مجموع</span>
-                                <span>{totalPayment} تومان</span>
+                                <span>{Number(result).toLocaleString("Fa-IR") }  تومان</span>
                             </div >
                             <div className="pt-5 flex gap-1 ">
                             <span className="text-secondary   rounded-full text-xl">●</span>
@@ -110,7 +98,7 @@ const handleCheckout =()=>{
                     </div>
                     </div>
                 </div>
-              <MainButton title="بروز رسانی سبد خرید"/>
+
                </div>
                <MainFooter/>
     </div>);

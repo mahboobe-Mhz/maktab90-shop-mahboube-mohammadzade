@@ -1,27 +1,11 @@
 import {Box ,Typography,TextField} from '@mui/material'
-import * as React from 'react';
-import  { SelectChangeEvent } from '@mui/material/Select';
-import { Products } from '../../../../api/interface/products';
-import { useSelector } from 'react-redux';
-import { storeAppState } from '../../../../redux/slice/appSlice';
+
 interface Props{
-  setFormValue:any
-  formValue:Products
-  resetForm:any
+  errors:any
+
   register:any
 }
-const ProductsSize = ({setFormValue,formValue,resetForm,register}:Props)=> {
-  const [size, setSize]=React.useState("")
-  const appState = useSelector(storeAppState);
-// const addSize =(event:React.ChangeEvent<HTMLInputElement>)=>{
-//   setSize(event.currentTarget.value)
-//   setFormValue({...formValue,size:size})
-// }
-
-React.useEffect(()=>{
-  setSize("")
-},[resetForm])
-
+const ProductsSize = ({errors,register}:Props)=> {
 
 
     return (  <Box sx={{
@@ -32,7 +16,11 @@ React.useEffect(()=>{
         </Box>
         <Box padding={1.5}>
         <Box display={"flex"} gap={2} width={"100%"}>
-<TextField {...register("size")}  id="standard-basic" label="عرض " variant="standard" />
+          <Box sx={{display:"flex", flexDirection:"column"}}>
+          <TextField  id="standard-basic" label="عرض " variant="standard" />
+
+          </Box>
+      
 <Typography sx={{alignSelf:"center" ,marginTop:2}}>CM</Typography>
 <TextField id="standard-basic" label="ارتفاع" variant="standard" />
 <Typography sx={{alignSelf:"center" ,marginTop:2}}>CM</Typography>

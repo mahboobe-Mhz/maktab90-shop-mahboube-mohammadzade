@@ -10,7 +10,7 @@ export interface CounterState {
   notModal:boolean
   errorMessage:boolean
   OrderData:any
-
+  deliveryDate:string
 }
 
 const initialState: CounterState = {
@@ -22,7 +22,7 @@ const initialState: CounterState = {
   notModal:false,
   errorMessage:false,
   OrderData:[],
-
+  deliveryDate:""
 };
 
 export const AppSlice = createSlice({
@@ -46,13 +46,15 @@ export const AppSlice = createSlice({
       state.errorMessage =action.payload.errorMessage
     },  setOrderData: (state, action) => {
     state.OrderData=action.payload.OrderData
-    }
+    },  setDeliveryDate: (state, action) => {
+      state.deliveryDate=action.payload.deliveryDate
+      }
     
   
   
   }
 });
-export const { addBreadCrumb ,setModal,setProductsModal,setOrderData,setEditData,setIsEditing,setNotMOdal,setErrorMessage,setOrderProducts} = AppSlice.actions;
+export const { addBreadCrumb ,setModal,setProductsModal,setOrderData,setEditData,setIsEditing,setNotMOdal,setErrorMessage,setDeliveryDate} = AppSlice.actions;
 
 export const storeAppState = (state: any) => state.storeState;
 

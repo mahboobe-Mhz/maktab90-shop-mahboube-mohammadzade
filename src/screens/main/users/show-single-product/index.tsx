@@ -37,14 +37,14 @@ const ShowSingleProduct = () => {
     orderNUm:orderCount,
     quantity:selectProduct.quantity
   }
-  console.log(orderInfo);
+
   
 const useParam=useParams()
 const productId=useParam.id?.split("_")[0]
 useEffect(()=>{
 
     axios.get(`http://localhost:8000/api/products/${productId}`).then(res=>{setSelectProduct(res.data.data.product)})
-    
+  //  axios.get(`http://localhost:8000/api/products?category=${selectProduct.category}`)
     },[useParam])
 useEffect(()=>{
   setTotalPrice(selectProduct.price*orderCount)
@@ -69,7 +69,7 @@ const insertToCart =()=>{
   })
   }
  }
-console.log(orderInfo);
+
 
     
     return ( 

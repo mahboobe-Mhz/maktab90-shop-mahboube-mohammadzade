@@ -90,7 +90,7 @@ export const routes = {
     showSubCatProducts: "/subCategory:id",
     login: "/login",
     payment:"/payment",
-    successPaymen:"/successPaymen",
+    successPayment:"/successPayment",
     unSuccessPayment:"/unSuccessPayment"
   },
 };
@@ -150,28 +150,30 @@ export const router = createBrowserRouter([
   {
     path: routes.USERS.cart,
     element:
-    userRol?.role === "USER"? 
+
       <SuspenseView>
         <Cart/>
         </SuspenseView>
 
-     : 
-      <Navigate to={"/login"} />
     
   },
   {
     path: routes.USERS.checkout,
-    element: (
+    element:
+    userRol?.role === "USER" ?  (
       <SuspenseView>
         <Checkout />
-      </SuspenseView>
-    ),
+      </SuspenseView>)
+      
+     : 
+     <Navigate to={"/login"} />
+  
   },
 
   {
     path: "/admin",
     element: 
-    userRol?.role == "ADMIN" ? (
+    userRol?.role === "ADMIN" ? (
       <AdminLayout />
     ) : (
       <Navigate to={routes.ADMIN.login} />
@@ -294,7 +296,7 @@ export const router = createBrowserRouter([
       </SuspenseView>
     ),
   },{
-    path: routes.USERS.successPaymen,
+    path: routes.USERS.successPayment,
     element: (
       <SuspenseView>
         <SuccessPaymentPage/>

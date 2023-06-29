@@ -10,18 +10,34 @@ import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import DateObject from "react-date-object";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setDeliveryDate, storeAppState } from "../../../../redux/slice/appSlice";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 const cookies = new Cookies();
+
 const Checkout = () => {
-    const[fieldValue,setFieldValue]=useState()
+
     const navigate=useNavigate()
     const user = cookies.get("user");
-
+    const dispatch = useDispatch();
+    const appState = useSelector(storeAppState);
+  
     const handlePaymentPage=()=>{
-        setTimeout(() => {
-            navigate( routes.USERS.payment)    
-        }, 100);
+        if(appState.deliveryDate){
+            // setTimeout(() => {
+            //     navigate( routes.USERS.payment)    
+            // }, 100);
+            window.location.replace('http://localhost:5173/public/payment.html')
+        }else{
+            toast.warning('   تاریخی برای تحویل محصول انتخاب کنبد😊', {
+                position: toast.POSITION.TOP_RIGHT
+            })
+        }
+      
 
     }
+
     return ( <div dir="rtl">
         <MainHeader/>
         <div className="p-10 w-full flex justify-center">  
@@ -47,8 +63,10 @@ calendar={persian}
 locale={persian_fa}
 calendarPosition="bottom-right"
 weekPicker={false}
-// onChange={(e)=>setFieldValue(e.unix)}
+onChange={(e:any)=> {dispatch(setDeliveryDate({deliveryDate:e?.unix.toString()}))}}
 />
+
+
 <span onClick={handlePaymentPage} className=" ">
     <MainButton title="پرداخت"/></span>
 

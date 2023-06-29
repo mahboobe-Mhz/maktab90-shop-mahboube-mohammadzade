@@ -1,34 +1,42 @@
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../../../routes";
 import useAddNewOrder from "../../../../api/services/products/useAddNewOrder";
-import { storeAppState } from "../../../../redux/slice/appSlice";
-import { useSelector } from "react-redux";
+import { setOrderData, storeAppState } from "../../../../redux/slice/appSlice";
+import { useDispatch, useSelector } from "react-redux";
 import Cookies from "universal-cookie";
-
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const PaymentPage = () => {
     const appState = useSelector(storeAppState); 
-    const {mutate,status}=useAddNewOrder({})
-  
+    const {mutate,isError}=useAddNewOrder({}) 
     const navigate=useNavigate()
-
+    const dispatch = useDispatch();
     const cookies = new Cookies();
     const user = cookies.get("user");
-    console.log(typeof(user._id));
+ 
     
     
     const navigateSuccess=()=>{
         const newOrder=appState.OrderData.map((item:any)=>{ return{product:item.id,count:item.orderNUm}})
-    
-        // navigate( routes.USERS.successPaymen)   
+  
         const data={
             user:user._id,
             products:newOrder,
             deliveryStatus:false,
-            deliveryDate:"1350/02/01"
+            deliveryDate:new Date(Number(  appState.deliveryDate) * 1000)  
         }
-     
-      mutate(data)
+      mutate(data) 
+if(!isError){
+    dispatch(setOrderData({OrderData:[]}))
+    navigate( routes.USERS.successPaymen) 
+}else{
+    toast.warning('   مشکلی روی داده دوباره امتحان کنید', {
+        position: toast.POSITION.TOP_RIGHT
+    })
+    navigate( routes.USERS.unSuccessPayment) 
+}
+
     }
     const navigateUnSuccess=()=>{
         navigate( routes.USERS.unSuccessPayment)    

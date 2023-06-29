@@ -28,7 +28,14 @@ const result=appState.OrderData.reduce( ( sum:number, { price }:any ) => sum + p
 
 
 const handleCheckout =()=>{
-    navigate( routes.USERS.checkout,)
+    if(appState.OrderData[0]){
+        navigate( routes.USERS.checkout,)
+    }else{
+        toast.warning(' محصولی سفارش نداده ایید!  ', {
+            position: toast.POSITION.TOP_RIGHT
+        }) 
+    }
+
 }
     return (<div dir="rtl">
                <MainHeader />

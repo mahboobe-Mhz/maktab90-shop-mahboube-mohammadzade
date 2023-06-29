@@ -22,20 +22,17 @@ const Checkout = () => {
     const user = cookies.get("user");
     const dispatch = useDispatch();
     const appState = useSelector(storeAppState);
+
   
     const handlePaymentPage=()=>{
         if(appState.deliveryDate){
-            // setTimeout(() => {
-            //     navigate( routes.USERS.payment)    
-            // }, 100);
             window.location.replace('http://localhost:5173/public/payment.html')
+
         }else{
             toast.warning('   تاریخی برای تحویل محصول انتخاب کنبد😊', {
                 position: toast.POSITION.TOP_RIGHT
             })
         }
-      
-
     }
 
     return ( <div dir="rtl">
@@ -57,11 +54,12 @@ const Checkout = () => {
 <input className="border px-3  rounded-2xl"  type="text"  disabled value={user.phoneNumber}/>
             </div>
 <label htmlFor=""> تاریخ تحویل</label>
-<input  className="border px-3 w-[300px] rounded-2xl" type="date" />
+
 <DatePicker 
 calendar={persian}
 locale={persian_fa}
 calendarPosition="bottom-right"
+
 weekPicker={false}
 onChange={(e:any)=> {dispatch(setDeliveryDate({deliveryDate:e?.unix.toString()}))}}
 />

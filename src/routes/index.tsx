@@ -55,9 +55,9 @@ const SubCategoryScreen = React.lazy(
 const ErrorPage = React.lazy(() => import("../screens/main/404"));
 const LoginUserPage = React.lazy(
   () => import("../screens/auth/login/userLogin/index")
-);const PaymentPage = React.lazy(
-  () => import("../screens/main/users/payment")
-);const SuccessPaymentPage = React.lazy(
+)
+
+;const SuccessPaymentPage = React.lazy(
   () => import("../screens/main/users/successPayment")
 );const UnSuccessPaymentPage = React.lazy(
   () => import("../screens/main/users/unsuccessPayment")
@@ -286,13 +286,6 @@ export const router = createBrowserRouter([
     element: (
       <SuspenseView>
         <LoginUserPage />
-      </SuspenseView>
-    ),
-  }, {
-    path: routes.USERS.payment,
-    element: (
-      <SuspenseView>
-        <PaymentPage/>
       </SuspenseView>
     ),
   },{

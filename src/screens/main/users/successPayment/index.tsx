@@ -4,7 +4,7 @@ import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import MainHeader from '../../../../components/userComponent/layoutHeader';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setOrderData, storeAppState } from '../../../../redux/slice/appSlice';
+import { setDeliveryDate, setOrderData, storeAppState } from '../../../../redux/slice/appSlice';
 import useAddNewOrder from '../../../../api/services/products/useAddNewOrder';
 import Cookies from 'universal-cookie';
 import { toast } from 'react-toastify';
@@ -18,9 +18,9 @@ const SuccessPayment = () => {
     const dispatch = useDispatch();
     const cookies = new Cookies();
     const user = cookies.get("user");
-    const useParam=useParams()
+
     const [searchParams,setSearchParams]=useSearchParams()
-const urlInfo=useParam.id?.split("_")[0]
+
 
 
 
@@ -37,7 +37,7 @@ const urlInfo=useParam.id?.split("_")[0]
             mutate(data) 
             if(!isError){
                 dispatch(setOrderData({OrderData:[]}))
-            
+                dispatch(setDeliveryDate({deliveryDate:""}))
             }else{
                 toast.warning('   مشکلی روی داده دوباره امتحان کنید', {
                     position: toast.POSITION.TOP_RIGHT

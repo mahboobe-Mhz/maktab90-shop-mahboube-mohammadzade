@@ -43,6 +43,8 @@ export const AppSlice = createSlice({
     },  setErrorMessage: (state, action) => {
       state.errorMessage =action.payload.errorMessage
     },  setOrderData: (state, action) => {
+      console.log("setOrder");
+      
     state.OrderData=action.payload.OrderData
     }
   

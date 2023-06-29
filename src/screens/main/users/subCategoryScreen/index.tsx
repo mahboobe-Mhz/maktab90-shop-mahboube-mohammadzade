@@ -5,7 +5,7 @@ import MainHeader from "../../../../components/userComponent/layoutHeader";
 import ProductCart from "../../../../components/userComponent/productCart";
 import MainFooter from "../../../../components/userComponent/mainFooter";
 import CheckIcon from '@mui/icons-material/Check';
-import useGetSubCategoryProducts from "../../../../api/services/products/getAllProductOfSubCat";
+import useGetSubCategoryProducts from "../../../../api/services/products/useGetAllProductOfSubCat";
 import ClientSubPagination from "../../../../components/userComponent/subCatClientPaginationm";
 import { toast } from "react-toastify";
 

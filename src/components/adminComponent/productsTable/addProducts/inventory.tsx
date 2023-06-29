@@ -54,7 +54,7 @@ const InventoryProducts = ({resetForm,register,errors}:Props)=> {
   </Select>
 </FormControl>
 <Box>
-<TextField id="standard-basic"  {...register("quantity",{required:true})}   label="تعداد کالا" variant="standard" />
+<TextField id="standard-basic"  {...register("quantity",{required:true})} type='number'  label="تعداد کالا" variant="standard" />
 {errors.quantity?.type === 'required' && <p style={{color:'red',fontSize:"10px"}} role="alert">تعداد محصول را وارد کنید</p>}
 </Box>
 <TextField id="standard-basic" label="بارکد" variant="standard" />

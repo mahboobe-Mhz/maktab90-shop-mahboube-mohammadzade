@@ -37,15 +37,10 @@ const AddProducts = () => {
         subcategory:""
     })
 
-    const {mutate,isError,isSuccess,status} = useAddNewProduct({})
+    const {mutate,isError,isSuccess } = useAddNewProduct({})
 
     const ProductsData=new FormData()
  
-    const schema = yup.object({
-        price: yup.number(),
-        quantity: yup.number(),
-
-      })
  
   
       const {
@@ -55,7 +50,7 @@ const AddProducts = () => {
         formState: { errors },
       setValue
       } = useForm({
-        resolver: yupResolver(schema)
+
       })
 
         useEffect(()=>{
@@ -78,7 +73,7 @@ const AddProducts = () => {
                 ProductsData.append('images',formValue.images[i])
             }
         
-        ProductsData.append('description',appState.selectEditData.description)
+        ProductsData.append('description',data.description)
         ProductsData.append('name',data.name)
         ProductsData.append('price',data.price)
         ProductsData.append('quantity',data.quantity)
@@ -95,7 +90,7 @@ const AddProducts = () => {
             ProductsData.append('images',formValue.images[i])
         }
         ProductsData.append('thumbnail',formValue.images[0])
-        ProductsData.append('description',formValue.description)
+        ProductsData.append('description',data.description)
         ProductsData.append('name',data.name)
         ProductsData.append('price',data.price)
         ProductsData.append('quantity',data.quantity)
@@ -134,7 +129,7 @@ const AddProducts = () => {
         <Box display={'flex'} gap={2} >
         <Box width={"70%"}>      
     <AddPic setFormValue={setFormValue}  formValue={formValue} resetForm={resetForm}  register={register} errors={errors}/>
-    <AddData setFormValue={setFormValue}  formValue={formValue}  resetForm={resetForm}  register={register} errors={errors}/>   
+    <AddData setFormValue={setFormValue} control={control}  formValue={formValue}  resetForm={resetForm}  register={register} errors={errors}/>   
     <AddPrice  resetForm={resetForm}  register={register} errors={errors}/>
     <InventoryProducts   resetForm={resetForm} register={register} errors={errors} />
     <ProductsSize  register={register} errors={errors}/>

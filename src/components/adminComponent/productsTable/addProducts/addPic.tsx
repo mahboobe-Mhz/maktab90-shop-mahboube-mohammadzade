@@ -17,7 +17,7 @@ interface Props{
 
 const AddPic = ({setFormValue,formValue ,resetForm,register,errors}:Props) => {  
     const [image , setImage]=useState([])
-    const [showImage , setShowImage]=useState()
+    const [showImage , setShowImage]=useState([])
     const hiddenFileInput = useRef(null);
     const appState = useSelector(storeAppState);
 
@@ -58,16 +58,26 @@ useEffect(()=>{
             <Box sx={{display:"flex", gap:"10px"}}>
             <HelpOutlineIcon/>
             <SegmentIcon/>
+            
      </Box>
      </Box>
 <Box sx={{padding:1.5}}>
     <Box sx={{ marginTop:"10px" , display:"flex", gap:"10px"}}>
         <div className='imageUpload' onClick={handleClick}>
-        <input onChange={handleImageSelect}      ref={hiddenFileInput} type='file' multiple >
-        </input>
+        <input onChange={handleImageSelect}    
+          ref={hiddenFileInput}  
+     
+                    id="images"
+                    name="images"
+                    type="file"
+                    className="sr-only"
+                    multiple/>
+
+       
         <AddAPhotoIcon sx={{border:"solid", borderColor:"secondary.main", color:"secondary.main",width:100, height:100,padding:2}}/> 
+       
         </div>
-    
+     
         <Box sx={{display:"flex", gap:"10px" , overflowX:"scroll"}}>
         {showImage && showImage.map((item:any)=><img key={item} src={item} width={100} />)
       } 

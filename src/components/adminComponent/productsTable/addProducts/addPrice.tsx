@@ -50,7 +50,7 @@ const AddPrice = ({resetForm,register,errors}:Props) => {
      <Box padding={1.5} display={"flex"} gap={2}>
         <Box sx={{display:"flex", flexDirection:"column"}}>
         <Box display={"flex"} gap={2} >
-        <TextField dir={"ltr"} id="standard-basic" {...register("price",{required:true})}   label="*قیمت" variant="standard" />
+        <TextField dir={"ltr"} id="standard-basic" {...register("price",{required:true})} type='number'  label="*قیمت" variant="standard" />
      <Typography marginTop={4}>تومان</Typography>
         </Box>
         {errors.price?.type === 'required' && <p style={{color:'red',fontSize:"10px"}} role="alert">قیمت محصول را وارد کنید</p>}</Box>

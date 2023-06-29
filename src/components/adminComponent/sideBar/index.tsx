@@ -111,7 +111,7 @@ const SideBar = () => {
           sx={{
             color: "#ffff",
             paddingY: "15px",
-            paddingLeft: "115px",
+            paddingLeft: "112px",
             fontSize: "16px",
           }}
         >

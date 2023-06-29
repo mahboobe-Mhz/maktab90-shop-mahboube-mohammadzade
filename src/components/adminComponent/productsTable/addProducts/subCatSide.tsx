@@ -15,13 +15,6 @@ const SubCatSide = ({subData ,resetForm,control,errors}:Props) => {
 
 
 
-//reset form
-
-//handel edit 
-
-
-
-
 
     return (  <><Box sx={{display:"flex", flexDirection:"column",bgcolor:"white", borderEndEndRadius:"20px",borderBottomRightRadius:"20px"}}>
         {errors.subcategory && <p style={{color:'red',fontSize:"10px",paddingRight:"5px"}}>زیر دسته ایی انتخاب کنید</p>}
@@ -31,10 +24,12 @@ const SubCatSide = ({subData ,resetForm,control,errors}:Props) => {
      }}
 render={({ field }) => (
   <RadioGroup aria-label="gender" {...field}>
-     {subData?.map((item:any)=><FormControlLabel
+     {subData?.map((item:any)=>
+     <FormControlLabel
       value={item._id}
-      control={<Radio />}
+      control={<Radio checked={item._id === appState?.selectEditData?.subcategory._id}/>}
       label={item.name}
+      
     />
     ) }
    

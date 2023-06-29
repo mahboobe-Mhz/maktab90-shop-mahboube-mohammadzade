@@ -86,7 +86,7 @@ render={({ field }) => (
      id={item._id}
      onClick={handelCheckBox}
       value={item._id}
-      control={<Radio />}
+      control={<Radio checked={item._id === appState?.selectEditData?.category._id} />}
       label={item.name}
     />
     ) }

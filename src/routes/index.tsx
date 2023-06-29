@@ -150,14 +150,14 @@ export const router = createBrowserRouter([
   {
     path: routes.USERS.cart,
     element:
-    userRol?.role == "USER"? (
+    userRol?.role === "USER"? 
       <SuspenseView>
         <Cart/>
         </SuspenseView>
 
-    ) : (
+     : 
       <Navigate to={"/login"} />
-    ),
+    
   },
   {
     path: routes.USERS.checkout,

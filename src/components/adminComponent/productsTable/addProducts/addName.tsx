@@ -7,15 +7,16 @@ import { useDispatch, useSelector } from "react-redux";
 import NewDataModal from './newInfo';
 import {useState,useEffect} from 'react'
 import { Products } from '../../../../api/interface/products';
+import { Controller } from 'react-hook-form';
 interface Props{
   setFormValue:any
   formValue:any
-  resetForm:any
+  control:any
   register:any
   errors:any
 }
 
-const AddData = ({setFormValue,formValue, resetForm,register,errors}:Props) => {
+const AddData = ({setFormValue,formValue, control,register,errors}:Props) => {
   
   const [description, setDescription]=useState("")
   const dispatch = useDispatch();
@@ -51,16 +52,21 @@ const AddData = ({setFormValue,formValue, resetForm,register,errors}:Props) => {
     </Box>
 
     <Box >
-    <CKEditor 
-  
+    <Controller
+        name="description"
+        control={control}
+        rules={{ required: true }}
+        render={({ field:{value,onChange,name} }) =>
+         <CKEditor 
         editor={ClassicEditor} 
-        data={description} 
-        onChange={(event, editor) => { 
-          const value = editor.getData();         
-         setFormValue({...formValue,description:value})
-        setDescription(value)
-        }} 
-      /> 
+        data={value} 
+          onChange={(event, editor) => {  const value = editor.getData(); 
+          onChange(value)
+          }}
+
+   />}
+      />
+        {errors.description && <p style={{color:'red',fontSize:"10px",paddingRight:"5px"}}>   درباره محصول خود چیزی بنویسید</p>}
     </Box>
     
         </Box>

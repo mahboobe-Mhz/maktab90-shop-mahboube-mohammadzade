@@ -17,8 +17,9 @@ const Cart = () => {
 
 
 const handleDelete =(event:any)=>{
-    const newAppState=appState.OrderData
+    const newAppState=[...appState.OrderData]
     newAppState.splice(event.currentTarget.id,1) 
+
      dispatch(setOrderData({OrderData:newAppState}))
     
 }
@@ -51,8 +52,7 @@ const handleCheckout =()=>{
                            <img className="border rounded-2xl " width={80} height={80} src={`http://localhost:8000/images/products/images/${item.image?.[0]}`}/>
                                 <div className="flex flex-col pr-3">
                                     <span className="font-bold"> {item.name}</span>
-                                    {/* <span className="text-xs"> رنگبندی سفید</span>
-                                    <span className="text-xs"> تک نفره</span> */}
+                            
                                 </div>
                            </div>
                            <div className="flex justify-around md:w-[60%] mt-4">

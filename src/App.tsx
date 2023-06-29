@@ -22,8 +22,6 @@ function App() {
       <PersistGate  persistor={persistor}>
       <RouterProvider router={router}/>
       </PersistGate>
- 
- 
    </QueryClientProvider>
    </ThemeProvider>
     </Provider> 

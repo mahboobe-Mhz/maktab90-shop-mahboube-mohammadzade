@@ -5,18 +5,30 @@ import { storeAppState } from "../../../../redux/slice/appSlice";
 import { useSelector } from "react-redux";
 import Cookies from "universal-cookie";
 
+
 const PaymentPage = () => {
-    const {mutate}=useAddNewOrder({})
-    const OrderData=new FormData()
+    const appState = useSelector(storeAppState); 
+    const {mutate,status}=useAddNewOrder({})
+  
     const navigate=useNavigate()
-    const appState = useSelector(storeAppState);
+
     const cookies = new Cookies();
     const user = cookies.get("user");
+    console.log(typeof(user._id));
+    
+    
     const navigateSuccess=()=>{
-        navigate( routes.USERS.successPaymen)   
-        // OrderData.append("user",user._id)
-        // OrderData.append("products",appState.OrderData)
-        // OrderData.append("user",user._id)
+        const newOrder=appState.OrderData.map((item:any)=>{ return{product:item.id,count:item.orderNUm}})
+    
+        // navigate( routes.USERS.successPaymen)   
+        const data={
+            user:user._id,
+            products:newOrder,
+            deliveryStatus:false,
+            deliveryDate:"1350/02/01"
+        }
+     
+      mutate(data)
     }
     const navigateUnSuccess=()=>{
         navigate( routes.USERS.unSuccessPayment)    

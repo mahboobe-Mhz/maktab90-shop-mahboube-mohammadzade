@@ -96,7 +96,7 @@ export const routes = {
 };
 const user = cookies.get("user");
 const userRol = user || {};
-console.log(userRol);
+
 
 export const router = createBrowserRouter([
   {

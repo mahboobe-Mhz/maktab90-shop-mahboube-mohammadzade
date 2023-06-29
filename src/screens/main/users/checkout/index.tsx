@@ -4,11 +4,18 @@ import MainFooter from "../../../../components/userComponent/mainFooter";
 import MainButton from "../../../../components/kit/button";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../../../routes";
+import DatePicker from "react-multi-date-picker"
+
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
+import DateObject from "react-date-object";
+import { useState } from "react";
 const cookies = new Cookies();
 const Checkout = () => {
+    const[fieldValue,setFieldValue]=useState()
     const navigate=useNavigate()
     const user = cookies.get("user");
-    console.log(user);
+
     const handlePaymentPage=()=>{
         setTimeout(() => {
             navigate( routes.USERS.payment)    
@@ -35,6 +42,13 @@ const Checkout = () => {
             </div>
 <label htmlFor=""> تاریخ تحویل</label>
 <input  className="border px-3 w-[300px] rounded-2xl" type="date" />
+<DatePicker 
+calendar={persian}
+locale={persian_fa}
+calendarPosition="bottom-right"
+weekPicker={false}
+// onChange={(e)=>setFieldValue(e.unix)}
+/>
 <span onClick={handlePaymentPage} className=" ">
     <MainButton title="پرداخت"/></span>
 

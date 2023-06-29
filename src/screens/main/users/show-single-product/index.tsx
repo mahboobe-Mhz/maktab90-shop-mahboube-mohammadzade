@@ -28,14 +28,17 @@ const ShowSingleProduct = () => {
   const appState = useSelector(storeAppState);
   const[selectProduct,setSelectProduct]=useState({})
   const[orderCount,setOrderCount]=useState(0)
-  const[totalPrice,setTotalPrice]=useState()
+  const[totalPrice,setTotalPrice]=useState<number>()
   const orderInfo ={
+    id:selectProduct._id,
     image:selectProduct.images,
     name:selectProduct.name,
     price:totalPrice,
     orderNUm:orderCount,
     quantity:selectProduct.quantity
   }
+  console.log(orderInfo);
+  
 const useParam=useParams()
 const productId=useParam.id?.split("_")[0]
 useEffect(()=>{
@@ -46,7 +49,8 @@ useEffect(()=>{
 useEffect(()=>{
   setTotalPrice(selectProduct.price*orderCount)
 },[orderCount])
-    
+
+
 const insertToCart =()=>{
   if(orderCount>0){
     dispatch(setOrderData({OrderData:[...appState.OrderData,orderInfo]}))
@@ -65,11 +69,12 @@ const insertToCart =()=>{
   })
   }
  }
-    console.log( Number(totalPrice).toLocaleString("fa-IR"));
+console.log(orderInfo);
+
     
     return ( 
     <div dir="rtl"> 
-              <ToastContainer />
+      
          <MainHeader />
          <div className="flex flex-col gap-2 p-10">
   <div className=" flex gap-20 ">

@@ -14,7 +14,7 @@ const MainHeader = () => {
   const appState = useSelector(storeAppState);
   const cookies = new Cookies();
   const user = cookies.get("user");
-console.log(user);
+
 
   
   const[state,setState]=useState(false)

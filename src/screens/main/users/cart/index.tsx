@@ -58,7 +58,7 @@ const handleCheckout =()=>{
                            <div className="flex justify-around md:w-[60%] mt-4">
                            <span className="mx-1 "> {Number(item.orderNUm).toLocaleString("fa-IR")} </span>
                             
-                                <span>{Number(item.price*item.orderNUm).toLocaleString("Fa-IR") }  تومان</span>
+                                <span>{Number(item.price).toLocaleString("Fa-IR") }  تومان</span>
                                 <span id={index} onClick={handleDelete}><DeleteOutlineRoundedIcon/></span>
                             </div> 
                             </div>)}

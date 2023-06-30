@@ -1,7 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import { routes } from "../../routes";
 import { Box } from "@mui/material";
-import MainHeader from "../../components/userComponent/layoutHeader";
+import MainHeader from "../../components/userComponent/mainHeader";
 import MainFooter from "../../components/userComponent/mainFooter";
 
 const MainLayout = () => {
@@ -9,9 +9,7 @@ const MainLayout = () => {
     <Box sx={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <MainHeader />
       <Box sx={{ flex: "1", width: "100%", height: "100%" }}>
-    
-          <Outlet />
-     
+        <Outlet />
       </Box>
       <Box>
         <MainFooter />

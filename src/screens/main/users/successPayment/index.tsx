@@ -24,6 +24,7 @@ const SuccessPayment = () => {
   const user = cookies.get("user");
 
   const [searchParams, setSearchParams] = useSearchParams();
+console.log(searchParams.get("status"));
 
   useEffect(() => {
     const newOrder = appState.OrderData.map((item: any) => {
@@ -47,7 +48,7 @@ const SuccessPayment = () => {
         navigate(routes.USERS.unSuccessPayment);
       }
     }
-  }, [searchParams]);
+  }, [searchParams.get("status")]);
 
   const navigateToHome = () => {
     navigate("/");

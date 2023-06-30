@@ -51,6 +51,8 @@ const ShowTableBox = () => {
     setTimeout(() => {
       refetch()  
     }, 100);
+    console.log("hi");
+    
     
   },[page,filter,useParam])
 
@@ -95,7 +97,7 @@ const ShowTableBox = () => {
 
   return (
     <Box sx={{ height: "90%" }}>
-            <ToastContainer />
+
       <Box
         sx={{
           display: "flex",

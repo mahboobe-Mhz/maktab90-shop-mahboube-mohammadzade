@@ -27,7 +27,7 @@ export default function OrderModal(orderData:any ) {
   const dispatch = useDispatch();
   const appState = useSelector(storeAppState);
   const handleClose = () => dispatch(setOrderModal({ orderModal: false }));
-console.log(orderData?.orderData);
+console.log();
 
 
 
@@ -66,10 +66,10 @@ console.log(orderData?.orderData);
               key={row._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="center">{row._id}</TableCell>
+              <TableCell align="center">{row.product.price}</TableCell>
               <TableCell align="center">{row.count}</TableCell>
-              <TableCell align="center">{row._id}</TableCell>
-           
+          
+              <TableCell align="center">{row.product.name}</TableCell>
             </TableRow>
           ))}
         </TableBody>

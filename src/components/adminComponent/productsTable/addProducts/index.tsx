@@ -77,8 +77,8 @@ const AddProducts = () => {
         ProductsData.append('name',data.name)
         ProductsData.append('price',data.price)
         ProductsData.append('quantity',data.quantity)
-        ProductsData.append('category',data.category)
-        ProductsData.append('subcategory',data.subcategory)
+        // ProductsData.append('category',data.category)
+        // ProductsData.append('subcategory',data.subcategory)
         ProductsData.append('brand',appState.selectEditData.brand)   
         instance({ method:"PATCH", data:ProductsData, url:`/products/${appState.selectEditData._id}`})
         dispatch(setIsEditing({isEdit:false}))
@@ -129,7 +129,7 @@ const AddProducts = () => {
         <Box display={'flex'} gap={2} >
         <Box width={"70%"}>      
     <AddPic setFormValue={setFormValue}  formValue={formValue} resetForm={resetForm}  register={register} errors={errors}/>
-    <AddData setFormValue={setFormValue} control={control}  formValue={formValue}  resetForm={resetForm}  register={register} errors={errors}/>   
+    <AddData setFormValue={setFormValue} control={control}  formValue={formValue}   register={register} errors={errors}/>   
     <AddPrice  resetForm={resetForm}  register={register} errors={errors}/>
     <InventoryProducts   resetForm={resetForm} register={register} errors={errors} />
     <ProductsSize  register={register} errors={errors}/>

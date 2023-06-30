@@ -1,6 +1,6 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import { SuspenseView } from "./components/suspense";
-import React, { Suspense } from "react";
+import React from "react";
 import Cookies from "universal-cookie";
 
 const Home = React.lazy(() => import("../screens/main/users/home"));
@@ -96,6 +96,7 @@ export const routes = {
 };
 const user = cookies.get("user");
 const userRol = user || {};
+console.log(userRol.role);
 
 
 export const router = createBrowserRouter([
@@ -191,7 +192,11 @@ export const router = createBrowserRouter([
       },
       {
         path: routes.ADMIN.main,
-        element: <MainAdminPage />,
+        element:(   <SuspenseView>
+      <MainAdminPage />
+        </SuspenseView>)
+        
+    
       },
       {
         path: routes.ADMIN.index,
@@ -204,9 +209,9 @@ export const router = createBrowserRouter([
           {
             path: routes.ADMIN.products,
             element: (
-              <SuspenseView>
+              
                 <ProductsTable />
-              </SuspenseView>
+           
             ),
           },
           {

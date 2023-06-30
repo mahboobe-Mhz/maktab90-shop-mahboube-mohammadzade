@@ -20,7 +20,7 @@ const MainHeader = () => {
   const[state,setState]=useState(false)
   const navigateAdmin =()=>{
     setTimeout(() => {
-      navigate(routes.ADMIN.login)
+      navigate(routes.ADMIN.main)
     }, 100);
 
   }

@@ -44,7 +44,10 @@ export default function ControlledAccordions2() {
                   BreadCrumb: "سفارشات",
                 })
               ),
+           
                 navigate(routes.ADMIN.orders);
+          
+           
 
             }}
             variant="text"

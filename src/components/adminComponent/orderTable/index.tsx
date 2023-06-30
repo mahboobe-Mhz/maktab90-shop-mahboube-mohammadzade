@@ -13,14 +13,14 @@ import 'react-toastify/dist/ReactToastify.css';
 const ShowTableBox = () => {
   const [page, setPage] = React.useState(1);
   const [filter,setFilter]=React.useState("");
-  const { data, isLoading, refetch , isError} = useGetPaginationOrders(page,4,filter);
+  const { data, isLoading, refetch , isError} = useGetPaginationOrders(page,5,filter);
   const [countPage, setCountPage] = React.useState<number>();
 
 
   React.useEffect(() => {
     const req = axios.get(`http://localhost:8000/api/orders`);
     req.then((res) => {
-      const lengthCat = (res.data.data.orders.length) / 4 +0.26;     
+      const lengthCat = (res.data.data.orders.length) / 5 +0.26;     
       const correctNum = Number((lengthCat).toFixed())    
       setCountPage(correctNum);
     });
@@ -30,7 +30,6 @@ const ShowTableBox = () => {
     }
   }, []);
   React.useEffect(()=>{
-    console.log('refetch');
     setTimeout(() => {
       refetch()  
     }, 100);
@@ -86,7 +85,7 @@ const ShowTableBox = () => {
 
   return (
     <Box sx={{ height: "90%" }}>
-              <ToastContainer />
+    
       <Box
         sx={{
           display: "flex",
@@ -280,7 +279,7 @@ const ShowTableBox = () => {
         ) : (
           <BasicOrderTable
             rows={ data.data.orders}
-            title={["شناسه", " پرداخت", "مشتری", "جمع کل", "وضعیت", "تاریخ"]}
+            title={["شناسه", "مشتری", "جمع کل", "وضعیت", "تحویل تاریخ"]}
           />
         )}
         <PaginationControlled

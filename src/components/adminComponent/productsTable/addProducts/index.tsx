@@ -9,7 +9,7 @@ import CatSidebar from './catSidebar';
 import { Products } from '../../../../api/interface/products';
 import useAddNewProduct from '../../../../api/services/products/useAddNewProduct';
 import { useDispatch, useSelector } from 'react-redux';
-import {setErrorMessage, setIsEditing, storeAppState } from '../../../../redux/slice/appSlice';
+import {setEditId, setErrorMessage, setIsEditing, storeAppState } from '../../../../redux/slice/appSlice';
 import { instance } from '../../../../api/constants';
 import { useNavigate } from 'react-router';
 import { routes } from '../../../../routes';
@@ -18,12 +18,12 @@ import { toast } from 'react-toastify';
 import SubCatSide from './subCatSide';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import { useSearchParams ,useParams} from 'react-router-dom';
 const AddProducts = () => {
     const dispatch= useDispatch()
     const navigate= useNavigate()
     const appState = useSelector(storeAppState);
     const [resetForm,setResetForm]=useState(false)
-
     const [subData , setSubData]=useState()
     const [formValue ,setFormValue]=useState({
         name:"",
@@ -40,9 +40,8 @@ const AddProducts = () => {
     const {mutate,isError,isSuccess } = useAddNewProduct({})
 
     const ProductsData=new FormData()
- 
- 
-  
+
+
       const {
         register, 
         control,
@@ -62,7 +61,7 @@ const AddProducts = () => {
                setValue("images",appState.selectEditData.images) 
                setValue("thumbnail",appState.selectEditData.thumbnail) 
                setValue("category",appState.selectEditData.category._id) 
-               setValue("subcategory",appState.selectEditData.subcategory) 
+               setValue("subcategory",appState.selectEditData.subcategory._id) 
             }
         },[])
          
@@ -104,8 +103,9 @@ const AddProducts = () => {
         }
 
 
-    navigate('/admin/control/products?status=success')
+    navigate('/admin/control/products')
     setResetForm(!resetForm)
+    dispatch(setEditId({editId:{catId:"",subCatId:""}}))
     }
 
 
@@ -120,6 +120,7 @@ const AddProducts = () => {
 
 
 
+
     return ( <Box component={"form"}  id='form' onSubmit={handleSubmit(onSubmit)}  sx={{direction:"rtl", color:"secondary.contrastText"}}>
         <Box display={'flex'} gap={2} marginBottom={2} sx={{direction:"ltr"}} paddingLeft={2}>
             {appState.isEdit ? <Button type='submit' sx={{bgcolor:"secondary.main", color:"#ffff" , borderRadius:"20px" ,paddingY:"0px", paddingX:"30px"}}> ویرایش</Button>:
@@ -129,10 +130,10 @@ const AddProducts = () => {
         </Box>
         <Box display={'flex'} gap={2} >
         <Box width={"70%"}>      
-    <AddPic setFormValue={setFormValue}  formValue={formValue} resetForm={resetForm}  register={register} errors={errors}/>
-    <AddData setFormValue={setFormValue} control={control}  formValue={formValue}   register={register} errors={errors}/>   
-    <AddPrice  resetForm={resetForm}  register={register} errors={errors}/>
-    <InventoryProducts   resetForm={resetForm} register={register} errors={errors} />
+    <AddPic setFormValue={setFormValue}  formValue={formValue}   register={register} errors={errors}/>
+    <AddData control={control}    register={register} errors={errors}/>   
+    <AddPrice   register={register} errors={errors}/>
+    <InventoryProducts    register={register} errors={errors} />
     <ProductsSize  register={register} errors={errors}/>
     </Box>
         <Box width={"30%"}><CatSidebar  control={control} errors={errors} setSubData={setSubData} />

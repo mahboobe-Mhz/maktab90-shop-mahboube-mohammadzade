@@ -10,12 +10,11 @@ import { storeAppState } from '../../../../redux/slice/appSlice';
 interface Props{
     setFormValue:any
     formValue:any
-    resetForm:any
     register:any
     errors:any
 }
 
-const AddPic = ({setFormValue,formValue ,resetForm,register,errors}:Props) => {  
+const AddPic = ({setFormValue,formValue ,register,errors}:Props) => {  
     const [image , setImage]=useState([])
     const [showImage , setShowImage]=useState([])
     const hiddenFileInput = useRef(null);
@@ -35,9 +34,7 @@ const AddPic = ({setFormValue,formValue ,resetForm,register,errors}:Props) => {
             
     }
 
-    useEffect(()=>{
-        setShowImage([])
-    },[resetForm])
+
     useEffect(()=>{
         setFormValue({...formValue,images:image})   
     },[image])

@@ -18,7 +18,7 @@ import { setEditData, setIsEditing, storeAppState } from "../../../redux/slice/a
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const ShowTableBox = () => {
-  
+  const appState = useSelector(storeAppState);
   const [searchParams, setSearchParams] = useSearchParams();
   const [filter,setFilter]=React.useState("");
   const [page, setPage] = React.useState(1);
@@ -26,7 +26,7 @@ const ShowTableBox = () => {
   const { data, isLoading, refetch ,isError} = useGetPaginationProducts(page, 4,filter);
   const navigate= useNavigate()
   const dispatch = useDispatch()
-  const useParam=useParams()
+
 
   //first render
   React.useEffect(() => {
@@ -46,8 +46,14 @@ const ShowTableBox = () => {
 
   //for pagination-
   React.useEffect(()=>{
-      refetch()    
-  },[page,filter,searchParams.get("status")])
+    setTimeout(() => {
+      refetch()
+    }, 100);
+    
+      
+  },[page,filter,searchParams.get("status"),appState.isEdit])
+
+  
 
 //filter
   const quantityFun = () => {
@@ -84,7 +90,7 @@ const ShowTableBox = () => {
   };
   const NavigateAddProduct=()=>{
     dispatch(setIsEditing({isEdit:false})) 
-       navigate(routes.ADMIN.addProduct)
+       navigate("/admin/control/addProduct?status=add")
   }
 //get edited data
 

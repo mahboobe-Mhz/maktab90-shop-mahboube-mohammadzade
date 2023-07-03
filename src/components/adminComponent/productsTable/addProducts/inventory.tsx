@@ -6,11 +6,10 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 interface Props{
-  resetForm:any
   register:any
   errors:any
 }
-const InventoryProducts = ({resetForm,register,errors}:Props)=> {
+const InventoryProducts = ({register,errors}:Props)=> {
     const [age, setAge] = React.useState('');
 
 

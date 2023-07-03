@@ -3,12 +3,11 @@ import Switch from '@mui/material/Switch';
 import {useState,useEffect} from "react"
 
 interface Props{
-    resetForm:any
     register:any
     errors:any
 }
 
-const AddPrice = ({resetForm,register,errors}:Props) => {
+const AddPrice = ({register,errors}:Props) => {
     const [checked, setChecked] = useState(false);
     const [price, setPrice] = useState(0);
     const [discount, setDiscount] = useState(0);
@@ -29,10 +28,6 @@ const AddPrice = ({resetForm,register,errors}:Props) => {
         setDiscountPrice(newPrice)
 
     }
-//reset form
-    useEffect(()=>{
-        setPrice(0)
-    },[resetForm])
 
 
     return (  <Box sx={{

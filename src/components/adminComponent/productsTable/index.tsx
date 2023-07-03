@@ -8,7 +8,6 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import BasicTable from "./useTable";
 import * as React from "react";
-import { useState } from "react";
 import PaginationControlled from "../../pagination";
 import useGetPaginationProducts from "../../../api/services/products/usePaginationProducts";
 import axios from "axios";
@@ -16,7 +15,6 @@ import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { routes } from "../../../routes";
 import { useDispatch, useSelector } from "react-redux";
 import { setEditData, setIsEditing, storeAppState } from "../../../redux/slice/appSlice";
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const ShowTableBox = () => {
@@ -48,13 +46,7 @@ const ShowTableBox = () => {
 
   //for pagination-
   React.useEffect(()=>{
-
-    setTimeout(() => {
-      refetch()  
-    }, 100);
-    console.log("hi");
-    
-    
+      refetch()    
   },[page,filter,searchParams.get("status")])
 
 //filter

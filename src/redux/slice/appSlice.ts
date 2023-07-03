@@ -7,11 +7,13 @@ export interface CounterState {
   ModalInfoProducts:boolean
   isEdit:boolean
   selectEditData:[]
+  editId:any
   notModal:boolean
   errorMessage:boolean
   OrderData:any
   deliveryDate:string
   orderModal:boolean
+
 }
 
 const initialState: CounterState = {
@@ -20,6 +22,7 @@ const initialState: CounterState = {
   ModalInfoProducts:false,
   isEdit:false,
   selectEditData:[],
+  editId:{catId:"",subCatId:""},
   notModal:false,
   errorMessage:false,
   OrderData:[],
@@ -42,6 +45,8 @@ export const AppSlice = createSlice({
       state.selectEditData =action.payload.selectEditData
     } ,   setIsEditing: (state, action) => {
       state.isEdit =action.payload.isEdit
+    },   setEditId: (state, action) => {
+      state.editId =action.payload.editId
     },  setNotMOdal: (state, action) => {
       state.notModal =action.payload.notModal
     },  setErrorMessage: (state, action) => {
@@ -60,7 +65,8 @@ export const AppSlice = createSlice({
   }
 });
 export const { addBreadCrumb ,setModal,setProductsModal,setOrderData,
-  setEditData,setIsEditing,setNotMOdal,setErrorMessage,setDeliveryDate,setOrderModal} = AppSlice.actions;
+  setEditData,setIsEditing,setEditId,setNotMOdal,setErrorMessage,setDeliveryDate
+  ,setOrderModal} = AppSlice.actions;
 
 export const storeAppState = (state: any) => state.storeState;
 

@@ -47,8 +47,6 @@ useEffect(()=>{
    
         const editImage= appState.selectEditData?.images.map((item:string)=>`http://localhost:8000/images/products/images/${item}`) 
          setShowImage(editImage)
-
-  
   },[appState.isEdit])
     return (  <Box sx={{
         bgcolor:"#ffff" , borderRadius:"20px"

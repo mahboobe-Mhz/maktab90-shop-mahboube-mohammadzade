@@ -11,7 +11,7 @@ import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutl
 import { useNavigate } from 'react-router';
 import { routes } from '../../../routes';
 import { useDispatch, useSelector } from 'react-redux';
-import { setEditData, setIsEditing, setNotMOdal, storeAppState } from '../../../redux/slice/appSlice';
+import { setEditData, setEditId, setIsEditing, setNotMOdal, storeAppState } from '../../../redux/slice/appSlice';
 import axios from 'axios';
 
 import useDeleteProduct from '../../../api/services/products/useDeleteProduct';
@@ -44,27 +44,31 @@ export default function BasicTable({rows,title,refetch}:Props) {
   const dispatch= useDispatch()
   const [deletionError, setDeletionError] = React.useState(null);
   const { mutate, isLoading: isDeleting }= useDeleteProduct(setDeletionError)
-  const [editId ,setEditId] =React.useState("")
+  const [editId ,setEditedId] =React.useState("")
   const [state ,setState] =React.useState(false)
   const [titleText ,setTitleText]=React.useState("")
   const [deleteId ,setDeleteId]=React.useState()
 
  
   const handelEdit=(event:any)=>{
-    setEditId(event.currentTarget.id)
-
+    setEditedId(event.currentTarget.id)
     setTimeout(() => {
            navigate(routes.ADMIN.addProduct)
     }, 100);
 
     setState(!state)
     dispatch(setIsEditing({isEdit:true}))
+   
   }
   React.useEffect(()=>{
     const req =  axios.get(`http://localhost:8000/api/products/${editId}`);
-    req.then((res) => {dispatch(setEditData({
+    req.then((res) => {
+      dispatch(setEditData({
       selectEditData:res.data.data.product
-    }))})
+    })),
+    dispatch(setEditId({editId:{catId:res.data.data.product.category._id, subCatId:res.data.data.product.subcategory._id}}))
+  
+  })
   },[state])
 
   const HandelDelete =(event:any)=>{

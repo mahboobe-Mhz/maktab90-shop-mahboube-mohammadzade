@@ -4,28 +4,21 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { Products } from '../../../../api/interface/products';
-import { useSelector } from 'react-redux';
-import { storeAppState } from '../../../../redux/slice/appSlice';
-interface Props{
 
+interface Props{
   resetForm:any
   register:any
   errors:any
 }
 const InventoryProducts = ({resetForm,register,errors}:Props)=> {
     const [age, setAge] = React.useState('');
-    const [quantity,setQuantity]= React.useState('')
-    const appState = useSelector(storeAppState);
+
 
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value as string);   
   };
 
-  React.useEffect(()=>{
-    setQuantity("")
-},[resetForm])
-//handel edit
+
 
 
 

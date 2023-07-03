@@ -1,18 +1,27 @@
 import {  Box ,FormControlLabel, Radio, RadioGroup} from "@mui/material";
 
-import { useSelector } from "react-redux";
-import { storeAppState } from "../../../../redux/slice/appSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setEditId, storeAppState } from "../../../../redux/slice/appSlice";
 import { Controller } from "react-hook-form";
+import {  useState } from "react";
+
 interface Props{
-   
     subData:[]
-    resetForm:any
     control:any
     errors:any
 }
-const SubCatSide = ({subData ,resetForm,control,errors}:Props) => { 
+const SubCatSide = ({subData ,control,errors}:Props) => { 
   const appState = useSelector(storeAppState);
+  const [selectRadio, setSelectRadio]=useState("")
+  const dispatch =useDispatch()
+const handelRadioBox =(e:any)=>{
+  setSelectRadio(e.currentTarget.id)  
 
+  if(appState.isEdit){
+    dispatch(setEditId({editId:{catId:appState.editId.catId,subCatId:e.currentTarget.id}}))
+
+  }
+}
 
 
 
@@ -24,10 +33,18 @@ const SubCatSide = ({subData ,resetForm,control,errors}:Props) => {
      }}
 render={({ field }) => (
   <RadioGroup aria-label="gender" {...field}>
-     {subData?.map((item:any)=>
+     { subData?.map((item:any)=>
      <FormControlLabel
+     id={item._id}
+     onClick={handelRadioBox}
       value={item._id}
-      control={<Radio checked={item._id === appState?.selectEditData?.subcategory._id}/>}
+      control={<Radio checked={(item._id === appState.editId.subCatId)||(item._id ===selectRadio)}
+      sx={{
+        '&, &.Mui-checked': {
+          color: 'secondary.main',
+        },
+      }}
+      />}
       label={item.name}
       
     />

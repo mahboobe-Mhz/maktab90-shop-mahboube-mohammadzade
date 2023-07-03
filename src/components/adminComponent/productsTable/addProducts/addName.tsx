@@ -9,18 +9,17 @@ import {useState,useEffect} from 'react'
 import { Products } from '../../../../api/interface/products';
 import { Controller } from 'react-hook-form';
 interface Props{
-  setFormValue:any
-  formValue:any
+ 
   control:any
   register:any
   errors:any
 }
 
-const AddData = ({setFormValue,formValue, control,register,errors}:Props) => {
+const AddData = ({ control,register,errors}:Props) => {
   
-  const [description, setDescription]=useState("")
+
   const dispatch = useDispatch();
-  const appState = useSelector(storeAppState);
+
     const openModal =()=>{  
       dispatch(setProductsModal({ModalInfoProducts: true })
       )

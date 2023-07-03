@@ -1,11 +1,8 @@
 import {Box ,Typography,TextField,FormControlLabel,Button} from '@mui/material'
 import Switch from '@mui/material/Switch';
 import {useState,useEffect} from "react"
-import { Products } from '../../../../api/interface/products';
-import { useSelector } from 'react-redux';
-import { storeAppState } from '../../../../redux/slice/appSlice';
+
 interface Props{
-  
     resetForm:any
     register:any
     errors:any
@@ -16,7 +13,7 @@ const AddPrice = ({resetForm,register,errors}:Props) => {
     const [price, setPrice] = useState(0);
     const [discount, setDiscount] = useState(0);
     const [discountPrice, setDiscountPrice] = useState<number>();
-    const appState = useSelector(storeAppState);
+;
   
     const showDiscountBox=(event:any)=>{
         setChecked(event.target.checked);    

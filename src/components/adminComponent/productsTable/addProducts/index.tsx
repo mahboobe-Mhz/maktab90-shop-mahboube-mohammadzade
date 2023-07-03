@@ -61,7 +61,8 @@ const AddProducts = () => {
                setValue("description",appState.selectEditData.description) 
                setValue("images",appState.selectEditData.images) 
                setValue("thumbnail",appState.selectEditData.thumbnail) 
-               setValue("category",appState.selectEditData.category) 
+               setValue("category",appState.selectEditData.category._id) 
+               setValue("subcategory",appState.selectEditData.subcategory) 
             }
         },[])
          
@@ -77,8 +78,8 @@ const AddProducts = () => {
         ProductsData.append('name',data.name)
         ProductsData.append('price',data.price)
         ProductsData.append('quantity',data.quantity)
-        // ProductsData.append('category',data.category)
-        // ProductsData.append('subcategory',data.subcategory)
+        ProductsData.append('category',data.category)
+        ProductsData.append('subcategory',data.subcategory)
         ProductsData.append('brand',appState.selectEditData.brand)   
         instance({ method:"PATCH", data:ProductsData, url:`/products/${appState.selectEditData._id}`})
         dispatch(setIsEditing({isEdit:false}))

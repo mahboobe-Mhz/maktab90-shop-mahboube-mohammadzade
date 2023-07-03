@@ -2,10 +2,11 @@ import { TextField, Box, Typography ,FormControlLabel,Checkbox, Radio, RadioGrou
 import { useState,useEffect } from "react";
 import useGetAllCategory from "../../../../api/services/products/useGetAllCategory";
 import SubCatSide from "./subCatSide";
-import { useSelector } from "react-redux";
-import { storeAppState } from "../../../../redux/slice/appSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setEditData, setEditId, storeAppState } from "../../../../redux/slice/appSlice";
 import axios from "axios";
 import { Controller } from "react-hook-form";
+
 interface Props{
   errors:any
   control:any
@@ -13,20 +14,24 @@ interface Props{
 }
 
 const CatSidebar = ({errors,control,setSubData}:Props) => {
-
+  const appState = useSelector(storeAppState);
+  const dispatch =useDispatch()
     const [showSub, setShowSub]=useState(false)
-    const [catSelect, setCatSelect]=useState("")
+    const [catSelect, setCatSelect]=useState(appState?.selectEditData?.category._id)
+    const [selectRadio, setSelectRadio]=useState("")
     const { data, isLoading } = useGetAllCategory();
-    const appState = useSelector(storeAppState);
+
 
 
 
     const handelCheckBox =(e:any)=>{
-     setCatSelect(e.currentTarget.id);       
+     setCatSelect(e.currentTarget.id);   
+     setSelectRadio(e.currentTarget.id) 
+     if(appState.isEdit){
+       dispatch(setEditId({editId:{catId:e.currentTarget.id,subCatId:appState.editId.subCatId}}))
+     }
+     
     }
-
-
-//reset form
 
 //for show subCategory
     const handelShowLabel =()=>{
@@ -35,8 +40,9 @@ const CatSidebar = ({errors,control,setSubData}:Props) => {
     const handelHideLabel =()=>{
         setShowSub(false)
     }
-///handel edit
 
+
+console.log(appState.editId);
 
 
 //subcategory data
@@ -50,7 +56,7 @@ res.then(response=>{
 })
 
 
-},[catSelect])
+},[catSelect,appState.isEdit])
 
 
 
@@ -86,7 +92,14 @@ render={({ field }) => (
      id={item._id}
      onClick={handelCheckBox}
       value={item._id}
-      control={<Radio checked={item._id === appState?.selectEditData?.category._id} />}
+      control={
+      <Radio checked={(item._id===selectRadio) ||(item._id === appState?.editId.catId) }  
+      sx={{
+        '&, &.Mui-checked': {
+          color: 'secondary.main',
+        },
+      }}
+     />}
       label={item.name}
     />
     ) }

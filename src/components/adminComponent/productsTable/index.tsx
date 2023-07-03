@@ -30,7 +30,7 @@ const ShowTableBox = () => {
 
   //first render
   React.useEffect(() => {
-    const req = axios.get(`http://localhost:8000/api/products`);
+    const req = axios.get(`http://localhost:8000/api/products?limit=100`);
     req.then((res) => {
       const lengthCat = res.data.data.products.length / 4 +0.26;     
       const correctNum = Number((lengthCat).toFixed())    

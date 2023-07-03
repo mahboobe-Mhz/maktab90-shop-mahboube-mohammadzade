@@ -12,7 +12,7 @@ import { useState } from "react";
 import PaginationControlled from "../../pagination";
 import useGetPaginationProducts from "../../../api/services/products/usePaginationProducts";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { routes } from "../../../routes";
 import { useDispatch, useSelector } from "react-redux";
 import { setEditData, setIsEditing, storeAppState } from "../../../redux/slice/appSlice";
@@ -20,7 +20,8 @@ import { setEditData, setIsEditing, storeAppState } from "../../../redux/slice/a
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const ShowTableBox = () => {
-  const AppState = useSelector(storeAppState);
+  
+  const [searchParams, setSearchParams] = useSearchParams();
   const [filter,setFilter]=React.useState("");
   const [page, setPage] = React.useState(1);
   const [countPage, setCountPage] = React.useState<number>();
@@ -54,7 +55,7 @@ const ShowTableBox = () => {
     console.log("hi");
     
     
-  },[page,filter,useParam])
+  },[page,filter,searchParams.get("status")])
 
 //filter
   const quantityFun = () => {

@@ -103,7 +103,7 @@ const AddProducts = () => {
         }
 
 
-    navigate(routes.ADMIN.products)
+    navigate('/admin/control/products?status=success')
     setResetForm(!resetForm)
     }
 

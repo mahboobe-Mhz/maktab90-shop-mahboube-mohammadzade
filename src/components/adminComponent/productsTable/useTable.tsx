@@ -106,7 +106,8 @@ const deleteItem=()=>{
               <TableCell align="center">{row.quantity}</TableCell>
               <TableCell  align="center">
                 <Typography sx={{width:"400px",height:"50px",overflow:"hidden"}}>
-                {row.description}
+                  <div  dangerouslySetInnerHTML={{ __html: row?.description}}/>
+               
                 </Typography>
            
                 

@@ -66,10 +66,10 @@ console.log();
               key={row._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="center">{row.product.price}</TableCell>
-              <TableCell align="center">{row.count}</TableCell>
+              <TableCell align="center">{row.product?.price}</TableCell>
+              <TableCell align="center">{row?.count}</TableCell>
           
-              <TableCell align="center">{row.product.name}</TableCell>
+              <TableCell align="center">{row.product?.name}</TableCell>
             </TableRow>
           ))}
         </TableBody>

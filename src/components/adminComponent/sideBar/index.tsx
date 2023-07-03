@@ -100,12 +100,10 @@ const SideBar = () => {
         </Button>
         <Button
           onClick={() => {
-        
-              navigate('/');
               cookies.remove('user')
               cookies.remove('refreshToken')
               cookies.remove('accessToken')
-
+              navigate('/');
 
           }}
           sx={{

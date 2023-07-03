@@ -171,15 +171,15 @@ export const router = createBrowserRouter([
   
   },
 
-  {
-    path: "/admin",
-    element: 
-    userRol?.role === "ADMIN" ? (
-      <AdminLayout />
-    ) : (
-      <Navigate to={routes.ADMIN.login} />
-    ),
-    children: [
+  // {
+  //   path: "/admin",
+  //   element: 
+  //   userRol?.role === "ADMIN" ? (
+  //     <AdminLayout />
+  //   ) : (
+  //     <Navigate to={routes.ADMIN.login} />
+  //   ),
+  //   children: [
       {
     
         path: routes.ADMIN.login,
@@ -280,8 +280,8 @@ export const router = createBrowserRouter([
           },
         ],
       },
-    ],
-  },
+  //   ],
+  // },
   {
     path: "*",
     element: <ErrorPage />,

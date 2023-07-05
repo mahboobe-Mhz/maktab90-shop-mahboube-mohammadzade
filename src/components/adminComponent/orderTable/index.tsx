@@ -18,7 +18,7 @@ const ShowTableBox = () => {
 
 
   React.useEffect(() => {
-    const req = axios.get(`http://localhost:8000/api/orders`);
+    const req = axios.get(`http://localhost:8000/api/orders?limit=100`);
     req.then((res) => {
       const lengthCat = (res.data.data.orders.length) / 5 +0.26;     
       const correctNum = Number((lengthCat).toFixed())    
@@ -38,7 +38,7 @@ const ShowTableBox = () => {
   const allOrders = () => {
     setFilter("")
     setPage(1)
-    const req = axios.get(`http://localhost:8000/api/orders`);
+    const req = axios.get(`http://localhost:8000/api/orders?limit=100`);
     req.then((res) => {
       const lengthCat = res.data.data.orders.length / 4 +0.26;     
       const correctNum = Number((lengthCat).toFixed())    
@@ -49,7 +49,7 @@ const ShowTableBox = () => {
   const notPay = () => {
     setPage(1)
     setFilter("price=0")
-    const req = axios.get(`http://localhost:8000/api/orders?price=0`);
+    const req = axios.get(`http://localhost:8000/api/orders?price=0&limit=100`);
     req.then((res) => {
       const lengthCat = res.data.data.orders.length / 4 +0.26;     
       const correctNum = Number((lengthCat).toFixed())    
@@ -60,7 +60,7 @@ const ShowTableBox = () => {
   const notAcceptOrders = () => {
     setPage(1)
     setFilter("deliveryStatus=false")
-    const req = axios.get(`http://localhost:8000/api/orders?deliveryStatus=false`);
+    const req = axios.get(`http://localhost:8000/api/orders?deliveryStatus=false&limit=100`);
     req.then((res) => {
       const lengthCat = res.data.data.orders.length / 4 +0.26;     
       const correctNum = Number((lengthCat).toFixed())    
@@ -279,6 +279,7 @@ const ShowTableBox = () => {
         ) : (
           <BasicOrderTable
             rows={ data.data.orders}
+            refetch={refetch}
             title={["شناسه", "مشتری", "جمع کل", "وضعیت", "تحویل تاریخ"]}
           />
         )}

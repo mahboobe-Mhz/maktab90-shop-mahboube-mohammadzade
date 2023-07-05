@@ -29,9 +29,10 @@ interface Props{
     name5?:string,
     name6?:string
   ]
+  refetch:any
 }
 
-export default function BasicOrderTable({rows,title}:Props) {
+export default function BasicOrderTable({rows,title,refetch}:Props) {
  const[modalInfo,setModalInfo]=React.useState()
   const dispatch = useDispatch();
   const handleShowOrderModal =(event:any)=>{
@@ -43,7 +44,7 @@ export default function BasicOrderTable({rows,title}:Props) {
   }
   return (
     <TableContainer  component={Paper}>
-      <OrderModalTable orderData={modalInfo}/>
+      <OrderModalTable orderData={modalInfo} refetch={refetch}/>
       <Table sx={{ minWidth: 650 ,}} aria-label="simple table">
         <TableHead>
           <TableRow> 

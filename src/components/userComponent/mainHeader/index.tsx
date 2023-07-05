@@ -61,8 +61,9 @@ const MainHeader = () => {
           width={20} src="/icons/icon-04.svg"></img>}
 </div>
          <span onClick={navigateCart} className="mt-3 relative">
-        <span className="absolute bottom-8 right-3 bg-secondary rounded-full
-           text-white px-[5px] text-xs pb-[6px] h-4">{appState.OrderData.length}</span>
+          {appState.OrderData.length==0? <span></span> : <span className="absolute bottom-8 right-3 bg-secondary rounded-full
+           text-white px-[5px] text-xs pb-[6px] h-4">{appState.OrderData.length}</span>}
+       
           
          <img className=""  width={20} src="/icons/icon-03.svg"></img>
          </span>

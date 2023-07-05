@@ -1,7 +1,18 @@
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
+import { useNavigate } from "react-router-dom";
 const MainFooter = () => {
+  const navigate = useNavigate();
+  const navigateHome =()=>{
+    navigate('/')
+  }
+  const navigateConnectionPage=()=>{
+    navigate('/connectedUs')
+  }
+  const navigateAboutUsPage=()=>{
+    navigate('/aboutUs')
+  }
   return (
     <div className="position:fixed button:0px bg-black text-white md:py-5 ">
       <div className="flex justify-between md:px-10">
@@ -19,10 +30,10 @@ const MainFooter = () => {
           </div>
           <div className="flex flex-col">
             <h3 className="font-bold mb-2 ">پیوندهای مفید </h3>
-            <span className=" text-sm  font-semibold"> فروشگاه هومنت</span>
+            <span onClick={navigateHome}   className=" text-sm  font-semibold hover:cursor-pointer"> فروشگاه هومنت</span>
             <span className=" text-sm  font-semibold">فروشگاه</span>
-            <span className=" text-sm  font-semibold">درباره ما</span>
-            <span className=" text-sm   font-semibold border-b border-white pb-2">
+            <span onClick={navigateAboutUsPage} className=" text-sm  font-semibold hover:cursor-pointer">درباره ما</span>
+            <span onClick={navigateConnectionPage} className=" text-sm   font-semibold border-b border-white pb-2 hover:cursor-pointer">
               تماس با ما
             </span>
           </div>
@@ -49,7 +60,8 @@ const MainFooter = () => {
           </div>
         </div>
         <div className="pt-5 hidden md:flex md:flex-col">
-          <span className="text-withe font-bold text-2xl"> هومنت</span>
+          <img  onClick={navigateHome} width={120} src="public\logo\Untitled-2-01.png"/>
+      
           <span className="flex gap-2">
             <TelegramIcon sx={{ width: "15px" }} />{" "}
             <InstagramIcon sx={{ width: "15px" }} />{" "}

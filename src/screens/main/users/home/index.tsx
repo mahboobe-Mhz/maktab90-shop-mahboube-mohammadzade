@@ -3,6 +3,7 @@ import SearchProducts from "../../../../components/userComponent/homeComponent/s
 import TopOfHome from "../../../../components/userComponent/homeComponent/top";
 import MainHeader from "../../../../components/userComponent/mainHeader";
 import MainFooter from "../../../../components/userComponent/mainFooter";
+import AboutProduct from "../../../../components/userComponent/homeComponent/aboutProduct";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
           src="public/picture/banner-01.jpg"
         />
       </div>
+      <AboutProduct/>
       <MainFooter />
     </div>
   );

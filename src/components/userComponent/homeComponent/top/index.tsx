@@ -1,4 +1,4 @@
-import TopSwiper from "../slider";
+import TopSwiper from "../topSlider";
 
 const TopOfHome = () => {
     return ( <div className="flex justify-center">

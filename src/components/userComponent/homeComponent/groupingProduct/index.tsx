@@ -1,14 +1,17 @@
 import axios from 'axios';
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const GroupingProduct = () => {
+  const navigate = useNavigate();
   const [catData ,setCatData]=React.useState([])
   React.useEffect(()=>{const res =axios.get('http://127.0.0.1:8000/api/categories?limit=30')
  res.then(response=>setCatData(response.data.data.categories)
  ) },[])
- console.log(catData);
- const navigateToCat =()=>{
+
+ const navigateToCat =(event:any)=>{
   console.log("hi");
+  navigate(`/category/${event.currentTarget.id}_${event.currentTarget.dataset.user}_page_1`)
   
  }
     return ( <div className="flex flex-col items-center mt-5 direction gap-5  mb-12">

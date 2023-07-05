@@ -74,7 +74,7 @@ const ShowTableBox = () => {
     setFilter("deliveryStatus=true")
     const req = axios.get(`http://localhost:8000/api/orders?deliveryStatus=true`);
     req.then((res) => {
-      const lengthCat = res.data.data.products.length / 4 +0.26;     
+      const lengthCat = res.data.data.orders.length / 4 +0.26;     
       const correctNum = Number((lengthCat).toFixed())    
       setCountPage(correctNum);
     })  

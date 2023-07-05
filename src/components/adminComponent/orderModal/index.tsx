@@ -25,9 +25,13 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-
-export default function OrderModal(orderData: any,refetch:any) {
+interface Props{
+  orderData:any
+  refetch:any
+}
+export default function OrderModal({orderData,refetch}:Props) {
   
+
   
   const dispatch = useDispatch();
   const appState = useSelector(storeAppState);
@@ -37,8 +41,13 @@ export default function OrderModal(orderData: any,refetch:any) {
     const delivery={
       deliveryStatus:true
     }
-    instance({ method:"PATCH", data:delivery, url:`/orders/${orderData?.orderData?._id}`})
-    refetch()
+    instance({ method:"PATCH", data:delivery, url:`/orders/${orderData?._id}`})
+    console.log("hi");
+   
+    setTimeout(() => {
+      refetch()
+    }, 200);
+    dispatch(setOrderModal({ orderModal: false })) 
   };
   return (
     <div>
@@ -52,27 +61,27 @@ export default function OrderModal(orderData: any,refetch:any) {
           <Box sx={{ textAlign: "right" }}>
             <Typography>
               {" "}
-              نام مشتری :{orderData?.orderData?.user.firstname}{" "}
-              {orderData?.orderData?.user.lastname}{" "}
+              نام مشتری :{orderData?.user.firstname}{" "}
+              {orderData?.user.lastname}{" "}
             </Typography>
             <Typography>
               {" "}
-              ادرس : {orderData?.orderData?.user.address}{" "}
+              ادرس : {orderData?.user.address}{" "}
             </Typography>
             <Typography>
               {" "}
-              تلفن : {orderData?.orderData?.user.phoneNumber}
+              تلفن : {orderData?.user.phoneNumber}
             </Typography>
             <Typography>
               {" "}
               زمان تحویل :{" "}
-              {new Date(orderData?.orderData?.deliveryDate).toLocaleDateString(
+              {new Date(orderData?.deliveryDate).toLocaleDateString(
                 "fa-IR"
               )}
             </Typography>
             <Typography>
               زمان سفارش :{" "}
-              {new Date(orderData?.orderData?.createdAt).toLocaleDateString(
+              {new Date(orderData?.createdAt).toLocaleDateString(
                 "fa-IR"
               )}
             </Typography>
@@ -88,7 +97,7 @@ export default function OrderModal(orderData: any,refetch:any) {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {orderData?.orderData?.products.map((row: any) => (
+                {orderData?.products.map((row: any) => (
                   <TableRow
                     key={row._id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -101,8 +110,8 @@ export default function OrderModal(orderData: any,refetch:any) {
               </TableBody>
             </Table>
           </TableContainer>
-          {orderData?.orderData?.deliveryStatus ?   <Button  disabled sx={{bgcolor:"#ffff", marginTop:5}} onClick={handleSendOrder}> ارسال شده </Button>:
-             <Button  sx={{bgcolor:"secondary.main", color:"#ffff"}} onClick={handleSendOrder}> ارسال شد </Button>
+          {orderData?.deliveryStatus ?   <Button  disabled sx={{bgcolor:"#ffff", marginTop:5}} onClick={handleSendOrder}> ارسال شده </Button>:
+             <Button  sx={{bgcolor:"secondary.main", color:"#ffff",marginTop:5}} onClick={handleSendOrder}> ارسال شد </Button>
           }
        
         </Box>

@@ -52,14 +52,51 @@ const ShowSingleProduct = () => {
       .then((res) => {
         setSimilarProduct(res.data.data.products);
       });
+      appState.OrderData.map(item => item.id===productId ?setOrderCount(item.orderNUm):"nist"
+      )
   }, [useParam]);
   useEffect(() => {
     setTotalPrice(selectProduct.price * orderCount);
   }, [orderCount]);
 
-  const insertToCart = () => {
+  const insertToCart = () => {  
     if (orderCount > 0) {
-      dispatch(setOrderData({ OrderData: [...appState.OrderData, orderInfo] }));
+  
+      if(appState.OrderData.length>0){
+        appState.OrderData?.map((item:any) => {
+          if(item.id===productId){ 
+        
+            
+           const newOrderInfo = {
+      id: selectProduct._id,
+      image: selectProduct.images,
+      name: selectProduct.name,
+      price: totalPrice,
+      orderNUm: orderCount,
+      quantity: selectProduct.quantity,
+    };
+    const newAppState = [...appState.OrderData];
+    newAppState.splice(item.id, 1);
+            dispatch(setOrderData({ OrderData: [...newAppState, newOrderInfo] }));
+            
+          }else{
+           
+            
+            dispatch(setOrderData({ OrderData: [...appState.OrderData, orderInfo] }));
+          }
+        })
+      }else{
+        console.log("hi3");
+            
+        dispatch(setOrderData({ OrderData: [...appState.OrderData, orderInfo] }));
+      }
+      
+
+    
+ 
+
+  
+
     }
     if (orderCount === 0) {
       toast.warning("تعداد را وارد کنید😊", {
@@ -75,7 +112,7 @@ const ShowSingleProduct = () => {
       });
     }
   };
-  console.log(similarProduct);
+
 
   return (
     <div dir="rtl">

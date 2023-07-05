@@ -61,6 +61,10 @@ const LoginUserPage = React.lazy(
   () => import("../screens/main/users/successPayment")
 );const UnSuccessPaymentPage = React.lazy(
   () => import("../screens/main/users/unsuccessPayment")
+);const ConnectionPage = React.lazy(
+  () => import("../screens/main/users/connection")
+);const AboutUs = React.lazy(
+  () => import("../screens/main/users/aboutUs")
 );
 
 const cookies = new Cookies();
@@ -91,7 +95,9 @@ export const routes = {
     login: "/login",
     payment:"/payment",
     successPayment:"/successPayment",
-    unSuccessPayment:"/unSuccessPayment"
+    unSuccessPayment:"/unSuccessPayment",
+    connectUs:"/connectedUs",
+    aboutUs:"/aboutUs"
   },
 };
 const user = cookies.get("user");
@@ -154,6 +160,24 @@ export const router = createBrowserRouter([
 
       <SuspenseView>
         <Cart/>
+        </SuspenseView>
+
+    
+  }, {
+    path: routes.USERS.connectUs,
+    element:
+
+      <SuspenseView>
+        <ConnectionPage/>
+        </SuspenseView>
+
+    
+  }, {
+    path: routes.USERS.aboutUs,
+    element:
+
+      <SuspenseView>
+        <AboutUs/>
         </SuspenseView>
 
     
@@ -282,10 +306,7 @@ export const router = createBrowserRouter([
       },
   //   ],
   // },
-  {
-    path: "*",
-    element: <ErrorPage />,
-  },
+
   {
     path: routes.USERS.login,
     element: (
@@ -307,5 +328,12 @@ export const router = createBrowserRouter([
         <UnSuccessPaymentPage/>
       </SuspenseView>
     ),
+  },
+  {
+    path: "*",
+
+    element:(   <SuspenseView>
+      <ErrorPage/>
+    </SuspenseView>) ,
   },
 ]);

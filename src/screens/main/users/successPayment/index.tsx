@@ -24,9 +24,11 @@ const SuccessPayment = () => {
   const user = cookies.get("user");
 
   const [searchParams, setSearchParams] = useSearchParams();
-console.log(searchParams.get("status"));
+
 
   useEffect(() => {
+
+    
     const newOrder = appState.OrderData.map((item: any) => {
       return { product: item.id, count: item.orderNUm };
     });
@@ -38,6 +40,7 @@ console.log(searchParams.get("status"));
     };
     if (searchParams.get("status") === "success") {
       mutate(data);
+      
       if (!isError) {
         dispatch(setOrderData({ OrderData: [] }));
         dispatch(setDeliveryDate({ deliveryDate: "" }));

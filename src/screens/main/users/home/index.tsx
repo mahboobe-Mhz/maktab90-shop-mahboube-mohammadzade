@@ -4,8 +4,14 @@ import TopOfHome from "../../../../components/userComponent/homeComponent/top";
 import MainHeader from "../../../../components/userComponent/mainHeader";
 import MainFooter from "../../../../components/userComponent/mainFooter";
 import AboutProduct from "../../../../components/userComponent/homeComponent/aboutProduct";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Home = () => {
+  const [state,setState]=useState()
+  
+  const useParam = useParams();
+
   return (
     <div className="w-[100%] flex flex-col  gap-5 " dir="rtl">
       <MainHeader />

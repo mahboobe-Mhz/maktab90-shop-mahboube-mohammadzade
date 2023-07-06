@@ -195,15 +195,17 @@ export const router = createBrowserRouter([
   
   },
 
-  // {
-  //   path: "/admin",
-  //   element: 
-  //   userRol?.role === "ADMIN" ? (
-  //     <AdminLayout />
-  //   ) : (
-  //     <Navigate to={routes.ADMIN.login} />
-  //   ),
-  //   children: [
+  {
+    path: "/admin",
+    element: 
+    userRol?.role === "ADMIN" ? (
+    <SuspenseView>
+     <AdminLayout />
+  </SuspenseView>
+    ) : (
+      <Navigate to={routes.ADMIN.login} />
+    ),
+    children: [
       {
     
         path: routes.ADMIN.login,
@@ -304,8 +306,8 @@ export const router = createBrowserRouter([
           },
         ],
       },
-  //   ],
-  // },
+    ],
+  },
 
   {
     path: routes.USERS.login,

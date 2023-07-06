@@ -37,7 +37,7 @@ const useLoginUsers = () => {
       cookies.set("refreshToken", data.token.refreshToken, { path: "/" });
       cookies.set("accessToken", data.token.accessToken, { path: "/" });
       const user = cookies.get("user");
-      user.role === "ADMIN" ? navigate(routes.ADMIN.main) : navigate("/");
+      navigate("/");
     },
     onError: (err) => {
       manageErrors({ err, setError });

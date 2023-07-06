@@ -3,19 +3,20 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
 import { LeftArrow, RightArrow } from '../../../kit/Arrow';
-import useGetPaginationProducts from '../../../../api/services/products/usePaginationProducts';
 interface Props{
-  setCounter:()=>void
+  setCounter:any
   counter:number
 }
 const BottomSlider = ({setCounter,counter}:Props) => {
-
+ 
     return (
-    <div className=' relative , w-[70%] ,h-[400px] ' >
+    <div className=' relative , w-[50%] ,h-[400px] ' >
        <Swiper
         spaceBetween={0}
        // slidesPerView="auto"
-        modules={[Navigation]}
+       allowTouchMove={false}
+      
+        modules={[Navigation ]}
         navigation={{
           prevEl:`.pervPage` ,
           nextEl:`.nextPage`

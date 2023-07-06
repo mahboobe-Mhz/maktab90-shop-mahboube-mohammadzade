@@ -61,7 +61,7 @@ export default function BasicTable({rows,title,refetch}:Props) {
    
   }
   React.useEffect(()=>{
-    const req =  axios.get(`http://localhost:8000/api/products/${editId}`);
+    const req =  axios.get(0`http://localhost:8000/api/products/${editId}`);
     req.then((res) => {
       dispatch(setEditData({
       selectEditData:res.data.data.product

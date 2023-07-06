@@ -1,22 +1,26 @@
 import { useDispatch, useSelector } from "react-redux";
+import * as React from 'react';
 import MainButton from "../../../../components/kit/button";
 import MainHeader from "../../../../components/userComponent/mainHeader";
 import MainFooter from "../../../../components/userComponent/mainFooter";
 import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
-import { setOrderData, storeAppState } from "../../../../redux/slice/appSlice";
+import { setOrderData, setProductOrderModal, storeAppState } from "../../../../redux/slice/appSlice";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../../../routes";
+import DeleteOrderModal from "../../../../components/userComponent/poductOrderModal";
 const Cart = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const appState = useSelector(storeAppState);
+  const [titleText ,setTitleText]=React.useState("")
+  const [deleteId ,setDeleteId]=React.useState()
 
-  const handleDelete = (event: any) => {
+  const handleDelete = (id: any) => {
     const newAppState = [...appState.OrderData];
-    newAppState.splice(event.currentTarget.id, 1);
+    newAppState.splice(id, 1);
 
     dispatch(setOrderData({ OrderData: newAppState }));
   };
@@ -35,11 +39,17 @@ const Cart = () => {
       });
     }
   };
+  const handleDeleteModal =(event:any)=>{
+    dispatch(setProductOrderModal({ productOrderModal: true }));
+     setTitleText(` از سبد خرید خود اطمینان  دارید؟  ${event.currentTarget.dataset.user}       آیااز حذف محصول    `) 
+     setDeleteId(event.currentTarget.id)
+  }
   return (
     <div dir="rtl">
       <MainHeader />
       <ToastContainer />
       <div className="p-10">
+        <DeleteOrderModal titleText={titleText} handleDelete={handleDelete} deleteId={deleteId} />
         <h1 className="text-3xl font-bold mb-10">سبد خرید</h1>
         <div className=" md:flex gap-4 mb-10 ">
           <div className="border rounded-2xl border-black md:w-[70%]">
@@ -77,7 +87,9 @@ const Cart = () => {
                     <span>
                       {Number(item.price).toLocaleString("Fa-IR")} تومان
                     </span>
-                    <span id={index} onClick={handleDelete}>
+                    <span id={index} 
+                    data-user={item.name}
+                    onClick={handleDeleteModal}>
                       <DeleteOutlineRoundedIcon />
                     </span>
                   </div>

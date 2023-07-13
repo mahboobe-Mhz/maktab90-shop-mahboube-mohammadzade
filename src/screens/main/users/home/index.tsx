@@ -8,9 +8,9 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Home = () => {
-  const [state,setState]=useState()
+
   
-  const useParam = useParams();
+
 
   return (
     <div className="w-[100%] flex flex-col  gap-5 " dir="rtl">

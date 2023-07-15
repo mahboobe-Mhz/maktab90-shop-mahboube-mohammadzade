@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
 import { LeftArrow, RightArrow } from '../../../kit/Arrow';
+import FlashIcon from '../../../svg/flashIcon';
 interface Props{
   setCounter:any
   counter:number
@@ -35,9 +36,9 @@ const BottomSlider = ({setCounter,counter}:Props) => {
         <div className="flex gap-5">
         <span 
         onClick={()=>{counter<4 && setCounter( counter+1)}}
-         className=" nextPage hover:cursor-pointer focus:outline-none"  > <RightArrow  /></span>
+         className=" nextPage hover:cursor-pointer focus:outline-none"  >   <FlashIcon height={40} width={40} className="  border  p-1 border-black  rounded-full hover:border-secondary" /></span>
         <span  onClick={()=>{ counter>0 && setCounter(counter-1)}} 
-        className=" pervPage hover:cursor-pointer focus:outline-none" > <LeftArrow  /></span>
+        className=" pervPage hover:cursor-pointer focus:outline-none" >   <FlashIcon height={40} width={40} className=" rotate-180  border  p-1 border-black  rounded-full hover:border-secondary" /></span>
     
     </div>
         </div>

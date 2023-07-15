@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { storeAppState } from "../../../redux/slice/appSlice";
 import Cookies from "universal-cookie";
 import UserInfo from "../userInfo";
+import BasketIcon from "../../svg/basket";
 const MainHeader = () => {
   const navigate = useNavigate();
   const appState = useSelector(storeAppState);
@@ -60,9 +61,7 @@ const MainHeader = () => {
          <span onClick={navigateCart} className="mt-3 relative">
           {appState.OrderData.length==0? <span></span> : <span className="absolute bottom-8 right-3 bg-secondary rounded-full
            text-white px-[5px] text-xs pb-[6px] h-4">{appState.OrderData.length}</span>}
-       
-          
-         <img className=""  width={20} src="/icons/icon-03.svg"></img>
+         <BasketIcon />
          </span>
 
       <UserInfo/>

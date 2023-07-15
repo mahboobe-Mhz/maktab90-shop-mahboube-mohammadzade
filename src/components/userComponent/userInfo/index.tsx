@@ -6,6 +6,7 @@ import Cookies from 'universal-cookie';
 import { Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { routes } from '../../../routes';
+import PersonIcon from '../../svg/personIcon';
 
 export default function UserInfo() {
   const cookies = new Cookies();
@@ -38,7 +39,7 @@ export default function UserInfo() {
         onClick={handleClick}
         sx={{width:"20px", marginTop:"10px"}}
       >
-      <img className=""  width={20} src="/icons/icon-01.svg"></img>
+     <PersonIcon/>
       </Typography>
       <Menu
       anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}

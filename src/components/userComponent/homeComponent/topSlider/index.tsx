@@ -3,7 +3,8 @@ import * as React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
-import { LeftArrow, RightArrow } from '../../../kit/Arrow';
+
+import FlashIcon from '../../../svg/flashIcon';
 const TopSwiper = () => {
   
     return (
@@ -28,9 +29,9 @@ const TopSwiper = () => {
         <div className=' absolute bottom-[70px] z-20 right-[50px]'>
         <div className="flex gap-5">
         <span 
-         className=" nextPage hover:cursor-pointer focus:outline-none"  > <RightArrow  /></span>
+         className=" nextPage hover:cursor-pointer focus:outline-none"  >  <FlashIcon height={40} width={40} className="  border  p-1 border-black  rounded-full hover:border-secondary" /></span>
         <span  
-        className=" pervPage hover:cursor-pointer focus:outline-none" > <LeftArrow  /></span>
+        className=" pervPage hover:cursor-pointer focus:outline-none" > <FlashIcon height={40} width={40} className=" rotate-180 border  p-1 border-black  rounded-full hover:border-secondary" /></span>
     
     </div>
         </div>

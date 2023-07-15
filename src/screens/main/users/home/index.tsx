@@ -18,12 +18,18 @@ const Home = () => {
       <TopOfHome />
       <SearchProducts />
       <GroupingProduct />
-      <div className="w-full flex items-center justify-center">
+      <div className=" w-full flex items-center justify-center relative">
+        <div className="fa-homnet absolute top-[-5px] right-[50px] pr-[150px] pl-[30px] pb-8 pt-6 bg-white rounded-full ">
+          <span className="px-5 pb-2 text-4xl rounded-full bg-white border-secondary border-2"> هومنت</span>
+        </div>
         <img
           className=" rounded-3xl"
           width={"90%"}
           src="public/picture/banner-01.jpg"
         />
+        <div className="en-homnet absolute bottom-[-20px] left-[20px] pl-[150px] pr-[30px] pb-8 pt-6 bg-white rounded-full ">
+          <span className="px-5 pb-2 text-4xl rounded-full bg-white border-secondary border-2"> Homnet</span>
+        </div>
       </div>
       <AboutProduct/>
       <MainFooter />

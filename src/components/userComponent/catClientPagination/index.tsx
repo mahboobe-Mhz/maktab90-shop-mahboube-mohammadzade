@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
+import FlashIcon from "../../svg/flashIcon";
 
 interface Props{
     countPage:number
@@ -31,7 +32,7 @@ if(Number(pageNum)<countPage){
     <li>
         <div onClick={goToPreviousPage} className="  hover:cursor-pointer relative block rounded-full bg-transparent px-3 py-1.5 text-sm 
          transition-all duration-300">
-            <span className="flex g  text-lg font-semibold"><img width={30} src="/icons/icon-02.svg" />صفحه قبل </span> 
+            <span className="flex g  text-lg font-semibold hover:text-secondary "><FlashIcon height={30} width={30} className=" rotate-180 px-1 mt-0.5"/>  صفحه قبل </span> 
          </div>
 
     </li>
@@ -92,10 +93,10 @@ if(Number(pageNum)<countPage){
      
  }
     <li>
-        <div onClick={goToNextPage} className=" hover:cursor-pointer relative block rounded-full bg-transparent px-3 py-1.5 text-sm 
+        <div onClick={goToNextPage} className=" hover:cursor-pointer hover:text-secondary relative block rounded-full bg-transparent px-3 py-1.5 text-sm 
          transition-all duration-300">
             <span className="flex text-lg font-semibold"> 
-           صفحه بعد <img width={30} className=" mt-1 rotate-180" src="/icons/icon-02.svg" />   </span> 
+           صفحه بعد <FlashIcon height={30} width={30} className="  px-1 mt-0.5"/>    </span> 
          </div>
    
     </li>

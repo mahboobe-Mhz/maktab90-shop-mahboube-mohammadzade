@@ -1,10 +1,11 @@
 import {Box ,Typography,TextField,FormControlLabel,Button} from '@mui/material'
 import Switch from '@mui/material/Switch';
 import {useState,useEffect} from "react"
+import { FieldErrors } from 'react-hook-form';
 
 interface Props{
-    register:any
-    errors:any
+    register: any
+    errors:FieldErrors
 }
 
 const AddPrice = ({register,errors}:Props) => {
@@ -14,15 +15,15 @@ const AddPrice = ({register,errors}:Props) => {
     const [discountPrice, setDiscountPrice] = useState<number>();
 ;
   
-    const showDiscountBox=(event:any)=>{
+    const showDiscountBox=(event:React.ChangeEvent<HTMLInputElement>)=>{
         setChecked(event.target.checked);    
     }
    
-    const saveDiscount =(event:any)=>{
-        setDiscount(event.target.value)
+    const saveDiscount =(event:React.ChangeEvent<HTMLInputElement>)=>{
+        setDiscount(Number(event.target.value))
 
     }
-    const showDiscount =(event:any)=>{
+    const showDiscount =(event:React.ChangeEvent<HTMLInputElement>)=>{
         event.preventDefault()
         const newPrice = Math.floor(price*discount*0.01) 
         setDiscountPrice(newPrice)

@@ -10,17 +10,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useDispatch } from 'react-redux';
 import { setOrderModal } from '../../../redux/slice/appSlice';
 import OrderModalTable from '../orderModal';
+import { UseQueryResult } from 'react-query';
+import { OrderDataType } from '../../../api/interface/order';
 interface Props{
-  rows:Array<{
- 
-    _id:string;
-    totalPrice:string;
-    user:string;
-    deliveryStatus:string;
-    deliveryDate:string;
-    data6:string;
-   
-  }>
+  rows:Array<OrderDataType>
   title:[
     name1:string,
     name2:string,
@@ -29,15 +22,15 @@ interface Props{
     name5?:string,
     name6?:string
   ]
-  refetch:any
+  refetch: () => Promise<UseQueryResult>
 }
 
 export default function BasicOrderTable({rows,title,refetch}:Props) {
- const[modalInfo,setModalInfo]=React.useState()
+ const[modalInfo,setModalInfo]=React.useState<OrderDataType|undefined>()
   const dispatch = useDispatch();
   const handleShowOrderModal =(event:any)=>{
     
-    const modalData =rows.find(item => item._id===event.currentTarget.id)
+    const modalData =rows.find((item:any) => item._id===event.currentTarget.id)
     setModalInfo(modalData)
     
     dispatch(setOrderModal({ orderModal: true }));
@@ -62,12 +55,12 @@ export default function BasicOrderTable({rows,title,refetch}:Props) {
               key={row._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="center">{row._id}</TableCell>
-              <TableCell align="center">{row.user.firstname}</TableCell>
-              <TableCell align="center">{row.totalPrice }</TableCell>
-              <TableCell align="center">{row.deliveryStatus?" ارسال شده":"در حال بررسی"}</TableCell>
+              <TableCell align="center">{row?._id}</TableCell>
+              <TableCell align="center">{row?.user.firstname}</TableCell>
+              <TableCell align="center">{row?.totalPrice }</TableCell>
+              <TableCell align="center">{row?.deliveryStatus?" ارسال شده":"در حال بررسی"}</TableCell>
               <TableCell align="center">{new Date(row.deliveryDate).toLocaleDateString('fa-IR')}</TableCell>
-              <TableCell onClick={handleShowOrderModal} id={row._id} align="center"> <MenuIcon/></TableCell>
+              <TableCell onClick={handleShowOrderModal} id={row?._id} align="center"> <MenuIcon/></TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -2,21 +2,33 @@ import {Box ,Typography,Input} from '@mui/material'
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import SegmentIcon from '@mui/icons-material/Segment';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
-import { useState,useRef,useEffect } from 'react';
+import { useState,useRef,useEffect, SetStateAction, Dispatch } from 'react';
 import { Products } from '../../../../api/interface/products';
 import { useSelector } from 'react-redux';
 import { storeAppState } from '../../../../redux/slice/appSlice';
 
+
 interface Props{
-    setFormValue:any
-    formValue:any
-    register:any
+  setFormValue: any
+ formValue:{
+        name:string,
+        price:string,
+        quantity:string,
+        brand:string,
+        description:string,
+        thumbnail:any,
+        images:string,
+        category:string,
+        subcategory:string
+    }
+
+    register: any
     errors:any
 }
 
 const AddPic = ({setFormValue,formValue ,register,errors}:Props) => {  
-    const [image , setImage]=useState([])
-    const [showImage , setShowImage]=useState([])
+    const [image , setImage]=useState<File[]>([])
+    const [showImage , setShowImage]=useState<string[]>([])
     const hiddenFileInput = useRef(null);
     const appState = useSelector(storeAppState);
 

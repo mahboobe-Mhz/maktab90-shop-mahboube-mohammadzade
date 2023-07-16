@@ -14,6 +14,8 @@ import {
   storeAppState,
 } from "../../../redux/slice/appSlice";
 import { instance } from "../../../api/constants";
+import { OrderDataType } from "../../../api/interface/order";
+import { UseQueryResult } from "react-query";
 const style = {
   position: "absolute",
   top: "50%",
@@ -26,8 +28,8 @@ const style = {
   p: 4,
 };
 interface Props{
-  orderData:any
-  refetch:any
+  orderData:OrderDataType|undefined
+  refetch: () => Promise<UseQueryResult>
 }
 export default function OrderModal({orderData,refetch}:Props) {
   
@@ -66,22 +68,22 @@ export default function OrderModal({orderData,refetch}:Props) {
             </Typography>
             <Typography>
               {" "}
-              ادرس : {orderData?.user.address}{" "}
+              ادرس : {orderData?.user.address||0}{" "}
             </Typography>
             <Typography>
               {" "}
-              تلفن : {orderData?.user.phoneNumber}
+              تلفن : {orderData?.user.phoneNumber||0}
             </Typography>
             <Typography>
               {" "}
               زمان تحویل :{" "}
-              {new Date(orderData?.deliveryDate).toLocaleDateString(
+              {new Date(orderData?.deliveryDate||0).toLocaleDateString(
                 "fa-IR"
               )}
             </Typography>
             <Typography>
               زمان سفارش :{" "}
-              {new Date(orderData?.createdAt).toLocaleDateString(
+              {new Date(orderData?.createdAt||0).toLocaleDateString(
                 "fa-IR"
               )}
             </Typography>

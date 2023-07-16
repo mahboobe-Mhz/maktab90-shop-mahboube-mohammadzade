@@ -24,7 +24,7 @@ const AddProducts = () => {
     const navigate= useNavigate()
     const appState = useSelector(storeAppState);
     const [resetForm,setResetForm]=useState(false)
-    const [subData , setSubData]=useState()
+    const [subData , setSubData]=useState([])
     const [formValue ,setFormValue]=useState({
         name:"",
         price:"",

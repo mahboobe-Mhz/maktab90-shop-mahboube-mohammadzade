@@ -3,13 +3,12 @@ import {
   Typography,
   Button,
   Input,
-  TextField,
-  TableBody,
+
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import BasicTable from "../productsTable/useTable";
+
 import useGetAllProducts from "../../../api/services/products/useGetAllProducts";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const ShowTableBox = () => {
   const { data, isLoading } = useGetAllProducts();
@@ -18,12 +17,12 @@ const ShowTableBox = () => {
 
   const quantityFun = () => {
     const newDataList = data.data.products;
-    const ZiroQuantity = newDataList.filter((item) => item.quantity === 0);
+    const ZiroQuantity = newDataList.filter((item:{quantity:number}) => item.quantity === 0);
     setDataList(ZiroQuantity);
   };
   const priceFun = () => {
     const newDataList = data.data.products;
-    const priceLess = newDataList.filter((item) => item.price === 0);
+    const priceLess = newDataList.filter((item:{price:number}) => item.price === 0);
     setDataList(priceLess);
   };
   const allProducts = () => {

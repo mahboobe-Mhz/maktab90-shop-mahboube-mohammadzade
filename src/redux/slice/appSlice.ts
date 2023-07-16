@@ -14,6 +14,7 @@ export interface CounterState {
   deliveryDate:string
   orderModal:boolean
   productOrderModal:boolean
+  priceInventory:any
 
 }
 
@@ -29,7 +30,9 @@ const initialState: CounterState = {
   OrderData:[],
   deliveryDate:"",
   orderModal:false,
-  productOrderModal:false
+  productOrderModal:false,
+  priceInventory:[]
+
 };
 
 export const AppSlice = createSlice({
@@ -57,11 +60,13 @@ export const AppSlice = createSlice({
     state.OrderData=action.payload.OrderData
     },  setDeliveryDate: (state, action) => {
       state.deliveryDate=action.payload.deliveryDate
-      },  setOrderModal: (state, action) => {
-        state.orderModal=action.payload.orderModal
-        },  setProductOrderModal: (state, action) => {
-          state.productOrderModal=action.payload.productOrderModal
-          }
+    },  setOrderModal: (state, action) => {
+      state.orderModal=action.payload.orderModal
+    },  setProductOrderModal: (state, action) => {
+      state.productOrderModal=action.payload.productOrderModal
+    }, setPriceInventory: (state, action) => {
+      state.priceInventory=action.payload.priceInventory
+      }
       
     
   
@@ -70,7 +75,7 @@ export const AppSlice = createSlice({
 });
 export const { addBreadCrumb ,setModal,setProductsModal,setOrderData,
   setEditData,setIsEditing,setEditId,setNotMOdal,setErrorMessage,setDeliveryDate
-  ,setOrderModal,setProductOrderModal} = AppSlice.actions;
+  ,setOrderModal,setProductOrderModal,setPriceInventory} = AppSlice.actions;
 
 export const storeAppState = (state: any) => state.storeState;
 

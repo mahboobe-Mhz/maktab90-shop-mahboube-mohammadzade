@@ -10,6 +10,8 @@ import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutl
 import EasyEdit from 'react-easy-edit';
 import { instance } from '../../../api/constants';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPriceInventory, storeAppState } from '../../../redux/slice/appSlice';
 
 interface Props{
   rows:Array<{
@@ -23,33 +25,38 @@ interface Props{
     category:any
     subcategory:any
   }>
-  title:Array<[
-    name1:string|undefined,
-    name2:string,
-    name3:string,
-    name4?:string,
-    name5?:string
+  title:[
+    name1:string,
+    name2:string|undefined,
+    name3:string|undefined,
+    name4?:string|undefined,
+    name5?:string|undefined,
   ]
     
-     
-  >
 }
 
 export default function BasicTable({rows,title}:Props) {
-  console.log(rows);
+  const dispatch = useDispatch();
+  const appState = useSelector(storeAppState);
   
-  const handelSavePrice=(value,name,id)=>{
+  const handelSavePrice=(value:number,id:string)=>{
+
     const baseData={
-      price:value,
-  }
-   instance({ method:"PATCH", data:baseData, url:`/products/${id}`})
+      id:id,
+      price:value}
+      dispatch(setPriceInventory({priceInventory:[...appState.priceInventory,baseData]}))
+  //  instance({ method:"PATCH", data:baseData, url:`/products/${id}`})
   
   }
-  const handelSaveQuantity=(value,item,id)=>{
+  const handelSaveQuantity=(value:number,id:string)=>{
     const baseData={
+      id:id,
       quantity:value,
   }
-   instance({ method:"PATCH", data:baseData, url:`/products/${id}`})
+  console.log(appState.priceInventory);
+  
+  dispatch(setPriceInventory({priceInventory:[...appState.priceInventory,baseData]}))
+  //  instance({ method:"PATCH", data:baseData, url:`/products/${id}`})
   }
   const cancel = () => {alert("Cancelled")}
   return (
@@ -79,7 +86,7 @@ export default function BasicTable({rows,title}:Props) {
     <EasyEdit
       type="text"
      value={row.price}
-      onSave={(value)=>handelSavePrice(value,'price',row._id)}
+      onSave={(value:any)=>handelSavePrice(value,row._id)}
       onCancel={cancel}
       saveButtonLabel="ذخیره"
       cancelButtonLabel="لغو"
@@ -93,7 +100,7 @@ export default function BasicTable({rows,title}:Props) {
               <EasyEdit
       type="text"
       value={row.quantity}
-      onSave={(value)=>handelSaveQuantity(value,'quantity',row._id)}
+      onSave={(value:any)=>handelSaveQuantity(value,row._id)}
       onCancel={cancel}
       saveButtonLabel="ذخیره"
       cancelButtonLabel="لغو"

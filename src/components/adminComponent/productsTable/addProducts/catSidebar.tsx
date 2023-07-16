@@ -3,14 +3,18 @@ import { useState,useEffect } from "react";
 import useGetAllCategory from "../../../../api/services/products/useGetAllCategory";
 import SubCatSide from "./subCatSide";
 import { useDispatch, useSelector } from "react-redux";
+import { Dispatch, SetStateAction } from 'react';
 import { setEditData, setEditId, storeAppState } from "../../../../redux/slice/appSlice";
 import axios from "axios";
-import { Controller } from "react-hook-form";
+import { Control, Controller } from "react-hook-form";
+import { subcategory } from "../../../../api/interface/subCategory";
 
 interface Props{
   errors:any
-  control:any
-  setSubData:any
+  control: Control
+  setSubData: Dispatch<
+  SetStateAction<subcategory>
+>
 }
 
 const CatSidebar = ({errors,control,setSubData}:Props) => {
@@ -24,7 +28,7 @@ const CatSidebar = ({errors,control,setSubData}:Props) => {
 
 
 
-    const handelCheckBox =(e:any)=>{
+    const handelCheckBox =(e:React.ChangeEvent<HTMLInputElement>)=>{
      setCatSelect(e.currentTarget.id);   
      setSelectRadio(e.currentTarget.id) 
      if(appState.isEdit){
@@ -40,9 +44,6 @@ const CatSidebar = ({errors,control,setSubData}:Props) => {
     const handelHideLabel =()=>{
         setShowSub(false)
     }
-
-
-console.log(appState.editId);
 
 
 //subcategory data

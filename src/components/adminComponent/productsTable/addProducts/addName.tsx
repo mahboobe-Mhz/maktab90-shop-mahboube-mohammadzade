@@ -7,12 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import NewDataModal from './newInfo';
 import {useState,useEffect} from 'react'
 import { Products } from '../../../../api/interface/products';
-import { Controller } from 'react-hook-form';
+import { Control, Controller, FieldErrors, RegisterOptions, UseFormRegister } from 'react-hook-form';
 interface Props{
- 
-  control:any
-  register:any
-  errors:any
+  control: Control
+  register: any
+  errors:FieldErrors
 }
 
 const AddData = ({ control,register,errors}:Props) => {

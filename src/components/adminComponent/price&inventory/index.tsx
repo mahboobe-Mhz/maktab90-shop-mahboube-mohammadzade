@@ -10,13 +10,15 @@ import {
   import PaginationControlled from "../../pagination";
   import axios from "axios";
 import useGetPaginationProducts from "../../../api/services/products/usePaginationProducts";
+import { useSelector } from "react-redux";
+import { storeAppState } from "../../../redux/slice/appSlice";
   
   const PriceTable = () => {
     const [page, setPage] =useState(1);
     const [countPage, setCountPage] =useState<number>();
     const [filterData, setFilterData] =useState("");
     const { data, isLoading, refetch } = useGetPaginationProducts(page, 5,filterData);
-  
+    const appState = useSelector(storeAppState);
    useEffect(() => {
       const req = axios.get(`http://localhost:8000/api/products`);
       req.then((res) => {
@@ -63,7 +65,9 @@ import useGetPaginationProducts from "../../../api/services/products/usePaginati
       })
 
     };
+const handleAllChange =()=>{
 
+}
     return (
       <Box sx={{ height:"100%" }}>
         <Box
@@ -88,7 +92,7 @@ import useGetPaginationProducts from "../../../api/services/products/usePaginati
               bgcolor: "secondary.main",
               borderRadius: "50px",
             }}
-
+            onClick={handleAllChange}
           >
         
         ذخیره

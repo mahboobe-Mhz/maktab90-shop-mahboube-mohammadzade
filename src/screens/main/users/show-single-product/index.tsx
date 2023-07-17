@@ -64,9 +64,7 @@ const ShowSingleProduct = () => {
   
       if(appState.OrderData.length>0){
         appState.OrderData?.map((item:any) => {
-          if(item.id===productId){ 
-        
-            
+          if(item.id===productId){         
            const newOrderInfo = {
       id: selectProduct._id,
       image: selectProduct.images,
@@ -86,7 +84,7 @@ const ShowSingleProduct = () => {
           }
         })
       }else{
-        console.log("hi3");
+
             
         dispatch(setOrderData({ OrderData: [...appState.OrderData, orderInfo] }));
       }

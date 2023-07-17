@@ -39,12 +39,30 @@ export default function BasicTable({rows,title}:Props) {
   const dispatch = useDispatch();
   const appState = useSelector(storeAppState);
   
-  const handelSavePrice=(value:number,id:string)=>{
+  const handelSavePrice=(value:number,id:any)=>{
 
     const baseData={
       id:id,
       price:value}
-      dispatch(setPriceInventory({priceInventory:[...appState.priceInventory,baseData]}))
+    
+  if(appState.priceInventory?.length>0){
+    appState.priceInventory?.map((item:any,index:number)=>{
+      if(item.id===id&&item.price)
+    {
+        const newAppState = [...appState.priceInventory];
+        newAppState.splice(index, 1);
+        dispatch(setPriceInventory({ priceInventory: [...newAppState,baseData] }))
+      }else{        
+        dispatch(setPriceInventory({priceInventory:[...appState.priceInventory,baseData]}))
+      }
+    }
+    )
+  }else{
+    dispatch(setPriceInventory({priceInventory:[...appState.priceInventory,baseData]}))
+  }
+  
+
+  
   //  instance({ method:"PATCH", data:baseData, url:`/products/${id}`})
   
   }
@@ -53,9 +71,29 @@ export default function BasicTable({rows,title}:Props) {
       id:id,
       quantity:value,
   }
-  console.log(appState.priceInventory);
+
+  if(appState.priceInventory?.length>0){
+    appState.priceInventory?.map((item:any,index:number)=>{
+      if(item.id===id&&item.quantity)
+    {
+      console.log("تکراری");
+      
+        const newAppState = [...appState.priceInventory];
+        newAppState.splice(index, 1);
+        dispatch(setPriceInventory({ priceInventory: [...newAppState,baseData] }))
+      }else{ 
+        console.log("جدید");       
+        dispatch(setPriceInventory({priceInventory:[...appState.priceInventory,baseData]}))
+      }
+    }
+    )
+  }else{
+
+    
+    dispatch(setPriceInventory({priceInventory:[...appState.priceInventory,baseData]}))
+  }
   
-  dispatch(setPriceInventory({priceInventory:[...appState.priceInventory,baseData]}))
+  console.log(appState.priceInventory)
   //  instance({ method:"PATCH", data:baseData, url:`/products/${id}`})
   }
   const cancel = () => {alert("Cancelled")}

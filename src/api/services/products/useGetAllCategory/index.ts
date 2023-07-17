@@ -8,7 +8,7 @@ interface Props{
 
 const useGetAllCategory = () => {
     return useQuery('getAllCategories' , async()=>{
-     const res =   await axios.get(`http://127.0.0.1:8000/api/categories?limit=30`)
+     const res =   await axios.get(`http://127.0.0.1:8000/api/categories?limit=30&sort=-createdAt`)
      return res.data
     })
 }

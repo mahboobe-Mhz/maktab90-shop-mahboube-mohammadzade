@@ -16,7 +16,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const appState = useSelector(storeAppState);
   const [titleText ,setTitleText]=React.useState("")
-  const [deleteId ,setDeleteId]=React.useState()
+  const [deleteId ,setDeleteId]=React.useState("")
 
   const handleDelete = (id: any) => {
     const newAppState = [...appState.OrderData];

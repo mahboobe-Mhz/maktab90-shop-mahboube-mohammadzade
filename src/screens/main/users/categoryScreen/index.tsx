@@ -78,9 +78,10 @@ const CategoryScreen = () => {
           <img src="/picture/posterCategory.png" alt="" />
         </div>
 
-        <div className="flex mt-10 gap-5">
-          <div className="w-[30%]">
-            <h1 className="text-xl font-semibold  border-b-2 border-black pb-2">
+        <div className="flex mt-10 md:gap-5 gap-1">
+          <div className="md:w-[30%] ">
+            <h1 className="md:text-xl text-md font-semibold w-[150px] md:w-full  border-b-2
+             border-black pb-2">
               {" "}
               دسته بندی محصولات
             </h1>
@@ -93,12 +94,12 @@ const CategoryScreen = () => {
                   className="mb-1 hover:cursor-pointer "
                 >
                   {item._id === catId ? (
-                    <span className="font-semibold text-secondary">
+                    <span className="font-semibold text-secondary md:text-lg text-sm">
                       {" "}
                       {item.name}
                     </span>
                   ) : (
-                    <span className="font-semibold"> {item.name}</span>
+                    <span className="font-semibold md:text-lg text-sm"> {item.name}</span>
                   )}
                 </div>
               ))}
@@ -111,7 +112,7 @@ const CategoryScreen = () => {
                   onClick={handleShowSubCategoryProducts}
                   className="mb-2"
                 >
-                  <span className="font-semibold"> {item.name}</span>
+                  <span className="font-semibold md:text-lg text-sm"> {item.name}</span>
                 </div>
               ))}
             </div>

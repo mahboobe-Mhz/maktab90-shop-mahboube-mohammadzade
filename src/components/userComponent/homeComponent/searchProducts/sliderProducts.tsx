@@ -19,7 +19,7 @@ const ProductsSlider = () => {
     return (
     <div className='w-[80%] mt-10 ' >
        <Swiper
-        spaceBetween={2}
+        spaceBetween={5}
         slidesPerView={4}
 
 
@@ -35,13 +35,14 @@ const ProductsSlider = () => {
         {!isLoading && value.map((product:any, index:number)=>
           <SwiperSlide id={product._id} data-user={product.slugname} data-category={product.category._id}  onClick={showSingleProduct}>
           <div className='flex flex-col items-center '>
-        {index%2==0 ?  <img  className='h-[280px]  w-[300px] shadow-lg border rounded-3xl ' width={150}  src={`http://localhost:8000/images/products/images/${product.images?.[0]}`}/>:
-         <img  className='h-[200px]  w-[200px] border shadow-lg rounded-3xl'  src={`http://localhost:8000/images/products/images/${product.images?.[0]}`}/>} 
+        {index%2==0 ?  <img  className='md:h-[280px]  md:w-[300px] shadow-lg border rounded-xl  md:rounded-3xl ' width={150}  src={`http://localhost:8000/images/products/images/${product.images?.[0]}`}/>:
+         <img  className='md:h-[200px]  md:w-[200px] h-[100px] border shadow-lg   rounded-xl md:rounded-3xl'  src={`http://localhost:8000/images/products/images/${product.images?.[0]}`}/>} 
           <div className='flex flex-col mt-3 items-center gap-2'>
-              <span className='font-semibold w-40 text-center'> {product.name}  </span>
+              <span className='font-semibold md:w-40 text-center text-xs md:text-lg'> {product.name}  </span>
               <div className='flex gap-5'>
           
-              <span className='text-sm'>{product.price}تومان</span>
+              <span className='text-xs
+              md:text-lg'>{product.price}تومان</span>
               </div>
               
           </div>

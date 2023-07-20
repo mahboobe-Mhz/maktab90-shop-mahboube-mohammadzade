@@ -25,7 +25,7 @@ const DropDownMenu = () => {
  res.then(response=>setCatData(response.data.data.categories)
  ) },[])
 
- const handleClose=(event)=>{
+ const handleClose=(event:any)=>{
   setAnchorEl(null)
 
  // navigate(`/products/${event.currentTarget.dataset.user}`)

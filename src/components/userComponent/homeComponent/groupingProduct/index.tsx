@@ -14,10 +14,10 @@ const GroupingProduct = () => {
   navigate(`/category/${event.currentTarget.id}_${event.currentTarget.dataset.user}_page_1`)
   
  }
-    return ( <div className="flex flex-col items-center mt-5 direction gap-5  mb-12">
-         <h1 className="text-secondary text-4xl  font-bold mb-5"> دسته بندی محصولات</h1>
+    return ( <div className="flex flex-col items-center mt-5 direction gap-5 md:mt-10  md:mb-12">
+         <h1 className="text-secondary md:text-4xl  font-bold md:mb-5"> دسته بندی محصولات</h1>
  
-      <div className='flex flex-wrap pr-16 '>
+      <div className='hidden md:flex flex-wrap pr-16 '>
         {
         catData && catData.map(item=>
           <div className="flex mt-16">
@@ -25,7 +25,8 @@ const GroupingProduct = () => {
           <img className=" opacity-0 photo object-cover
            absolute text-center top-[-5px] right-5" height={60}  width={100} 
            src={`http://localhost:8000/images/categories/icons/${item.icon}`}></img>
-             <span className="absolute z-10 text-center group-hover:text-secondary transition duration-300 text-2xl font-bold">  {item.name} </span>
+             <span className="absolute z-10 text-center group-hover:text-secondary transition duration-300 
+             md:text-2xl font-bold">  {item.name} </span>
          
       
           </div>
@@ -33,8 +34,24 @@ const GroupingProduct = () => {
         </div> )
         }
       </div>
-     
+      <div className='flex flex-wrap gap-2 justify-center md:hidden'>
+      {
+        catData && catData.map(item=>
+          <div className="flex  ">
+          <div className="  group flex  w-[150px]" id={item._id} data-user={item.slugname} 
+          onClick={navigateToCat}> 
+          <img className=" " height={30}  width={30} 
+           src={`http://localhost:8000/images/categories/icons/${item.icon}`}></img>
+             <span className=" z-10  group-hover:text-secondary text-xs transition duration-300 
+              font-bold mt-4 pr-2">  {item.name} </span>
+         
       
+          </div>
+          <span className=" p-[0.75px] bg-gray-600  h-[30px] " ></span>
+        </div> )
+        }
+      </div>
+   
     </div> );
 }
  

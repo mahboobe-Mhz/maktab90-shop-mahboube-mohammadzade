@@ -1,0 +1,166 @@
+.topSliderBox >.firstDetail::before{
+    content: "";
+  display: block;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  border-radius: 0px 30px;
+  bottom: 79px;
+  left: 15px;
+  box-shadow: -20px 10px 0px 1px rgb(255, 255, 255);
+
+}
+.topSliderBox >.firstDetail::after{
+    content: "";
+  display: block;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  border-radius: 30px 0;
+  bottom: -100px;
+  left: 15px;
+  box-shadow: -16px -12px 0 0 rgb(254, 254, 254);
+
+}
+.topSliderBox >.secondDetail::after{
+    content: "";
+    display: block;
+    width: 100px;
+    height: 40px;
+    position: absolute;
+    border-radius: 30px 0px;
+    bottom: 14px;
+    left: -100px;
+    box-shadow: 10px 12px 0 0 rgb(255, 255, 255);
+  
+}
+.topSliderBox >.secondDetail::before{
+    content: "";
+    display: block;
+    width: 50px;
+    height: 100px;
+    position: absolute;
+    border-radius: 30px 0px;
+    bottom: 67px;
+    left: 155px;
+    box-shadow: 17px 12px 0 0 #ffffff;
+  
+}
+.mainBanner>.fa-homnet ::after{
+    content: "";
+    display: block;
+    width: 80px;
+    height: 70px;
+    position: absolute;
+    border-radius: 0px 30px;
+    bottom:21.5px;
+    left: -79.5px;
+    box-shadow: 29px -25px 0 0 rgb(255, 255, 255); 
+}
+.mainBanner>.fa-homnet ::before{
+    content: "";
+    display: block;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    border-radius: 0px 30px;
+    bottom: -60px;
+    left: 231px;
+    box-shadow: 28px -19px 0 0 rgb(255, 255, 255); 
+}
+.mainBanner>.en-homnet::before{
+    content: "";
+    display: block;
+    width: 70px;
+    height: 50px;
+    position: absolute;
+    border-radius: 0px 30px;
+    bottom: 20px;
+    left: 302px;
+    box-shadow: -28px 19px 0 0 rgb(255, 255, 255); 
+
+}
+.mainBanner>.en-homnet::after{
+    content: "";
+    display: block;
+    width: 70px;
+    height: 50px;
+    position: absolute;
+    border-radius: 0px 30px;
+    bottom: 96px;
+    left: 20px;
+    box-shadow: -28px 19px 0 0 rgb(255, 255, 255); 
+
+}
+.resBanner>.faHomnet::before{
+
+    content: "";
+    display: block;
+    width: 30px;
+    height: 25px;
+    position: absolute;
+    border-radius: 0px 15px;
+    bottom:6px;
+    left:-30px;
+    box-shadow: 5px -9px 0 0 rgb(255, 255, 255); 
+}
+.resBanner>.faHomnet::after{
+    content: "";
+    display: block;
+    width: 40px;
+    height: 30px;
+    position: absolute;
+    border-radius: 0px 15px;
+    bottom:-30px;
+    right:20px;
+    box-shadow: 7px -5px 0 0 rgb(255, 255, 255); 
+}
+.resBanner>.enHomnet::after{
+    content: "";
+    display: block;
+    width: 50px;
+    height: 30px;
+    position: absolute;
+    border-radius: 0px 15px;
+    bottom:2px;
+    left:102px;
+    box-shadow: -12px 11px 0 0 #ffffff; 
+}
+.resBanner>.enHomnet::before{
+    content: "";
+    display: block;
+    width: 50px;
+    height: 30px;
+    position: absolute;
+    border-radius: 0px 15px;
+    bottom:40px;
+    left:20px;
+    box-shadow: -10px 1px 0 0 #ffffff; 
+}
+input[type='radio']:after {
+    width: 17px;
+    height: 17px;
+    border-radius: 15px;
+    top: -2px;
+    left: -0.5px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+ 
+}
+
+input[type='radio']:checked:after {
+    width: 17px;
+    height: 17px;
+    border-radius: 15px;
+    top: -2px;
+    left: -0.5px;
+    position: relative;
+    background-color: #fd6e54;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}

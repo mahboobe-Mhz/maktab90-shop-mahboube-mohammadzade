@@ -18,7 +18,7 @@ export default function SingleProductSlider({selectProduct}:Props) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   return (
-    <div className=" w-[400px]">
+    <div className=" md:w-[400px]">
       <Swiper
         style={{
           "--swiper-navigation-color": "#fff",

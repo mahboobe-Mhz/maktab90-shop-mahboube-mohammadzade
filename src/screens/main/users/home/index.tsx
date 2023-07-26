@@ -18,17 +18,28 @@ const Home = () => {
       <TopOfHome />
       <SearchProducts />
       <GroupingProduct />
-      <div className=" w-full flex items-center justify-center relative">
-        <div className="fa-homnet absolute top-[-5px] right-[50px] pr-[150px] pl-[30px] pb-8 pt-6 bg-white rounded-full ">
-          <span className="px-5 pb-2 text-4xl rounded-full bg-white border-secondary border-2"> هومنت</span>
+      <div className=" mainBanner w-full hidden md:flex items-center justify-center relative px-10">
+        <div className="fa-homnet absolute top-[-5px] right-[20px] md:pr-[130px] md:pl-[30px]  pb-8 pt-6 bg-white rounded-full ">
+          <span className="px-5 pb-2 md:text-4xl  rounded-full bg-white border-secondary border-2"> هومنت</span>
         </div>
         <img
-          className=" rounded-3xl"
-          width={"90%"}
+          className=" rounded-3xl "
           src="public/picture/banner-01.jpg"
         />
-        <div className="en-homnet absolute bottom-[-20px] left-[20px] pl-[150px] pr-[30px] pb-8 pt-6 bg-white rounded-full ">
+        <div className="en-homnet absolute bottom-[-20px] left-[20px] pl-[100px] pr-[30px] pb-8 pt-6 bg-white rounded-full ">
           <span className="px-5 pb-2 text-4xl rounded-full bg-white border-secondary border-2"> Homnet</span>
+        </div>
+      </div>
+      <div className=" resBanner w-full md:hidden flex items-center justify-center relative px-10 pt-10">
+        <div className=" faHomnet absolute top-[35px] right-[20px]  pr-10 pl-3 pb-2 pt-1 bg-white rounded-full ">
+          <span className="px-2 pb-1 rounded-full text-xs bg-white border-secondary border-2"> هومنت</span>
+        </div>
+        <img
+          className=" rounded-3xl "
+          src="public/picture/banner-01.jpg"
+        />
+        <div className="enHomnet absolute bottom-[-2px] left-[20px]  pb-3 pt-1 pr-3 pl-7 bg-white rounded-full ">
+          <span className="px-2 pb-1 rounded-full text-xs bg-white border-secondary border-2"> Homnet</span>
         </div>
       </div>
       <AboutProduct/>

@@ -1,0 +1,15 @@
+.price-wrapper{
+    position: relative; 
+    display: inline-block;
+  
+  }
+  
+  .price-slash{
+    position: relative;
+    width: 100%;
+    height: 0;
+    border-top: 1px solid red;
+    transform: rotate(-12deg);
+    top: 15px;
+  }
+  

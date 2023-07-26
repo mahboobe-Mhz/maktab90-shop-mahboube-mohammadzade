@@ -1,3 +1,4 @@
+import React from "react";
 import TopSwiper from "../topSlider";
 
 const TopOfHome = () => {

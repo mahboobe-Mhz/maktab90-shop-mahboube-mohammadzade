@@ -1,5 +1,3 @@
-
-
 import DropDownMenu from "../nestedMenu/menu";
 import { routes } from "../../../routes";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +11,7 @@ import BasketIcon from "../../svg/basket";
 import SubCatMenu from "../tailwindMenu/subCatMenu";
 import MainMenu from "../tailwindMenu";
 import ResponsiveMenu from "../responsiveMenu";
+import React from "react";
 const MainHeader = () => {
   const navigate = useNavigate();
   const appState = useSelector(storeAppState);
@@ -42,14 +41,16 @@ const MainHeader = () => {
             hover:cursor-pointer focus:text-secondary focus:outline-none focus:ring-none relative">صفحه اصلی</button>
            
             <span className="mt-3">.</span>
-            <span className="mt-3.5"> <MainMenu/></span>
+           
+              <button>  <MainMenu/></button>
+            
            
             {/* <button className=" hover:text-secondary hover:cursor-pointer focus:text-secondary 
             focus:outline-none focus:ring-none relative mt-1"><DropDownMenu /></button> */}
             <span className="mt-3">.</span>
             <button onClick={navigateCart} className="font-semibold hover:text-secondary hover:cursor-pointer
              focus:text-secondary focus:outline-none focus:ring-none relative"> رهگیری سفارشات</button>
-            <span className="mt-2">.</span>
+           <span className="mt-3">.</span>
             <button onClick={navigateAdmin} className="font-semibold hover:text-secondary hover:cursor-pointer
              focus:text-secondary focus:outline-none focus:ring-none relative"> پنل نمایندگان</button>
           </div>
@@ -67,8 +68,9 @@ const MainHeader = () => {
         onMouseOver={()=>setState(true)}
           width={20} src="/icons/icon-04.svg"></img>}
 </div>
-         <span onClick={navigateCart} className="mt-3 relative">
-          {appState.OrderData.length==0? <span></span> : <span className="absolute md:bottom-8 bottom-[20px] right-3 bg-secondary rounded-full
+         <span onClick={navigateCart} className="mt-3  ">
+          {appState.OrderData.length==0? <span></span> : 
+          <span className="absolute top-[0] md:left-[65px] left-[30px] w-[17px]  bg-secondary rounded-full
            text-white px-[5px] text-xs pb-[6px] h-4">{appState.OrderData.length}</span>}
          <BasketIcon />
          </span>

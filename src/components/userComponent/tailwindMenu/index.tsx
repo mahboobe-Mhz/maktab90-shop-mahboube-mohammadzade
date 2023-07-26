@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SubCatMenu from "./subCatMenu";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import React from "react";
 
 const MainMenu = () => {
     const [catData ,setCatData]=useState([])
@@ -14,8 +15,8 @@ const MainMenu = () => {
     return (  
         <div className="relative group z-20">
  {/* Category item with subcategory */}
-  <a href="#" className="text-black  font-semibold  hover:cursor-pointer hover:text-secondary  "
-   onMouseOver={()=>setShowCategory(true)}>محصولات</a>
+  <button  className="text-black  font-semibold  hover:cursor-pointer hover:text-secondary  "
+   onMouseOver={()=>setShowCategory(true)}>محصولات</button>
   
 {
 showCategory ?<div className="absolute  shadow-black  shadow-xl rounded-2xl bg-white mt-2

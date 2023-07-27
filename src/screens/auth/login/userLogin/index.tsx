@@ -20,7 +20,7 @@ const UserLogin = () => {
 
       <form
         onSubmit={handleSubmit(handleLoginUser)}
-        className="bg-[#fd6e54] w-[30%] text-end shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4 flex flex-col"
+        className="bg-[#fd6e54] md:w-[30%] text-end shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4 flex flex-col"
       >
         <h2 className="text-[#ffff]  text-xl font-semibold ">
           {" "}

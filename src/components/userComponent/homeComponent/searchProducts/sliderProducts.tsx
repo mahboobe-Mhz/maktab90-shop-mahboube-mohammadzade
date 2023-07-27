@@ -38,7 +38,7 @@ const ProductsSlider = () => {
                
           <div className='flex flex-col items-center pt-10 '>
         {discount? <span className='absolute text-white px-2 bg-secondary rounded-xl rotate-[-17deg] md:top-[30px] top-[35px]
-         md:text-md text-[7px]'> ۳۵٪-</span>:""} 
+         md:text-lg text-[7px]'> ۳۵٪-</span>:""} 
         {index%2==0 ? <div className='group bg-black object-cover rounded-xl shadow-lg md:rounded-3xl '>
           <span className='opacity-0 group-hover:opacity-100 absolute top-[140px] left-[70px] text-white border-[2px] border-white px-5 pb-1 text-lg rounded-2xl font-bold'> خرید محصول</span>
           <img  className='md:h-[280px]  md:w-[300px] 

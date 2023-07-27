@@ -1,14 +1,13 @@
 import { useState } from "react";
 interface Props{
-    height:number
-    width:number
+  
     className:string
 }
 
-const FlashIcon=( {height,width,className}:Props)=> {
+const FlashIcon=( {className}:Props)=> {
     const[mouseover,setMouseover]=useState(false)
     return (   
-<svg height={height} width={width}  fill={mouseover? "#fd6e54":"#00000"}
+<svg   fill={mouseover? "#fd6e54":"#00000"}
 onMouseOver={()=>setMouseover(true)}
 onMouseLeave={()=>{setMouseover(false)}}
 className={className}

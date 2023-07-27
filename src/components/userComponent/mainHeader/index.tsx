@@ -65,7 +65,7 @@ const MainHeader = () => {
           <div className="flex gap-4 justify-end md:pl-10 pb-1">
 <div >
 { state ? <SearchBox setState={setState} /> : <img className=" mt-3   transition-all hover:hidden" 
-        onMouseOver={()=>setState(true)}
+        onMouseOver={()=>setState(true)} onMouseEnter={()=>setState(true)}
           width={20} src="/icons/icon-04.svg"></img>}
 </div>
          <span onClick={navigateCart} className="mt-3  ">

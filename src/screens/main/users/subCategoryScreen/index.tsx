@@ -73,32 +73,32 @@ const SubCategoryScreen = () => {
   return (
     <div dir="rtl">
       <MainHeader />
-      <div className="mx-2">
+      <div className="md:mx-2">
         <div className="mt-1 w-full">
           <img src="/picture/posterCategory.png" alt="" />
         </div>
 
-        <div className="flex mt-10 gap-5">
-          <div className="w-[30%]">
-            <h1 className="text-xl font-semibold  border-b-2 border-black pb-2">
+        <div className="flex mt-10 md:gap-5 gap-1">
+          <div className="md:w-[30%] ">
+            <h1 className="md:text-xl text-md font-semibold  w-[150px] md:w-full  border-b-2 border-black pb-2">
               {" "}
               دسته بندی محصولات
             </h1>
-            <div className="mt-3 flax flex-col gap-1 border-b-2 border-black pb-2">
+            <div className="mt-3 flax flex-col md:gap-1 gap-0 border-b-2 border-black pb-2">
               {allCategory.map((item) => (
                 <div
                   onClick={handleShowCategoryProducts}
                   id={item._id}
                   data-user={item.slugname}
-                  className="mb-1 hover:cursor-pointer "
+                  className="md:mb-1 hover:cursor-pointer "
                 >
                   {item._id === catId ? (
-                    <span className="font-semibold text-secondary">
+                    <span className="font-semibold md:text-lg text-sm text-secondary">
                       {" "}
                       {item.name}
                     </span>
                   ) : (
-                    <span className="font-semibold"> {item.name}</span>
+                    <span className="font-semibold md:text-lg text-sm"> {item.name}</span>
                   )}
                 </div>
               ))}
@@ -109,16 +109,16 @@ const SubCategoryScreen = () => {
                   id={item._id}
                   data-user={item.slugname}
                   onClick={handleShowSubCategoryProducts}
-                  className="mb-2"
+                  className="md:mb-2"
                 >
                   {item._id === subCatId ? (
                     <div>
                       <CheckIcon sx={{ color: "secondary.main" }} />
-                      <span className="font-semibold"> {item.name}</span>
+                      <span className="font-semibold md:text-lg text-sm"> {item.name}</span>
                     </div>
                   ) : (
                     <div>
-                      <span className="font-semibold"> {item.name}</span>
+                      <span className="font-semibold md:text-lg text-sm"> {item.name}</span>
                     </div>
                   )}
                 </div>
@@ -138,7 +138,7 @@ const SubCategoryScreen = () => {
           </div>
         </div>
       </div>
-      <img className="h-[200px] w-full" src="/picture/footer.png" />
+      <img className="md:h-[200px] w-full" src="/picture/footer.png" />
       <MainFooter />
     </div>
   );

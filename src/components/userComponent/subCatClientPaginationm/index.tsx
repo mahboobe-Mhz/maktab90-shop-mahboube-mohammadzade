@@ -34,7 +34,7 @@ if(Number(pageNum)<countPage){
     <li>
         <div onClick={goToPreviousPage} className="  hover:cursor-pointer relative block rounded-full bg-transparent px-3 py-1.5 text-sm 
          transition-all duration-300">
-            <span className="flex g  text-lg font-semibold"><img width={30} src="/icons/icon-02.svg" />صفحه قبل </span> 
+            <span className="flex md:text-lg text-sx font-semibold"><img width={30} src="/icons/icon-02.svg" />صفحه قبل </span> 
          </div>
 
     </li>
@@ -97,7 +97,7 @@ if(Number(pageNum)<countPage){
     <li>
         <div onClick={goToNextPage} className=" hover:cursor-pointer relative block rounded-full bg-transparent px-3 py-1.5 text-sm 
          transition-all duration-300">
-            <span className="flex text-lg font-semibold"> 
+            <span className="flex md:text-lg font-semibold"> 
            صفحه بعد <img width={30} className=" mt-1 rotate-180" src="/icons/icon-02.svg" />   </span> 
          </div>
    

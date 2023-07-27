@@ -56,7 +56,7 @@ const Cart = () => {
             <div className="p-4 space-y-5 overflow-y-scroll h-[400px]">
               <div className="flex justify-between border-b border-black pb-3 px-4">
                 <span className="font-semibold">محصول</span>
-                <div className="flex justify-around font-semibold w-[60%]">
+                <div className="hidden md:flex justify-around font-semibold w-[60%] ">
                   <span>تعداد</span>
                   <span>قیمت</span>
                   <span>حذف</span>
@@ -65,7 +65,7 @@ const Cart = () => {
               {appState.OrderData.map((item: any, index: any) => (
                 <div
                   id={index}
-                  className="flex justify-between border-b  border-black pb-3 px-4 w-full"
+                  className="flex md:flex-row flex-col justify-between border-b  border-black pb-3 px-4 w-full"
                 >
                   <div className="flex md:w-[40%]">
                     <img
@@ -74,14 +74,14 @@ const Cart = () => {
                       height={80}
                       src={`http://localhost:8000/images/products/images/${item.image?.[0]}`}
                     />
-                    <div className="flex flex-col pr-3">
-                      <span className="font-bold"> {item.name}</span>
-                    </div>
+                   
+                      <span className="font-bold pr-3 pt-2 md:pt-0"> {item.name}</span>
+                   
                   </div>
                   <div className="flex justify-around md:w-[60%] mt-4">
                     <span className="mx-1 ">
                       {" "}
-                      {Number(item.orderNUm).toLocaleString("fa-IR")}{" "}
+                      {Number(item.orderNUm).toLocaleString("fa-IR")}{" "}عدد 
                     </span>
 
                     <span>

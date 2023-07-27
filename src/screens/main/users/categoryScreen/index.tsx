@@ -73,7 +73,7 @@ const CategoryScreen = () => {
   return (
     <div dir="rtl">
       <MainHeader />
-      <div className="mx-2">
+      <div className="md:mx-2">
         <div className="mt-1 w-full">
           <img src="/picture/posterCategory.png" alt="" />
         </div>
@@ -130,7 +130,7 @@ const CategoryScreen = () => {
           </div>
         </div>
       </div>
-      <img className="h-[200px] w-full" src="/picture/footer.png" />
+      <img className="md:h-[200px] w-full" src="/picture/footer.png" />
       <MainFooter />
     </div>
   );

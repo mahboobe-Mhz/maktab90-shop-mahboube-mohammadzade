@@ -11,6 +11,7 @@ import { setOrderData, storeAppState } from "../../../../redux/slice/appSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React from "react";
+import MainButton from "../../../../components/kit/button";
 interface selectProduct {
   id: string;
   name: string;
@@ -34,7 +35,9 @@ const ShowSingleProduct = () => {
   const [showColor , setShowColor]=useState(false)
   const [showSize , setShowSize]=useState(false)
   const[selectedColor,setSelectColor]=useState("")
-
+ const [showDescription, setShowDescription]=useState(false)
+ const[comments , setComments]=useState(false)
+ const [showMoreDescription, setShowMoreDescription]=useState(false)
   const orderInfo = {
     id: selectProduct._id,
     image: selectProduct.images,
@@ -47,7 +50,7 @@ const ShowSingleProduct = () => {
   const useParam = useParams();
   const productId = useParam.id?.split("_")[0];
   const catId = useParam.id?.split("_")[2];
-  //document.body.addEventListener('click',()=>{setShowColor(false),setShowSize(false)} , true);  
+
   useEffect(() => {
     axios.get(`http://localhost:8000/api/products/${productId}`).then((res) => {
       setSelectProduct(res.data.data.product);
@@ -179,7 +182,7 @@ setSelectColor(event.currentTarget.id)
               </span>
 
               <div className="flex gap-10 md:flex-row flex-col justify-center items-center">
-                <span className=" border border-black md:px-5 w-[150px] px-7
+                <span className=" border border-black md:px-5 w-[120px]
                 py-1
                 rounded-full ">
                   <span
@@ -212,15 +215,61 @@ setSelectColor(event.currentTarget.id)
           </div>
         </div>
         <div className="mt-10">
-          <span className="flex justify-between font-semibold border-b-2 border-black pb-2 text-sm md:text-md">
-            <span>جزییات محصول</span> <span> +</span>{" "}
+          <span onClick={()=>setShowDescription(!showDescription)} className="flex justify-between border-b-2 border-black ">
+          <span className="font-bold">جزییات محصول</span>
+            {showDescription? <span className="text-secondary font-semibold  text-2xl  hover:cursor-pointer"> −</span> :<span className="font-semibold  text-2xl hover:cursor-pointer"> +</span>}
           </span>
-          <span className="flex justify-between font-semibold border-b-2 border-black pb-2 text-sm md:text-md">
-            <span> نظرات</span> <span> +</span>{" "}
+          {showDescription?<div className="border border-black rounded-xl mt-2 p-2  ">
+              <span>محصولی با مواد اولیه عالی</span>
+          </div>:""}
+          
+          <span onClick={()=>setComments(!comments)} className="flex justify-between border-b-2 border-black ">
+          <span className="font-bold"> نظرات</span>
+            {comments? <span className="text-secondary font-semibold  text-2xl  hover:cursor-pointer"> −</span> :<span className="font-semibold hover:cursor-pointer text-2xl "> +</span>}
           </span>
-          <span className="flex justify-between font-semibold border-b-2 border-black pb-2 text-sm md:text-md">
-            <span>جزییات بیشتر</span> <span> +</span>{" "}
+          {comments?<div className="flex flex-col w-full" >
+            <div  className="flex w-full gap-4 mt-2 text-sm">
+            <div className="w-[50%]">
+                    <span> دیدگاه شما*</span>
+                    <textarea className="border border-black rounded-2xl mt-2 p-1 w-full px-2" name="description" minLength="10" maxLength="40" required></textarea>
+             </div>
+             <div className="flex flex-col w-[50%]">
+             
+              <span className="w-full">
+              <span>نام* </span>
+              <input type="text" className="border border-black rounded-2xl mt-2 p-1 px-2 w-full "/>
+              </span>
+              <span className="w-full">
+              <span>ایمیل* </span>
+              <input type="email" className="border border-black rounded-2xl mt-2 px-2 p-1 w-full "/>
+              </span>
+             </div>
+            </div>
+           
+             <div className="flex md:justify-between items-center w-full mt-2 md:flex-row flex-col">
+             
+             <span> <input type="checkbox" /> ذخیره نام ،ایمیل و وبسایت من در مرورگر برای زمانی که دوباره دیدگاهی می نویسم.</span>
+                   
+             <button
+             type="submit"
+                  onClick={insertToCart}
+                  className="bg-secondary rounded-full md:px-10 md:py-1 md:pb-2 text-white mr-5 w-[40%]"
+                >
+                  {" "}
+                  ثبت
+                </button>
+                
+          
+             </div>
+      
+          </div>:""}
+          <span onClick={()=>setShowMoreDescription(!showMoreDescription)} className="flex justify-between border-b-2 border-black ">
+          <span className="font-bold">جزییات بیشتر </span>
+            {showMoreDescription? <span className="text-secondary font-semibold  text-2xl hover:cursor-pointer "> −</span> :<span className="font-semibold hover:cursor-pointer text-2xl "> +</span>}
           </span>
+          {showMoreDescription?<div className="border border-black rounded-xl mt-2 p-2  ">
+              <span>محصولی با مواد اولیه عالی</span>
+          </div>:""}
         </div>
         <div>
           <h1 className="md:text-2xl font-bold text-lg">محصولات مشابه</h1>

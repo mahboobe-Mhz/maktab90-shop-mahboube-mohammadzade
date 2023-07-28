@@ -75,7 +75,7 @@ const Cart = () => {
                       src={`http://localhost:8000/images/products/images/${item.image?.[0]}`}
                     />
                    
-                      <span className="font-bold pr-3 pt-2 md:pt-0"> {item.name}</span>
+                      <span  className="font-bold pr-3 pt-2 md:pt-0 hover:cursor-pointer"> {item.name}</span>
                    
                   </div>
                   <div className="flex justify-around md:w-[60%] mt-4">

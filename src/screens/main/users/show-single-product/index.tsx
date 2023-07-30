@@ -11,7 +11,7 @@ import { setOrderData, storeAppState } from "../../../../redux/slice/appSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React from "react";
-import MainButton from "../../../../components/kit/button";
+
 interface selectProduct {
   id: string;
   name: string;
@@ -38,14 +38,7 @@ const ShowSingleProduct = () => {
  const [showDescription, setShowDescription]=useState(false)
  const[comments , setComments]=useState(false)
  const [showMoreDescription, setShowMoreDescription]=useState(false)
-  const orderInfo = {
-    id: selectProduct._id,
-    image: selectProduct.images,
-    name: selectProduct.name,
-    price: totalPrice,
-    orderNUm: orderCount,
-    quantity: selectProduct.quantity,
-  };
+
 
   const useParam = useParams();
   const productId = useParam.id?.split("_")[0];
@@ -67,42 +60,26 @@ const ShowSingleProduct = () => {
     setTotalPrice(selectProduct.price * orderCount);
   }, [orderCount]);
 
-  const insertToCart = () => {  
-    if (orderCount > 0) {
-  
-      if(appState.OrderData.length>0){
-        appState.OrderData?.map((item:any) => {
-          if(item.id===productId){         
-           const newOrderInfo = {
+  const insertToCart = () => { 
+    const orderInfo = {
       id: selectProduct._id,
       image: selectProduct.images,
       name: selectProduct.name,
       price: totalPrice,
       orderNUm: orderCount,
       quantity: selectProduct.quantity,
-    };
-    const newAppState = [...appState.OrderData];
-    newAppState.splice(item.id, 1);
-            dispatch(setOrderData({ OrderData: [...newAppState, newOrderInfo] }));
-            
-          }else{
-           
-            
-            dispatch(setOrderData({ OrderData: [...appState.OrderData, orderInfo] }));
-          }
-        })
+    category:selectProduct.category._id,
+      slugName:selectProduct.slugname
+    }; 
+    if (orderCount > 0) {
+  
+      if(appState.OrderData.length>0){
+        const newAppState =appState.OrderData.filter((item:any)=> item.id !==productId ) 
+        dispatch(setOrderData({ OrderData: [...newAppState, orderInfo] }));
       }else{
-
-            
         dispatch(setOrderData({ OrderData: [...appState.OrderData, orderInfo] }));
       }
       
-
-    
- 
-
-  
-
     }
     if (orderCount === 0) {
       toast.warning("تعداد را وارد کنید😊", {

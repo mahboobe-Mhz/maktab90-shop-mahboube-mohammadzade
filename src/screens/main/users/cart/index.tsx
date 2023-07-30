@@ -8,7 +8,7 @@ import { setOrderData, setProductOrderModal, storeAppState } from "../../../../r
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { routes } from "../../../../routes";
 import DeleteOrderModal from "../../../../components/userComponent/poductOrderModal";
 const Cart = () => {
@@ -29,6 +29,7 @@ const Cart = () => {
     (sum: number, { price }: any) => sum + price,
     0
   );
+console.log(appState.OrderData);
 
   const handleCheckout = () => {
     if (appState.OrderData[0]) {
@@ -41,7 +42,7 @@ const Cart = () => {
   };
   const handleDeleteModal =(event:any)=>{
     dispatch(setProductOrderModal({ productOrderModal: true }));
-     setTitleText(` از سبد خرید خود اطمینان  دارید؟  ${event.currentTarget.dataset.user}       آیااز حذف محصول    `) 
+     setTitleText(`  ${event.currentTarget.dataset.user}  `) 
      setDeleteId(event.currentTarget.id)
   }
   return (
@@ -75,7 +76,8 @@ const Cart = () => {
                       src={`http://localhost:8000/images/products/images/${item.image?.[0]}`}
                     />
                    
-                      <span  className="font-bold pr-3 pt-2 md:pt-0 hover:cursor-pointer"> {item.name}</span>
+                 <Link to={`/product/${item.id}_${item.slugName}_${item.category}`}
+                        className="font-bold pr-3 pt-2 md:pt-0 hover:cursor-pointer"> {item.name}</Link>
                    
                   </div>
                   <div className="flex justify-around md:w-[60%] mt-4">

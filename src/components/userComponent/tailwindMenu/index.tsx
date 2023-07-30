@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 import SubCatMenu from "./subCatMenu";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -8,15 +8,29 @@ const MainMenu = () => {
     const [catData ,setCatData]=useState([])
     const[showCategory,setShowCategory]=useState(false)
     const [showSubCat ,setShowSubCat]=useState(false)
+    const ref = useRef(null);
+    const handleClickOutside = (event:any) => {
+ 
+      if (ref.current && !ref.current.contains(event.target)) {
+        setShowCategory(false) ;
+      }
+    
+  };
+  useEffect(() => {
+      document.addEventListener('click', handleClickOutside, true);
+      return () => {
+          document.removeEventListener('click', handleClickOutside, true);
+      };
+  }, []);
     useEffect(()=>{const res =axios.get('http://127.0.0.1:8000/api/categories?limit=30')
     res.then(response=>setCatData(response.data.data.categories)
     ) },[])
-    document.body.addEventListener('click',()=>setShowCategory(false) , true);  
+
     return (  
-        <div className="relative group z-20">
+        <div ref={ref} className="relative group z-20">
  {/* Category item with subcategory */}
   <button  className="text-black  font-semibold  hover:cursor-pointer hover:text-secondary  "
-   onMouseOver={()=>setShowCategory(true)}>محصولات</button>
+   onMouseOver={()=>setShowCategory(true)} onClick={()=>setShowCategory(true)}>محصولات</button>
   
 {
 showCategory ?<div className="absolute  shadow-black  shadow-xl rounded-2xl bg-white mt-2

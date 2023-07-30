@@ -43,9 +43,10 @@ export default function DeleteOrderModal({titleText,handleDelete,deleteId}:Props
       >
         <Box sx={style}>
 
-          <Typography id="modal-modal-description" sx={{ mt: 2, textAlign:"center", mb:"30px" ,direction:"ltr"}}>
+          <Typography id="modal-modal-description" sx={{ mt: 2, textAlign:"center", mb:"30px" ,direction:"rtl"}}> آیا از حذف {titleText}     اطمینان دارید؟   
             
-        {titleText}
+
+       
           </Typography>
           <Box sx={{display:"flex", gap:"20px"}}>
           <Button sx={{color:"#ffff",  bgcolor: "secondary.main", paddingX:"50px"}} onClick={handelFunction} > بلی</Button>

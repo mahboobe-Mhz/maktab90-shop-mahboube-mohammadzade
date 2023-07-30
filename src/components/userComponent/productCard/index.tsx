@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setOrderData, storeAppState } from "../../../redux/slice/appSlice";
+import { useState } from "react";
 
 interface Props{
   productSelect:any
@@ -10,6 +11,7 @@ interface Props{
 const ProductCart = ({productSelect}:Props) => {
   const navigate = useNavigate();
     const dispatch = useDispatch();
+
   const appState = useSelector(storeAppState);
   const orderInfo = {
     id: productSelect._id,
@@ -18,13 +20,27 @@ const ProductCart = ({productSelect}:Props) => {
     price: productSelect.price,
     orderNUm: 1,
     quantity: productSelect.quantity,
+    category:productSelect.category._id,
+      slugName:productSelect.slugname
   };
   const navigateToSinglePage =(event:any)=>{
     navigate(`/product/${event.currentTarget.id}_${event.currentTarget.dataset.user}_${productSelect.category._id}`)
   }
   const handleInsertToCart=()=>{
-dispatch(setOrderData({ OrderData: [...appState.OrderData, orderInfo] }));
+    if(appState.OrderData.length>0){
+       const newAppState =appState.OrderData.filter((item:any) => item.id !==productSelect._id)
+      dispatch(setOrderData({ OrderData: [...newAppState, orderInfo] }));
+    }else{
+      dispatch(setOrderData({ OrderData: [...appState.OrderData, orderInfo] }));
+    }
+         
+      
+   
+ 
+
   }
+
+  
     return (<div className="mt-2  md:w-[240px] w-[150px] "   >
         <div className="singleCard relative shadow-xl md:rounded-3xl rounded-xl w-full">
         <img onClick={navigateToSinglePage} id={productSelect._id} data-user={productSelect.slugname} 

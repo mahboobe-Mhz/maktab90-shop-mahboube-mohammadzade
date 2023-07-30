@@ -21,16 +21,17 @@ useEffect(()=>{
 },[state])
 document.body.addEventListener('click',()=>setState(false) , true);  
     return (  
-        <div className="relative z-10 ">
+        <div  className="relative z-10 ">
  {/* Category item with subcategory */}
   <span   onMouseOver={()=>setState(true)} 
+  onClick={()=>setState(true)}
    className="text-gray-900 w-full   pr-2  px-4 rounded-md text-sm font-medium flex justify-between"> 
    <span className="hover:text-secondary" >  {title}</span>
    {subCatData.length? <span className=" rounded-full p-[2px]
     hover:border-white hover:bg-secondary "> 
-    {state?  <FlashIcon className=" fill-white
-    bg-secondary rotate-90 rounded-full p-[2px]" height={24} width={24}/>: <FlashIcon className="
-    rotate-180 rounded-full border border-black p-[2px]" height={24} width={24}/>}
+    {state?  <FlashIcon className=" fill-white w-[25px] h-[25px]
+    bg-secondary rotate-90 rounded-full p-[2px]" />: <FlashIcon className=" w-[25px] h-[25px]
+    rotate-180 rounded-full border border-black p-[2px]"/>}
    </span>:""
    }
 

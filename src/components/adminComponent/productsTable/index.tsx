@@ -108,7 +108,12 @@ const ShowTableBox = () => {
           borderRadius: "20px",
         }}
       >
-        <Typography sx={{ color: "secondary.main", fontSize: 30 }}>
+        <Typography sx={{ color: "secondary.main", fontSize:{
+           lg:30,
+           md:30,
+           sm:20,
+           xs:20
+        } }}>
           {" "}
           محصولات
         </Typography>
@@ -129,10 +134,25 @@ const ShowTableBox = () => {
       <Box
         sx={{
           display: "flex",
-          gap: "30px",
-          padding: "20px",
+          gap: {
+            lg:5,
+            md:5,
+            sm:2,
+            xs:2
+          },  
           color: "gray",
-          height: "70px",
+          height: {
+            lg:80,
+            md:50,
+            sm:40,
+          xs:40
+          },
+          padding: {
+            lg: 3,
+            md: 4,
+            sm: 4,
+            xs:1
+          }
         }}
       >
         <Typography
@@ -143,6 +163,12 @@ const ShowTableBox = () => {
               borderBottom: "solid",
               borderColor: "secondary.main",
             },
+            fontSize: {
+              lg: 16,
+              md: 16,
+              sm: 15,
+              xs: 12
+            }
           }}
         >
           {" "}
@@ -156,6 +182,12 @@ const ShowTableBox = () => {
               borderBottom: "solid",
               borderColor: "secondary.main",
             },
+            fontSize: {
+              lg: 16,
+              md: 16,
+              sm: 15,
+              xs: 12
+            }
           }}
         >
           {" "}
@@ -169,6 +201,12 @@ const ShowTableBox = () => {
               borderBottom: "solid",
               borderColor: "secondary.main",
             },
+            fontSize: {
+              lg: 16,
+              md: 16,
+              sm: 15,
+              xs: 12
+            }
           }}
         >
           بدون قیمت
@@ -180,6 +218,12 @@ const ShowTableBox = () => {
               borderBottom: "solid",
               borderColor: "secondary.main",
             },
+            fontSize: {
+              lg: 16,
+              md: 16,
+              sm: 15,
+              xs: 12
+            }
           }}
         >
           زباله دان

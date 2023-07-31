@@ -31,7 +31,9 @@ const ShowTableBox = () => {
     return ( <>
     <Box sx={{display:"flex", justifyContent:"space-between", bgcolor:"#ffff", alignItems:"center", paddingX:"20px", paddingY:"5px", borderRadius:"20px"}}>
                 <Typography sx={{color:"secondary.main", fontSize:30}}> دسته ها</Typography>
-                <Button sx={{color:"#ffff", paddingX:"30px", bgcolor:"secondary.main", borderRadius:"50px"}}> افزودن دسته</Button>
+                <Button
+                 sx={{color:"#ffff", paddingX:"30px", bgcolor:"secondary.main", borderRadius:"50px"}}> 
+                 افزودن دسته</Button>
             </Box>
             <Box sx={{width:"100%",display:"flex", borderRadius:"50px" ,bgcolor:"#ffff",marginTop:"20px", paddingX:"20px",}}>
                     <SearchIcon sx={{fill:"gray", marginTop:"3px",}}/> 

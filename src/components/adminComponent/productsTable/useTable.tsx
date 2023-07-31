@@ -109,14 +109,14 @@ const deleteItem=()=>{
               <TableCell align="center">{row.price}</TableCell>
               <TableCell align="center">{row.quantity}</TableCell>
               <TableCell  align="center">
-                <Typography sx={{width:"400px",height:"50px",overflow:"hidden"}}>
+                <Typography sx={{width:{lg:400,md:300,xs:200},height:"50px",overflow:"hidden"}}>
                   <div  dangerouslySetInnerHTML={{ __html: row?.description}}/>
                
                 </Typography>
            
                 
                 </TableCell>
-              <TableCell align="center">   <Box>
+              <TableCell align="center">   <Box sx={{display:"flex"}}>
                 
                     <DeleteOutlineOutlinedIcon
                        id={row._id}

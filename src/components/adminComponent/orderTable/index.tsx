@@ -130,10 +130,17 @@ const ShowTableBox = () => {
       <Box
         sx={{
           display: "flex",
-          gap: "30px",
+          gap: {
+            lg:30,
+            md:10,
+            xs:1
+          },
           padding: "20px",
           color: "gray",
-          height: "70px",
+          height: {
+            lg:70,
+            
+          },
         }}
       >
         <Typography
@@ -144,6 +151,11 @@ const ShowTableBox = () => {
               borderBottom: "solid",
               borderColor: "secondary.main",
             },
+            fontSize:{
+              lg:16,
+              md:15,
+              xs:12
+            }
           }}
         >
           {" "}
@@ -157,6 +169,11 @@ const ShowTableBox = () => {
               borderBottom: "solid",
               borderColor: "secondary.main",
             },
+            fontSize:{
+              lg:16,
+              md:15,
+              xs:12
+            }
           }}
         >
           {" "}
@@ -170,6 +187,11 @@ const ShowTableBox = () => {
               borderBottom: "solid",
               borderColor: "secondary.main",
             },
+            fontSize:{
+              lg:16,
+              md:15,
+              xs:12
+            }
           }}
         >
           سفارشات منتظر تایید{" "}
@@ -182,6 +204,11 @@ const ShowTableBox = () => {
               borderBottom: "solid",
               borderColor: "secondary.main",
             },
+            fontSize:{
+              lg:16,
+              md:15,
+              xs:12
+            }
           }}
         >
           {" "}
@@ -194,6 +221,11 @@ const ShowTableBox = () => {
               borderBottom: "solid",
               borderColor: "secondary.main",
             },
+            fontSize:{
+              lg:16,
+              md:15,
+              xs:12
+            }
           }}
         >
           {" "}

@@ -13,7 +13,7 @@ export default function BasicSelect() {
   };
 
   return (
-    <Box sx={{ minWidth: 200, bgcolor:"#ffff", padding:"0px" }}>
+    <Box sx={{ minWidth: 150, bgcolor:"#ffff", padding:"0px" }}>
       <FormControl sx={{width:"100%", padding:"0px"}}>
         <InputLabel sx={{top:"-5px"}} id="demo-simple-select-label">محدوده زمانی</InputLabel>
         <Select

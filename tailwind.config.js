@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        Sans: ['nimkat'] 
+     
+        'sans': ['nimkat'] 
      },
      textColor:{
       "secondary":"#fd6e54"

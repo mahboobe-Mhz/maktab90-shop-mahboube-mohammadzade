@@ -6,6 +6,7 @@ import MainFooter from "../../../../components/userComponent/mainFooter";
 import AboutProduct from "../../../../components/userComponent/homeComponent/aboutProduct";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import PopularBrand from "../../../../components/userComponent/homeComponent/popularBrand";
 
 const Home = () => {
 
@@ -43,6 +44,7 @@ const Home = () => {
         </div>
       </div>
       <AboutProduct/>
+      <PopularBrand/>
       <MainFooter />
     </div>
   );

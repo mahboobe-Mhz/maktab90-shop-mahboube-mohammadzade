@@ -1,8 +1,5 @@
 
-@font-face {
-    font-family:"nimkat" ;
-    src: url("src/assets/font/Nimkat.ttf");
-}
+
 @import url('/src/style/sidebarStyle.css');
 @import url('/src/style/adminMainPart.css');
 @import url('/src/style/groupProduct.css');
@@ -12,7 +9,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@font-face {
+    font-family:"nimkat" ;
+    src: url("src/assets/font/Nimkat.ttf");
+}
 
 html,body,#root{
     height: 100vh;

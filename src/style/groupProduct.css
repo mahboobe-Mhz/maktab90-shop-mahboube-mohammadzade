@@ -1,7 +1,7 @@
 
 .photo:hover{
 
-    animation: move-in-steps 3s forwards;
+    animation: move-in-steps 1s forwards;
   }
 
   @keyframes move-in-steps {

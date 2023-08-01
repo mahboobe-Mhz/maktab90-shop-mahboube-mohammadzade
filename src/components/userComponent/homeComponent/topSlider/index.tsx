@@ -18,7 +18,7 @@ const TopSwiper = () => {
           nextEl:`.nextPage`
         }}
 
-   
+   speed={2000}
       >
              <SwiperSlide><img className='rounded-3xl md:h-[500px] h-[300px]'
               src='public/picture/banner2.jpg'/></SwiperSlide>
@@ -34,10 +34,10 @@ const TopSwiper = () => {
         <div className="flex md:gap-5 gap-2">
         <span 
          className=" nextPage hover:cursor-pointer focus:outline-none"  > 
-          <FlashIcon className=" md:w-[40px] md:h-[40px] w-[20px] h-[20px] border  p-1 border-black  rounded-full hover:border-secondary" /></span>
+          <FlashIcon className=" md:w-[50px] md:h-[50px] w-[30px] h-[30px] border-2 transition duration-300 p-1 border-white fill-white  rounded-full hover:border-secondary hover:fill-[#fd6e54]" /></span>
         <span  
         className=" pervPage hover:cursor-pointer focus:outline-none" > 
-        <FlashIcon className="md:w-[40px] md:h-[40px] w-[20px] h-[20px] rotate-180 border  p-1 border-black  rounded-full hover:border-secondary" /></span>
+        <FlashIcon className="md:w-[50px] md:h-[50px] w-[20px] h-[20px] rotate-180 border-2  p-1 border-white fill-white rounded-full hover:border-secondary hover:fill-[#fd6e54]" /></span>
     
     </div>
         </div>
@@ -46,7 +46,7 @@ const TopSwiper = () => {
       </Swiper>
       <div className=' firstDetail hidden md:flex  absolute top-[200px] left-[-15px] z-10 rounded-full p-3 bg-white'>
       <div className='flex flex-col items-center bg-white rounded-full pb-2 px-6 border-2 border-black' >
-      <span className='md:text-xl text-[7px] font-semibold text-secondary'> ارسال سریع</span>
+      <span className='md:text-xl text-[7px] font-semibold text-secondary'> ارسال سریـــع</span>
       <span className='md:text-xs text-[5px] text-secondary'> ارسال کالا در سریعترین زمان</span>
       </div>
       </div>

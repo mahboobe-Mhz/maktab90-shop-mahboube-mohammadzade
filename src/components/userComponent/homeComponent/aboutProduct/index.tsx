@@ -6,31 +6,76 @@ import FlashIcon from "../../../svg/flashIcon";
 const AboutProduct = () => {
    const [counter,setCounter]=useState<number>(0)
     return ( <div className="p-14" dir="ltr">
-        <div className="md:flex   gap-3 ">
+        <div className="md:flex justify-between  gap-3 ">
         <BottomSlider setCounter={setCounter} counter={counter}/>
         {
         
-        counter===0 ? <div className="  flex flex-col text-right " >
-                <h1 className="md:text-3xl text-md font-bold pb-3 pr-3 mt-3 md:mt-0" > چوب گردویی</h1>
-                <div className="  flex flex-col justify-center items-center" >
-                <p className="font-semibold overflow-y-scroll h-64 text-sm md:text-md "> چوب گردو از جمله بهترین و مرغوب ترین چوب ها بحساب می­آید. چوب گردو زیر بافت، صیغل پذیر، همگن، رنگ پذیر و به رنگ قهوه ای تیره می باشد که طرح و نقش های زیبایی نیز دارد و همچنین چوب گردو دارای دوام بالایست. وزن مخصوص چوب گردو در حدود 0/6 تا 0/7 گرم در سانتی متر مکعب می باشد که به آن سختی متوسطی داده است. منظور از سختی میزان مقاومت آن در برابر نفوذ یک جسم خارجی است. بنابراین میزان سختی یک چوب نسبت عکس با قابلیت کنده­کاری و اره­خوری آن دارد. به همین دلیل نیز چوب گردو برای منبت­کاری، خراطی و کنده­کاری، ساخت مجسمه و اشیاء دکوری، ساخت آلات موسیقی و همچنین در دکوراسیون داخلی منزل و ساخت روکش های چوب بسیار پرکاربرد است. چوب گردو نیمه سنگین و نیمه سخت می باشد و مقاومت مناسبی در برابر فشار، خمش، رطوبت و کشش دارد. در هوم­­نت توضیحات بیشتری در رابطه با چوب گردو بیان شده است.</p>
-                <button className="text-black border-2 font-semibold pl-2 py-1 border-black flex rounded-full pt-2 gap-2 mt-5 w-36">
-                     <span>خرید محصول</span> <span><FlashIcon className=" w-[30px] "/> </span>  </button>
+        counter===0 ? 
+        <div className="  flex flex-col text-right justify-center  h-[600px]" >
+                <h1 className="md:text-5xl text-md  pb-3 pr-7 mt-3 md:mt-0 " > سرویس خواب لیو </h1>
+                <div className="  flex flex-col px-7  " >
+                <p className="font-semibold text-sm md:text-lg mt-5 text-right">
+چوب روسی از جمله فرآورده‌های پر استفاده در صنعت تلقی می­شود که به تمامی کشورها صادر یا وارد می‌شود. چوب روسی در هر کشوری با توجه به اقلیم متفاوت و نوع درختان آن منطقه، متفاوت است که با توجه به میزان مصرف آن در صنایع مختلف به کشورهای دیگر صادر می‌شود. چوب روسی قیمت متفاوتی در نقاط مختلف دنیا دارد. اگر تاکنون برای خرید مبلمان، سرویس خواب، کابینت و اقلامید،
+                 </p>
+                <button className="text-black border-2 font-semibold pl-4 pr-2 pt-2 pb-2 border-black flex rounded-full  gap-2 
+                mt-5 w-[160px]">
+                     <span className="text-lg">خرید محصول</span> <span><FlashIcon className=" w-[30px] "/> </span>  </button>
                 </div>
               
-            </div> : counter===1 ?   <div className="flex flex-col text-right">
-                <h1 className="md:text-3xl text-md font-bold pb-3 pr-3 mt-3 md:mt-0">  چوب روسی</h1>
-                <p className="font-semibold overflow-y-scroll h-64 text-sm md:text-md "> چوب روسی از جمله فرآورده‌های پر استفاده در صنعت تلقی می­شود که به تمامی کشورها صادر یا وارد می‌شود. چوب روسی در هر کشوری با توجه به اقلیم متفاوت و نوع درختان آن منطقه، متفاوت است که با توجه به میزان مصرف آن در صنایع مختلف به کشورهای دیگر صادر می‌شود. چوب روسی قیمت متفاوتی در نقاط مختلف دنیا دارد. اگر تاکنون برای خرید مبلمان، سرویس خواب، کابینت و اقلامی از این قبیل به مراکز خرید رفته باشید، نام چوب روسی زیاد به گوش شما خورده است. چوب روس برای مبل و مخصوصا اسکلت آن، استفاده­ی زیادی دارد. انواع چوبی که از کشور روسیه به ایران وارد می‌شود در بازار ایران با نام چوب روسی شناخته شده و طیف وسیعی دارد. چوب‌های روسی انواع مختلفی از جمله بلوط، نراد، کاج، راش، کاج، نوئل و غیره داشته و اغلب به رنگ سفید یا کرم مایل به قهوه‌ای یا قرمز هستند. این چوب‌ها که از گونه‌های مختلف درختان نرم یا سخت گرفته می‌شود و در فواصلی از سال که در روسیه هوا مناسب است برش خورده و در قطعات مشخصی به شکل الوار، خشکن یا غیر خشکن، گرده و به صورت بندیل به کشورهای دیگر صادر می‌شوند. در هوم­ نت توضیحات بیشتری در رابطه با چوب روسی بیان شده است.</p>
-            </div> :counter===2 ?  <div className="flex flex-col text-right">
-                <h1 className="md:text-3xl text-md font-bold pb-3 pr-3 mt-3 md:mt-0">پارچه ترک مبلی</h1>
-                <p className="font-semibold overflow-y-scroll h-64 text-sm md:text-md "> ترکیه یکی از کشورهای پیشرو در صنعت نساجی است. پارچه­های ترک همواره طرفداران زیادی در ایران داشته مخصوصا پارچه ترک مبلی. در صنعت مبلمان، برندهایی که قصد ارائه محصول با کیفیتتر و لوکستر دارند، از پارچه ترک مبلی در مصنوعاتشان استفاده می­کنند. پارچه ترک مبلی خود شامل چندین دسته می­شود که در هوم­نت بطور اختصار بعضی از دسته­های پارچه ترکی را مورد بررسی قرار می­دهیم.</p>
-            </div>: counter===3?  <div className="flex flex-col text-right">
-                <h1 className="md:text-3xl text-md font-bold pb-3 pr-3 mt-3 md:mt-0">چوب راش</h1>
-                <p className="font-semibold overflow-y-scroll h-64 text-sm md:text-md "> چوب راش نتیجه زندگی درختان راش چندساله است. درختان راش در اروپای مرکزی و غربی پراکنش خوبی دارند؛ هرچند، به صورت درختچه یا درخت بین عرض های جغرافیایی 40 و 60 درجه دیده می­شوند. این گونه از میان تمام درختان برگریز در آلمان، غالب ترین درخت است. چوب راش بسیار پرکاربرد و مفید می­باشد. می توان درخت راش را در جنگلهای مخلوط با درختان گونه های دیگر و نیز در جنگل های خالص راش و الالخصوص در مناطق کم ارتفاع و در مناطق کمی کوهستانی مشاهده نمود. چوب راش گرجستان پرکاربردترین چوب راش است و بنابراین برای سادگی در بیان، به عنوان راش شناخته می شود. گاهی اوقات، از پیشوند “قرمز” استفاده می شود تا به رنگ قرمز چوب اشاره ای داشته باشیم. در هوم­ نت توضیحات بیشتری در رابطه با چوب راش بیان شده است.</p>
-            </div>:counter===4 ?  <div className="flex flex-col text-right w-full">
-                <h1 className="md:text-3xl text-md font-bold pb-3 pr-3 mt-3 md:mt-0">اسفنج 40 کیلویی</h1>
-                <p className="font-semibold overflow-y-scroll h-64 text-sm md:text-md "> اسفنج ها دارای دانسیته ها و ضخامت های مختلفی می باشند که بستگی به موارد استفاده از آن تامین می شوند. اسفنج معمولا از دانسیته ی ۱۵ کیلو تا اسفنج ۴۰ کیلویی تولید می شود. در هر دانسیته، ضخامت­های متفاوتی از اسفنج تولید می­شود زیرا استفاده­هایی که از آن می­شود متفاوت است. برای مثال، در مبلمان­های قابل ارائه در سایت هوم­نت، اسفنج یا ابر که در دسته مبل بکار می­رود با اسفنجی که در نشیمن آن استفاده می­شود از نظر ضخامت باید متفاوت باشند.</p>
-            </div>:" tamam"}
+            </div>
+             :counter===1 ? 
+             <div className="  flex flex-col text-right justify-center  h-[600px]" >
+             <h1 className="md:text-5xl text-md  pb-3 pr-7 mt-3 md:mt-0 " > سرویس خواب تارا </h1>
+             <div className="  flex flex-col px-7  " >
+             <p className="font-semibold text-sm md:text-lg mt-5 text-right">
+چوب روسی از جمله فرآورده‌های پر استفاده در صنعت تلقی می­شود که به تمامی کشورها صادر یا وارد می‌شود. چوب روسی در هر کشوری با توجه به اقلیم متفاوت و نوع درختان آن منطقه، متفاوت است که با توجه به میزان مصرف آن در صنایع مختلف به کشورهای دیگر صادر می‌شود. چوب روسی قیمت متفاوتی در نقاط مختلف دنیا دارد. اگر تاکنون برای خرید مبلمان، سرویس خواب، کابینت و اقلامید،
+              </p>
+             <button className="text-black border-2 font-semibold pl-4 pr-2 pt-2 pb-2 border-black flex rounded-full  gap-2 
+             mt-5 w-[160px]">
+                  <span className="text-lg">خرید محصول</span> <span><FlashIcon className=" w-[30px] "/> </span>  </button>
+             </div>
+           
+         </div> 
+            :counter===2 ? 
+            <div className="  flex flex-col text-right justify-center  h-[600px]" >
+            <h1 className="md:text-5xl text-md  pb-3 pr-7 mt-3 md:mt-0 " > سرویس خواب نگار </h1>
+            <div className="  flex flex-col px-7  " >
+            <p className="font-semibold text-sm md:text-lg mt-5 text-right">
+چوب روسی از جمله فرآورده‌های پر استفاده در صنعت تلقی می­شود که به تمامی کشورها صادر یا وارد می‌شود. چوب روسی در هر کشوری با توجه به اقلیم متفاوت و نوع درختان آن منطقه، متفاوت است که با توجه به میزان مصرف آن در صنایع مختلف به کشورهای دیگر صادر می‌شود. چوب روسی قیمت متفاوتی در نقاط مختلف دنیا دارد. اگر تاکنون برای خرید مبلمان، سرویس خواب، کابینت و اقلامید،
+             </p>
+            <button className="text-black border-2 font-semibold pl-4 pr-2 pt-2 pb-2 border-black flex rounded-full  gap-2 
+            mt-5 w-[160px]">
+                 <span className="text-lg">خرید محصول</span> <span><FlashIcon className=" w-[30px] "/> </span>  </button>
+            </div>
+          
+        </div>
+            : counter===3? 
+            <div className="  flex flex-col text-right justify-center  h-[600px]" >
+                <h1 className="md:text-5xl text-md  pb-3 pr-7 mt-3 md:mt-0 " > سرویس خواب یاس </h1>
+                <div className="  flex flex-col px-7  " >
+                <p className="font-semibold text-sm md:text-lg mt-5 text-right">
+چوب روسی از جمله فرآورده‌های پر استفاده در صنعت تلقی می­شود که به تمامی کشورها صادر یا وارد می‌شود. چوب روسی در هر کشوری با توجه به اقلیم متفاوت و نوع درختان آن منطقه، متفاوت است که با توجه به میزان مصرف آن در صنایع مختلف به کشورهای دیگر صادر می‌شود. چوب روسی قیمت متفاوتی در نقاط مختلف دنیا دارد. اگر تاکنون برای خرید مبلمان، سرویس خواب، کابینت و اقلامید،
+                 </p>
+                <button className="text-black border-2 font-semibold pl-4 pr-2 pt-2 pb-2 border-black flex rounded-full  gap-2 
+                mt-5 w-[160px]">
+                     <span className="text-lg">خرید محصول</span> <span><FlashIcon className=" w-[30px] "/> </span>  </button>
+                </div>
+              
+            </div>
+            :counter===4 ?  
+            <div className="  flex flex-col text-right justify-center  h-[600px]" >
+                <h1 className="md:text-5xl text-md  pb-3 pr-7 mt-3 md:mt-0 " > سرویس خواب رز </h1>
+                <div className="  flex flex-col px-7  " >
+                <p className="font-semibold text-sm md:text-lg mt-5 text-right">
+چوب روسی از جمله فرآورده‌های پر استفاده در صنعت تلقی می­شود که به تمامی کشورها صادر یا وارد می‌شود. چوب روسی در هر کشوری با توجه به اقلیم متفاوت و نوع درختان آن منطقه، متفاوت است که با توجه به میزان مصرف آن در صنایع مختلف به کشورهای دیگر صادر می‌شود. چوب روسی قیمت متفاوتی در نقاط مختلف دنیا دارد. اگر تاکنون برای خرید مبلمان، سرویس خواب، کابینت و اقلامید،
+                 </p>
+                <button className="text-black border-2 font-semibold pl-4 pr-2 pt-2 pb-2 border-black flex rounded-full  gap-2 
+                mt-5 w-[160px]">
+                     <span className="text-lg">خرید محصول</span> <span><FlashIcon className=" w-[30px] "/> </span>  </button>
+                </div>
+              
+            </div>
+            :" "}
           
        
         </div>

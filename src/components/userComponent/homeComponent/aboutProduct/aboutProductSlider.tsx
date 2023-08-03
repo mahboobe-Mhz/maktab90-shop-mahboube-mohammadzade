@@ -10,7 +10,7 @@ interface Props{
 const BottomSlider = ({setCounter,counter}:Props) => {
  
     return (
-    <div className=' relative , md:w-[40%] ,md:h-[400px] h-[250px]' >
+    <div className=' relative  md:w-[500px] md:h-[500px] h-[160px] w-[320px]' >
        <Swiper
      
        // slidesPerView="auto"
@@ -34,10 +34,10 @@ const BottomSlider = ({setCounter,counter}:Props) => {
 
    
       >
-             <SwiperSlide><img className='rounded-3xl  md:w-full w-[300px] md:h-[500px] h-[250px]'   src='public/picture/IMG_7164.JPG'/></SwiperSlide>
-             <SwiperSlide><img className='rounded-3xl md:w-full  w-[300px] md:h-[500px] h-[250px]'   src='public/picture/IMG_7164.JPG'/></SwiperSlide>
-             <SwiperSlide><img className='rounded-3xl  md:w-full w-[300px] md:h-[500px] h-[250px]'   src='public/picture/IMG_7164.JPG'/></SwiperSlide>
-             <SwiperSlide><img className='rounded-3xl md:w-full  w-[300px] md:h-[500px] h-[250px]'   src='public/picture/IMG_7164.JPG'/></SwiperSlide>
+             <SwiperSlide><img className='rounded-3xl md:w-[500px] md:h-[500px] h-[300px] w-[320px]'    src='public/picture/IMG_7164.JPG'/></SwiperSlide>
+             <SwiperSlide><img className='rounded-3xl md:w-[500px] md:h-[500px] h-[300px] w-[320px]'   src='public/picture/IMG_7164.JPG'/></SwiperSlide>
+             <SwiperSlide><img className='rounded-3xl md:w-[500px] md:h-[500px] h-[300px] w-[320px]'   src='public/picture/IMG_7164.JPG'/></SwiperSlide>
+             <SwiperSlide><img className='rounded-3xl md:w-[500px] md:h-[500px] h-[300px] w-[320px]'   src='public/picture/IMG_7164.JPG'/></SwiperSlide>
     
         <div className=' absolute bottom-[50%] z-10 w-full px-5'>
         <div className="flex md:gap-5 gap-2 justify-between ">

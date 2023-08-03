@@ -61,14 +61,14 @@ const ProductsSlider = () => {
         {index%2==0 ? <div className='group bg-black object-cover rounded-xl shadow-lg md:rounded-3xl '>
           <span className='opacity-0 group-hover:opacity-100 absolute md:top-[160px] md:left-[80px] text-white border-[2px] border-white
            px-5 pb-1 text-lg rounded-2xl font-bold'> خرید محصول</span>
-          <img  className='md:h-[280px]  md:w-[300px] h-[80px]
+          <img  className='md:h-[280px]  md:w-[300px] h-[90px]
         hover:opacity-40  border 
-         rounded-xl  md:rounded-3xl ' width={150} 
+         rounded-xl  md:rounded-3xl '
           src={`http://localhost:8000/images/products/images/${product.images?.[0]}`}/></div> :
           <div className='bg-black group rounded-xl  md:rounded-3xl '>
             <span className='opacity-0 group-hover:opacity-100 absolute md:top-[150px] md:left-[90px] text-white font-bold text-lg 
             border-[2px] px-5  pb-1 rounded-2xl'> خرید محصول</span>
-              <img  className='md:h-[200px]  md:w-[200px] h-[100px]   hover:opacity-40 border shadow-lg   rounded-xl md:rounded-3xl'  
+              <img  className='md:h-[200px]  md:w-[200px] h-[120px]   hover:opacity-40 border shadow-lg   rounded-xl md:rounded-3xl'  
          src={`http://localhost:8000/images/products/images/${product.images?.[0]}`}/>
           </div>
        } 

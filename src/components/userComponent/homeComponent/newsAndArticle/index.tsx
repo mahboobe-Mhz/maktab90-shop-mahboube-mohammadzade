@@ -10,7 +10,7 @@ const NewsAndArticle = () => {
   const [counter, setCounter] = useState<number>(0);
   return (
     <div className="md:px-14 mt-4 md:mt-0 flex flex-col  " dir="ltr">
-        <h1 className="text-secondary md:text-4xl text-center text-3xl font-bold md:mb-5 pb-5 md:pb-20"> اخبار و مقالات</h1>
+        <h1 className="text-secondary md:text-4xl text-center text-3xl font-bold md:mb-5 pb-5 md:pb-10"> اخبار و مقالات</h1>
       <div className=" flex  flex-col md:flex-row items-center ">
       <div className="md:hidden flex  px-7 ">
         <NewsSlider setCounter={setCounter} counter={counter} />
@@ -21,7 +21,7 @@ const NewsAndArticle = () => {
               {" "}
              متریال{" "}
             </h1>
-            <div className="  flex flex-col px-7 items-center md:items-start ">
+            <div className="  flex flex-col px-7 w-full   ">
               <p className="font-semibold text-sm md:text-lg md:mt-5 mt-3 text-center md:text-right">
                 چوب روسی از جمله فرآورده‌های پر استفاده در صنعت تلقی می­شود که
                 به تمامی کشورها صادر یا وارد می‌شود. چوب روسی در هر کشوری با
@@ -31,9 +31,18 @@ const NewsAndArticle = () => {
                 تاکنون برای خرید مبلمان، سرویس خواب، کابینت و اقلامید،
               </p>
            
-              <div className="flex md:justify-between md:flex-row flex-col  items-center" >
-           
-              <div className="flex gap-5 md:mt-10 mt-4 text-secondary">
+              <div className="flex md:justify-between  md:flex-row flex-col items-center justify-center " >
+              <button
+                className="md:flex hidden text-black border-2 font-semibold pl-4 md:pr-2
+                 pr-3 md:pt-2 md:pb-2 py-3 border-black  rounded-full  md:gap-2 
+                mt-5 md:w-[160px]"
+              >
+                <span className="md:text-lg ">بیشتر بخوانید</span>{" "}
+                <span>
+                  <FlashIcon className=" md:w-[30px] w-[20px]  " />{" "}
+                </span>{" "}
+              </button>
+              <div className="flex gap-5  md:mt-10 mt-4 text-secondary ">
               <span className="flex gap-2"> yasaman jalalian <PersonIcon className="fill-[#fd6e54]"/>   </span>
               <span className="flex gap-2">
                 متریال ،طراحی داخلی
@@ -41,7 +50,7 @@ const NewsAndArticle = () => {
               </span>
               </div>
               <button
-                className="md:opacity-0 opacity-100 text-black border-2 font-semibold pl-4 md:pr-2
+                className="md:hidden i  text-black border-2 font-semibold pl-4 md:pr-2
                  pr-3 md:pt-2 md:pb-2 py-3 border-black flex rounded-full  gap-2 
                 mt-5 md:w-[160px]"
               >
@@ -51,6 +60,7 @@ const NewsAndArticle = () => {
                 </span>{" "}
               </button>
               </div>
+              
             </div>
           </div>
         ) : counter === 1 ? (

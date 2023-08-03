@@ -32,15 +32,15 @@ const Home = () => {
           <span className="px-5 pb-2 text-4xl rounded-full bg-white border-secondary border-2"> Homnet</span>
         </div>
       </div>
-      <div className=" resBanner w-full md:hidden flex items-center justify-center relative px-10 pt-10">
-        <div className=" faHomnet absolute top-[35px] right-[20px]  pr-10 pl-3 pb-2 pt-1 bg-white rounded-full ">
+      <div className=" resBanner w-full md:hidden flex items-center justify-center relative px-2 pt-10">
+        <div className=" faHomnet absolute top-[35px] right-[0px]  pr-8 pl-3 pb-2 pt-1 bg-white rounded-full ">
           <span className="px-2 pb-1 rounded-full text-xs bg-white border-secondary border-2"> هومنت</span>
         </div>
         <img
           className=" rounded-3xl "
           src="public/picture/banner-01.jpg"
         />
-        <div className="enHomnet absolute bottom-[-2px] left-[20px]  pb-3 pt-1 pr-3 pl-7 bg-white rounded-full ">
+        <div className="enHomnet absolute bottom-[-4px] left-[0px]  pb-3 pt-1 pr-3 pl-5 bg-white rounded-full ">
           <span className="px-2 pb-1 rounded-full text-xs bg-white border-secondary border-2"> Homnet</span>
         </div>
       </div>

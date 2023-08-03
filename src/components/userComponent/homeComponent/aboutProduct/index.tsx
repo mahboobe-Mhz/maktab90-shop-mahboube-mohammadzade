@@ -6,7 +6,7 @@ import FlashIcon from "../../../svg/flashIcon";
 const AboutProduct = () => {
   const [counter, setCounter] = useState<number>(0);
   return (
-    <div className="md:px-14 px-7  md:mt-20" dir="ltr">
+    <div className="md:px-14 px-2  md:mt-20" dir="ltr">
       <div className=" md:gap-3 flex md:flex-row flex-col items-center">
         <div className=" ">
         <BottomSlider setCounter={setCounter} counter={counter} />

@@ -1,22 +1,26 @@
 import { useState } from "react";
-import BottomSlider from "./aboutProductSlider";
+import BottomSlider from "../aboutProduct/aboutProductSlider";
 import MainButton from "../../../kit/button";
 import FlashIcon from "../../../svg/flashIcon";
+import NewsSlider from "./newsSlider";
+import PersonIcon from "../../../svg/personIcon";
+import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 
-const AboutProduct = () => {
+const NewsAndArticle = () => {
   const [counter, setCounter] = useState<number>(0);
   return (
-    <div className="p-14" dir="ltr">
-      <div className="md:flex md:justify-between  md:gap-3 ">
-        <BottomSlider setCounter={setCounter} counter={counter} />
+    <div className="p-14 flex flex-col " dir="ltr">
+        <h1 className="text-secondary md:text-4xl text-center font-bold md:mb-5 pb-20"> اخبار و مقالات</h1>
+      <div className="md:flex justify-between  gap-3 ">
+     
         {counter === 0 ? (
-          <div className="  flex flex-col md:text-right md:justify-center  text-center md:h-[600px]">
-            <h1 className="md:text-5xl text-3xl  pb-3 md:pr-7 mt-2    ">
+          <div className="  flex flex-col text-right justify-center  h-[600px]">
+            <h1 className="md:text-5xl text-md  pb-3 pr-7 mt-3 md:mt-0 ">
               {" "}
-              سرویس خواب لیو{" "}
+             متریال{" "}
             </h1>
-            <div className="  flex flex-col md:px-7  items-center md:items-start ">
-              <p className="font-semibold text-sm md:text-lg md:mt-5 md:text-right  ">
+            <div className="  flex flex-col px-7  ">
+              <p className="font-semibold text-sm md:text-lg mt-5 text-right">
                 چوب روسی از جمله فرآورده‌های پر استفاده در صنعت تلقی می­شود که
                 به تمامی کشورها صادر یا وارد می‌شود. چوب روسی در هر کشوری با
                 توجه به اقلیم متفاوت و نوع درختان آن منطقه، متفاوت است که با
@@ -24,22 +28,33 @@ const AboutProduct = () => {
                 می‌شود. چوب روسی قیمت متفاوتی در نقاط مختلف دنیا دارد. اگر
                 تاکنون برای خرید مبلمان، سرویس خواب، کابینت و اقلامید،
               </p>
+           
+              <div className="flex justify-between">
               <button
-                className="text-black border-2 font-semibold pl-4 md:pr-2 md:pt-2 md:pb-2 p-1 pr-2 border-black flex rounded-full  gap-2 
-                mt-5 md:w-[160px]"
+                className="text-black border-2 font-semibold pl-4 pr-2 pt-2 pb-2 border-black flex rounded-full  gap-2 
+                mt-5 w-[160px]"
               >
-                <span className="md:text-lg">خرید محصول</span>{" "}
+                <span className="text-lg">بیشتر بخوانید</span>{" "}
                 <span>
-                  <FlashIcon className=" md:w-[30px] w-[20px] " />{" "}
+                  <FlashIcon className=" w-[30px] " />{" "}
                 </span>{" "}
               </button>
+              <div className="flex gap-5 mt-10">
+              <span className="flex gap-2"> yasaman jalalian <PersonIcon/>   </span>
+              <span className="flex gap-2">
+                متریال ،طراحی داخلی
+                <LocalOfferOutlinedIcon/> 
+              </span>
+              </div>
+           
+              </div>
             </div>
           </div>
         ) : counter === 1 ? (
           <div className="  flex flex-col text-right justify-center  h-[600px]">
             <h1 className="md:text-5xl text-md  pb-3 pr-7 mt-3 md:mt-0 ">
               {" "}
-              سرویس خواب تارا{" "}
+            پارچه ها{" "}
             </h1>
             <div className="  flex flex-col px-7  ">
               <p className="font-semibold text-sm md:text-lg mt-5 text-right">
@@ -50,22 +65,32 @@ const AboutProduct = () => {
                 می‌شود. چوب روسی قیمت متفاوتی در نقاط مختلف دنیا دارد. اگر
                 تاکنون برای خرید مبلمان، سرویس خواب، کابینت و اقلامید،
               </p>
+              <div className="flex justify-between">
               <button
                 className="text-black border-2 font-semibold pl-4 pr-2 pt-2 pb-2 border-black flex rounded-full  gap-2 
-             mt-5 w-[160px]"
+                mt-5 w-[160px]"
               >
-                <span className="text-lg">خرید محصول</span>{" "}
+                <span className="text-lg">بیشتر بخوانید</span>{" "}
                 <span>
                   <FlashIcon className=" w-[30px] " />{" "}
                 </span>{" "}
               </button>
+              <div className="flex gap-5 mt-10">
+              <span className="flex gap-2"> yasaman jalalian <PersonIcon/>   </span>
+              <span className="flex gap-2">
+                متریال ،طراحی داخلی
+                <LocalOfferOutlinedIcon/> 
+              </span>
+              </div>
+           
+              </div>
             </div>
           </div>
         ) : counter === 2 ? (
           <div className="  flex flex-col text-right justify-center  h-[600px]">
             <h1 className="md:text-5xl text-md  pb-3 pr-7 mt-3 md:mt-0 ">
               {" "}
-              سرویس خواب نگار{" "}
+              جنس چوب{" "}
             </h1>
             <div className="  flex flex-col px-7  ">
               <p className="font-semibold text-sm md:text-lg mt-5 text-right">
@@ -76,22 +101,32 @@ const AboutProduct = () => {
                 می‌شود. چوب روسی قیمت متفاوتی در نقاط مختلف دنیا دارد. اگر
                 تاکنون برای خرید مبلمان، سرویس خواب، کابینت و اقلامید،
               </p>
+              <div className="flex justify-between">
               <button
                 className="text-black border-2 font-semibold pl-4 pr-2 pt-2 pb-2 border-black flex rounded-full  gap-2 
-            mt-5 w-[160px]"
+                mt-5 w-[160px]"
               >
-                <span className="text-lg">خرید محصول</span>{" "}
+                <span className="text-lg">بیشتر بخوانید</span>{" "}
                 <span>
                   <FlashIcon className=" w-[30px] " />{" "}
                 </span>{" "}
               </button>
+              <div className="flex gap-5 mt-10">
+              <span className="flex gap-2"> yasaman jalalian <PersonIcon/>   </span>
+              <span className="flex gap-2">
+                متریال ،طراحی داخلی
+                <LocalOfferOutlinedIcon/> 
+              </span>
+              </div>
+           
+              </div>
             </div>
           </div>
         ) : counter === 3 ? (
           <div className="  flex flex-col text-right justify-center  h-[600px]">
             <h1 className="md:text-5xl text-md  pb-3 pr-7 mt-3 md:mt-0 ">
               {" "}
-              سرویس خواب یاس{" "}
+        جنس الیاف{" "}
             </h1>
             <div className="  flex flex-col px-7  ">
               <p className="font-semibold text-sm md:text-lg mt-5 text-right">
@@ -106,7 +141,7 @@ const AboutProduct = () => {
                 className="text-black border-2 font-semibold pl-4 pr-2 pt-2 pb-2 border-black flex rounded-full  gap-2 
                 mt-5 w-[160px]"
               >
-                <span className="text-lg">خرید محصول</span>{" "}
+                <span className="text-lg"> بیشتر بخوانید </span>{" "}
                 <span>
                   <FlashIcon className=" w-[30px] " />{" "}
                 </span>{" "}
@@ -117,7 +152,7 @@ const AboutProduct = () => {
           <div className="  flex flex-col text-right justify-center  h-[600px]">
             <h1 className="md:text-5xl text-md  pb-3 pr-7 mt-3 md:mt-0 ">
               {" "}
-              سرویس خواب رز{" "}
+     طراحی{" "}
             </h1>
             <div className="  flex flex-col px-7  ">
               <p className="font-semibold text-sm md:text-lg mt-5 text-right">
@@ -132,7 +167,7 @@ const AboutProduct = () => {
                 className="text-black border-2 font-semibold pl-4 pr-2 pt-2 pb-2 border-black flex rounded-full  gap-2 
                 mt-5 w-[160px]"
               >
-                <span className="text-lg">خرید محصول</span>{" "}
+                <span className="text-lg">بیشتر بخوانید</span>{" "}
                 <span>
                   <FlashIcon className=" w-[30px] " />{" "}
                 </span>{" "}
@@ -142,9 +177,11 @@ const AboutProduct = () => {
         ) : (
           " "
         )}
+            <NewsSlider setCounter={setCounter} counter={counter} />
       </div>
+  
     </div>
   );
 };
 
-export default AboutProduct;
+export default NewsAndArticle;

@@ -7,6 +7,7 @@ import AboutProduct from "../../../../components/userComponent/homeComponent/abo
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import PopularBrand from "../../../../components/userComponent/homeComponent/popularBrand";
+import NewsAndArticle from "../../../../components/userComponent/homeComponent/newsAndArticle";
 
 const Home = () => {
 
@@ -45,6 +46,7 @@ const Home = () => {
       </div>
       <AboutProduct/>
       <PopularBrand/>
+      <NewsAndArticle/>
       <MainFooter />
     </div>
   );

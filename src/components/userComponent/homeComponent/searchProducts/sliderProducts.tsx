@@ -20,14 +20,16 @@ const ProductsSlider = () => {
     return (
     <div className='md:px-[80px] px-5 w-full relative' >
        <Swiper
-           centeredSlides={true}
-      
-        spaceBetween={10}
-        slidesPerView={3}
+          
+         
+        spaceBetween={10} 
+        slidesPerView={2}
+        centeredSlides={true}
         breakpoints={{
           500: {
             spaceBetween:2,
             slidesPerView: 4,
+            centeredSlides:false
           },
        
         }}

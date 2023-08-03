@@ -14,7 +14,7 @@ const GroupingProduct = () => {
   navigate(`/category/${event.currentTarget.id}_${event.currentTarget.dataset.user}_page_1`)
   
  }
-    return ( <div className="flex flex-col items-center mt-5 direction gap-10 md:mt-10  md:mb-12">
+    return ( <div className="flex flex-col items-center md:mt-5 direction gap-10 md:mt-10  md:mb-12">
          <h1 className="text-secondary md:text-4xl  font-bold md:mb-5"> دسته بندی محصولات</h1>
  
       <div className='hidden md:flex flex-wrap pr-16 '>

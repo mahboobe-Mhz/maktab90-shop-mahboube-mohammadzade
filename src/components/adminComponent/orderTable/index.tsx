@@ -139,8 +139,8 @@ const ShowTableBox = () => {
         sx={{
           display: "flex",
           gap: {
-            lg:30,
-            md:10,
+            lg:10,
+            md:5,
             xs:1
           },
           padding: "20px",

@@ -51,7 +51,7 @@ const Discounts = () => {
         ></Input>
       </Box>
 
-      <DiscountTable/>
+      <DiscountTable setOpen={setOpen}/>
             </Box>}
        
 

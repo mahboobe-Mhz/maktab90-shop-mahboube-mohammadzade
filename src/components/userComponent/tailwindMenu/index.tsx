@@ -34,7 +34,7 @@ const MainMenu = () => {
   
 {
 showCategory ?<div className="absolute  shadow-black  shadow-xl rounded-2xl bg-white mt-2
- border border-black py-2 w-[200px] right-[10px] top-[30px]" >
+ border border-black py-2 w-[200px] right-[0px] top-[30px]" >
    
     {
      catData && catData?.map((item:any)=>

@@ -30,7 +30,12 @@ const ShowTableBox = () => {
 
     return ( <>
     <Box sx={{display:"flex", justifyContent:"space-between", bgcolor:"#ffff", alignItems:"center", paddingX:"20px", paddingY:"5px", borderRadius:"20px"}}>
-                <Typography sx={{color:"secondary.main", fontSize:30}}> دسته ها</Typography>
+                <Typography sx={{color:"secondary.main",fontSize:{
+           lg:30,
+           md:30,
+           sm:20,
+           xs:20
+        }}}> دسته ها</Typography>
                 <Button
                  sx={{color:"#ffff", paddingX:"30px", bgcolor:"secondary.main", borderRadius:"50px"}}> 
                  افزودن دسته</Button>

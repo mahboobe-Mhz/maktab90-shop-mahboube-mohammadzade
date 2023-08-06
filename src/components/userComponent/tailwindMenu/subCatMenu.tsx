@@ -23,7 +23,7 @@ document.body.addEventListener('click',()=>setState(false) , true);
     return (  
         <div  className="relative z-10 ">
  {/* Category item with subcategory */}
-  <span   onMouseOver={()=>setState(true)} 
+  <span   onMouseOver={()=>setState(true) } onMouseLeave={()=>setState(false)} 
   onClick={()=>setState(true)}
    className="text-gray-900 w-full   pr-2  px-4 rounded-md text-sm font-medium flex justify-between"> 
    <span className="hover:text-secondary" >  {title}</span>
@@ -39,8 +39,8 @@ document.body.addEventListener('click',()=>setState(false) , true);
    </span>
   
   {/* Subcategory dropdown  */}
-  {state? <div className="absolute  flex flex-col shadow-xl shadow-black text-black bg-white  mt-2 rounded-3xl  w-[200px] right-[210px] 
-  top-5" onMouseLeave={()=>setState(false)} >
+  {state? <div className="absolute  flex flex-col shadow-xl shadow-black text-black bg-white  mt-2 rounded-3xl  w-[200px] right-[200px] 
+  top-[-2px]" onMouseLeave={()=>setState(false)} onMouseOver={()=>setState(true) } >
     {
           subCatData.map((item:any)=>
           <Link className=" text-sm py-1 px-4 hover:text-secondary" to={  `/subcategory/${id}_${item._id}_${item.slugname}_page_1}`}> {item.name} </Link>)

@@ -149,8 +149,8 @@ const ShowTableBox = () => {
           },
           padding: {
             lg: 3,
-            md: 4,
-            sm: 4,
+            md: 2,
+            sm: 2,
             xs:1
           }
         }}

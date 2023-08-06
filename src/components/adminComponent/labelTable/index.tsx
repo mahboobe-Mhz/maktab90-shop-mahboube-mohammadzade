@@ -44,7 +44,12 @@ const ShowTableBox = () => {
           marginY: 2,
         }}
       >
-        <Typography sx={{ color: "secondary.main", fontSize: 30 }}>
+        <Typography sx={{ color: "secondary.main",fontSize:{
+           lg:30,
+           md:30,
+           sm:20,
+           xs:20
+        } }}>
           {" "}
           برچسب ها
         </Typography>

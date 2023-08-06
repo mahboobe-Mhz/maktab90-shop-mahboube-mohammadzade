@@ -10,24 +10,36 @@ interface Props{
 const NewsSlider = ({setCounter,counter}:Props) => {
  
     return (
-    <div className=' relative  md:w-[500px] md:h-[500px] h-[280px] w-[320px]' >
+    <div className=' relative  md:w-[500px] md:h-[500px] h-[180px] w-[320px]' >
        <Swiper
-        spaceBetween={0}
+      
+       // slidesPerView="auto"
+       centeredSlides={true}
        // slidesPerView="auto"
        allowTouchMove={false}
+       spaceBetween={10} 
+       slidesPerView={2}
+       speed={2000}
+    
+       breakpoints={{
+        500: {
+          spaceBetween:2,
+          slidesPerView: 1,
       
+          speed:2000
+        },}}
         modules={[Navigation ]}
         navigation={{
           prevEl:`.pervPage` ,
           nextEl:`.nextPage`
         }}
 
-   
+   className='rounded-3xl'
       >
-             <SwiperSlide><img className='rounded-3xl md:w-[500px] md:h-[500px] h-[300px] w-[320px] '   src='public/picture/IMG_7172.JPG'/></SwiperSlide>
-             <SwiperSlide><img className='rounded-3xl md:w-[500px] md:h-[500px] h-[300px] w-[320px]'   src='public/picture/IMG_7172.JPG'/></SwiperSlide>
-             <SwiperSlide><img className='rounded-3xl md:w-[500px] md:h-[500px] h-[300px] w-[320px]'   src='public/picture/IMG_7172.JPG'/></SwiperSlide>
-             <SwiperSlide><img className='rounded-3xl md:w-[500px] md:h-[500px] h-[300px] w-[320px]'   src='public/picture/IMG_7172.JPG'/></SwiperSlide>
+             <SwiperSlide><img className=' md:w-[500px] md:h-[500px] h-[200px] w-[320px] '   src='public/picture/IMG_7172.JPG'/></SwiperSlide>
+             <SwiperSlide><img className=' md:w-[500px] md:h-[500px] h-[200px] w-[320px]'   src='public/picture/IMG_7172.JPG'/></SwiperSlide>
+             <SwiperSlide><img className=' md:w-[500px] md:h-[500px] h-[200px] w-[320px]'   src='public/picture/IMG_7172.JPG'/></SwiperSlide>
+             <SwiperSlide><img className=' md:w-[500px] md:h-[500px] h-[200px] w-[320px]'   src='public/picture/IMG_7172.JPG'/></SwiperSlide>
             
     
         <div className=' absolute bottom-[50%] z-10 w-full px-5'>

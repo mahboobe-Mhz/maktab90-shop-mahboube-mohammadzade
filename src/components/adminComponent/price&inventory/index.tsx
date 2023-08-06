@@ -66,6 +66,7 @@ import { storeAppState } from "../../../redux/slice/appSlice";
 
     };
 const handleAllChange =()=>{
+console.log("hi");
 
 }
     return (
@@ -81,7 +82,12 @@ const handleAllChange =()=>{
             borderRadius: "20px",
           }}
         >
-          <Typography sx={{ color: "secondary.main", fontSize: 30 }}>
+          <Typography sx={{ color: "secondary.main", fontSize:{
+           lg:30,
+           md:30,
+           sm:20,
+           xs:20
+        } }}>
           
            قیمت و موجودی
           </Typography>
@@ -103,9 +109,20 @@ const handleAllChange =()=>{
           sx={{
             display: "flex",
             gap: "30px",
-            padding: "20px",
+   
             color: "gray",
-            height: "70px",
+            height: {
+              lg:80,
+              md:50,
+              sm:40,
+            xs:40
+            },
+            padding: {
+              lg: 3,
+              md: 2,
+              sm: 2,
+              xs:1
+            }
           }}
         >
           <Typography
@@ -116,6 +133,12 @@ const handleAllChange =()=>{
                 borderBottom: "solid",
                 borderColor: "secondary.main",
               },
+              fontSize: {
+                lg: 16,
+                md: 16,
+                sm: 15,
+                xs: 12
+              }
             }}
           >
           
@@ -129,6 +152,12 @@ const handleAllChange =()=>{
                 borderBottom: "solid",
                 borderColor: "secondary.main",
               },
+              fontSize: {
+                lg: 16,
+                md: 16,
+                sm: 15,
+                xs: 12
+              }
             }}
           >
           
@@ -142,6 +171,12 @@ const handleAllChange =()=>{
                 borderBottom: "solid",
                 borderColor: "secondary.main",
               },
+              fontSize: {
+                lg: 16,
+                md: 16,
+                sm: 15,
+                xs: 12
+              }
             }}
           >
             بدون قیمت

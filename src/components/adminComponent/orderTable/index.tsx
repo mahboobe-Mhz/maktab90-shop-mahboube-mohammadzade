@@ -97,7 +97,15 @@ const ShowTableBox = () => {
        
         }}
       >
-        <Typography> سفارشات</Typography>
+        <Typography sx={{
+          fontSize:{
+            lg:30,
+            md:30,
+            sm:20,
+            xs:20
+         }
+         ,color:"secondary.main"
+        }}> سفارشات</Typography>
         <Button
           sx={{
             color: "#ffff",

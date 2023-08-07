@@ -128,7 +128,7 @@ const ShowTableBox = () => {
           paddingX: "20px",
         }}
       >
-        <SearchIcon sx={{ fill: "gray", marginTop: "3px" }} />
+        <SearchIcon sx={{ fill: "gray", marginTop: "3px", marginX:1}} />
         <Input
           placeholder="جستجو"
           sx={{ width: "100%", outline: "none" }}

@@ -50,7 +50,7 @@ export default function DiscountModal({open,setOpen}:Props) {
         <Box sx={{display:"flex",justifyContent:"space-between", bgcolor:"secondary.main", 
         color:"white", paddingX:"10px", paddingY:"5px",borderStartEndRadius:"10px",
          borderStartStartRadius:"10px", width:"100%"}}>
-        <ClearIcon/>
+        <ClearIcon onClick={handleClose}/>
             <Typography> افزودن کوپن جدید</Typography>
         </Box>
         <Box sx={{height:"550px", overflowY: "scroll",}}>

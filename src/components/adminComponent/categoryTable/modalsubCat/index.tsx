@@ -5,12 +5,14 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
-import { Paper, Box, Typography } from "@mui/material";
+import { Paper, Box, Typography, TableHead } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setModal, storeAppState } from "../../../redux/slice/appSlice";
+import { setModal, storeAppState } from "../../../../redux/slice/appSlice";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 const style = {
-  position: "absolute" as "absolute",
+  position: "absolute" ,
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
@@ -41,8 +43,14 @@ export default function BasicModal({ subData }: Props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <TableContainer sx={{ height: 300 }} component={Paper}>
+          <TableContainer sx={{ height: 300 , direction:"rtl"}} component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="right" sx={{}}> زیر دسته ها</TableCell>
+                  <TableCell></TableCell>
+                </TableRow>
+              </TableHead>
               <TableBody>
                 {subData?.map((row) => (
                   <TableRow
@@ -51,6 +59,17 @@ export default function BasicModal({ subData }: Props) {
                   >
                     <TableCell data-tag="category" align="right">
                       {row.name}{" "}
+                    </TableCell>
+                    <TableCell>
+                    <Box>
+                    <DeleteOutlineOutlinedIcon
+                      sx={{ color: "secondary.main" }}
+                    />
+                    <ModeEditOutlineOutlinedIcon
+                      sx={{ color: "secondary.main" }}
+                    />
+                
+                  </Box>
                     </TableCell>
                   </TableRow>
                 ))}

@@ -9,27 +9,10 @@ import SearchIcon from "@mui/icons-material/Search";
 
 import useGetAllProducts from "../../../api/services/products/useGetAllProducts";
 import { useState } from "react";
+import LabelTable from "./labelTable";
 
 const ShowTableBox = () => {
-  const { data, isLoading } = useGetAllProducts();
-
-  const [dataList, setDataList] = useState();
-
-  const quantityFun = () => {
-    const newDataList = data.data.products;
-    const ZiroQuantity = newDataList.filter((item:{quantity:number}) => item.quantity === 0);
-    setDataList(ZiroQuantity);
-  };
-  const priceFun = () => {
-    const newDataList = data.data.products;
-    const priceLess = newDataList.filter((item:{price:number}) => item.price === 0);
-    setDataList(priceLess);
-  };
-  const allProducts = () => {
-    const newDataList = data.data.products;
-    setDataList(newDataList);
-  };
-
+  const[open,setOpen]=useState(false)
   return (
     <Box sx={{ height: "90%" }}>
       <Box
@@ -83,7 +66,9 @@ const ShowTableBox = () => {
           type="text"
         ></Input>
       </Box>
-      <Box></Box>
+      <Box>
+      <LabelTable setOpen={setOpen} />
+      </Box>
     </Box>
   );
 };

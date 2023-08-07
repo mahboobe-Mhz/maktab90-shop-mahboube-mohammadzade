@@ -21,7 +21,7 @@ const style = {
   p: 4,
 };
 
-export default function DeleteDiscountModal({titleText,openDeleteModal,setOpenDeleteModal}:Props) {
+export default function DeleteLabelModal({titleText,openDeleteModal,setOpenDeleteModal}:Props) {
 
   const handleClose = () => { 
     setOpenDeleteModal(false)

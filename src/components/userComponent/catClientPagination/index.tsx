@@ -30,36 +30,44 @@ if(Number(pageNum)<countPage){
 <nav  className="text-black pt-10">
   <ul className="list-style-none flex">
     <li>
-        <div onClick={goToPreviousPage} className="  hover:cursor-pointer relative block rounded-full bg-transparent px-3 py-1.5 text-sm 
+        <div onClick={goToPreviousPage} className="  hover:cursor-pointer relative block rounded-full
+         bg-transparent px-3 py-1.5 text-sm 
          transition-all duration-300">
-            <span className="flex  hover:text-secondary "><FlashIcon className="md:w-[30px] rotate-180 px-1 mt-0.5 hover:text-secondary "/> <span className="text-xs   font-semibold"> صفحه قبل</span> </span> 
+            <span className="flex  hover:text-secondary "><FlashIcon className="md:w-[30px] rotate-180
+             px-1 mt-0.5 hover:text-secondary "/> <span className="text-xs md:text-lg font-semibold"> صفحه قبل</span> </span> 
          </div>
 
     </li>
     {countPage <2 ?<li aria-current="page">
     <Link
-      className="relative block rounded-full bg-primary-100 px-3 py-1.5 md:text-lg text-xs font-medium text-primary-700 transition-all duration-300"
+      className="relative block rounded-full bg-primary-100 px-3 py-1.5 md:text-lg text-xs font-medium 
+      text-primary-700 transition-all duration-300"
       to={`/category/${catId}_${catName}_page_1`}>1
       <span
-        className="absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 [clip:rect(0,0,0,0)]"
+        className="absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 
+        [clip:rect(0,0,0,0)]"
         >(current)</span>
     </Link>
   </li>:countPage <3?<div className="flex">
   <li aria-current="page">
     <a
-      className="relative block rounded-full bg-primary-100 px-3 py-1.5 text-xs md:text-lg font-medium text-primary-700 transition-all duration-300"
+      className="relative block rounded-full bg-primary-100 px-3 py-1.5 text-xs md:text-lg 
+      font-medium text-primary-700 transition-all duration-300"
       href={`/category/${catId}_${catName}_page_1`}>1
       <span
-        className="absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 [clip:rect(0,0,0,0)]"
+        className="absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 
+        [clip:rect(0,0,0,0)]"
         >(current)</span>
     </a>
   </li>
   <li aria-current="page">
     <a
-      className="relative block rounded-full bg-primary-100 px-3 py-1.5 text-xs md:text-lg font-medium text-primary-700 transition-all duration-300"
+      className="relative block rounded-full bg-primary-100 px-3 py-1.5 text-xs md:text-lg font-medium 
+      text-primary-700 transition-all duration-300"
       href={`/category/${catId}_${catName}_page_2`}>2
       <span
-        className="absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 [clip:rect(0,0,0,0)]"
+        className="absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0
+         [clip:rect(0,0,0,0)]"
         >(current)</span>
     </a>
   </li>
@@ -69,10 +77,12 @@ if(Number(pageNum)<countPage){
 
  { countPage>2 ?  <li aria-current="page">
     <a
-      className="relative block rounded-full bg-primary-100 px-3 py-1.5 text-lg font-medium text-primary-700 transition-all duration-300"
+      className="relative block rounded-full bg-primary-100 px-3 py-1.5 text-lg font-medium text-primary-700 
+      transition-all duration-300"
   >...
       <span
-        className="absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 [clip:rect(0,0,0,0)]"
+        className="absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 
+        [clip:rect(0,0,0,0)]"
         >(current)</span>
     </a>
   </li>:<span> </span>
@@ -93,10 +103,12 @@ if(Number(pageNum)<countPage){
      
  }
     <li>
-        <div onClick={goToNextPage} className=" hover:cursor-pointer hover:text-secondary relative block rounded-full bg-transparent px-3 py-1.5 text-sm 
+        <div onClick={goToNextPage} className=" hover:cursor-pointer hover:text-secondary relative block 
+        rounded-full
+         bg-transparent px-3 py-1.5 text-sm 
          transition-all duration-300">
-            <span className="flex text-xs md:text-lg font-semibold"> 
-           صفحه بعد <FlashIcon  className="  px-1 mt-0.5"/>    </span> 
+            <span className="flex text-xs md:text-lg font-semibold "> 
+           صفحه بعد <FlashIcon  className=" md:w-[30px] px-1 mt-0.5"/>    </span> 
          </div>
    
     </li>

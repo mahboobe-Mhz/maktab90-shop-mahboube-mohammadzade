@@ -34,7 +34,7 @@ export default function BasicCategoryTable({ rows, AllCategoryData }: Props) {
   const { data, isLoading } = useGetAllSubCategory();
 
   const [selected, setSelected] = React.useState([]);
-  const showSub = (event: any) => {
+  const showSub = (event: React.MouseEvent) => {
     const categoryId = event.currentTarget.id;
     dispatch(setModal({ Modal: true }));
 
@@ -45,7 +45,7 @@ export default function BasicCategoryTable({ rows, AllCategoryData }: Props) {
   };
   const handleSelectAll = (event: any) => {
     if (event.currentTarget.checked) {
-      const allCatIdArray = [];
+      const allCatIdArray: any[] | ((prevState: never[]) => never[]) = [];
       AllCategoryData.map((item: any) => allCatIdArray.push(item._id));
       setSelected(allCatIdArray);
     } else {

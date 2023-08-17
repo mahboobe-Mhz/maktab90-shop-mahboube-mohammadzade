@@ -3,7 +3,7 @@ import * as React from 'react';
 import MainButton from "../../../../components/kit/button";
 import MainHeader from "../../../../components/userComponent/mainHeader";
 import MainFooter from "../../../../components/userComponent/mainFooter";
-import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
+
 import { setOrderData, setProductOrderModal, storeAppState } from "../../../../redux/slice/appSlice";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
@@ -11,12 +11,14 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import { routes } from "../../../../routes";
 import DeleteOrderModal from "../../../../components/userComponent/poductOrderModal";
+import CartData from "../../../../components/userComponent/cartData";
 const Cart = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const appState = useSelector(storeAppState);
   const [titleText ,setTitleText]=React.useState("")
   const [deleteId ,setDeleteId]=React.useState("")
+  const[trigger , setTrigger]=React.useState(0)
 
   const handleDelete = (id: any) => {
     const newAppState = [...appState.OrderData];
@@ -29,7 +31,7 @@ const Cart = () => {
     (sum: number, { price }: any) => sum + price,
     0
   );
-console.log(appState.OrderData);
+
 
   const handleCheckout = () => {
     if (appState.OrderData[0]) {
@@ -45,6 +47,12 @@ console.log(appState.OrderData);
      setTitleText(`  ${event.currentTarget.dataset.user}  `) 
      setDeleteId(event.currentTarget.id)
   }
+const handleTrigger =()=>{
+  setTrigger((trigger) => trigger + 1);
+}
+
+
+ 
   return (
     <div dir="rtl">
       <MainHeader />
@@ -53,7 +61,7 @@ console.log(appState.OrderData);
         <DeleteOrderModal titleText={titleText} handleDelete={handleDelete} deleteId={deleteId} />
         <h1 className="text-3xl font-bold mb-10">سبد خرید</h1>
         <div className=" md:flex gap-4 mb-10 ">
-          <div className="border rounded-2xl border-black md:w-[70%]">
+          <div className="border rounded-3xl border-black md:w-[70%]">
             <div className="p-4 space-y-5 overflow-y-scroll h-[400px]">
               <div className="flex justify-between border-b border-black pb-3 px-4">
                 <span className="font-semibold">محصول</span>
@@ -64,42 +72,11 @@ console.log(appState.OrderData);
                 </div>
               </div>
               {appState.OrderData.map((item: any, index: any) => (
-                <div
-                  id={index}
-                  className="flex md:flex-row flex-col justify-between border-b  border-black pb-3 px-4 w-full"
-                >
-                  <div className="flex md:w-[40%]">
-                    <img
-                      className="border rounded-2xl "
-                      width={80}
-                      height={80}
-                      src={`http://localhost:8000/images/products/images/${item.image?.[0]}`}
-                    />
-                   
-                 <Link to={`/product/${item.id}_${item.slugName}_${item.category}`}
-                        className="font-bold pr-3 pt-2 md:pt-0 hover:cursor-pointer"> {item.name}</Link>
-                   
-                  </div>
-                  <div className="flex justify-around md:w-[60%] mt-4">
-                    <span className="mx-1 ">
-                      {" "}
-                      {Number(item.orderNUm).toLocaleString("fa-IR")}{" "}عدد 
-                    </span>
-
-                    <span>
-                      {Number(item.price).toLocaleString("Fa-IR")} تومان
-                    </span>
-                    <span id={index} 
-                    data-user={item.name}
-                    onClick={handleDeleteModal}>
-                      <DeleteOutlineRoundedIcon />
-                    </span>
-                  </div>
-                </div>
+       <CartData item={item} index={index} handleDeleteModal={handleDeleteModal} trigger={trigger} />
               ))}
             </div>
           </div>
-          <div className="border rounded-2xl border-black md:w-[30%]">
+          <div className="border rounded-3xl border-black md:w-[30%]">
             <div className="p-4">
               <h3 className="font-semibold mb-5">جمع کل سبد خرید</h3>
               <div className=" space-y-3 text-semibold">
@@ -139,6 +116,10 @@ console.log(appState.OrderData);
             </div>
           </div>
         </div>
+        <span onClick={handleTrigger}>
+        <MainButton title="بروز رسانی سبد خرید"/>
+        </span>
+     
       </div>
       <MainFooter />
     </div>

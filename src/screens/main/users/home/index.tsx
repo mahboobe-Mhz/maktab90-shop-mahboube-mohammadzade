@@ -20,28 +20,30 @@ const Home = () => {
       <TopOfHome />
       <SearchProducts />
       <GroupingProduct />
-      <div className=" mainBanner w-full hidden md:flex items-center justify-center relative px-10">
-        <div className="fa-homnet absolute top-[-5px] right-[20px] md:pr-[130px] md:pl-[30px]  pb-8 pt-6 bg-white rounded-full ">
-          <span className="px-5 pb-2 md:text-4xl  rounded-full bg-white border-secondary border-2"> هومنت</span>
+      <div className=" mainBanner  w-full hidden md:flex items-center justify-center relative px-10">
+        <div className="fa-homnet  absolute top-[-5px] right-[20px] pr-[100px] pl-[30px]  pb-3 pt-3 bg-white rounded-full  ">
+         <span> <img src="public\logo\logo2-01.png" className=" w-[220px]    md:text-4xl  rounded-full pb-2 px-2 pt-3 border-secondary 
+         border-2"/></span> 
         </div>
         <img
           className=" rounded-3xl "
           src="public/picture/banner-01.jpg"
         />
-        <div className="en-homnet absolute bottom-[-20px] left-[20px] pl-[100px] pr-[30px] pb-8 pt-6 bg-white rounded-full ">
-          <span className="px-5 pb-2 text-4xl rounded-full bg-white border-secondary border-2"> Homnet</span>
+        <div className="en-homnet absolute bottom-[-20px] left-[20px] pl-[100px] pr-[30px] pb-8 pt-4 bg-white rounded-full ">
+        <img src="public\logo\logo3-01.png" className=" w-[220px]  md:text-4xl  rounded-full pb-2 px-2 pt-3 border-secondary border-2"/> 
         </div>
       </div>
       <div className=" resBanner w-full md:hidden flex items-center justify-center relative px-2 pt-10">
-        <div className=" faHomnet absolute top-[35px] right-[0px]  pr-8 pl-3 pb-2 pt-1 bg-white rounded-full ">
-          <span className="px-2 pb-1 rounded-full text-xs bg-white border-secondary border-2"> هومنت</span>
+        <div className=" faHomnet absolute top-[35px] right-[0px]  pr-8 pl-3 pb-2 pt-2 bg-white rounded-full ">
+        <span> <img src="public\logo\logo2-01.png" className=" w-[90px]    md:text-4xl  rounded-full pb-1 px-2 pt-2 border-secondary 
+         border-2"/></span> 
         </div>
         <img
           className=" rounded-3xl "
           src="public/picture/banner-01.jpg"
         />
-        <div className="enHomnet absolute bottom-[-4px] left-[0px]  pb-3 pt-1 pr-3 pl-5 bg-white rounded-full ">
-          <span className="px-2 pb-1 rounded-full text-xs bg-white border-secondary border-2"> Homnet</span>
+        <div className="enHomnet absolute bottom-[-4px] left-[0px]  pb-2 pt-2 pr-3 pl-5 bg-white rounded-full ">
+        <img src="public\logo\logo3-01.png" className=" w-[90px]  md:text-4xl  rounded-full pb-[6px] px-2 pt-[5px] border-secondary border-2"/> 
         </div>
       </div>
       <AboutProduct/>

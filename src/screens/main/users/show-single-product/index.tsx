@@ -45,17 +45,26 @@ const ShowSingleProduct = () => {
   const catId = useParam.id?.split("_")[2];
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/products/${productId}`).then((res) => {
-      setSelectProduct(res.data.data.product);
-    });
+ 
     axios
       .get(`http://localhost:8000/api/products?category=${catId}&limit=5`)
       .then((res) => {
         setSimilarProduct(res.data.data.products);
       });
-      appState.OrderData.map(item => item.id===productId ?setOrderCount(item.orderNUm):"nist"
-      )
+   
+      axios.get(`http://localhost:8000/api/products/${productId}`).then((res) => {
+        setSelectProduct(res.data.data.product);
+        appState.OrderData.map(item => item.id===productId ?(setOrderCount(item.orderNUm) ,  setTotalPrice(res.data.data.product.price * item.orderNUm))
+        :"nist"
+        )
+        
+       
+      });
+
+     
   }, [useParam]);
+
+
   useEffect(() => {
     setTotalPrice(selectProduct.price * orderCount);
   }, [orderCount]);
@@ -159,8 +168,7 @@ setSelectColor(event.currentTarget.id)
               </span>
 
               <div className="flex gap-10 md:flex-row flex-col justify-center items-center">
-                <span className=" border border-black md:px-5 px-3 md:w-[120px] w-[100px] 
-                py-1
+                <span className=" border border-black md:px-5 px-3 py-1
                 rounded-full ">
                   <span
                     className="  hover:cursor-pointer font-bold text-xl  "

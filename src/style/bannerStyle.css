@@ -101,7 +101,7 @@
     height: 70px;
     position: absolute;
     border-radius: 0px 30px;
-    bottom:21.5px;
+    bottom:19.5px;
     left: -79.5px;
     box-shadow: 29px -25px 0 0 rgb(255, 255, 255); 
 }
@@ -113,9 +113,10 @@
     position: absolute;
     border-radius: 0px 30px;
     bottom: -60px;
-    left: 240px;
+    left: 270px;
     box-shadow: 28px -19px 0 0 rgb(255, 255, 255); 
 }
+
 .mainBanner>.en-homnet::before{
     content: "";
     display: block;
@@ -124,7 +125,7 @@
     position: absolute;
     border-radius: 0px 30px;
     bottom: 20px;
-    left: 287px;
+    left: 349.5px;
     box-shadow: -28px 19px 0 0 rgb(255, 255, 255); 
 
 }
@@ -135,8 +136,8 @@
     height: 50px;
     position: absolute;
     border-radius: 0px 30px;
-    bottom: 96px;
-    left: 20px;
+    bottom: 119px;
+    left: 21px;
     box-shadow: -28px 19px 0 0 rgb(255, 255, 255); 
 
 }
@@ -148,9 +149,9 @@
     height: 25px;
     position: absolute;
     border-radius: 0px 15px;
-    bottom:6px;
+    bottom:17.2px;
     left:-30px;
-    box-shadow: 5px -9px 0 0 rgb(255, 255, 255); 
+    box-shadow: 10px -10px 0 0 rgb(255, 255, 255); 
 }
 .resBanner>.faHomnet::after{
     content: "";
@@ -171,8 +172,8 @@
     position: absolute;
     border-radius: 0px 15px;
     bottom:4px;
-    left:89.5px;
-    box-shadow: -8px 11px 0 0 #ffffff; 
+    left:121.5px;
+    box-shadow: -11px 11px 0 0 #ffffff; 
 }
 .resBanner>.enHomnet::before{
     content: "";
@@ -181,9 +182,9 @@
     height: 30px;
     position: absolute;
     border-radius: 0px 15px;
-    bottom:40px;
+    bottom:47px;
     left:8px;
-    box-shadow: -10px 5px 0 0 #ffffff; 
+    box-shadow: -10px 8px 0 0 #ffffff; 
 }
 input[type='radio']:after {
     width: 17px;

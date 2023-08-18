@@ -129,8 +129,9 @@ setSelectColor(event.currentTarget.id)
            
               className="flex justify-between"><span>انتخاب رنگ</span> 
               {showColor?<span  className=" pr-3  rotate-180 font-semibold text-xl hover:cursor-pointer"> ^</span>
-              :<span className="pl-3 font-semibold text-xl"> ^</span>}   </span> 
-              {showColor? <span className="border-t border-black ">
+              :<span className="pl-3 font-semibold text-xl hover:cursor-pointer"> ^</span>}   </span> 
+              {showColor? <span className="border-t border-black 
+              ">
           <span  className="px-5 py-2 flex gap-1">
      
             <span  className="px-[10px] py-[0px] rounded-md bg-red-800 h-[20px] hover:cursor-pointer border-2 focus:text-red-600 border-secondary"></span>     
@@ -145,8 +146,8 @@ setSelectColor(event.currentTarget.id)
               <span className="flex flex-col border border-black rounded-3xl px-2 py-1">
              <span onClick={()=>setShowSize(!showSize)} 
               className="flex justify-between"><span>انتخاب ابعاد</span> 
-              {showSize?<span  className=" pr-3  rotate-180 font-semibold text-xl"> ^</span>
-              :<span className="pl-3 font-semibold text-xl"> ^</span>}   </span> 
+              {showSize?<span  className=" pr-3  rotate-180 font-semibold text-xl hover:cursor-pointer"> ^</span>
+              :<span className="pl-3 font-semibold text-xl hover:cursor-pointer"> ^</span>}   </span> 
               {showSize? <span className="border-t border-black" >
           <span className="px-5 py-2 flex gap-1" >
             <span className="">   <input name="hi" className="" type="radio"  /> <span className="px-2"> تک نفره</span></span>

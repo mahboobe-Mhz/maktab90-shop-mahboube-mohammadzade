@@ -60,7 +60,7 @@ const MainFooter = () => {
           </div>
         </div>
         <div className="pt-5 hidden md:flex md:flex-col">
-          <img  onClick={navigateHome} width={120} src="public\logo\Untitled-2-01.png"/>
+          <img  onClick={navigateHome} width={120} src="public\logo\logo fotter-01.png"/>
       
           <span className="flex gap-2">
             <TelegramIcon sx={{ width: "15px" }} />{" "}
@@ -80,7 +80,7 @@ const MainFooter = () => {
       </div>
       <div className="flex text-center justify-center w-full ">
         <div className="pt-5  md:hidden ">
-          <img src='public/logo/wiethLogo.png'/>
+          <img width={120} src='public\logo\logo fotter-01.png'/>
    
           <span className="flex gap-2 justify-center">
             <TelegramIcon sx={{ width: "15px" }} />{" "}

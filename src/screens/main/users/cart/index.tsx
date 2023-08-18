@@ -86,10 +86,10 @@ const handleTrigger =()=>{
                     className="border border-black rounded-full w-[80%] px-5"
                     type="text"
                   />
-                  <MainButton title="اعمال" />
+              <button className="  text-gray-400 border border-black hover:bg-secondary hover:text-white px-5 pb-2 pt-2 rounded-full">اعمال</button> 
                 </div>
                 <div className="flex justify-between">
-                  <span>جمع جزء</span>
+                  <span>جمع جزءء</span>
                   <span>{Number(result).toLocaleString("Fa-IR")} تومان</span>
                 </div>
                 <div className="flex justify-between  border-b-2 pb-3 border-black ">

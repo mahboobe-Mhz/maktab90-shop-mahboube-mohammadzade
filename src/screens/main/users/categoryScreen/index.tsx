@@ -77,8 +77,32 @@ const CategoryScreen = () => {
         <div className="mt-1 w-full">
           <img src="/picture/posterCategory.png" alt="" />
         </div>
+<div className="flex justify-center mt-3  ">
+  <div className=" horizontal-scroll-wrapper squares"> 
+   {/* <button className=" border border-[#fd6e54] px-12 py-1 rounded-3xl  focus:bg-secondary
+    focus:text-white  focus:border-secondary  focus:ring-none  
+   
+   focus:outline-none "> نیلپر </button> */}
+   <button className=" ">نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+    
+     </div>
 
-        <div className="flex mt-10 md:gap-5 gap-1">
+</div>
+        <div className="flex mt-20 md:gap-6 gap-1 md:px-3">
           <div className="md:w-[30%] ">
             <h1 className="md:text-xl text-md font-semibold w-[150px] md:w-full  border-b-2
              border-black pb-2">

@@ -77,10 +77,31 @@ const SubCategoryScreen = () => {
         <div className="mt-1 w-full">
           <img src="/picture/posterCategory.png" alt="" />
         </div>
+        <div className="flex justify-center mt-3  ">
+  <div className=" horizontal-scroll-wrapper squares"> 
+   <button className=" ">نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+   <button>نیلپر</button>
+    
+     </div>
 
-        <div className="flex mt-10 md:gap-5 gap-1">
+</div>
+        <div className="flex md:mt-20 md:gap-5 gap-1 px-3 ">
           <div className="md:w-[30%] ">
-            <h1 className="md:text-xl text-md font-semibold  w-[150px] md:w-full  border-b-2 border-black pb-2">
+            <h1 className="md:text-xl text-md font-semibold  w-[150px] md:w-full  border-b-2
+             border-black pb-2">
               {" "}
               دسته بندی محصولات
             </h1>
@@ -114,11 +135,11 @@ const SubCategoryScreen = () => {
                   {item._id === subCatId ? (
                     <div>
                       <CheckIcon sx={{ color: "secondary.main" }} />
-                      <span className="font-semibold md:text-lg text-sm"> {item.name}</span>
+                      <span className="font-semibold md:text-lg text-sm hover:cursor-pointer"> {item.name}</span>
                     </div>
                   ) : (
                     <div>
-                      <span className="font-semibold md:text-lg text-sm"> {item.name}</span>
+                      <span className="font-semibold md:text-lg text-sm hover:cursor-pointer"> {item.name}</span>
                     </div>
                   )}
                 </div>

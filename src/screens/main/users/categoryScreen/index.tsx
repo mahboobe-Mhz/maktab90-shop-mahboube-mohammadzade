@@ -79,10 +79,6 @@ const CategoryScreen = () => {
         </div>
 <div className="flex justify-center mt-3  ">
   <div className=" horizontal-scroll-wrapper squares"> 
-   {/* <button className=" border border-[#fd6e54] px-12 py-1 rounded-3xl  focus:bg-secondary
-    focus:text-white  focus:border-secondary  focus:ring-none  
-   
-   focus:outline-none "> نیلپر </button> */}
    <button className=" ">نیلپر</button>
    <button>نیلپر</button>
    <button>نیلپر</button>

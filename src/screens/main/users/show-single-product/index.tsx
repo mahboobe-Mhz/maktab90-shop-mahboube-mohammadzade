@@ -127,9 +127,9 @@ setSelectColor(event.currentTarget.id)
               <span className="flex flex-col border border-black rounded-3xl px-2 py-1">
              <span onClick={()=>setShowColor(!showColor)}
            
-              className="flex justify-between"><span>انتخاب رنگ</span> 
+              className="flex justify-between pt-1 pr-3"><span>انتخاب رنگ</span> 
               {showColor?<span  className=" pr-3  rotate-180 font-semibold text-xl hover:cursor-pointer"> ^</span>
-              :<span className="pl-3 font-semibold text-xl hover:cursor-pointer"> ^</span>}   </span> 
+              :<span className="pl-3 font-semibold mt-1 text-xl hover:cursor-pointer"> ^</span>}   </span> 
               {showColor? <span className="border-t border-black 
               ">
           <span  className="px-5 py-2 flex gap-1">
@@ -145,10 +145,10 @@ setSelectColor(event.currentTarget.id)
               </span>
               <span className="flex flex-col border border-black rounded-3xl px-2 py-1">
              <span onClick={()=>setShowSize(!showSize)} 
-              className="flex justify-between"><span>انتخاب ابعاد</span> 
+              className="flex justify-between pt-1 pr-3"><span>انتخاب ابعاد</span> 
               {showSize?<span  className=" pr-3  rotate-180 font-semibold text-xl hover:cursor-pointer"> ^</span>
-              :<span className="pl-3 font-semibold text-xl hover:cursor-pointer"> ^</span>}   </span> 
-              {showSize? <span className="border-t border-black" >
+              :<span className="pl-3 font-semibold  text-xl hover:cursor-pointer"> ^</span>}   </span> 
+              {showSize? <span className="border-t  border-black" >
           <span className="px-5 py-2 flex gap-1" >
             <span className="">   <input name="hi" className="" type="radio"  /> <span className="px-2"> تک نفره</span></span>
             <span className="">   <input name="hi" className=" text-secondary" type="radio"  /> <span className="px-2">دونفره </span> </span>
@@ -160,11 +160,12 @@ setSelectColor(event.currentTarget.id)
               </span>
             </div>
             <div className="flex md:justify-between flex-col md:flex-row justify-center items-center ">
-              <span className="md:mt-2 md:mb-0 mb-3 font-semibold ">
+              <span className="md:mt-2 md:mb-0 mb-3 pr-2 font-semibold ">
                 {" "}
                 {Number(totalPrice || selectProduct.price).toLocaleString(
                   "fa-IR"
-                )}{" "}
+                )
+                }{" "}
                 تومان{" "}
               </span>
 
@@ -178,7 +179,9 @@ setSelectColor(event.currentTarget.id)
                     {" "}
                     +{" "}
                   </span>
-                  <span className="mx-4 font-bold  "> {orderCount}</span>
+                  <span className="mx-4 font-bold  "> {Number(orderCount).toLocaleString(
+                  "fa-IR"
+                )}</span>
                   <span
                     className=" hover:cursor-pointer  font-bold text-xl "
                     onClick={() => {
@@ -217,32 +220,32 @@ setSelectColor(event.currentTarget.id)
             <div  className="flex w-full gap-4 mt-2 text-sm">
             <div className="w-[50%]">
                     <span> دیدگاه شما*</span>
-                    <textarea className="border border-black rounded-2xl mt-2 p-1 w-full px-2" name="description" minLength="10" maxLength="40" required></textarea>
+                    <textarea className="border border-black rounded-2xl mt-2 p-1 w-full px-2 md:h-[110px]" name="description" minLength="10" maxLength="40" required></textarea>
              </div>
              <div className="flex flex-col w-[50%]">
              
               <span className="w-full">
               <span>نام* </span>
-              <input type="text" className="border border-black rounded-2xl mt-2 p-1 px-2 w-full "/>
+              <input type="text" className="border border-black rounded-3xl mt-2 pr-4 pt-2 pb-2 w-full "/>
               </span>
-              <span className="w-full">
+              <span className="w-full mt-2">
               <span>ایمیل* </span>
-              <input type="email" className="border border-black rounded-2xl mt-2 px-2 p-1 w-full "/>
+              <input type="email" className="border border-black rounded-3xl mt-2 pr-4 pt-2 pb-2 w-full  "/>
               </span>
              </div>
             </div>
            
-             <div className="flex md:justify-between items-center w-full mt-2 md:flex-row flex-col">
+             <div className="flex md:justify-between items-center w-full mt-4 md:flex-row flex-col">
              
              <span> <input type="checkbox" /> ذخیره نام ،ایمیل و وبسایت من در مرورگر برای زمانی که دوباره دیدگاهی می نویسم.</span>
                    
              <button
              type="submit"
                   onClick={insertToCart}
-                  className="bg-secondary rounded-full md:px-10 md:py-1 md:pb-2 text-white mr-5 w-[40%]"
+                  className="bg-secondary rounded-full md:px-10  md:pb-2 md:pt-2 text-white mr-5 w-[40%]"
                 >
                   {" "}
-                  ثبت
+                  ثبــــت
                 </button>
                 
           

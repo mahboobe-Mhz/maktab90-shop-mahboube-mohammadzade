@@ -18,7 +18,7 @@ const Connection = () => {
             <div className='w-[250px] shadow-lg flex flex-col justify-center items-center text-center py-10 px-5 rounded-2xl'> 
             <FmdGoodIcon sx={{color:"secondary.main", width:"50px", height:"50px"}}/>
     <p className='font-bold text-3xl pb-2'> نشانی فروشگاه</p>
-    <p className='text-secondary font-bold'>  شیراز-خیابان قصرودشت مجتمع تجاری اناهیتا۲ پلاک ۴۳</p>
+    <p className='text-secondary font-bold'>  شیراز-خیابان قصرودشت مجتمع تجاری آناهیتا۲ پلاک ۴۳</p>
             </div>
         </div>
         <div>

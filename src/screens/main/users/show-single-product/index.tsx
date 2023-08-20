@@ -159,7 +159,7 @@ setSelectColor(event.currentTarget.id)
         
               </span>
             </div>
-            <div className="flex md:justify-between flex-col md:flex-row justify-center items-center ">
+            <div className="flex md:justify-between flex-col xl:flex-row justify-center items-center ">
               <span className="md:mt-2 md:mb-0 mb-3 pr-2 font-semibold ">
                 {" "}
                 {Number(totalPrice || selectProduct.price).toLocaleString(
@@ -169,8 +169,8 @@ setSelectColor(event.currentTarget.id)
                 تومان{" "}
               </span>
 
-              <div className="flex gap-10 md:flex-row flex-col justify-center items-center">
-                <span className=" border border-black md:px-5 px-3 py-1
+              <div className="flex gap-10 lg:flex-row flex-col justify-center items-center">
+                <span className=" border border-black md:px-5 px-3 py-1 h-8
                 rounded-full ">
                   <span
                     className="  hover:cursor-pointer font-bold text-xl  "

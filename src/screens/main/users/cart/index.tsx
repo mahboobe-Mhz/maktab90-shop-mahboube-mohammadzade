@@ -5,10 +5,10 @@ import MainHeader from "../../../../components/userComponent/mainHeader";
 import MainFooter from "../../../../components/userComponent/mainFooter";
 
 import { setOrderData, setProductOrderModal, storeAppState } from "../../../../redux/slice/appSlice";
-import { useEffect, useState } from "react";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { routes } from "../../../../routes";
 import DeleteOrderModal from "../../../../components/userComponent/poductOrderModal";
 import CartData from "../../../../components/userComponent/cartData";
@@ -18,13 +18,12 @@ const Cart = () => {
   const appState = useSelector(storeAppState);
   const [titleText ,setTitleText]=React.useState("")
   const [deleteId ,setDeleteId]=React.useState("")
-  const[trigger , setTrigger]=React.useState(0)
 
-  const handleDelete = (id: any) => {
+
+  const handleDelete = (id: string) => {
     const newAppState = [...appState.OrderData];
-    newAppState.splice(id, 1);
-
-    dispatch(setOrderData({ OrderData: newAppState }));
+    const filterAppState=newAppState.filter((item:any)=> item.id !== id)
+    dispatch(setOrderData({ OrderData: filterAppState }));
   };
 
   const result = appState.OrderData.reduce(
@@ -47,12 +46,7 @@ const Cart = () => {
      setTitleText(`  ${event.currentTarget.dataset.user}  `) 
      setDeleteId(event.currentTarget.id)
   }
-const handleTrigger =()=>{
-  setTrigger((trigger) => trigger + 1);
-}
 
-
- 
   return (
     <div dir="rtl">
       <MainHeader />
@@ -60,6 +54,7 @@ const handleTrigger =()=>{
       <div className="p-10">
         <DeleteOrderModal titleText={titleText} handleDelete={handleDelete} deleteId={deleteId} />
         <h1 className="text-3xl font-bold mb-10">سبد خرید</h1>
+ 
         <div className=" md:flex gap-4 mb-10 ">
           <div className="border rounded-3xl border-black md:w-[70%]">
             <div className="p-4 space-y-5 overflow-y-scroll h-[400px]">
@@ -72,8 +67,11 @@ const handleTrigger =()=>{
                 </div>
               </div>
               {appState.OrderData.map((item: any, index: any) => (
-       <CartData item={item} index={index} handleDeleteModal={handleDeleteModal} trigger={trigger} />
+
+      <CartData  item={item} index1={index} handleDeleteModal={handleDeleteModal}  />
+  
               ))}
+                  
             </div>
           </div>
           <div className="border rounded-3xl border-black md:w-[30%]">
@@ -116,10 +114,7 @@ const handleTrigger =()=>{
             </div>
           </div>
         </div>
-        <span onClick={handleTrigger}>
-        <MainButton title="بروز رسانی سبد خرید"/>
-        </span>
-     
+       
       </div>
       <MainFooter />
     </div>

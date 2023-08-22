@@ -170,7 +170,7 @@ setSelectColor(event.currentTarget.id)
               </span>
 
               <div className="flex gap-10 lg:flex-row flex-col justify-center items-center">
-                <span className=" border border-black md:px-5 px-3 py-1 h-8
+                <span className=" border border-black md:px-5 px-3  h-8
                 rounded-full ">
                   <span
                     className="  hover:cursor-pointer font-bold text-xl  "
@@ -262,14 +262,19 @@ setSelectColor(event.currentTarget.id)
         </div>
         <div>
           <h1 className="md:text-2xl font-bold text-lg">محصولات مشابه</h1>
-          <div className="flex gap-3  w-full ">
+          <div className="flex gap-3  w-full  overflow-x-scroll">
             {similarProduct.map((item) => (
-              <ProductCart productSelect={item} />
+              <div className="">
+                       <ProductCart productSelect={item} />
+              </div>
+       
             ))}
           </div>
         </div>
       </div>
-      <MainFooter />
+      <div dir='rtl'>
+    <MainFooter />
+    </div>
     </div>
   );
 };

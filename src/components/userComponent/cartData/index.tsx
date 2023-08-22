@@ -88,7 +88,7 @@ useEffect(()=>{
         <span className="mx-4  "> {Number(item.orderNUm).toLocaleString("Fa-IR")}</span>
         <span
           className=" hover:cursor-pointer  "
-     onClick={()=>{counter>0 && setCounter(counter-1)}}
+     onClick={()=>{counter>1 && setCounter(counter-1)}}
         >
           {" "}
           -

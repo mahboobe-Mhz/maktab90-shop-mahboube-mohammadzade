@@ -2,88 +2,91 @@ import { Box, Typography, Button, Input } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import * as React from "react";
 import BasicOrderTable from "./dataTable";
-import PaginationControlled from "../../pagination";
+import PaginationControlled from "../pagination";
 import axios from "axios";
 import useGetPaginationOrders from "../../../api/services/products/useGetAllpaginatonOrders";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ShowTableBox = () => {
   const [page, setPage] = React.useState(1);
-  const [filter,setFilter]=React.useState("");
-  const { data, isLoading, refetch , isError} = useGetPaginationOrders(page,5,filter);
+  const [filter, setFilter] = React.useState("");
+  const { data, isLoading, refetch, isError } = useGetPaginationOrders(
+    page,
+    5,
+    filter
+  );
   const [countPage, setCountPage] = React.useState<number>();
-
 
   React.useEffect(() => {
     const req = axios.get(`http://localhost:8000/api/orders?limit=100`);
     req.then((res) => {
-      const lengthCat = (res.data.data.orders.length) / 5 +0.26;     
-      const correctNum = Number((lengthCat).toFixed())    
+      const lengthCat = res.data.data.orders.length / 5 + 0.26;
+      const correctNum = Number(lengthCat.toFixed());
       setCountPage(correctNum);
     });
-    if(isError){
-      toast.error('خطایی روی داده دوباره تلاش کنید', {
-        position: "top-right" });
+    if (isError) {
+      toast.error("خطایی روی داده دوباره تلاش کنید", {
+        position: "top-right",
+      });
     }
   }, []);
-  React.useEffect(()=>{
+  React.useEffect(() => {
     setTimeout(() => {
-      refetch()  
+      refetch();
     }, 100);
-    
-  },[page,filter])
+  }, [page, filter]);
   const allOrders = () => {
-    setFilter("")
-    setPage(1)
+    setFilter("");
+    setPage(1);
     const req = axios.get(`http://localhost:8000/api/orders?limit=100`);
     req.then((res) => {
-      const lengthCat = res.data.data.orders.length / 4 +0.26;     
-      const correctNum = Number((lengthCat).toFixed())    
+      const lengthCat = res.data.data.orders.length / 4 + 0.26;
+      const correctNum = Number(lengthCat.toFixed());
       setCountPage(correctNum);
-    })
-    refetch()
+    });
+    refetch();
   };
   const notPay = () => {
-    setPage(1)
-    setFilter("price=0")
+    setPage(1);
+    setFilter("price=0");
     const req = axios.get(`http://localhost:8000/api/orders?price=0&limit=100`);
     req.then((res) => {
-      const lengthCat = res.data.data.orders.length / 4 +0.26;     
-      const correctNum = Number((lengthCat).toFixed())    
+      const lengthCat = res.data.data.orders.length / 4 + 0.26;
+      const correctNum = Number(lengthCat.toFixed());
       setCountPage(correctNum);
-    })  
-    refetch()
+    });
+    refetch();
   };
   const notAcceptOrders = () => {
-    setPage(1)
-    setFilter("deliveryStatus=false")
-    const req = axios.get(`http://localhost:8000/api/orders?deliveryStatus=false&limit=100`);
+    setPage(1);
+    setFilter("deliveryStatus=false");
+    const req = axios.get(
+      `http://localhost:8000/api/orders?deliveryStatus=false&limit=100`
+    );
     req.then((res) => {
-      const lengthCat = res.data.data.orders.length / 4 +0.26;     
-      const correctNum = Number((lengthCat).toFixed())    
+      const lengthCat = res.data.data.orders.length / 4 + 0.26;
+      const correctNum = Number(lengthCat.toFixed());
       setCountPage(correctNum);
-    })  
-    refetch()
-    
+    });
+    refetch();
   };
   const acceptOrders = () => {
-    setPage(1)
-    setFilter("deliveryStatus=true")
-    const req = axios.get(`http://localhost:8000/api/orders?deliveryStatus=true`);
+    setPage(1);
+    setFilter("deliveryStatus=true");
+    const req = axios.get(
+      `http://localhost:8000/api/orders?deliveryStatus=true`
+    );
     req.then((res) => {
-      const lengthCat = res.data.data.orders.length / 4 +0.26;     
-      const correctNum = Number((lengthCat).toFixed())    
+      const lengthCat = res.data.data.orders.length / 4 + 0.26;
+      const correctNum = Number(lengthCat.toFixed());
       setCountPage(correctNum);
-    })  
-    refetch()
-    
+    });
+    refetch();
   };
-
 
   return (
     <Box sx={{ height: "90%" }}>
-    
       <Box
         sx={{
           display: "flex",
@@ -94,18 +97,22 @@ const ShowTableBox = () => {
           paddingX: "20px",
           paddingY: "5px",
           borderRadius: "20px",
-       
         }}
       >
-        <Typography sx={{
-          fontSize:{
-            lg:30,
-            md:30,
-            sm:20,
-            xs:20
-         }
-         ,color:"secondary.main"
-        }}> سفارشات</Typography>
+        <Typography
+          sx={{
+            fontSize: {
+              lg: 30,
+              md: 30,
+              sm: 20,
+              xs: 20,
+            },
+            color: "secondary.main",
+          }}
+        >
+          {" "}
+          سفارشات
+        </Typography>
         <Button
           sx={{
             color: "#ffff",
@@ -115,7 +122,7 @@ const ShowTableBox = () => {
           }}
         >
           {" "}
-     ذخیره
+          ذخیره
         </Button>
       </Box>
       <Box
@@ -128,7 +135,7 @@ const ShowTableBox = () => {
           paddingX: "20px",
         }}
       >
-        <SearchIcon sx={{ fill: "gray", marginTop: "3px", marginX:1}} />
+        <SearchIcon sx={{ fill: "gray", marginTop: "3px", marginX: 1 }} />
         <Input
           placeholder="جستجو"
           sx={{ width: "100%", outline: "none" }}
@@ -139,15 +146,14 @@ const ShowTableBox = () => {
         sx={{
           display: "flex",
           gap: {
-            lg:10,
-            md:5,
-            xs:1
+            lg: 10,
+            md: 5,
+            xs: 1,
           },
           padding: "20px",
           color: "gray",
           height: {
-            lg:70,
-            
+            lg: 70,
           },
         }}
       >
@@ -159,11 +165,11 @@ const ShowTableBox = () => {
               borderBottom: "solid",
               borderColor: "secondary.main",
             },
-            fontSize:{
-              lg:16,
-              md:15,
-              xs:12
-            }
+            fontSize: {
+              lg: 16,
+              md: 15,
+              xs: 12,
+            },
           }}
         >
           {" "}
@@ -177,11 +183,11 @@ const ShowTableBox = () => {
               borderBottom: "solid",
               borderColor: "secondary.main",
             },
-            fontSize:{
-              lg:16,
-              md:15,
-              xs:12
-            }
+            fontSize: {
+              lg: 16,
+              md: 15,
+              xs: 12,
+            },
           }}
         >
           {" "}
@@ -195,11 +201,11 @@ const ShowTableBox = () => {
               borderBottom: "solid",
               borderColor: "secondary.main",
             },
-            fontSize:{
-              lg:16,
-              md:15,
-              xs:12
-            }
+            fontSize: {
+              lg: 16,
+              md: 15,
+              xs: 12,
+            },
           }}
         >
           سفارشات منتظر تایید{" "}
@@ -212,11 +218,11 @@ const ShowTableBox = () => {
               borderBottom: "solid",
               borderColor: "secondary.main",
             },
-            fontSize:{
-              lg:16,
-              md:15,
-              xs:12
-            }
+            fontSize: {
+              lg: 16,
+              md: 15,
+              xs: 12,
+            },
           }}
         >
           {" "}
@@ -229,11 +235,11 @@ const ShowTableBox = () => {
               borderBottom: "solid",
               borderColor: "secondary.main",
             },
-            fontSize:{
-              lg:16,
-              md:15,
-              xs:12
-            }
+            fontSize: {
+              lg: 16,
+              md: 15,
+              xs: 12,
+            },
           }}
         >
           {" "}
@@ -241,11 +247,11 @@ const ShowTableBox = () => {
         </Typography>
       </Box>
       <Box>
-   {isLoading ? (
-       <span>loading ...</span>  
+        {isLoading ? (
+          <span>loading ...</span>
         ) : (
           <BasicOrderTable
-            rows={ data.data.orders}
+            rows={data.data.orders}
             refetch={refetch}
             title={["شناسه", "مشتری", "جمع کل", "وضعیت", "تحویل تاریخ"]}
           />

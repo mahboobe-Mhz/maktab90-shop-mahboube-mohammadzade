@@ -13,6 +13,7 @@ import MainFooter from "../../../../components/userComponent/mainFooter";
 import useGetCategoryProducts from "../../../../api/services/products/useGetAllProductOfCategory";
 import ClientPagination from "../../../../components/userComponent/catClientPagination";
 import { toast } from "react-toastify";
+import CategoryFilter from "../../../../components/userComponent/categoryFilter";
 
 const CategoryScreen = () => {
   //  const locationParams = useLocation();
@@ -77,28 +78,12 @@ const CategoryScreen = () => {
         <div className="mt-1 w-full">
           <img src="/picture/posterCategory.png" alt="" />
         </div>
-<div className="flex justify-center mt-3  ">
-  <div className=" horizontal-scroll-wrapper squares"> 
-   <button className=" ">نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
+        <div className="flex justify-center mt-3 items-center w-full">
     
-     </div>
+        <CategoryFilter/>
+        </div>
 
-</div>
-        <div className="flex mt-20 md:gap-6 gap-1 md:px-3">
+        <div className="flex mt-20 md:gap-6 gap-1   px-3">
           <div className="md:w-[30%] ">
             <h1 className="md:text-xl text-md font-semibold w-[150px] md:w-full  border-b-2
              border-black pb-2">
@@ -151,7 +136,9 @@ const CategoryScreen = () => {
         </div>
       </div>
       <img className="md:h-[200px] w-full" src="/picture/footer.png" />
-      <MainFooter />
+      <div dir='rtl'>
+    <MainFooter />
+    </div>
     </div>
   );
 };

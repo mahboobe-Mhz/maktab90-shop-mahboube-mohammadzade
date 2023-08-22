@@ -42,10 +42,10 @@ const ProductCart = ({productSelect}:Props) => {
   }
 
   
-    return (<div className="mt-2  md:w-[240px] w-[200px] "   >
+    return (<div className="mt-2  md:w-[240px] w-[150px] "   >
         <div className="singleCard relative shadow-xl md:rounded-3xl rounded-xl w-full">
         <img onClick={navigateToSinglePage} id={productSelect._id} data-user={productSelect.slugname} 
-          className="md:h-[190px] md:w-[240px]  h-[60px] w-[160px] md:rounded-3xl rounded-xl border" 
+          className="md:h-[190px] md:w-[240px]  h-[100px]  md:rounded-3xl rounded-xl border" 
          src={`http://localhost:8000/images/products/images/${productSelect.images?.[0]}`}/>
         <span onClick={handleInsertToCart} className="absolute bottom-[0px] bg-secondary px-1 py-1 rounded-md">
         <BasketIcon2 />

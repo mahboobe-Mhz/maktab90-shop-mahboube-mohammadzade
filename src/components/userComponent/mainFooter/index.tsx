@@ -15,7 +15,7 @@ const MainFooter = () => {
   }
   return (
     <div className="position:fixed button:0px bg-black text-white md:py-5 ">
-      <div className="flex justify-between md:px-10">
+      <div className="flex justify-between md:px-10 px-2">
         <div className="flex md:gap-10 gap-2">
           <div className="flex flex-col">
             <h3 className="font-bold mb-2 md:text-md text-sm ">دفتر مرکزی</h3>
@@ -80,7 +80,7 @@ const MainFooter = () => {
       </div>
       <div className="flex text-center justify-center w-full ">
         <div className="pt-5  md:hidden ">
-          <img width={120} src='public\logo\logo fotter-01.png'/>
+          <img  className=" w-[120px]" src='public\logo\logo fotter-01.png'/>
    
           <span className="flex gap-2 justify-center">
             <TelegramIcon sx={{ width: "15px" }} />{" "}

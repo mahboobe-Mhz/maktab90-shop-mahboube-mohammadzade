@@ -13,7 +13,7 @@ const Connection = () => {
         <h1 className=' font-bold text-4xl mt-10 '>
             ما اینجاییم تا به سوالات شما جواب بدهیم 
         </h1>
-        <div  className='flex gap-10 mb-10'>
+        <div  className='flex gap-10  md:flex-row flex-col mb-10'>
         <div>
             <div className='w-[250px] shadow-lg flex flex-col justify-center items-center text-center py-10 px-5 rounded-2xl'> 
             <FmdGoodIcon sx={{color:"secondary.main", width:"50px", height:"50px"}}/>

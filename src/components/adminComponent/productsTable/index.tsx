@@ -1,102 +1,99 @@
-import {
-  Box,
-  Typography,
-  Button,
-  Input,
-  
-} from "@mui/material";
+import { Box, Typography, Button, Input } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import BasicTable from "./useTable";
 import * as React from "react";
-import PaginationControlled from "../../pagination";
+import PaginationControlled from "../pagination";
 import useGetPaginationProducts from "../../../api/services/products/usePaginationProducts";
 import axios from "axios";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { routes } from "../../../routes";
 import { useDispatch, useSelector } from "react-redux";
-import { setEditData, setIsEditing, storeAppState } from "../../../redux/slice/appSlice";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import {
+  setEditData,
+  setIsEditing,
+  storeAppState,
+} from "../../../redux/slice/appSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const ShowTableBox = () => {
   const appState = useSelector(storeAppState);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [filter,setFilter]=React.useState("");
+  const [filter, setFilter] = React.useState("");
   const [page, setPage] = React.useState(1);
   const [countPage, setCountPage] = React.useState<number>();
-  const { data, isLoading, refetch ,isError} = useGetPaginationProducts(page, 4,filter);
-  const navigate= useNavigate()
-  const dispatch = useDispatch()
-
+  const { data, isLoading, refetch, isError } = useGetPaginationProducts(
+    page,
+    4,
+    filter
+  );
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   //first render
   React.useEffect(() => {
     const req = axios.get(`http://localhost:8000/api/products?limit=100`);
     req.then((res) => {
-      const lengthCat = res.data.data.products.length / 4 +0.26;     
-      const correctNum = Number((lengthCat).toFixed())    
+      const lengthCat = res.data.data.products.length / 4 + 0.26;
+      const correctNum = Number(lengthCat.toFixed());
       setCountPage(correctNum);
     });
-    if(isError){
-      toast.error('خطایی روی داده دوباره تلاش کنید', {
-        position: "top-right" });
+    if (isError) {
+      toast.error("خطایی روی داده دوباره تلاش کنید", {
+        position: "top-right",
+      });
     }
-
-    
   }, [data]);
 
   //for pagination-
-  React.useEffect(()=>{
+  React.useEffect(() => {
     setTimeout(() => {
-      refetch()
+      refetch();
     }, 100);
-    
-      
-  },[page,filter,searchParams.get("status"),appState.isEdit])
+  }, [page, filter, searchParams.get("status"), appState.isEdit]);
 
-  
-
-//filter
+  //filter
   const quantityFun = () => {
-    const req = axios.get(`http://localhost:8000/api/products?quantity=0&limit=100`);
+    const req = axios.get(
+      `http://localhost:8000/api/products?quantity=0&limit=100`
+    );
     req.then((res) => {
-      const lengthCat = res.data.data.products.length / 4 +0.26;     
-      const correctNum = Number((lengthCat).toFixed())    
+      const lengthCat = res.data.data.products.length / 4 + 0.26;
+      const correctNum = Number(lengthCat.toFixed());
       setCountPage(correctNum);
-
-    })
-    setPage(1)
-    setFilter("quantity=0")
-
+    });
+    setPage(1);
+    setFilter("quantity=0");
   };
   const priceFun = () => {
-    setPage(1)
-    setFilter("price=0")
-    const req = axios.get(`http://localhost:8000/api/products?price=0&limit=100`);
+    setPage(1);
+    setFilter("price=0");
+    const req = axios.get(
+      `http://localhost:8000/api/products?price=0&limit=100`
+    );
     req.then((res) => {
-      const lengthCat = res.data.data.products.length / 4 +0.26;     
-      const correctNum = Number((lengthCat).toFixed())    
+      const lengthCat = res.data.data.products.length / 4 + 0.26;
+      const correctNum = Number(lengthCat.toFixed());
       setCountPage(correctNum);
-    })  
+    });
   };
   const allProducts = () => {
-    setFilter("")
-    setPage(1)
+    setFilter("");
+    setPage(1);
     const req = axios.get(`http://localhost:8000/api/products?limit=100`);
     req.then((res) => {
-      const lengthCat = res.data.data.products.length / 4 +0.26;     
-      const correctNum = Number((lengthCat).toFixed())    
+      const lengthCat = res.data.data.products.length / 4 + 0.26;
+      const correctNum = Number(lengthCat.toFixed());
       setCountPage(correctNum);
-    })
+    });
   };
-  const NavigateAddProduct=()=>{
-    dispatch(setIsEditing({isEdit:false})) 
-       navigate("/admin/control/addProduct?status=add")
-  }
-//get edited data
+  const NavigateAddProduct = () => {
+    dispatch(setIsEditing({ isEdit: false }));
+    navigate("/admin/control/addProduct?status=add");
+  };
+  //get edited data
 
   return (
     <Box sx={{ height: "90%" }}>
-
       <Box
         sx={{
           display: "flex",
@@ -108,17 +105,22 @@ const ShowTableBox = () => {
           borderRadius: "20px",
         }}
       >
-        <Typography sx={{ color: "secondary.main", fontSize:{
-           lg:30,
-           md:30,
-           sm:20,
-           xs:20
-        } }}>
+        <Typography
+          sx={{
+            color: "secondary.main",
+            fontSize: {
+              lg: 30,
+              md: 30,
+              sm: 20,
+              xs: 20,
+            },
+          }}
+        >
           {" "}
           محصولات
         </Typography>
         <Button
-        onClick={NavigateAddProduct}
+          onClick={NavigateAddProduct}
           sx={{
             color: "#ffff",
             paddingX: "30px",
@@ -135,24 +137,24 @@ const ShowTableBox = () => {
         sx={{
           display: "flex",
           gap: {
-            lg:5,
-            md:5,
-            sm:2,
-            xs:2
-          },  
+            lg: 5,
+            md: 5,
+            sm: 2,
+            xs: 2,
+          },
           color: "gray",
           height: {
-            lg:80,
-            md:50,
-            sm:40,
-          xs:40
+            lg: 80,
+            md: 50,
+            sm: 40,
+            xs: 40,
           },
           padding: {
             lg: 3,
             md: 2,
             sm: 2,
-            xs:1
-          }
+            xs: 1,
+          },
         }}
       >
         <Typography
@@ -167,8 +169,8 @@ const ShowTableBox = () => {
               lg: 16,
               md: 16,
               sm: 15,
-              xs: 12
-            }
+              xs: 12,
+            },
           }}
         >
           {" "}
@@ -186,8 +188,8 @@ const ShowTableBox = () => {
               lg: 16,
               md: 16,
               sm: 15,
-              xs: 12
-            }
+              xs: 12,
+            },
           }}
         >
           {" "}
@@ -205,8 +207,8 @@ const ShowTableBox = () => {
               lg: 16,
               md: 16,
               sm: 15,
-              xs: 12
-            }
+              xs: 12,
+            },
           }}
         >
           بدون قیمت
@@ -222,8 +224,8 @@ const ShowTableBox = () => {
               lg: 16,
               md: 16,
               sm: 15,
-              xs: 12
-            }
+              xs: 12,
+            },
           }}
         >
           زباله دان
@@ -249,9 +251,8 @@ const ShowTableBox = () => {
       <Box sx={{ marginBottom: 3 }}>
         {!isLoading && (
           <BasicTable
-    
-          refetch={refetch}
-            rows={ data.data.products}
+            refetch={refetch}
+            rows={data.data.products}
             title={[
               "عکس محصول",
               "نام محصول",

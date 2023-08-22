@@ -33,12 +33,12 @@ export default function SingleProductSlider({selectProduct}:Props) {
      //   navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className=" rounded-3xl "
+        className=" rounded-3xl border "
       >
-         {selectProduct.images?.map(item =>
+         {selectProduct.images?.map((item:any) =>
                   <SwiperSlide>
         
-         <img className="object-contain"src={`http://localhost:8000/images/products/images/${item}`}/>
+         <img className="object-contain "src={`http://localhost:8000/images/products/images/${item}`}/>
       
                 
                   </SwiperSlide>
@@ -66,9 +66,9 @@ export default function SingleProductSlider({selectProduct}:Props) {
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className=" rounded-3xl"
+        className=" rounded-3xl "
       >
-         {selectProduct.images?.map(item =>
+         {selectProduct.images?.map((item:any) =>
                   <SwiperSlide>
          
                   <img className=""src={`http://localhost:8000/images/products/images/${item}`}/>

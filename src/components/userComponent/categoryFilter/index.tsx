@@ -15,11 +15,11 @@ export default function CategoryFilter() {
       <Swiper
         centeredSlides={true}
          slidesPerView={7}
-         spaceBetween={2}
+         spaceBetween={30}
       className="mySwiper w-[60%] ">
    
-        <SwiperSlide className="" >
-        <button className=" border-2 text-center border-secondary rounded-3xl py-1 px-14  focus:bg-secondary focus:text-white focus:outline-none" >نیلپر</button>
+        <SwiperSlide className=" border-2 text-center border-secondary rounded-3xl py-1 px-14  focus:bg-secondary focus:text-white focus:outline-none" >نیلپر
+      
         </SwiperSlide>
         <SwiperSlide >
         <button className=" border-2 text-center border-secondary rounded-3xl py-1 px-14  mr-10  focus:bg-secondary focus:text-white focus:outline-none" >نیلپر</button>

@@ -39,7 +39,7 @@ export default function UserInfo() {
         onClick={handleClick}
         sx={{width:"20px", marginTop:"10px"}}
       >
-     <PersonIcon/>
+     <PersonIcon className=''/>
       </Typography>
       <Menu
       anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}

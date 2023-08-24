@@ -9,40 +9,35 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 export default function CategoryFilter() {
-  
+  const[selectItem , setSelectItem]=useState<string>("نیلپر2")
+  const fiterItem =["9نیلپر","8نیلپر","7نیلپر","6نیلپر","5نیلپر","4نیلپر","3نیلپر","نیلپر1","نیلپر2"]
   return (
     <>
       <Swiper
         centeredSlides={true}
          slidesPerView={7}
-         spaceBetween={30}
-      className="mySwiper w-[60%] ">
-   
-        <SwiperSlide className=" border-2 text-center border-secondary rounded-3xl py-1 px-14  focus:bg-secondary focus:text-white focus:outline-none" >نیلپر
+         spaceBetween={20}
+         freeMode={true}
+         breakpoints={{
+          500: {
+            spaceBetween:30,
+            speed:2000
+          },}}
+      className="mySwiper md:w-[60%] w-[80%]  ">
+        {
+          fiterItem.map((item) => (
+           item===selectItem? <SwiperSlide key={item} onClick={()=>setSelectItem(item)} className="  hover:cursor-pointer border-2 text-center border-secondary bg-secondary rounded-3xl py-1 md:pr-14 md:pl-20 text-white text-xs  md:text-lg pr-5 pl-10" >نیلپر
       
-        </SwiperSlide>
-        <SwiperSlide >
-        <button className=" border-2 text-center border-secondary rounded-3xl py-1 px-14  mr-10  focus:bg-secondary focus:text-white focus:outline-none" >نیلپر</button>
-        </SwiperSlide>
-        <SwiperSlide >
-        <button className=" border-2 text-center border-secondary rounded-3xl py-1 px-14  mr-20  focus:bg-secondary focus:text-white focus:outline-none" >نیلپر</button>
-        </SwiperSlide>
-        <SwiperSlide >
-        <button className=" border-2 text-center border-secondary rounded-3xl py-1 px-14  mr-32  focus:bg-secondary focus:text-white focus:outline-none" >نیلپر</button>
-        </SwiperSlide>
-        <SwiperSlide >
-        <button className=" border-2 text-center border-secondary rounded-3xl py-1 px-14  mr-44  focus:bg-secondary focus:text-white focus:outline-none" >نیلپر</button>
-        </SwiperSlide>
-        <SwiperSlide >
-        <button className=" border-2 text-center border-secondary rounded-3xl py-1 px-14  mr-[14rem]  focus:bg-secondary focus:text-white focus:outline-none" >نیلپر</button>
-        </SwiperSlide>
-        <SwiperSlide >
-        <button className=" border-2 text-center border-secondary rounded-3xl py-1 px-14  mr-[18rem]  focus:bg-secondary focus:text-white focus:outline-none" >نیلپر</button>
-        </SwiperSlide>
-        <SwiperSlide >
-        <button className=" border-2 text-center border-secondary rounded-3xl py-1 px-14  mr-[22rem]  focus:bg-secondary focus:text-white focus:outline-none" >نیلپر</button>
-        </SwiperSlide>
+            </SwiperSlide>:       <SwiperSlide onClick={()=>setSelectItem(item)}  className="hover:cursor-pointer border-2 text-center border-secondary rounded-3xl py-1 md:pr-14 md:pl-20 text-xs md:text-lg  pr-5 pl-10 " >نیلپر
+      
+      </SwiperSlide>  
+          )
+ 
+          )
+        }
   
+     
+ 
   
       </Swiper>
     </>

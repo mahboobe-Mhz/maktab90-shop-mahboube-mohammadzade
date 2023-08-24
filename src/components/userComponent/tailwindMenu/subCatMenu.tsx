@@ -21,7 +21,7 @@ useEffect(()=>{
 },[state])
 document.body.addEventListener('click',()=>setState(false) , true);  
     return (  
-        <div  className="relative z-10 ">
+        <div  className="relative z-30 ">
  {/* Category item with subcategory */}
   <span   onMouseOver={()=>setState(true) } onMouseLeave={()=>setState(false)} 
   onClick={()=>setState(true)}

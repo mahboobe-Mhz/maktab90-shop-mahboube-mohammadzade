@@ -6,6 +6,7 @@ import useLoginUsers from "./useLogin";
 const UserLogin = () => {
   const navigate = useNavigate();
   const naivgateHome = () => {
+    window.location.reload();
     navigate("/");
   };
   const { handleLoginUser, register, handleSubmit, errors } = useLoginUsers();

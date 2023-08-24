@@ -203,7 +203,7 @@ export const router = createBrowserRouter([
      <AdminLayout />
   </SuspenseView>
     ) : (
-      <Navigate to={routes.ADMIN.login} />
+      <Navigate to={"/login"} />
     ),
     children: [
       {

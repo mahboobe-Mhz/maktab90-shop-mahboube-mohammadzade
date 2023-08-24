@@ -9,7 +9,7 @@ const AboutUs = () => {
         <div className=" flex xl:justify-between justify-center md:items-start items-center flex-wrap gap-3 mt-[90px]">
    
          
-            <div className=" z-20  ">
+            <div className="  ">
 
           <img className="w-[400px]  h-[400px] rounded-3xl"  src="public\picture\aboutUs\IMG_7178.JPG" alt="" />
           </div>

@@ -25,7 +25,7 @@ const handelRadioBox =(e:any)=>{
 
 
 
-    return (  <><Box sx={{display:"flex", flexDirection:"column",bgcolor:"white", borderEndEndRadius:"20px",borderBottomRightRadius:"20px"}}>
+    return (  <><Box sx={{display:"flex", flexDirection:"column",bgcolor:"white", borderRadius:"20px"}}>
         {errors.subcategory && <p style={{color:'red',fontSize:"10px",paddingRight:"5px"}}>زیر دسته ایی انتخاب کنید</p>}
    <Controller
     rules={{

@@ -83,7 +83,7 @@ const CategoryScreen = () => {
         <CategoryFilter/>
         </div>
 
-        <div className="flex mt-20 md:gap-6 gap-1   px-3">
+        <div className="flex md:mt-20 mt-5 md:gap-6 gap-1   px-3">
           <div className="md:w-[30%] ">
             <h1 className="md:text-xl text-md font-semibold w-[150px] md:w-full  border-b-2
              border-black pb-2">

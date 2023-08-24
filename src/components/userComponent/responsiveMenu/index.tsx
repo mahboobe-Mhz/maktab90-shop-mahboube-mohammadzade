@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import CategoryResMenu from "./categoryMenu";
 import { Link } from "react-router-dom";
-import React from "react";
+
 
 const ResponsiveMenu = () => {
-    const[showMenu,setShowMenu]=useState(false)
+
     const [isComponentVisible, setIsComponentVisible] = useState(false);
     const ref = useRef(null);
 

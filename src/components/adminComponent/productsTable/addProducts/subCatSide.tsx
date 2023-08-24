@@ -1,4 +1,4 @@
-import {  Box ,FormControlLabel, Radio, RadioGroup} from "@mui/material";
+import {  Box ,Checkbox,FormControlLabel, Radio, RadioGroup} from "@mui/material";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setEditId, storeAppState } from "../../../../redux/slice/appSlice";
@@ -27,7 +27,7 @@ const handelRadioBox =(e:any)=>{
 
     return (  <><Box sx={{display:"flex", flexDirection:"column",bgcolor:"white", borderRadius:"20px"}}>
         {errors.subcategory && <p style={{color:'red',fontSize:"10px",paddingRight:"5px"}}>زیر دسته ایی انتخاب کنید</p>}
-   <Controller
+   {/* <Controller
     rules={{
       required: true,
      }}
@@ -54,7 +54,32 @@ render={({ field }) => (
 )}
 name="subcategory"
 control={control}
-/>
+/> */}
+
+              <Box sx={{display:"flex", flexDirection:"column"}}>
+                {  subData?.map((item:any)=>  (
+               
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                         id={item._id}
+                          name='project.stack'
+                          value={item._id}
+                          sx={{
+                            '&, &.Mui-checked': {
+                              color: 'secondary.main',
+                            },
+                          }}
+                         
+                          // inputRef={register({required: 'Select project Tech Stack'})}
+                        />
+                      }
+                      label={item.name}
+                    />
+           
+                ))}
+              </Box>
+           
 </Box> </>   );
 }
  

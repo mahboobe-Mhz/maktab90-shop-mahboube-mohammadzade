@@ -14,11 +14,8 @@ import { instance } from '../../../../api/constants';
 import { useNavigate } from 'react-router';
 import { routes } from '../../../../routes';
 import { useForm } from "react-hook-form";
-import { toast } from 'react-toastify';
 import SubCatSide from './subCatSide';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
-import { useSearchParams ,useParams} from 'react-router-dom';
+
 const AddProducts = () => {
     const dispatch= useDispatch()
     const navigate= useNavigate()
@@ -36,7 +33,7 @@ const AddProducts = () => {
         category:"",
         subcategory:""
     })
-
+const[showSubCat,setShowSubCat]=useState(false)
     const {mutate,isError,isSuccess } = useAddNewProduct({})
 
     const ProductsData=new FormData()
@@ -136,9 +133,11 @@ const AddProducts = () => {
     <InventoryProducts    register={register} errors={errors} />
     <ProductsSize  register={register} errors={errors}/>
     </Box>
-        <Box width={"30%"}><CatSidebar  control={control} errors={errors} setSubData={setSubData} />
-        <SubCatSide subData={subData} 
-        resetForm={resetForm} errors={errors} control={control}/>
+        <Box width={"30%"}>
+            
+        <CatSidebar  control={control} errors={errors}   register={register}  />
+        {/* <SubCatSide subData={subData} 
+        resetForm={resetForm} errors={errors} control={control}/> */}
         
        <Box sx={{borderTop:"solid", borderColor:"secondary.light" ,bgcolor:"white",paddingY:"5px", borderRadius:"20px"}}>
         <Box sx={{ paddingX:3 }}>

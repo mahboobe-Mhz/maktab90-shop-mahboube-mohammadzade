@@ -7,7 +7,7 @@ import TuneIcon from '@mui/icons-material/Tune';
 
 export default function SearchBox({setState}:any) {
   return (<div
-  className="   transition-all duration-500"
+  className="   transition-all duration-500 bg-white" 
   
   onMouseLeave={()=>setState(false)}
   >
@@ -16,7 +16,7 @@ export default function SearchBox({setState}:any) {
       id="combo-box-demo"
       options={top100Films}
       role="list-box"
-      sx={{ width: 300,fontSize:"5", "& .MuiOutlinedInput-root": {
+      sx={{ width: 300,fontSize:"5",backgroundColor:"white",zIndex:"3", "& .MuiOutlinedInput-root": {
         borderRadius: "50px" , padding:"0px"}}}
       renderInput={(params) => (
         <TextField

@@ -213,23 +213,7 @@ const ShowTableBox = () => {
         >
           بدون قیمت
         </Typography>
-        <Typography
-          sx={{
-            ":hover": {
-              cursor: "pointer",
-              borderBottom: "solid",
-              borderColor: "secondary.main",
-            },
-            fontSize: {
-              lg: 16,
-              md: 16,
-              sm: 15,
-              xs: 12,
-            },
-          }}
-        >
-          زباله دان
-        </Typography>
+  
       </Box>
       <Box
         sx={{

@@ -17,7 +17,7 @@ const MainHeader = () => {
   const appState = useSelector(storeAppState);
   const cookies = new Cookies();
   const user = cookies.get("user");
-  const[state,setState]=useState(false)
+  const[state,setState]=useState(true)
  
   const navigateAdmin =()=>{
     setTimeout(() => {

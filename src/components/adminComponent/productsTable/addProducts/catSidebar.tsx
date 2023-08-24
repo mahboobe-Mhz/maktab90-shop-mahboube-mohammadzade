@@ -1,4 +1,4 @@
-import { TextField, Box, Typography ,FormControlLabel,Checkbox, Radio, RadioGroup} from "@mui/material";
+import { TextField, Box, Typography ,FormControlLabel,Checkbox, Radio, RadioGroup, FormGroup, Grid} from "@mui/material";
 import { useState,useEffect } from "react";
 import useGetAllCategory from "../../../../api/services/products/useGetAllCategory";
 import SubCatSide from "./subCatSide";
@@ -15,20 +15,23 @@ interface Props{
   setSubData: Dispatch<
   SetStateAction<subcategory>
 >
+showSubCat:boolean
+setShowSubCat:any
+register:any
 }
 
-const CatSidebar = ({errors,control,setSubData}:Props) => {
+const CatSidebar = ({errors,control ,setShowSubCat,   register}:Props) => {
   const appState = useSelector(storeAppState);
   const dispatch =useDispatch()
     const [showSub, setShowSub]=useState(false)
     const [catSelect, setCatSelect]=useState(appState?.selectEditData?.category._id)
     const [selectRadio, setSelectRadio]=useState("")
     const { data, isLoading } = useGetAllCategory();
+    const [subData , setSubData]=useState([])
 
 
 
-
-    const handelCheckBox =(e:React.ChangeEvent<HTMLInputElement>)=>{
+    const handelCheckBox =(e:any)=>{
      setCatSelect(e.currentTarget.id);   
      setSelectRadio(e.currentTarget.id) 
      if(appState.isEdit){
@@ -40,9 +43,11 @@ const CatSidebar = ({errors,control,setSubData}:Props) => {
 //for show subCategory
     const handelShowLabel =()=>{
         setShowSub(true)
+        setShowSubCat(true)
     }
     const handelHideLabel =()=>{
         setShowSub(false)
+     
     }
 
 
@@ -53,7 +58,7 @@ res.then(response=>{
   const subCatData=response.data.data.subcategories
   const newSubData =subCatData.filter((item:any)=> item.category=== catSelect)
  
-  setSubData(newSubData)
+  setSubData(subCatData)
 })
 
 
@@ -78,10 +83,44 @@ res.then(response=>{
           
         </Box>
         </Box>
-        {!showSub&&
+        {!showSub?
               <Box sx={{display:"flex", flexDirection:"column"}} >
         {errors.category && <p style={{color:'red',fontSize:"10px",paddingRight:"5px"}}>دسته ایی انتخاب کنید</p>}
-      <Controller
+
+<Controller
+  rules={{
+    required: true,
+   }}
+   name="category"
+   control={control}
+            render={({ field }) => (
+              !isLoading && data.data.categories?.map((item:any) => (
+                <FormControlLabel
+                  {...field}
+                  key={item._id}
+                  label={item.name}
+                  control={(
+                    <Checkbox
+                    id={item._id}
+                     name='project.stack'
+                     value={item._id}
+                     sx={{
+                       '&, &.Mui-checked': {
+                         color: 'secondary.main',
+                       },
+                     }}
+                    
+                     //  inputRef={register({required: true})}
+                   />
+                  )}
+                />
+              ))
+            )}
+          />
+
+
+           
+      {/* <Controller
         rules={{
           required: true,
          }}
@@ -101,7 +140,7 @@ render={({ field }) => (
         },
       }}
      />}
-      label={item.name}
+  
     />
     ) }
    
@@ -109,8 +148,9 @@ render={({ field }) => (
 )}
 name="category"
 control={control}
-/>
-              </Box>
+/> */}
+              </Box>:  <SubCatSide subData={subData} 
+     errors={errors} control={control}/>
         }
 
 

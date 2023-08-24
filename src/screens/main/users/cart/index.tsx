@@ -60,10 +60,10 @@ const Cart = () => {
             <div className="p-4 space-y-5 overflow-y-scroll h-[400px]">
               <div className="flex justify-between border-b border-black pb-3 px-4">
                 <span className="font-semibold">محصول</span>
-                <div className="hidden md:flex justify-around font-semibold w-[60%] ">
+                <div className="hidden md:flex justify-around font-semibold w-[60%] gap-16 ">
                   <span>تعداد</span>
                   <span>قیمت</span>
-                  <span>حذف</span>
+                  <span className="w-[20px]" >حذف</span>
                 </div>
               </div>
               {appState.OrderData.map((item: any, index: any) => (

@@ -74,8 +74,8 @@ useEffect(()=>{
   
          
         </div>
-        <div className="flex justify-around md:w-[60%] mt-4">
-        <span className=" border border-black  pl-4 pr-4 h-8 pt-1
+        <div className="flex justify-around md:w-[60%] mt-4 flex-col md:flex-row gap-2">
+        <span className=" border border-black  pl-4 pr-4 h-8 pt-1 hidden md:flex
    
       rounded-full ">
         <span
@@ -95,14 +95,35 @@ useEffect(()=>{
         </span>
       </span>
 
-          <span>
+          <span className="w-[200px] text-center ">
             {Number((item.price/item.orderNUm)*counter).toLocaleString("Fa-IR")} تومان
           </span>
+          <div className="flex justify-end gap-7">
+          <span className="  h-8 pt-1 flex md:hidden  ">
+     <span
+       className="  hover:cursor-pointer  border border-black rounded-full px-[9px] h-[26px] "
+ onClick={insertOrderCount}
+     >
+       {" "}
+       +{" "}
+     </span>
+     <span className="md:mx-4 mx-2  "> {Number(item.orderNUm).toLocaleString("Fa-IR")}</span>
+     <span
+       className=" hover:cursor-pointer  border border-black rounded-full px-[9px] h-[26px] "
+  onClick={()=>{counter>1 && setCounter(counter-1)}}
+     >
+       {" "}
+       -
+     </span>
+   </span>
           <span id={item.id} 
           data-user={item.name}
+          className="mt-1"
           onClick={handleDeleteModal}>
             <DeleteOutlineRoundedIcon />
           </span>
+          </div>
+
         </div>
       </div> );
   });

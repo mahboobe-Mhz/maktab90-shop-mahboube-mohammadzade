@@ -170,20 +170,20 @@ setSelectColor(event.currentTarget.id)
               </span>
 
               <div className="flex gap-10 lg:flex-row flex-col justify-center items-center">
-                <span className=" border border-black md:px-5 px-3  h-8
-                rounded-full ">
+                <span className=" md:border md:border-black md:px-5 px-3  h-8
+                md:rounded-full ">
                   <span
-                    className="  hover:cursor-pointer font-bold text-xl  "
+                    className="  hover:cursor-pointer font-bold md:text-xl border border-black rounded-full px-[12px] md:px-0 md:border-none py-[2px] md:py-0"
                     onClick={PlusOrderHandle}
                   >
                     {" "}
                     +{" "}
                   </span>
-                  <span className="mx-4 font-bold  "> {Number(orderCount).toLocaleString(
+                  <span className="md:mx-4 mx-2 font-bold text-xl "> {Number(orderCount).toLocaleString(
                   "fa-IR"
                 )}</span>
                   <span
-                    className=" hover:cursor-pointer  font-bold text-xl "
+                    className=" hover:cursor-pointer  font-bold md:text-xl border border-black rounded-full px-[12px] md:px-0 md:border-none py-[2px] md:py-0"
                     onClick={() => {
                       orderCount > 0 && setOrderCount(orderCount - 1);
                     }}

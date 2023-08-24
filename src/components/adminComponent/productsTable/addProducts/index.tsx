@@ -135,7 +135,7 @@ const[showSubCat,setShowSubCat]=useState(false)
     </Box>
         <Box width={"30%"}>
             
-        <CatSidebar  control={control} errors={errors}   register={register}  />
+        <CatSidebar  control={control} errors={errors}    />
         {/* <SubCatSide subData={subData} 
         resetForm={resetForm} errors={errors} control={control}/> */}
         

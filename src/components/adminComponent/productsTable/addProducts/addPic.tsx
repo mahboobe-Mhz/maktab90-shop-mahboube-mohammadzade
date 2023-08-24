@@ -6,7 +6,8 @@ import { useState,useRef,useEffect, SetStateAction, Dispatch } from 'react';
 import { Products } from '../../../../api/interface/products';
 import { useSelector } from 'react-redux';
 import { storeAppState } from '../../../../redux/slice/appSlice';
-
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import { ClassNames } from '@emotion/react';
 
 interface Props{
   setFormValue: any
@@ -31,7 +32,7 @@ const AddPic = ({setFormValue,formValue ,register,errors}:Props) => {
     const [showImage , setShowImage]=useState<string[]>([])
     const hiddenFileInput = useRef(null);
     const appState = useSelector(storeAppState);
-
+    const[showDeleteIcon , setShowDeleteIcon]=useState(false)
 
 
     const handleClick = ()=> {
@@ -81,12 +82,26 @@ useEffect(()=>{
                     multiple/>
 
        
-        <AddAPhotoIcon sx={{border:"solid", borderColor:"secondary.main", color:"secondary.main",width:100, height:100,padding:2}}/> 
+        <AddAPhotoIcon sx={{border:"solid", borderColor:"secondary.main", color:"secondary.main",width:100, height:100,padding:2, borderRadius:"10px"}}/> 
        
         </div>
      
-        <Box sx={{display:"flex", gap:"10px" , overflowX:"scroll"}}>
-        {showImage && showImage.map((item:any)=><img key={item} src={item} width={100} />)
+        <Box sx={{display:"flex", gap:"10px" , overflowX:"scroll", paddingBottom:"10px"}}>
+        {showImage && showImage.map((item:any)=>
+        <Box sx={{position:"relative",  bgcolor:"black", borderRadius:"10px"}}  className="photoClass" onMouseOver={()=>setShowDeleteIcon(true)} onMouseLeave={()=>setShowDeleteIcon(false)}>
+     <Box sx={{position:"relative" }}  className="boxClass" >
+     <img key={item} src={item} width="150px"style={{overflow:"hidden",borderRadius:"10px" }} />
+
+     </Box>
+  
+        <DeleteOutlineOutlinedIcon sx={{position:"absolute", top:"70%", right:"40%", color:"white", ":hover":{cursor:"pointer"} , opacity:"0"} }
+        className="deleteClass"       
+        />
+                     
+        </Box>
+    
+        
+        )
       } 
         </Box>
   

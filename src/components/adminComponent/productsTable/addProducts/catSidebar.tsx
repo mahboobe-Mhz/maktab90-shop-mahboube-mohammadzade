@@ -15,12 +15,11 @@ interface Props{
   setSubData: Dispatch<
   SetStateAction<subcategory>
 >
-showSubCat:boolean
-setShowSubCat:any
-register:any
+
+
 }
 
-const CatSidebar = ({errors,control ,setShowSubCat,   register}:Props) => {
+const CatSidebar = ({errors,control }:Props) => {
   const appState = useSelector(storeAppState);
   const dispatch =useDispatch()
     const [showSub, setShowSub]=useState(false)
@@ -43,7 +42,7 @@ const CatSidebar = ({errors,control ,setShowSubCat,   register}:Props) => {
 //for show subCategory
     const handelShowLabel =()=>{
         setShowSub(true)
-        setShowSubCat(true)
+    
     }
     const handelHideLabel =()=>{
         setShowSub(false)

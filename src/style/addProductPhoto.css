@@ -1,0 +1,8 @@
+.photoClass:hover>.boxClass{
+    opacity: 40%;
+
+}
+.photoClass:hover>.deleteClass{
+    opacity: 100%;
+
+}

@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router';
 import { routes } from '../../../../routes';
 import { useForm } from "react-hook-form";
 import SubCatSide from './subCatSide';
+import AddColor from './addColor';
 
 const AddProducts = () => {
     const dispatch= useDispatch()
@@ -132,6 +133,7 @@ const[showSubCat,setShowSubCat]=useState(false)
     <AddPrice   register={register} errors={errors}/>
     <InventoryProducts    register={register} errors={errors} />
     <ProductsSize  register={register} errors={errors}/>
+    <AddColor/>
     </Box>
         <Box width={"30%"}>
             

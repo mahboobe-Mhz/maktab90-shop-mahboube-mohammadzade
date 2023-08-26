@@ -5,7 +5,13 @@ import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { storeAppState } from "../../../../redux/slice/appSlice";
 import { useState } from "react";
-
+import StorefrontIcon from "@mui/icons-material/Storefront";
+import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import ChatIcon from "@mui/icons-material/Chat";
+import EqualizerIcon from "@mui/icons-material/Equalizer";
+import LogoutIcon from '@mui/icons-material/Logout';
+import DiscountIcon from '@mui/icons-material/Discount';
 const ProductsManagement = () => {
   const AppState = useSelector(storeAppState);
   const [showMenu,setShowMenu]=useState(false)
@@ -20,7 +26,18 @@ const ProductsManagement = () => {
       </div>
       <div className="flex md:hidden">
         {
-          showMenu? <SideBar />: <div onClick={()=>setShowMenu(true)} className="px-3 bg-secondary "> </div>
+          showMenu? <SideBar />: <Box onClick={()=>setShowMenu(true)} sx={{display:"flex", flexDirection:"column",gap:"10px",
+          bgcolor:"secondary.main", color:"white", padding:"5px"}} >
+              <StorefrontIcon  />
+              <LocalOfferIcon />
+              <ShoppingBasketIcon /> 
+              <ChatIcon />
+              <DiscountIcon  />
+            <EqualizerIcon />
+            <LogoutIcon />
+
+
+             </Box>
         }
       </div>
       <Box onClick={()=>setShowMenu(false)} sx={{ padding: "15px", bgcolor: "#F3F3F5", width: "100%" ,overflowY:"scroll"}}>

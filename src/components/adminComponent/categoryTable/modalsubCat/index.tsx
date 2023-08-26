@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setModal, storeAppState } from "../../../../redux/slice/appSlice";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
+import DeleteSubCatModal from "./deleteSubCatModal";
 const style = {
   position: "absolute" ,
   top: "50%",
@@ -33,7 +34,12 @@ export default function BasicModal({ subData }: Props) {
   const dispatch = useDispatch();
   const appState = useSelector(storeAppState);
   const handleClose = () => dispatch(setModal({ Modal: false }));
-
+const[openDeleteModal,setOpenDeleteModal]=React.useState(false)
+const[titleText,setTitleText]=React.useState("")
+const handleDeleteModal =(e:any)=>{
+  setOpenDeleteModal(true)
+  setTitleText(e.currentTarget.id)
+}
   return (
     <div>
       <Modal
@@ -43,6 +49,7 @@ export default function BasicModal({ subData }: Props) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <DeleteSubCatModal setOpenDeleteModal={setOpenDeleteModal}  openDeleteModal={openDeleteModal } titleText={titleText} />
           <TableContainer sx={{ height: 300 , direction:"rtl"}} component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
@@ -63,11 +70,11 @@ export default function BasicModal({ subData }: Props) {
                     <TableCell>
                     <Box>
                     <DeleteOutlineOutlinedIcon
+                    id={row.name}
+                    onClick={handleDeleteModal}
                       sx={{ color: "secondary.main" }}
                     />
-                    <ModeEditOutlineOutlinedIcon
-                      sx={{ color: "secondary.main" }}
-                    />
+            
                 
                   </Box>
                     </TableCell>

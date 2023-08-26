@@ -35,7 +35,8 @@ export default function ControlledAccordions() {
         >
           <Typography sx={{ color: "#ffff" }}>
             {" "}
-            <LocalOfferIcon /> کاتالوگ
+            <LocalOfferIcon />
+             کاتالوگ
           </Typography>
         </AccordionSummary>
         <AccordionDetails>

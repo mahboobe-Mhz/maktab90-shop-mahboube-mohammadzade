@@ -13,7 +13,7 @@ const ShowTableBox = () => {
   const [AllCategoryData, setAllCategoryData] = React.useState([]);
   const { data, isLoading, refetch } = useGetPaginationCategory(page, 5);
   const [open, setOpen] = React.useState(false);
-
+  const [editCat , setEditCat]=React.useState("")
   React.useEffect(() => {
     const req = axios.get(
       `http://localhost:8000/api/categories?sort=-createdAt`
@@ -31,7 +31,7 @@ const ShowTableBox = () => {
 
   return (
     <>
-      <CategoryModal open={open} setOpen={setOpen} />
+      <CategoryModal open={open} setOpen={setOpen} editCat={editCat}/>
       <Box
         sx={{
           display: "flex",
@@ -94,6 +94,9 @@ const ShowTableBox = () => {
           <BasicCategoryTable
             rows={data.data.categories}
             AllCategoryData={AllCategoryData}
+            setOpen={setOpen}
+            editCat={editCat} 
+             setEditCat={setEditCat}
           />
         )}
         <PaginationControlled

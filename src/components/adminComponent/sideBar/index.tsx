@@ -3,7 +3,7 @@ import StorefrontIcon from "@mui/icons-material/Storefront";
 import ControlledAccordions from "../accordian1";
 import ControlledAccordions2 from "../accordian2";
 import ChatIcon from "@mui/icons-material/Chat";
-import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import DiscountIcon from '@mui/icons-material/Discount';
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -56,7 +56,7 @@ const SideBar = () => {
           sx={{
             color: "#ffff",
             paddingY: "15px",
-            paddingLeft: "170px",
+            paddingLeft: "160px",
             fontSize: "16px",
           }}
         >
@@ -74,11 +74,11 @@ const SideBar = () => {
           sx={{
             color: "#ffff",
             paddingY: "15px",
-            paddingLeft: "170px",
+            paddingLeft: "150px",
             fontSize: "16px",
           }}
         >
-          <LocalOfferIcon sx={{ width: "30px" }} /> تخفیفات
+          <DiscountIcon sx={{ width: "30px" }} /> تخفیفات
         </Button>
         <Button
           onClick={() => {
@@ -92,7 +92,7 @@ const SideBar = () => {
           sx={{
             color: "#ffff",
             paddingY: "15px",
-            paddingLeft: "170px",
+            paddingLeft: "150px",
             fontSize: "16px",
           }}
         >

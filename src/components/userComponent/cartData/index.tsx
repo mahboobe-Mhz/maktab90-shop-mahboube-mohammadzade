@@ -74,7 +74,7 @@ useEffect(()=>{
   
          
         </div>
-        <div className="flex justify-around md:w-[60%] mt-4 flex-col md:flex-row gap-2">
+        <div className="flex justify-around md:w-[60%] mt-4 flex-col md:flex-row gap-2 ">
         <span className=" border border-black  pl-4 pr-4 h-8 pt-1 hidden md:flex
    
       rounded-full ">
@@ -95,7 +95,7 @@ useEffect(()=>{
         </span>
       </span>
 
-          <span className="w-[200px] text-center ">
+          <span className="w-[200px] md:text-center text-left ">
             {Number((item.price/item.orderNUm)*counter).toLocaleString("Fa-IR")} تومان
           </span>
           <div className="flex justify-end gap-7">

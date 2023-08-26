@@ -59,7 +59,7 @@ const MainFooter = () => {
             </span>
           </div>
         </div>
-        <div className="pt-5 hidden md:flex md:flex-col">
+        <div className="pt-5 hidden md:flex md:flex-col items-center">
           <img  onClick={navigateHome} width={120} src="public\logo\logo fotter-01.png"/>
       
           <span className="flex gap-2">

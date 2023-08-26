@@ -113,17 +113,7 @@ const ShowTableBox = () => {
           {" "}
           سفارشات
         </Typography>
-        <Button
-          sx={{
-            color: "#ffff",
-            paddingX: "30px",
-            bgcolor: "secondary.main",
-            borderRadius: "50px",
-          }}
-        >
-          {" "}
-          ذخیره
-        </Button>
+ 
       </Box>
       <Box
         sx={{
@@ -228,23 +218,7 @@ const ShowTableBox = () => {
           {" "}
           سفارشات تایید شده
         </Typography>
-        <Typography
-          sx={{
-            ":hover": {
-              cursor: "pointer",
-              borderBottom: "solid",
-              borderColor: "secondary.main",
-            },
-            fontSize: {
-              lg: 16,
-              md: 15,
-              xs: 12,
-            },
-          }}
-        >
-          {" "}
-          سفارشات حذف شده
-        </Typography>
+   
       </Box>
       <Box>
         {isLoading ? (

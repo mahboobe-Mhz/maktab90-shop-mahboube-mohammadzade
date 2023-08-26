@@ -26,9 +26,12 @@ interface Props {
   }>;
 
   AllCategoryData: any;
+  setOpen:any
+  setEditCat:any
+  editCat:any
 }
 
-export default function BasicCategoryTable({ rows, AllCategoryData }: Props) {
+export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, setEditCat,editCat}: Props) {
   const dispatch = useDispatch();
   const [subCatData, steSubCatData] = React.useState();
   const { data, isLoading } = useGetAllSubCategory();
@@ -43,17 +46,17 @@ export default function BasicCategoryTable({ rows, AllCategoryData }: Props) {
       !isLoading && dataCat.filter((item: any) => item.category === categoryId);
     steSubCatData(FindCatData);
   };
-  const handleSelectAll = (event: any) => {
-    if (event.currentTarget.checked) {
-      const allCatIdArray: any[] | ((prevState: never[]) => never[]) = [];
-      AllCategoryData.map((item: any) => allCatIdArray.push(item._id));
-      setSelected(allCatIdArray);
-    } else {
-      setSelected([]);
-    }
-  };
+  // const handleSelectAll = (event: any) => {
+  //   if (event.currentTarget.checked) {
+  //     const allCatIdArray: any[] | ((prevState: never[]) => never[]) = [];
+  //     AllCategoryData.map((item: any) => allCatIdArray.push(item._id));
+  //     setSelected(allCatIdArray);
+  //   } else {
+  //     setSelected([]);
+  //   }
+  // };
   const handelCheckBox = (event: any) => {
-    console.log(event.currentTarget.id);
+
 
     if (selected.length !== 0) {
       selected.map((item: string) => {
@@ -71,7 +74,19 @@ export default function BasicCategoryTable({ rows, AllCategoryData }: Props) {
       setSelected([...selected, event.currentTarget.id]);
     }
   };
+      const handleEditCat=(e:any)=>{
+        setOpen(true)
+        const dataCat = !isLoading && data.data.subcategories;
+        const FindCatData = !isLoading && dataCat.filter((item: any) => item.category === e.currentTarget.id);
+       
+        const showCatData= !isLoading && {
+          name:e.currentTarget.dataset.user,
+          subCat:FindCatData
+        }
+        !isLoading && setEditCat(showCatData)
+      }
 
+      
   return (
     <>
       {!isLoading && subCatData && <BasicModal subData={subCatData} />}
@@ -83,7 +98,7 @@ export default function BasicCategoryTable({ rows, AllCategoryData }: Props) {
                 <Box>
                   {" "}
                   <Checkbox
-                    onChange={handleSelectAll}
+                 
                     sx={{
                       "&, &.Mui-checked": {
                         color: "secondary.main",
@@ -132,6 +147,9 @@ export default function BasicCategoryTable({ rows, AllCategoryData }: Props) {
                       sx={{ color: "secondary.main" }}
                     />
                     <ModeEditOutlineOutlinedIcon
+                       id={row._id}
+                       data-user={row.name} 
+                    onClick={handleEditCat}
                       sx={{ color: "secondary.main" }}
                     />
                     <MenuOutlinedIcon

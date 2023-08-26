@@ -9,6 +9,8 @@ import { FormControlLabel, TextField } from '@mui/material';
 interface Props{
     open:boolean,
     setOpen:any
+    editCat:any
+
 }
 const style = {
   position: 'absolute',
@@ -27,10 +29,23 @@ const style = {
 
 };
 
-export default function CategoryModal({open,setOpen}:Props) {
-const [addSubCat,setAddSubCat]=React.useState(1)
-
+export default function CategoryModal({open,setOpen, editCat}:Props) {
+const [addSubCat,setAddSubCat]=React.useState([])
+const[subCatName,setSubCatName]=React.useState("")
+const[catName , setCatName]=React.useState("")
+const insertSubCat =()=>{
+  setAddSubCat([...addSubCat,subCatName])
+}
   const handleClose = () => setOpen(false);
+React.useEffect(()=>{
+  const subCatArray=[]
+editCat.subCat?.map((item:any)=>subCatArray.push(item.name))
+  setCatName(editCat.name)
+  setAddSubCat(subCatArray)
+  
+},[editCat])
+
+
 
   return (
     <div dir='rtl'>
@@ -50,21 +65,23 @@ const [addSubCat,setAddSubCat]=React.useState(1)
             <Typography>  افزودن دسته جدید </Typography>
         </Box>
      <Box sx={{display:"flex", flexDirection:"column",gap:"10px", width:400 }}>
-        <Box sx={{borderBottom:"solid", borderColor:"secondary.light"}}>     <TextField sx={{marginX:2 , marginY:2 , width:"90%"}} label="نام دسته" variant="standard" /></Box>
+        <Box sx={{borderBottom:"solid", borderColor:"secondary.light"}}>   
+          <TextField onChange={(e)=>setCatName(e.currentTarget.value)} value={catName} sx={{marginX:2 , marginY:2 , width:"90%"}} label="نام دسته" variant="standard" /></Box>
     
      <Box display={"flex"} justifyContent={"space-between"} flexDirection={'column'}>
         <Box sx={{display:"flex", flexDirection:"column",paddingRight:2,direction:"rtl"}} >
             <Typography sx={{color:"secondary.main", font:"bold"}}> زیر دسته ها</Typography>
-        <Typography> بالشت</Typography>
+            {addSubCat&& addSubCat.map((item:any)=>  <Typography>{item}</Typography> )}
+            
         </Box>
       <Box sx={{display:"flex",justifyContent:"space-between", paddingX:2}}>
-      <TextField label="نام زیر دسته" variant="standard" />
-     <Button sx={{color:"white", bgcolor:"secondary.main",borderRadius:"20px", marginTop:2}}> + </Button>
+      <TextField onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)=>setSubCatName(e.currentTarget.value)} label="نام زیر دسته" variant="standard" />
+     <Button onClick={insertSubCat} sx={{color:"white", bgcolor:"secondary.main",borderRadius:"20px", marginTop:2}}> + </Button>
       </Box>
  
      </Box>
  
-        <Button sx={{color:"white", bgcolor:"secondary.main",borderRadius:"20px", paddingX:3 ,marginX:10, marginY:2}}>    ثبت  </Button>
+        <Button onClick={handleClose} sx={{color:"white", bgcolor:"secondary.main",borderRadius:"20px", paddingX:3 ,marginX:10, marginY:2}}>    ثبت  </Button>
 
      </Box>
       

@@ -19,6 +19,7 @@ import useGetAllSubCategory from "../../../api/services/products/useGetAllSubCat
 import { useDispatch } from "react-redux";
 import { setModal } from "../../../redux/slice/appSlice";
 import BasicModal from "./modalsubCat";
+import DeleteCatModal from "./deleteCatModal";
 interface Props {
   rows: Array<{
     _id: string;
@@ -35,8 +36,9 @@ export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, se
   const dispatch = useDispatch();
   const [subCatData, steSubCatData] = React.useState();
   const { data, isLoading } = useGetAllSubCategory();
-
+  const[openDeleteModal,setOpenDeleteModal]=React.useState(false)
   const [selected, setSelected] = React.useState([]);
+  const[titleText,setTitleText]=React.useState("")
   const showSub = (event: React.MouseEvent) => {
     const categoryId = event.currentTarget.id;
     dispatch(setModal({ Modal: true }));
@@ -86,10 +88,14 @@ export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, se
         !isLoading && setEditCat(showCatData)
       }
 
-      
+      const handleDeleteModal =(e:any)=>{
+        setTitleText(e.currentTarget.id)
+        setOpenDeleteModal(true)
+      }
   return (
     <>
       {!isLoading && subCatData && <BasicModal subData={subCatData} />}
+      <DeleteCatModal setOpenDeleteModal={setOpenDeleteModal}  openDeleteModal={openDeleteModal } titleText={titleText}/>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -144,6 +150,8 @@ export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, se
                 <TableCell align="left">
                   <Box>
                     <DeleteOutlineOutlinedIcon
+                    id={row.name}
+                    onClick={handleDeleteModal}
                       sx={{ color: "secondary.main" }}
                     />
                     <ModeEditOutlineOutlinedIcon

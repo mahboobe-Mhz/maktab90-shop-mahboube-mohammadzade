@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import ClearIcon from '@mui/icons-material/Clear';
 import { FormControlLabel, TextField } from '@mui/material';
-
+import EasyEdit from 'react-easy-edit';
 interface Props{
     open:boolean,
     setOpen:any
@@ -44,7 +44,7 @@ editCat.subCat?.map((item:any)=>subCatArray.push(item.name))
   setAddSubCat(subCatArray)
   
 },[editCat])
-
+const cancel = () => {alert("Cancelled")}
 
 
   return (
@@ -71,7 +71,19 @@ editCat.subCat?.map((item:any)=>subCatArray.push(item.name))
      <Box display={"flex"} justifyContent={"space-between"} flexDirection={'column'}>
         <Box sx={{display:"flex", flexDirection:"column",paddingRight:2,direction:"rtl"}} >
             <Typography sx={{color:"secondary.main", font:"bold"}}> زیر دسته ها</Typography>
-            {addSubCat&& addSubCat.map((item:any)=>  <Typography>{item}</Typography> )}
+            {addSubCat&& addSubCat.map((item:any)=> 
+             <EasyEdit
+             type="text"
+             value={item}
+             onSave={(value:any)=>console.log(value)
+             }
+             onCancel={cancel}
+             saveButtonLabel="ذخیره"
+             cancelButtonLabel="لغو"
+             attributes={{ name: "quantity", id: 1}}
+         
+           />
+            )}
             
         </Box>
       <Box sx={{display:"flex",justifyContent:"space-between", paddingX:2}}>

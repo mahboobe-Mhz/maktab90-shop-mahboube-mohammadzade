@@ -38,3 +38,13 @@ export type OrderDataType={
     createdAt: string;
     updatedAt: string;
   }
+  export type OrderInfo = {
+    id: string;
+    image: string[];
+    name: string;
+    price: number;
+    orderNUm: number;
+    quantity: number;
+    category: string;
+    slugName: string;
+};

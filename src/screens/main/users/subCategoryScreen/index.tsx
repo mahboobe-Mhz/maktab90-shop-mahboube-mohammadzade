@@ -13,6 +13,9 @@ import CheckIcon from "@mui/icons-material/Check";
 import useGetSubCategoryProducts from "../../../../api/services/products/useGetAllProductOfSubCat";
 import ClientSubPagination from "../../../../components/userComponent/subCatClientPaginationm";
 import { toast } from "react-toastify";
+import { Category } from "../../../../api/interface/category";
+import { subcategory } from "../../../../api/interface/subCategory";
+import { Product } from "../../../../api/interface/products";
 
 const SubCategoryScreen = () => {
   //  const locationParams = useLocation();
@@ -106,7 +109,7 @@ const SubCategoryScreen = () => {
               دسته بندی محصولات
             </h1>
             <div className="mt-3 flax flex-col md:gap-1 gap-0 border-b-2 border-black pb-2">
-              {allCategory.map((item) => (
+              {allCategory.map((item:Category) => (
                 <div
                   onClick={handleShowCategoryProducts}
                   id={item._id}
@@ -125,7 +128,7 @@ const SubCategoryScreen = () => {
               ))}
             </div>
             <div className="mt-3 flax flex-col gap-3 ">
-              {selectSubCategory.map((item) => (
+              {selectSubCategory.map((item:subcategory) => (
                 <div
                   id={item._id}
                   data-user={item.slugname}
@@ -149,7 +152,7 @@ const SubCategoryScreen = () => {
           <div>
             <div className="px-10 flex flex-wrap justify-around gap-2">
               {!isLoading &&
-                data.data.products.map((item) => (
+                data.data.products.map((item:Product) => (
                   <ProductCart productSelect={item} />
                 ))}
             </div>

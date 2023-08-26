@@ -1,4 +1,4 @@
-import DropDownMenu from "../nestedMenu/menu";
+
 import { routes } from "../../../routes";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -8,7 +8,6 @@ import { storeAppState } from "../../../redux/slice/appSlice";
 import Cookies from "universal-cookie";
 import UserInfo from "../userInfo";
 import BasketIcon from "../../svg/basket";
-import SubCatMenu from "../tailwindMenu/subCatMenu";
 import MainMenu from "../tailwindMenu";
 import ResponsiveMenu from "../responsiveMenu";
 import React from "react";

@@ -3,7 +3,6 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import SegmentIcon from '@mui/icons-material/Segment';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import { useState,useRef,useEffect, SetStateAction, Dispatch } from 'react';
-import { Products } from '../../../../api/interface/products';
 import { useSelector } from 'react-redux';
 import { storeAppState } from '../../../../redux/slice/appSlice';
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
@@ -30,7 +29,7 @@ interface Props{
 const AddPic = ({setFormValue,formValue ,register,errors}:Props) => {  
     const [image , setImage]=useState<File[]>([])
     const [showImage , setShowImage]=useState<string[]>([])
-    const hiddenFileInput = useRef(null);
+    const hiddenFileInput = useRef<HTMLDivElement | null>(null);
     const appState = useSelector(storeAppState);
     const[showDeleteIcon , setShowDeleteIcon]=useState(false)
 
@@ -87,7 +86,7 @@ useEffect(()=>{
         </div>
      
         <Box sx={{display:"flex", gap:"10px" , overflowX:"scroll", paddingBottom:"10px"}}>
-        {showImage && showImage.map((item:any)=>
+        {showImage && showImage.map((item:string)=>
         <Box sx={{position:"relative",  bgcolor:"black", borderRadius:"10px"}}  className="photoClass" onMouseOver={()=>setShowDeleteIcon(true)} onMouseLeave={()=>setShowDeleteIcon(false)}>
      <Box sx={{position:"relative" }}  className="boxClass" >
      <img key={item} src={item} width="150px"style={{overflow:"hidden",borderRadius:"10px" }} />

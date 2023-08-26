@@ -5,31 +5,57 @@ import MainHeader from "../../../../components/userComponent/mainHeader";
 import ProductCart from "../../../../components/userComponent/productCard";
 import MainFooter from "../../../../components/userComponent/mainFooter";
 import SingleProductSlider from "../../../../components/userComponent/singleProductSlider";
-import { Products } from "../../../../api/interface/products";
+import { Product } from "../../../../api/interface/products";
 import { useDispatch, useSelector } from "react-redux";
 import { setOrderData, storeAppState } from "../../../../redux/slice/appSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React from "react";
+import { OrderInfo } from "../../../../api/interface/order";
 
-interface selectProduct {
-  id: string;
-  name: string;
-  price: string;
-  quantity: number;
-  brand: string;
-  description: string;
-  thumbnail: [];
-  images: [];
-  category: string;
-  subcategory: string;
-  orderCount: number;
-}
+
 const ShowSingleProduct = () => {
+  const initialProduct =  {
+    "rating": {
+        "rate": 0,
+        "count": 0
+    },
+    "_id": "",
+    "category": {
+        "_id": "",
+        "name": " ",
+        "icon": "",
+        "createdAt": "",
+        "updatedAt": "",
+        "slugname":"",
+        "__v": 0
+    },
+    "subcategory": {
+        "_id": "",
+        "category": "",
+        "name": "",
+        "createdAt": "",
+        "updatedAt": "",
+        "slugname": "",
+        "__v": 0
+    },
+    "name": "",
+    "price": 0,
+    "quantity": 0,
+    "brand": " ",
+    "description": "",
+    "thumbnail": "",
+    "images": [
+        ""
+    ],
+    "createdAt": "",
+    "updatedAt":"",
+    "slugname": ""
+}
   const dispatch = useDispatch();
   const appState = useSelector(storeAppState);
-  const [selectProduct, setSelectProduct] = useState({});
-  const [similarProduct, setSimilarProduct] = useState([]);
+  const [selectProduct, setSelectProduct] = useState<Product>(initialProduct);
+  const [similarProduct, setSimilarProduct] = useState<Product[]>([]);
   const [orderCount, setOrderCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState<number>();
   const [showColor , setShowColor]=useState(false)
@@ -54,7 +80,7 @@ const ShowSingleProduct = () => {
    
       axios.get(`http://localhost:8000/api/products/${productId}`).then((res) => {
         setSelectProduct(res.data.data.product);
-        appState.OrderData.map(item => item.id===productId ?(setOrderCount(item.orderNUm) ,  setTotalPrice(res.data.data.product.price * item.orderNUm))
+        appState.OrderData.map((item:OrderInfo) => item.id===productId ?(setOrderCount(item.orderNUm) ,  setTotalPrice(res.data.data.product.price * item.orderNUm))
         :"nist"
         )
         
@@ -83,7 +109,7 @@ const ShowSingleProduct = () => {
     if (orderCount > 0) {
   
       if(appState.OrderData.length>0){
-        const newAppState =appState.OrderData.filter((item:any)=> item.id !==productId ) 
+        const newAppState =appState.OrderData.filter((item:OrderInfo)=> item.id !==productId ) 
         dispatch(setOrderData({ OrderData: [...newAppState, orderInfo] }));
       }else{
         dispatch(setOrderData({ OrderData: [...appState.OrderData, orderInfo] }));
@@ -263,7 +289,7 @@ setSelectColor(event.currentTarget.id)
         <div>
           <h1 className="md:text-2xl font-bold text-lg">محصولات مشابه</h1>
           <div className="flex gap-3  w-full  overflow-x-scroll overflow-y-hidden">
-            {similarProduct.map((item) => (
+            {similarProduct.map((item:Product) => (
               <div className="">
                        <ProductCart productSelect={item} />
               </div>

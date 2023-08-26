@@ -10,14 +10,14 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import DeleteDiscountModal from './deleteDiscountModal';
 interface Props{
-  setOpen:any
+  setOpen:(open:boolean)=>void
 }
 
 export default function DiscountTable({setOpen}:Props) {
-const [openDeleteModal,setOpenDeleteModal]=React.useState(false)
+const [openDeleteModal,setOpenDeleteModal]=React.useState<boolean>(false)
 const handleDeleteModal=()=>{
   setOpenDeleteModal(true)
-  console.log("hi");
+
 }
 const handleEditModal=()=>{
   setOpen(true)

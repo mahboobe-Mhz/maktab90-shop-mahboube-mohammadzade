@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import FlashIcon from '../../../svg/flashIcon';
+import { Product } from '../../../../api/interface/products';
 
 const ProductsSlider = () => {
   const [filter, setFilter]=useState("")
@@ -13,7 +14,7 @@ const ProductsSlider = () => {
   const [discount,setDiscount]=useState(true)
   const { data, isLoading, refetch } = useGetPaginationProducts(1, 20,filter);
   const value = !isLoading && data.data.products
- const showSingleProduct =(event)=>{
+ const showSingleProduct =(event:any)=>{
   navigate(`/product/${event.currentTarget.id}_${event.currentTarget.dataset.user}_${event.currentTarget.dataset.category}`)
   // navigate(`/product/${event.currentTarget.id}_${event.currentTarget.dataset.user}`)
  }
@@ -51,7 +52,7 @@ const ProductsSlider = () => {
       }}
       speed={2000}
       >    
-        {!isLoading && value.map((product:any, index:number)=>
+        {!isLoading && value.map((product:Product, index:number)=>
           <SwiperSlide id={product._id} data-user={product.slugname} data-category={product.category._id} 
            onClick={showSingleProduct}>
                

@@ -4,9 +4,10 @@ import 'swiper/swiper-bundle.min.css';
 import useGetPaginationProducts from '../../../../api/services/products/usePaginationProducts';
 import { useState } from 'react';
 import { LeftArrow, RightArrow } from '../../../kit/Arrow';
+import { Product } from '../../../../api/interface/products';
 
 const ProductsSlider = () => {
-  const [filter, setFilter]=useState("")
+  const [filter, setFilter]=useState<string>("")
   const { data, isLoading, refetch } = useGetPaginationProducts(1, 20,filter);
   const value = !isLoading && data.data.products
   const handelswiper =useSwiper()
@@ -21,7 +22,7 @@ const ProductsSlider = () => {
       // scrollbar={{ draggable: true }}
    
       >    
-        {!isLoading && value.map((product:any, index:number)=>
+        {!isLoading && value.map((product:Product, index:number)=>
           <SwiperSlide>
           <div className='flex flex-col items-center'>
         {index%2==0 ? <img  className='h-[280px]  w-[200px] border rounded-3xl'  src={`http://localhost:8000/images/products/images/${product.images?.[0]}`}/>: <img  className='h-[200px]  w-[200px] border rounded-3xl'  src={`http://localhost:8000/images/products/images/${product.images?.[0]}`}/>} 

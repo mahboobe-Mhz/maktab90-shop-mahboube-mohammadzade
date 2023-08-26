@@ -1,10 +1,11 @@
 import axios from 'axios';
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Category } from '../../../../api/interface/category';
 
 const GroupingProduct = () => {
   const navigate = useNavigate();
-  const [catData ,setCatData]=React.useState([])
+  const [catData ,setCatData]=React.useState<Category[]>([])
   React.useEffect(()=>{const res =axios.get('http://127.0.0.1:8000/api/categories?limit=30')
  res.then(response=>setCatData(response.data.data.categories)
  ) },[])

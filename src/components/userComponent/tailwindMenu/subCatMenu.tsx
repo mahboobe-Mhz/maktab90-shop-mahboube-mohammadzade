@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import FlashIcon from "../../svg/flashIcon";
+import { subcategory } from "../../../api/interface/subCategory";
 interface Props{
  id:string
     title:string
@@ -16,7 +17,7 @@ const SubCatMenu = ({title,id ,showSubCat, setShowSubCat}:Props) => {
  const [subCatData,setSubCatData]=useState([])
 useEffect(()=>{
     const res =axios.get('http://127.0.0.1:8000/api/subcategories?limit=30')
-    res.then(response=> setSubCatData(response.data.data.subcategories.filter((item:any)=>item.category===id))
+    res.then(response=> setSubCatData(response.data.data.subcategories.filter((item:subcategory)=>item.category===id))
     )
 },[state])
 document.body.addEventListener('click',()=>setState(false) , true);  
@@ -42,7 +43,7 @@ document.body.addEventListener('click',()=>setState(false) , true);
   {state? <div className="absolute  flex flex-col shadow-xl shadow-black text-black bg-white  mt-2 rounded-3xl  w-[200px] right-[200px] 
   top-[-2px]" onMouseLeave={()=>setState(false)} onMouseOver={()=>setState(true) } >
     {
-          subCatData.map((item:any)=>
+          subCatData.map((item:subcategory)=>
           <Link className=" text-sm py-1 px-4 hover:text-secondary" to={  `/subcategory/${id}_${item._id}_${item.slugname}_page_1}`}> {item.name} </Link>)
     }
 

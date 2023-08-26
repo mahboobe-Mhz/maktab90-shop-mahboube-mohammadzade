@@ -4,7 +4,7 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
 import FlashIcon from '../../../svg/flashIcon';
 interface Props{
-  setCounter:any
+  setCounter:(counter:number)=>void
   counter:number
 }
 const NewsSlider = ({setCounter,counter}:Props) => {

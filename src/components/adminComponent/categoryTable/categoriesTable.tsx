@@ -31,13 +31,17 @@ interface Props {
   setEditCat:any
   editCat:any
 }
+ type ShowCatData = {
+  name: string;
+  subCat: string[];
+} | boolean;
 
 export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, setEditCat,editCat}: Props) {
   const dispatch = useDispatch();
   const [subCatData, steSubCatData] = React.useState();
   const { data, isLoading } = useGetAllSubCategory();
   const[openDeleteModal,setOpenDeleteModal]=React.useState(false)
-  const [selected, setSelected] = React.useState([]);
+  const [selected, setSelected] = React.useState<string[]>([]);
   const[titleText,setTitleText]=React.useState("")
   const showSub = (event: React.MouseEvent) => {
     const categoryId = event.currentTarget.id;
@@ -58,14 +62,12 @@ export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, se
   //   }
   // };
   const handelCheckBox = (event: any) => {
-
-
     if (selected.length !== 0) {
       selected.map((item: string) => {
         if (item === event.currentTarget.id) {
           const newArray = [...selected];
           const arrayDeleteItem = newArray.filter(
-            (item: any) => item !== event.currentTarget.id
+            (item: string) => item !== event.currentTarget.id
           );
           setSelected(arrayDeleteItem);
         } else {
@@ -81,7 +83,7 @@ export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, se
         const dataCat = !isLoading && data.data.subcategories;
         const FindCatData = !isLoading && dataCat.filter((item: any) => item.category === e.currentTarget.id);
        
-        const showCatData= !isLoading && {
+        const showCatData:ShowCatData = !isLoading && {
           name:e.currentTarget.dataset.user,
           subCat:FindCatData
         }
@@ -91,6 +93,15 @@ export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, se
       const handleDeleteModal =(e:any)=>{
         setTitleText(e.currentTarget.id)
         setOpenDeleteModal(true)
+      }
+      const handleCheckBox =(id:string)=>{
+       const findCat= selected.find((item: string) => item === id)
+       if(findCat){
+        return true
+       }else {
+        return false
+       }
+
       }
   return (
     <>
@@ -143,7 +154,7 @@ export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, se
                       },
                     }}
                     onChange={handelCheckBox}
-                    checked={selected.find((item: any) => item === row._id)}
+                    checked={handleCheckBox(row._id)}
                   />{" "}
                   {row.name}{" "}
                 </TableCell>

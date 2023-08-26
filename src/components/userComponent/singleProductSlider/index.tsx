@@ -8,15 +8,17 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 interface Props{
-  selectProduct:any
+  selectProduct:Product
 }
 
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import FlashIcon from "../../svg/flashIcon";
+import { Product } from "../../../api/interface/products";
 
 export default function SingleProductSlider({selectProduct}:Props) {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState<any | null>(null);
+
 
   return (
     <div className=" md:w-[400px]">

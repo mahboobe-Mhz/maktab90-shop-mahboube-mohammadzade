@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack';
 interface Props{
   countPage:number|undefined
   page:number
-  setPage:any
+  setPage:(page:number)=>void
 }
 export default function PaginationControlled( {countPage,page,setPage}:Props) {
 

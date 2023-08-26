@@ -7,12 +7,11 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-import useGetAllProducts from "../../../api/services/products/useGetAllProducts";
 import { useState } from "react";
 import LabelTable from "./labelTable";
 
 const ShowTableBox = () => {
-  const[open,setOpen]=useState(false)
+  const[open,setOpen]=useState<boolean>(false)
   return (
     <Box sx={{ height: "90%" }}>
       <Box

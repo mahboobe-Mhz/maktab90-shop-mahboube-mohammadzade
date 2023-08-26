@@ -12,7 +12,7 @@ import persian from "react-date-object/calendars/persian";
 import persian_fa from "react-date-object/locales/persian_fa";
 interface Props{
     open:boolean,
-    setOpen:any
+    setOpen:(open:boolean)=>void
 }
 const style = {
   position: 'absolute',

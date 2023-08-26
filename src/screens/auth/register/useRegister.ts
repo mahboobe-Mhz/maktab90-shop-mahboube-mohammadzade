@@ -26,14 +26,14 @@ const useRegister = () => {
 
     const {mutate} = useRegisterUser({
         onSuccess:() =>{
-            navigate(routes.AUTH.index)
+            navigate(routes.ADMIN.login)
         },
         onError:(err) =>{
             manageErrors({err, setError})
         }
     })
 
-    const handleRegisterUser = useCallback((d: RegisterUserType['payload']) =>
+    const handleRegisterUser = useCallback((d: RegisterUserType["payload"]) =>
     {
         mutate(d);
     },[mutate])

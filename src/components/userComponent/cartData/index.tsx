@@ -4,6 +4,15 @@ import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
 import {  toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { setOrderData, storeAppState } from "../../../redux/slice/appSlice";
+import { Dispatch } from 'redux'; 
+type ProductOrderModalAction = {
+    type: string;
+    payload: {
+        productOrderModal: boolean;
+    };
+};
+
+type DispatchType = Dispatch<ProductOrderModalAction>;
 interface Props{
     index1:number
     item: {
@@ -16,7 +25,7 @@ interface Props{
     category:string
       slugName:string
     }
-    handleDeleteModal:any
+    handleDeleteModal: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, dispatch: DispatchType, setTitleText: (text: string) => void, setDeleteId: (id: string) => void)=> void 
 
     }
 const CartData = forwardRef(({index1,item,handleDeleteModal}:Props) => {

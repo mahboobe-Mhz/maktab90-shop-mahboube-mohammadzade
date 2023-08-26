@@ -6,14 +6,19 @@ import PaginationControlled from "../pagination";
 import axios from "axios";
 import useGetPaginationCategory from "../../../api/services/products/usePaginationCategory";
 import CategoryModal from "./insertCategoryModal";
+import { Category } from "../../../api/interface/category";
+type ShowCatData = {
+  name: string;
+  subCat: string[];
+} ;
 
 const ShowTableBox = () => {
-  const [page, setPage] = React.useState(1);
-  const [countPage, setCountPage] = React.useState(1);
-  const [AllCategoryData, setAllCategoryData] = React.useState([]);
+  const [page, setPage] = React.useState<number>(1);
+  const [countPage, setCountPage] = React.useState<number>(1);
+  const [AllCategoryData, setAllCategoryData] = React.useState<Category[]>([]);
   const { data, isLoading, refetch } = useGetPaginationCategory(page, 5);
-  const [open, setOpen] = React.useState(false);
-  const [editCat , setEditCat]=React.useState("")
+  const [open, setOpen] = React.useState<boolean>(false);
+  const [editCat , setEditCat]=React.useState<ShowCatData>({name :"", subCat:[]})
   React.useEffect(() => {
     const req = axios.get(
       `http://localhost:8000/api/categories?sort=-createdAt`

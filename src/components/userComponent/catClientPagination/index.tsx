@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import FlashIcon from "../../svg/flashIcon";
 
 interface Props{
-    countPage:number
+    countPage:number|undefined
 }
 const ClientPagination = ({countPage}:Props) => {
     const navigate = useNavigate();

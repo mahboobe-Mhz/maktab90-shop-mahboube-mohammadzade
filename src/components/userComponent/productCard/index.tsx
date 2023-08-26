@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { setOrderData, storeAppState } from "../../../redux/slice/appSlice";
 
 import BasketIcon2 from "../../svg/basketIcon2";
+import { OrderDataType, OrderInfo } from "../../../api/interface/order";
+import { Product } from "../../../api/interface/products";
 
 interface Props{
-  productSelect:any
+  productSelect:Product
 }
 
 
@@ -29,7 +31,7 @@ const ProductCart = ({productSelect}:Props) => {
   }
   const handleInsertToCart=()=>{
     if(appState.OrderData.length>0){
-       const newAppState =appState.OrderData.filter((item:any) => item.id !==productSelect._id)
+       const newAppState =appState.OrderData.filter((item:OrderInfo) => item.id !==productSelect._id)
       dispatch(setOrderData({ OrderData: [...newAppState, orderInfo] }));
     }else{
       dispatch(setOrderData({ OrderData: [...appState.OrderData, orderInfo] }));

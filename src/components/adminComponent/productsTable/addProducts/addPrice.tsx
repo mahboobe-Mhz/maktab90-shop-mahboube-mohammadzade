@@ -9,11 +9,11 @@ interface Props{
 }
 
 const AddPrice = ({register,errors}:Props) => {
-    const [checked, setChecked] = useState(false);
-    const [price, setPrice] = useState(0);
-    const [discount, setDiscount] = useState(0);
-    const [discountPrice, setDiscountPrice] = useState<number>();
-;
+    const [checked, setChecked] = useState<boolean>(false);
+    const [price, setPrice] = useState<number>(0);
+    const [discount, setDiscount] = useState<number>(0);
+    const [discountPrice, setDiscountPrice] = useState<number>(0);
+
   
     const showDiscountBox=(event:React.ChangeEvent<HTMLInputElement>)=>{
         setChecked(event.target.checked);    
@@ -58,9 +58,8 @@ const AddPrice = ({register,errors}:Props) => {
              
          </Box>
          <Box padding={1.5} display={"flex"} gap={2}>
-        <TextField dir={"ltr"} id="standard-basic" label="فروش ویژه" value={discountPrice} variant="standard" />
+        <TextField dir={"ltr"} id="standard-basic" label="فروش ویژه" value={discountPrice} variant="standard" disabled={true}/>
         <Typography marginTop={4}>تومان</Typography>
-        <Button sx={{color:"red"}} type='submit'> </Button>
         </Box> 
      
          </Box>

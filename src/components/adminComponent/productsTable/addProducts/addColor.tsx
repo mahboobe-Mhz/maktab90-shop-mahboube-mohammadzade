@@ -30,7 +30,7 @@ const AddColor = ()=> {
                     type="file"
                  
                     multiple/>
-                    {showImage&&showImage.map((item:any)=>  <img key={item} src={item} width="50px"style={{overflow:"hidden",borderRadius:"10px" }} />)}
+                    {showImage&&showImage.map((item:string)=>  <img key={item} src={item} width="50px"style={{overflow:"hidden",borderRadius:"10px" }} />)}
         </Box>
        </Box> );
 }

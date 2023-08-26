@@ -5,7 +5,7 @@ import SearchIcon from "../../svg/searchIcon";
 import CommentsTable from "./commentsTable";
 import PaginationControlled from "../pagination";
 const Comments = () => {
-  const [isComments, setIsComments] = useState(false);
+  const [isComments, setIsComments] = useState<boolean>(false);
   return (
     <Box sx={{ height: "90%" }}>
       {isComments ? (

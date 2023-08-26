@@ -16,9 +16,7 @@ const ProductsManagement = React.lazy(
 const OrdersManagement = React.lazy(
   () => import("../components/adminComponent/orderTable")
 );
-const LoginScreen = React.lazy(
-  () => import("../screens/auth/login/adminLogin/adminLogin")
-);
+
 const MainAdminPage = React.lazy(
   () => import("../screens/main/admin/mainPage")
 );
@@ -206,16 +204,7 @@ export const router = createBrowserRouter([
       <Navigate to={"/login"} />
     ),
     children: [
-      {
     
-        path: routes.ADMIN.login,
-        element: 
-        (
-          <SuspenseView>
-            <LoginScreen />
-          </SuspenseView>
-        ),
-      },
       {
         path: routes.ADMIN.main,
         element:(   <SuspenseView>

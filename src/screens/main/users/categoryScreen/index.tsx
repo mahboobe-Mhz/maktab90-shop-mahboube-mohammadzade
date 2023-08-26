@@ -14,6 +14,9 @@ import useGetCategoryProducts from "../../../../api/services/products/useGetAllP
 import ClientPagination from "../../../../components/userComponent/catClientPagination";
 import { toast } from "react-toastify";
 import CategoryFilter from "../../../../components/userComponent/categoryFilter";
+import { Category } from "../../../../api/interface/category";
+import { subcategory } from "../../../../api/interface/subCategory";
+import { Product } from "../../../../api/interface/products";
 
 const CategoryScreen = () => {
   //  const locationParams = useLocation();
@@ -91,7 +94,7 @@ const CategoryScreen = () => {
               دسته بندی محصولات
             </h1>
             <div className="mt-3 flax flex-col gap-1 border-b-2 border-black pb-2">
-              {allCategory.map((item) => (
+              {allCategory.map((item:Category) => (
                 <div
                   onClick={handleShowCategoryProducts}
                   id={item._id}
@@ -110,7 +113,7 @@ const CategoryScreen = () => {
               ))}
             </div>
             <div className="mt-3 flax flex-col gap-3 ">
-              {selectSubCategory.map((item) => (
+              {selectSubCategory.map((item:subcategory) => (
                 <div
                   id={item._id}
                   data-user={item.slugname}
@@ -125,7 +128,7 @@ const CategoryScreen = () => {
           <div>
             <div className="px-10 flex flex-wrap justify-around gap-2">
               {!isLoading &&
-                data.data.products.map((item) => (
+                data.data.products.map((item:Product) => (
                   <ProductCart productSelect={item} />
                 ))}
             </div>

@@ -14,7 +14,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import DiscountIcon from '@mui/icons-material/Discount';
 const ProductsManagement = () => {
   const AppState = useSelector(storeAppState);
-  const [showMenu,setShowMenu]=useState(false)
+  const [showMenu,setShowMenu]=useState<boolean>(false)
 
   const name = AppState.BreadCrumb;
 

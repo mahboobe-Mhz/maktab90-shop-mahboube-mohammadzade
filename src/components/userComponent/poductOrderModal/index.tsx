@@ -7,11 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setNotMOdal, setProductOrderModal, storeAppState } from '../../../redux/slice/appSlice';
 interface Props{
     titleText:string
-    handleDelete:any
+    handleDelete:(deleteId:string)=>void
     deleteId:string
 }
 const style = {
-  position: 'absolute' as 'absolute',
+  position: 'absolute' ,
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',

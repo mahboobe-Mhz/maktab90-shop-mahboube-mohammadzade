@@ -7,7 +7,7 @@ import Modal from '@mui/material/Modal';
 interface Props{
     titleText:string
     openDeleteModal:boolean
-    setOpenDeleteModal:any
+    setOpenDeleteModal:(openDeleteModal:boolean)=>void
 }
 const style = {
   position: 'absolute',

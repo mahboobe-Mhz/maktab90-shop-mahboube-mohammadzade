@@ -8,8 +8,8 @@ import { FormControlLabel, TextField } from '@mui/material';
 import EasyEdit from 'react-easy-edit';
 interface Props{
     open:boolean,
-    setOpen:any
-    editCat:any
+    setOpen:(open:boolean)=>void
+    editCat:{name:string,   subCat: string[];}
 
 }
 const style = {
@@ -30,15 +30,15 @@ const style = {
 };
 
 export default function CategoryModal({open,setOpen, editCat}:Props) {
-const [addSubCat,setAddSubCat]=React.useState([])
-const[subCatName,setSubCatName]=React.useState("")
-const[catName , setCatName]=React.useState("")
+const [addSubCat,setAddSubCat]= React.useState<string[]>([]);
+const[subCatName,setSubCatName]=React.useState<string>("")
+const[catName , setCatName]=React.useState<string>("")
 const insertSubCat =()=>{
   setAddSubCat([...addSubCat,subCatName])
 }
   const handleClose = () => setOpen(false);
 React.useEffect(()=>{
-  const subCatArray=[]
+  const subCatArray:string[]=[]
 editCat.subCat?.map((item:any)=>subCatArray.push(item.name))
   setCatName(editCat.name)
   setAddSubCat(subCatArray)

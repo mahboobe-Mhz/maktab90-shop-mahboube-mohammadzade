@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 const ResponsiveMenu = () => {
 
     const [isComponentVisible, setIsComponentVisible] = useState(false);
-    const ref = useRef(null);
+    const ref = useRef<HTMLDivElement | null>(null);
 
-    const handleClickOutside = (event:any) => {
+    const handleClickOutside = (event: MouseEvent) => {
  
-        if (ref.current && !ref.current.contains(event.target)) {
+        if (ref.current && !ref.current?.contains(event.target as Node)) {
             setIsComponentVisible(false);
         }
       

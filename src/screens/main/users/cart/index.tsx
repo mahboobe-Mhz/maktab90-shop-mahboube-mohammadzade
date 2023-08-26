@@ -12,17 +12,18 @@ import {  useNavigate } from "react-router-dom";
 import { routes } from "../../../../routes";
 import DeleteOrderModal from "../../../../components/userComponent/poductOrderModal";
 import CartData from "../../../../components/userComponent/cartData";
+import { OrderDataType, OrderInfo } from "../../../../api/interface/order";
 const Cart = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const appState = useSelector(storeAppState);
-  const [titleText ,setTitleText]=React.useState("")
-  const [deleteId ,setDeleteId]=React.useState("")
+  const [titleText ,setTitleText]=React.useState<string>("")
+  const [deleteId ,setDeleteId]=React.useState<string>("")
 
 
   const handleDelete = (id: string) => {
-    const newAppState = [...appState.OrderData];
-    const filterAppState=newAppState.filter((item:any)=> item.id !== id)
+    const newAppState :OrderInfo[]= [...appState.OrderData];
+    const filterAppState=newAppState.filter((item:OrderInfo)=> item.id !== id)
     dispatch(setOrderData({ OrderData: filterAppState }));
   };
 
@@ -41,7 +42,7 @@ const Cart = () => {
       });
     }
   };
-  const handleDeleteModal =(event:any)=>{
+  const handleDeleteModal =(event: React.MouseEvent<HTMLButtonElement, MouseEvent>)=>{
     dispatch(setProductOrderModal({ productOrderModal: true }));
      setTitleText(`  ${event.currentTarget.dataset.user}  `) 
      setDeleteId(event.currentTarget.id)

@@ -2,9 +2,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import useGetAllCategory from "../../../api/services/products/useGetAllCategory";
 import { Link } from "react-router-dom";
+import { Category } from "../../../api/interface/category";
 
 const CategoryResMenu = () => {
-    const[showMenu,setShowMenu]=useState(false)
+    const[showMenu,setShowMenu]=useState<boolean>(false)
  const {data,refetch,isLoading}=useGetAllCategory()
   
   
@@ -19,7 +20,7 @@ const CategoryResMenu = () => {
      border border-black py-2 w-[150px] right-[150px] top-[10px]" >
          <div className="flex flex-col pr-3 gap-2">
   {
-    !isLoading?data.data.categories.map((item:any)=>
+    !isLoading?data.data.categories.map((item:Category)=>
     <Link to={`http://localhost:5173/category/${item._id}_${item.slugname}_page_1`} >
         { item.name}
     

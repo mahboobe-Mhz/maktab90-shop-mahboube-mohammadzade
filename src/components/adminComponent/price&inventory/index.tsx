@@ -5,19 +5,18 @@ import { useState, useEffect } from "react";
 import PaginationControlled from "../pagination";
 import axios from "axios";
 import useGetPaginationProducts from "../../../api/services/products/usePaginationProducts";
-import { useSelector } from "react-redux";
-import { storeAppState } from "../../../redux/slice/appSlice";
+
 
 const PriceTable = () => {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState<number>(1);
   const [countPage, setCountPage] = useState<number>();
-  const [filterData, setFilterData] = useState("");
+  const [filterData, setFilterData] = useState<string>("");
   const { data, isLoading, refetch } = useGetPaginationProducts(
     page,
     5,
     filterData
   );
-  const appState = useSelector(storeAppState);
+
   useEffect(() => {
     const req = axios.get(`http://localhost:8000/api/products`);
     req.then((res) => {

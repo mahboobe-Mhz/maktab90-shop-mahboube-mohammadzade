@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 
 interface Props{
-    countPage:number|undefined
+    countPage:number
 }
 const ClientSubPagination = ({countPage}:Props) => {
     const navigate = useNavigate();

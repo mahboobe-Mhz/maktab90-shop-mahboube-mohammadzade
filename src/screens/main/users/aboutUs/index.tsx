@@ -4,17 +4,17 @@ import MainHeader from "../../../../components/userComponent/mainHeader";
 const AboutUs = () => {
     return ( <div className=" flex flex-col ">
         <MainHeader/>
-    <div className="mx-10 mt-10 ">
-    <div className="absolute md:right-[40%] right-[20%] md:text-[50px] text-[40px]" >درباره <span className="text-secondary">هوم نت</span></div>
+    <div className="md:mx-16 mt-10 ">
+    <div className="absolute md:right-[35%] xl:top-[210px] top-[100px] right-[20%] sm:text-[70px] text-[40px]" >درباره <span className="text-secondary">هوم نت</span></div>
         <div className=" flex xl:justify-between justify-center md:items-start items-center flex-wrap gap-3 mt-[90px]">
    
          
             <div className="  ">
 
-          <img className="w-[400px]  h-[400px] rounded-3xl"  src="public\picture\aboutUs\IMG_7178.JPG" alt="" />
+          <img className="md:w-[450px]  md:h-[600px] rounded-3xl"  src="public\picture\ax-01.png" alt="" />
           </div>
              <div className=" flex flex-col items-end ">
-      <img  className=" md:w-[500px]  md:h-[400px]  "src="public\picture\aboutUs\IMG_7178.JPG" alt="" />
+      <img  className=" md:w-[700px]  md:h-[420px]  "src="public\picture\ax-02.png" alt="" />
       <p className=" md:w-[700px] text-right pt-5 md:text-xl text-lg" >  هوم نت شرکتی است که با تعدادی جوان فارغ تحصیل در رشته های مرتبط آغاز به کار کردهو هدف آن قرار گیری مردم در 
                 فضای مناسب برای زندگی و کار و ...برای داشتن روحی سالم است و در کنار آن با وجود فروشگاه انلاین و افراد متخصص در امر مشاوره در خرید محصولات و تیم حرفه ایی برای انجام طراحی داخلی فضاهای مرتبط و همکاری با شرکت های معتبر سهمی بر بهبودکیفیت زندگی انسان ها و صرفه جویی در وقت 
             و زمان که با ازرش ترین عتصر زندگی ست کرده است  </p>

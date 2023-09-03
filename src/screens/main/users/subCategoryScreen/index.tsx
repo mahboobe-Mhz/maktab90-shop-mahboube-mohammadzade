@@ -16,6 +16,7 @@ import { toast } from "react-toastify";
 import { Category } from "../../../../api/interface/category";
 import { subcategory } from "../../../../api/interface/subCategory";
 import { Product } from "../../../../api/interface/products";
+import CategoryFilter from "../../../../components/userComponent/categoryFilter";
 
 const SubCategoryScreen = () => {
   //  const locationParams = useLocation();
@@ -36,7 +37,7 @@ const SubCategoryScreen = () => {
   const [selectSubCategory, setSelectSubCategory] = useState([]);
   const [allCategory, setAllCategory] = useState([]);
   const navigate = useNavigate();
-  const [countPage, setCountPage] = useState<number>();
+  const [countPage, setCountPage] = useState<number>(0);
 
   useEffect(() => {
     axios
@@ -81,24 +82,7 @@ const SubCategoryScreen = () => {
           <img src="/picture/posterCategory.png" alt="" />
         </div>
         <div className="flex justify-center mt-3  ">
-  <div className=" horizontal-scroll-wrapper squares"> 
-   <button className=" ">نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-   <button>نیلپر</button>
-    
-     </div>
+        <CategoryFilter/>
 
 </div>
         <div className="flex md:mt-20 md:gap-5 gap-1 px-3 ">

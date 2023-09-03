@@ -32,7 +32,7 @@ const CategoryScreen = () => {
     6,
     catId
   );
-  const [countPage, setCountPage] = useState<number>();
+  const [countPage, setCountPage] = useState<number>(0);
   const [selectSubCategory, setSelectSubCategory] = useState([]);
   const [allCategory, setAllCategory] = useState([]);
   const navigate = useNavigate();
@@ -120,7 +120,7 @@ const CategoryScreen = () => {
                   onClick={handleShowSubCategoryProducts}
                   className="mb-2"
                 >
-                  <span className="font-semibold md:text-lg text-sm"> {item.name}</span>
+                  <span className="font-semibold md:text-lg text-sm hover:cursor-pointer"> {item.name}</span>
                 </div>
               ))}
             </div>
@@ -139,9 +139,9 @@ const CategoryScreen = () => {
         </div>
       </div>
       <img className="md:h-[200px] w-full" src="/picture/footer.png" />
-      <div dir='rtl'>
+   
     <MainFooter />
-    </div>
+
     </div>
   );
 };

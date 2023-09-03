@@ -246,7 +246,7 @@ setSelectColor(event.currentTarget.id)
             <div  className="flex w-full gap-4 mt-2 text-sm">
             <div className="w-[50%]">
                     <span> دیدگاه شما*</span>
-                    <textarea className="border border-black rounded-2xl mt-2 p-1 w-full px-2 md:h-[110px]" name="description" minLength="10" maxLength="40" required></textarea>
+                    <textarea className="border border-black rounded-2xl mt-2 p-1 w-full px-2 md:h-[110px]" name="description" minLength={10} maxLength={40} required></textarea>
              </div>
              <div className="flex flex-col w-[50%]">
              

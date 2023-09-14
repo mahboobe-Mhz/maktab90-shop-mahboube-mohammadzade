@@ -2,9 +2,11 @@ import { useNavigate } from "react-router-dom";
 
 import { ToastContainer } from "react-toastify";
 import useLoginUsers from "./useLogin";
+import { useState } from "react";
 
 const UserLogin = () => {
   const navigate = useNavigate();
+  const [state,setState]=useState("ورود")
   const naivgateHome = () => {
     window.location.reload();
     navigate("/");
@@ -14,59 +16,119 @@ const UserLogin = () => {
     <div className="h-full w-full flex justify-center items-center">
       <span
         onClick={naivgateHome}
-        className="border p-1 border-gray-900 rounded-full fixed top-[90px] left-[50px]"
+        className="border p-1 border-gray-900 rounded-full fixed md:top-[90px] md:left-[50px] top-[20px] left-[20px]"
       >
         <img width={20} src="/icons/icon-02.svg"></img>
       </span>
 
-      <form
+      <div className="bg-[#fd6e54] md:w-[30%] text-end shadow-md rounded-3xl px-3 pt-6 pb-8 mb-4 ">
+   <div className="flex justify-center">
+          <img src="public\logo\logo fotter-01.png" className="w-[200px]"/>
+        </div>
+        <div className=" mt-5 px-4">
+        <span onClick={()=>setState("ورود")} className={`pl-1 hover:cursor-pointer ${state==="ورود"? "text-white":"text-black"}`}>ورود</span>
+        |
+          <span onClick={()=>setState("ثبت")}  className={`pr-1 hover:cursor-pointer ${state==="ثبت"? "text-white":"text-black"}`}> ثبت نام</span>
+          
+     
+        </div>
+        {state==="ثبت"?  <form
         onSubmit={handleSubmit(handleLoginUser)}
-        className="bg-[#fd6e54] md:w-[30%] text-end shadow-md rounded-3xl px-8 pt-6 pb-8 mb-4 flex flex-col"
+        className="flex flex-col"
       >
-        <h2 className="text-[#ffff]  text-xl font-semibold ">
-          {" "}
-          به فروشگاه هوم نت خوش امدید
-        </h2>
-        <div className="mb-4">
-          <label className="block mt-10 pr-5 text-[#ffff] text-sm font-bold mb-2">
-            نام کاربری
+     
+        
+           <div className="pb-2">
+          <label className="block mt-5 pr-5 text-[#ffff] text-sm font-bold mb-1">
+            نام 
           </label>
           <input
             className=" bg-[#fd6e54] shadow appearance-none border rounded-full w-full 
             py-2 px-3 text-grey-darker "
-            {...register("username")}
-            id="username"
+            {...register("name")}
+            id="name"
             type="text"
           />
           <span className="text-red-200">
             {" "}
-            {errors ? errors.username?.message : ""}
+            {errors ? errors.name?.message : ""}
           </span>
         </div>
-        <div className="mb-6">
-          <label className="block pr-5 text-[#ffff] text-sm font-bold mb-2">
-            رمز عبور
+        <div className="pb-2">
+          <label className="block pr-5 text-[#ffff] text-sm font-bold mb-1">
+            نام خانوادگی 
           </label>
           <input
-            className=" bg-[#fd6e54] shadow appearance-none border border-red 
-            rounded-full w-full py-2 px-3 text-grey-darker mb-3"
-            id="password"
-            {...register("password")}
-            type="password"
+            className=" bg-[#fd6e54] shadow appearance-none border rounded-full w-full 
+            py-2 px-3 text-grey-darker "
+            {...register("lastName")}
+            id="lastName"
+            type="text"
           />
           <span className="text-red-200">
             {" "}
-            {errors ? errors.password?.message : ""}
+            {errors ? errors.lastName?.message : ""}
           </span>
         </div>
+        <div className="pb-3">
+          <label className="block pr-5 text-[#ffff] text-sm font-bold mb-1">
+            شماره تماس
+          </label>
+          <input
+            className=" bg-[#fd6e54] shadow appearance-none border border-red 
+            rounded-full w-full py-2 px-3 text-grey-darker "
+            id="phoneNumber"
+            {...register("phoneNumber")}
+            type="number"
+          />
+          <span className="text-red-200">
+            {" "}
+            {errors ? errors.phoneNumber?.message : ""}
+          </span>
+        </div>
+    
 
         <button
           type="submit"
-          className="w-[30%]  bg-[#ffff] hover:bg-blue-dark text-[#fd6e54] font-bold pb-1  rounded-full "
+          className="w-full  bg-[#ffff] hover:bg-blue-dark text-[#fd6e54] font-bold h-[40px]  rounded-full "
         >
-          ورود
+          ثبت نام
         </button>
-      </form>
+      </form> :    <form
+        onSubmit={handleSubmit(handleLoginUser)}
+        className="flex flex-col"
+      >
+     
+        
+           <div className="pb-2">
+          <label className="block mt-5 pr-5 text-[#ffff] text-sm font-bold mb-1">
+      !سلام <br/> لطفا شماره موبایل خود را وارد کنید
+          </label>
+          <input
+            className=" bg-[#fd6e54] shadow appearance-none border rounded-full w-full 
+            py-2 px-3 text-grey-darker "
+            {...register("phoneNumber")}
+            id="phoneNumber"
+            type="number"
+          />
+          <span className="text-red-200">
+            {" "}
+            {errors ? errors.phoneNumber?.message : ""}
+          </span>
+        </div>
+   
+
+        <button
+          type="submit"
+          className="w-full  bg-[#ffff] hover:bg-blue-dark text-[#fd6e54] font-bold h-[40px]  rounded-full "
+        >
+      ورود
+        </button>
+      </form> }
+     
+  
+      
+      </div>
       <ToastContainer />
     </div>
   );

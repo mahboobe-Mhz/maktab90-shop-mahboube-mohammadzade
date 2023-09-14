@@ -11,14 +11,18 @@ import { routes } from "../../../../routes";
 
 const cookies = new Cookies();
 const LoginSchema = yup.object({
-  username: yup
+  name: yup
     .string()
-    .required("نام کاربری را وارد کنید")
+    .required("نام خو را وارد کنید")
 ,
-  password: yup
+  lastName: yup
     .string()
-    .required("پسورد را وارد کنید")
-
+    .required("نام خانوادگی را وارد کنید")
+    ,
+    phoneNumber: yup
+      .number()
+      .required("  شماره موبایل خود را وارد کنید")
+  
 });
 const useLoginUsers = () => {
   const navigate = useNavigate();

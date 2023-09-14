@@ -15,7 +15,7 @@ const GroupingProduct = () => {
   navigate(`/category/${event.currentTarget.id}_${event.currentTarget.dataset.user}_page_1`)
   
  }
-    return ( <div className="flex flex-col items-center md:mt-5 direction gap-10 md:mt-10  md:mb-12">
+    return ( <div className="flex flex-col items-center direction gap-10 md:mt-10  md:mb-12 ">
          <h1 className="text-secondary md:text-4xl text-3xl font-bold md:mb-5"> دسته بندی محصولات</h1>
  
       <div className='hidden md:flex flex-wrap pr-16 '>
@@ -26,7 +26,7 @@ const GroupingProduct = () => {
           <img className=" opacity-0 photo object-cover
            absolute text-center top-[-5px] right-5" height={60}  width={100} 
            src={`http://localhost:8000/images/categories/icons/${item.icon}`}></img>
-             <span className="absolute z-10 text-center group-hover:text-secondary transition duration-200
+             <span className="absolute z-10 text-center group-hover:text-secondary 
 
              md:text-2xl font-bold ">  {item.name} </span>
          

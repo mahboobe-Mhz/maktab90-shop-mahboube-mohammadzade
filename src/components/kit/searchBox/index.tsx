@@ -1,28 +1,51 @@
 
 import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
+import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import { Box } from "@mui/system";
 import InputAdornment from "@mui/material/InputAdornment";
 import TuneIcon from '@mui/icons-material/Tune';
+import ClearIcon from '@mui/icons-material/Clear';
+import { Paper } from "@mui/material";
+interface Props{
+  setState:(state:boolean)=>void
+  state:boolean
+}
 
-export default function SearchBox({setState}:any) {
-  return (<div
-  className="   transition-all duration-500 bg-white" 
+const OPTIONS_LIMIT = 5;
+const defaultFilterOptions = createFilterOptions();
+
+const filterOptions = ({options, state}:any) => {
+  return defaultFilterOptions(options, state).slice(0, OPTIONS_LIMIT);
+};
+
+export default function SearchBox({setState,state}:Props) {
+
+
+
+  return (
+  <div
+  className={` transition-all duration-400 	 bg-white flex ${state? "opacity-100" :"opacity-0"} `}
   
-  onMouseLeave={()=>setState(false)}
   >
+   
     <Autocomplete
+
       disablePortal
       id="combo-box-demo"
       options={top100Films}
       role="list-box"
-      sx={{ width: 300,fontSize:"5",backgroundColor:"white",zIndex:"3", "& .MuiOutlinedInput-root": {
-        borderRadius: "50px" , padding:"0px"}}}
-      renderInput={(params) => (
+      sx={{ width: 300,fontSize:"2",backgroundColor:"white",zIndex:"3",marginTop:"10px", "& .MuiOutlinedInput-root": {
+        borderRadius: "40px !important" , padding:"0px !important"}, "& .MuiAutocomplete-input":{padding:"0px !important", paddingRight:"10px !important"}}}
+        PaperComponent={({ children }) => (
+          <Paper style={{borderRadius:"20px", paddingTop:"10px",paddingBottom:"10px", marginTop:10, border:"5px",  boxShadow: "0 1px 6px 1px black"}}>{children}</Paper>
+        )}
+        renderInput={(params) => (
         <TextField
         sx={{"& .MuiOutlinedInput-root": {
-          borderRadius: "50px" , padding:"0px",border:1 ,fontSize:15, color:"#3f3f3f",},
+          borderRadius: "40px" , padding:"0px",border:1 ,fontSize:14, color:"#3f3f3f",height:25},
+      
 }}
+style={{ backgroundColor: "pink !important" }}
           {...params}
           placeholder="جستجو در فروشگاه هوم نت ..."
           InputProps={{
@@ -37,7 +60,7 @@ export default function SearchBox({setState}:any) {
       )}
       
     />
-
+ <span onClick={()=>setState(false)} className="mt-2 transition duration-200"><ClearIcon sx={{color:"secondary.main", width:30, height:30}}/></span>
     </div>
   );
 }

@@ -14,7 +14,7 @@
 @import url('/src/style/bannerStyle.css');
 @import url('/src/style/discountStyle.css');
 @import url('/src/style/addProductPhoto.css');
-
+@import url('/src/style/scrollbar.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -49,3 +49,4 @@ html,body,#root{
   width:0;
   height:0
 }
+

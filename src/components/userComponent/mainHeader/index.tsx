@@ -58,16 +58,27 @@ const MainHeader = () => {
            <ResponsiveMenu/>
 
             </div>
-          <img className=" w-[100px] h-[30px]  md:w-[200px] mt-3 md:mt-[3px]  md:h-[50px]" onClick={navigateToHome} 
+          <img className= {`w-[100px] h-[30px]  md:w-[200px] mt-3 md:mt-[3px]  md:h-[50px]
+            `} onClick={navigateToHome} 
             src="/logo/logo-01.png"></img>
           </div>
           <div className="flex gap-4 justify-end md:pl-10 pb-1">
-<div >
-{ state ? <SearchBox setState={setState} /> : <img className=" mt-3   transition-all hover:hidden" 
-        onMouseOver={()=>setState(true)} onMouseEnter={()=>setState(true)}
-          width={20} src="/icons/icon-04.svg"></img>}
-</div>
-         <span onClick={navigateCart} className="mt-3  ">
+            <span className="absolute md:left-[120px] sm:left-[90px] ">
+            <SearchBox setState={setState} state={state} /> 
+            </span>
+
+          <img className={` transition-all duration-400	 ${!state? "opacity-100" :"opacity-0"} z-20`} 
+       onClick={()=>setState(true)}
+          width={20} height={20} src="/icons/icon-04.svg"></img>
+
+{/* { state ? <SearchBox setState={setState} state={state} /> : <img className=" mt-3   transition-all " 
+       onClick={()=>setState(true)}
+          width={20} src="/icons/icon-04.svg"></img>} */}
+       
+       
+   
+
+         <span onClick={navigateCart} className={`mt-3  `}>
           {appState.OrderData.length==0? <span></span> : 
           <span className="absolute top-[0] md:left-[65px] left-[30px] w-[17px]  bg-secondary rounded-full
            text-white px-[5px] text-xs pb-[6px] h-4">{appState.OrderData.length}</span>}

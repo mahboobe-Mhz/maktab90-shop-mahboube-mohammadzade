@@ -60,7 +60,8 @@ style={{ backgroundColor: "pink !important" }}
       )}
       
     />
- <span onClick={()=>setState(false)} className="mt-2 transition duration-200"><ClearIcon sx={{color:"secondary.main", width:30, height:30}}/></span>
+ <span onClick={()=>setState(false)} className="mt-2 transition duration-200">
+  <ClearIcon sx={{color:"secondary.main", width:30, height:30}}/></span>
     </div>
   );
 }

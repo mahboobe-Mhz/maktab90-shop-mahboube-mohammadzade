@@ -64,6 +64,7 @@ const LoginUserPage = React.lazy(
 );const AboutUs = React.lazy(
   () => import("../screens/main/users/aboutUs")
 );
+const SearchPage=React.lazy(()=>import("../screens/main/users/searchPage"))
 
 const cookies = new Cookies();
 export const routes = {
@@ -95,7 +96,8 @@ export const routes = {
     successPayment:"/successPayment",
     unSuccessPayment:"/unSuccessPayment",
     connectUs:"/connectedUs",
-    aboutUs:"/aboutUs"
+    aboutUs:"/aboutUs",
+    SearchPage:"/searching"
   },
 };
 const user = cookies.get("user");
@@ -176,6 +178,15 @@ export const router = createBrowserRouter([
 
       <SuspenseView>
         <AboutUs/>
+        </SuspenseView>
+
+    
+  }, {
+    path: routes.USERS.SearchPage,
+    element:
+
+      <SuspenseView>
+        <SearchPage/>
         </SuspenseView>
 
     

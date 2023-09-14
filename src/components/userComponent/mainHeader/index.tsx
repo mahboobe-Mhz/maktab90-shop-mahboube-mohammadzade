@@ -11,6 +11,7 @@ import BasketIcon from "../../svg/basket";
 import MainMenu from "../tailwindMenu";
 import ResponsiveMenu from "../responsiveMenu";
 import React from "react";
+import SearchBox2 from "../searchBox2";
 const MainHeader = () => {
   const navigate = useNavigate();
   const appState = useSelector(storeAppState);
@@ -63,9 +64,10 @@ const MainHeader = () => {
             src="/logo/logo-01.png"></img>
           </div>
           <div className="flex gap-4 justify-end md:pl-10 pb-1">
-            <span className="absolute md:left-[120px] sm:left-[90px] ">
-            <SearchBox setState={setState} state={state} /> 
-            </span>
+    
+            {/* <SearchBox setState={setState} state={state} />  */}
+          <SearchBox2 state={state} setState={setState}/>
+     
 
           <img className={` transition-all duration-400	 ${!state? "opacity-100" :"opacity-0"} z-20`} 
        onClick={()=>setState(true)}

@@ -14,7 +14,7 @@ const MainFooter = () => {
     navigate('/aboutUs')
   }
   return (
-    <div className="position:fixed button:0px bg-black text-white md:py-5 ">
+    <div className="position:fixed button:0px bg-black text-white md:py-5 " dir="rtl">
       <div className="flex justify-between md:px-10 px-2">
         <div className="flex md:gap-10 gap-2">
           <div className="flex flex-col">

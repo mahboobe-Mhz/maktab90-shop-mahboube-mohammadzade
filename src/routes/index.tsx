@@ -65,6 +65,9 @@ const LoginUserPage = React.lazy(
   () => import("../screens/main/users/aboutUs")
 );
 const SearchPage=React.lazy(()=>import("../screens/main/users/searchPage"))
+const SmsCode=React.lazy(()=>import("../screens/main/users/smsCode"))
+const AdminLogin=React.lazy(()=>import("../screens/auth/adminLogin"))
+const Dashboard=React.lazy(()=>import("../screens/main/users/dashboard"))
 
 const cookies = new Cookies();
 export const routes = {
@@ -97,7 +100,10 @@ export const routes = {
     unSuccessPayment:"/unSuccessPayment",
     connectUs:"/connectedUs",
     aboutUs:"/aboutUs",
-    SearchPage:"/searching"
+    SearchPage:"/searching",
+    SmsCode:"/smsCode",
+    AdminLogin:"/adminLogin",
+    Dashboard:"/Dashboard"
   },
 };
 const user = cookies.get("user");
@@ -187,6 +193,33 @@ export const router = createBrowserRouter([
 
       <SuspenseView>
         <SearchPage/>
+        </SuspenseView>
+
+    
+  }, {
+    path: routes.USERS.SmsCode,
+    element:
+
+      <SuspenseView>
+        <SmsCode/>
+        </SuspenseView>
+
+    
+  },{
+    path: routes.USERS.AdminLogin,
+    element:
+
+      <SuspenseView>
+        <AdminLogin/>
+        </SuspenseView>
+
+    
+  },{
+    path: routes.USERS.Dashboard,
+    element:
+
+      <SuspenseView>
+        <Dashboard/>
         </SuspenseView>
 
     

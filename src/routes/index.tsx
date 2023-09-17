@@ -68,6 +68,7 @@ const SearchPage=React.lazy(()=>import("../screens/main/users/searchPage"))
 const SmsCode=React.lazy(()=>import("../screens/main/users/smsCode"))
 const AdminLogin=React.lazy(()=>import("../screens/auth/adminLogin"))
 const Dashboard=React.lazy(()=>import("../screens/main/users/dashboard"))
+const HomeStore=React.lazy(()=>import("../screens/main/users/homeStore"))
 
 const cookies = new Cookies();
 export const routes = {
@@ -103,7 +104,9 @@ export const routes = {
     SearchPage:"/searching",
     SmsCode:"/smsCode",
     AdminLogin:"/adminLogin",
-    Dashboard:"/Dashboard"
+    Dashboard:"/dashboard",
+    homeStore:"/homeStore"
+
   },
 };
 const user = cookies.get("user");
@@ -163,66 +166,51 @@ export const router = createBrowserRouter([
   {
     path: routes.USERS.cart,
     element:
-
       <SuspenseView>
         <Cart/>
-        </SuspenseView>
-
-    
+        </SuspenseView> 
   }, {
     path: routes.USERS.connectUs,
     element:
-
       <SuspenseView>
         <ConnectionPage/>
-        </SuspenseView>
-
-    
+        </SuspenseView>  
   }, {
     path: routes.USERS.aboutUs,
     element:
-
       <SuspenseView>
         <AboutUs/>
-        </SuspenseView>
-
-    
+        </SuspenseView>    
   }, {
     path: routes.USERS.SearchPage,
     element:
-
       <SuspenseView>
         <SearchPage/>
         </SuspenseView>
-
-    
   }, {
     path: routes.USERS.SmsCode,
     element:
-
       <SuspenseView>
         <SmsCode/>
         </SuspenseView>
-
-    
   },{
     path: routes.USERS.AdminLogin,
     element:
-
       <SuspenseView>
         <AdminLogin/>
-        </SuspenseView>
-
-    
+        </SuspenseView> 
   },{
     path: routes.USERS.Dashboard,
     element:
-
       <SuspenseView>
         <Dashboard/>
+        </SuspenseView>  
+  },{
+    path: routes.USERS.homeStore,
+    element:
+      <SuspenseView>
+        <HomeStore/>
         </SuspenseView>
-
-    
   },
   {
     path: routes.USERS.checkout,

@@ -19,12 +19,7 @@ const MainHeader = () => {
   const user = cookies.get("user");
   const[state,setState]=useState(false)
  
-  const navigateAdmin =()=>{
-    setTimeout(() => {
-      navigate(routes.ADMIN.main)
-    }, 100);
 
-  }
   const navigateToHome=()=>{
     navigate('/')
   }
@@ -51,8 +46,8 @@ const MainHeader = () => {
             <button onClick={navigateCart} className="font-semibold hover:text-secondary hover:cursor-pointer
              focus:text-secondary focus:outline-none focus:ring-none relative"> رهگیری سفارشات</button>
            <span className="mt-3">.</span>
-            <button onClick={navigateAdmin} className="font-semibold hover:text-secondary hover:cursor-pointer
-             focus:text-secondary focus:outline-none focus:ring-none relative"> پنل نمایندگان</button>
+            <button className="font-semibold hover:text-secondary hover:cursor-pointer
+             focus:text-secondary focus:outline-none focus:ring-none relative"> هوم استور </button>
           </div>
           <div className="flex gap-5 md:pr-10 md:justify-center">
             <div  className="md:hidden flex mt-3">

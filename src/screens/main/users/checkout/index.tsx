@@ -1,98 +1,132 @@
-import Cookies from "universal-cookie";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import MainHeader from "../../../../components/userComponent/mainHeader";
 import MainFooter from "../../../../components/userComponent/mainFooter";
-import MainButton from "../../../../components/kit/button";
-import { useNavigate } from "react-router-dom";
-import { routes } from "../../../../routes";
-import DatePicker from "react-multi-date-picker";
+const LoginSchema = yup.object({
+    name: yup
+      .string()
+      .required("نام خود را وارد کنید")
+  ,
+    lastName: yup
+      .string()
+      .required("نام خانوادگی خود را وارد کنید")
+      ,
+      email: yup
+        .string()
+        .required("   ایمیل خود را وارد کنید")
+        ,
+        phoneNumber: yup
+          .string()
+          .required("  شماره تماس خود را وارد کنید")
+          ,
+          postalCode: yup
+          .string()
+          .required(" کدپستی  خود را وارد کنید")
+          ,
+          address: yup
+          .string()
+          .required(" آدرس  خود را وارد کنید")
+  });
 
-import persian from "react-date-object/calendars/persian";
-import persian_fa from "react-date-object/locales/persian_fa";
-import DateObject from "react-date-object";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  setDeliveryDate,
-  storeAppState,
-} from "../../../../redux/slice/appSlice";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-const cookies = new Cookies();
+function Checkout() {
+    const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm({
+    resolver: yupResolver(LoginSchema),
+  });
+  const handleSaveUserInfo=(event:any)=>{
+    console.log(event?.currentTarget);
 
-const Checkout = () => {
-  const navigate = useNavigate();
-  const user = cookies.get("user");
-  const dispatch = useDispatch();
-  const appState = useSelector(storeAppState);
-
-  const handlePaymentPage = () => {
-    if (appState.deliveryDate) {
-      window.location.replace("http://localhost:5173/public/payment.html");
-    } else {
-      toast.warning("   تاریخی برای تحویل محصول انتخاب کنبد😊", {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-    }
-  };
-
-  return (
-    <div dir="rtl">
-      <MainHeader />
-      <div className="p-10 w-full flex justify-center">
-        <div className=" flex flex-col gap-5 border border-2 border-black rounded-3xl p-10">
-          <div className="flex gap-5">
-            <label htmlFor=""> نام</label>
-            <input
-              className="border px-3 rounded-2xl "
-              type="text"
-              disabled
-              value={user.firstname}
-            />
-            <label htmlFor=""> نام خانوادگی</label>
-            <input
-              className="border px-3  rounded-2xl"
-              type="text"
-              disabled
-              value={user.lastname}
-            />
-          </div>
-          <div className="flex gap-5">
-            <label htmlFor=""> آدرس</label>
-            <input
-              className="border px-3 rounded-2xl "
-              type="text"
-              disabled
-              value={user.address}
-            />
-            <label htmlFor=""> تلفن همراه</label>
-            <input
-              className="border px-3  rounded-2xl"
-              type="text"
-              disabled
-              value={user.phoneNumber}
-            />
-          </div>
-          <label htmlFor=""> تاریخ تحویل</label>
-
-          <DatePicker
-            calendar={persian}
-            locale={persian_fa}
-            calendarPosition="bottom-right"
-            weekPicker={false}
-            onChange={(e: any) => {
-              dispatch(setDeliveryDate({ deliveryDate: e?.unix.toString() }));
-            }}
-          />
-
-          <span onClick={handlePaymentPage} className=" ">
-            <MainButton title="پرداخت" />
+    
+    
+  }
+  console.log(errors);
+  return ( <div>
+    <MainHeader/>
+     <form   onSubmit={handleSubmit(handleSaveUserInfo)} className='flex flex-col gap-5  items-center my-20' dir="rtl">
+        <div className='flex md:gap-20 w-full md:justify-center flex-col md:flex-row items-center'>
+    
+        <div className='flex flex-col text-right md:w-[30%] w-[80%] '>
+        <label htmlFor="" className='pr-2'>  نام </label>
+        <input type="text"
+        value={"hamid"}
+        disabled
+           {...register("name")}
+        name="name" className='  py-1 border border-secondary rounded-full px-5' />
+        <span className="text-secondary text-xs" >
+            {" "}
+           {errors? errors.name?.message:"" }
           </span>
         </div>
-      </div>
-
-      <MainFooter />
+        <div className='flex flex-col text-right md:w-[30%] w-[80%]'>
+        <label htmlFor="" className='pr-2'>  نام خانوادگی</label>
+        <input {...register("lastName")}
+         type="text" name="lastName" value={"hamidi"}
+         disabled
+          className='border   py-1 border-secondary rounded-full px-5' />
+        <span className="text-secondary text-xs" >
+            {" "}
+           {errors? errors.lastName?.message:"" }
+          </span>
+        </div>
+        </div>
+        <div className='flex md:gap-20 w-full md:justify-center flex-col md:flex-row items-center'>
+    
+    <div className='flex flex-col text-right md:w-[30%] w-[80%] '>
+    <label htmlFor="" className='pr-2'>  ایمیل </label>
+    <input type="email"
+       {...register("email")}
+    name="name" className='border  py-1  border-secondary rounded-full px-5' />
+    <span className="text-secondary text-xs" >
+        {" "}
+       {errors? errors.email?.message:"" }
+      </span>
     </div>
-  );
-};
+    <div className='flex flex-col text-right md:w-[30%] w-[80%]'>
+    <label htmlFor="" className='pr-2'>   شماره تماس</label>
+    <input {...register("phoneNumber")} type="text" name="phoneNumber" className='border  py-1  border-secondary rounded-full px-5' />
+    <span className="text-secondary text-xs" >
+        {" "}
+       {errors? errors.phoneNumber?.message:"" }
+      </span>
+    </div>
+    </div>
+    <div className='flex md:gap-20 w-full md:justify-center flex-col md:flex-row items-center'>
+    
+    <div className='flex flex-col text-right md:w-[30%] w-[80%] '>
+    <label htmlFor="" className='pr-2'>  کد پستی </label>
+    <input type="number"
+       {...register("postalCode")}
+    name="postalCode" className='border  py-1  border-secondary rounded-full px-5' />
+    <span className="text-secondary text-xs" >
+        {" "}
+       {errors? errors.postalCode?.message:"" }
+      </span>
+    </div>
+    <div className='flex flex-col text-right md:w-[30%] w-[80%]'>
+    <label htmlFor="" className='pr-2'>   آدرس</label>
+    <textarea {...register("address")}  name="address" className='border  py-1  border-secondary rounded-2xl px-5' />
+    <span className="text-secondary text-xs" >
+        {" "}
+       {errors? errors.address?.message:"" }
+      </span>
+    </div>
+    </div>
+ 
+ 
+      
+    
+       <button type='submit' value="submit" className="text-white bg-secondary px-32 py-1 rounded-full">  پرداخت</button>
+      
+    </form>
+    <MainFooter/>
+  </div>
+   
+  )
+}
 
-export default Checkout;
+export default Checkout

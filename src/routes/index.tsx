@@ -69,6 +69,8 @@ const SmsCode=React.lazy(()=>import("../screens/main/users/smsCode"))
 const AdminLogin=React.lazy(()=>import("../screens/auth/adminLogin"))
 const Dashboard=React.lazy(()=>import("../screens/main/users/dashboard"))
 const HomeStore=React.lazy(()=>import("../screens/main/users/homeStore"))
+const OtherBrandPage=React.lazy(()=>import("../screens/main/users/otherBrandPage"))
+const OtherBrandSingleProductPage=React.lazy(()=>import("../screens/main/users/otherBrandSingleProductPage"))
 
 const cookies = new Cookies();
 export const routes = {
@@ -105,7 +107,9 @@ export const routes = {
     SmsCode:"/smsCode",
     AdminLogin:"/adminLogin",
     Dashboard:"/dashboard",
-    homeStore:"/homeStore"
+    homeStore:"/homeStore",
+    OtherBrandPage:"/otherBrandPage",
+    OtherBrandSingleProductPage:"/otherBrandSingleProductPage"
 
   },
 };
@@ -211,18 +215,25 @@ export const router = createBrowserRouter([
       <SuspenseView>
         <HomeStore/>
         </SuspenseView>
+  },{
+    path: routes.USERS.OtherBrandPage,
+    element:
+      <SuspenseView>
+        <OtherBrandPage/>
+        </SuspenseView>
+  },{
+    path: routes.USERS.OtherBrandSingleProductPage,
+    element:
+      <SuspenseView>
+        <OtherBrandSingleProductPage/>
+        </SuspenseView>
   },
   {
     path: routes.USERS.checkout,
     element:
-    userRol?.role === "USER" ?  (
       <SuspenseView>
         <Checkout />
-      </SuspenseView>)
-      
-     : 
-     <Navigate to={"/login"} />
-  
+      </SuspenseView>
   },
 
   {

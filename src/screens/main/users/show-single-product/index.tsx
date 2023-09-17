@@ -12,6 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import React from "react";
 import { OrderInfo } from "../../../../api/interface/order";
+import PersonIcon from "../../../../components/svg/personIcon";
 
 
 const ShowSingleProduct = () => {
@@ -276,10 +277,50 @@ setSelectColor(event.currentTarget.id)
                 
           
              </div>
-      
+             <div className="pb-5">
+             <div className="flex flex-col gap-2 md:h-[200px] h-[150px] overflow-y-auto pt-5 border-b-2 border-black pb-5">
+              <div className="border-b border-black pb-5"> 
+                <div className="flex gap-16 "> 
+                  <span className="flex gap-2">
+                    <PersonIcon className={""}/> سعید
+                  </span>
+                  <span>۰۲/۰۶/۱۴۰۲</span>
+                </div>
+                <p className="pr-2 text-sm"> دسته یکپارچه-فریم داخلی فلزی-پایه بشقابی فلزی با آبکاری طلایی مکانیزم تک‌دسته براکت دار ثابت رنگ کالا در مانیتورهای مختلف با اندکی تفاوت نمایش داده می شود. شما با انتخاب ری </p>
+              </div>
+              <div className="border-b border-black pb-5"> 
+                <div className="flex gap-16 pb-1 "> 
+                  <span className="flex gap-2 ">
+                    <PersonIcon className={""}/> سعید
+                  </span>
+                  <span>۰۲/۰۶/۱۴۰۲</span>
+                </div>
+                <p className="pr-2 text-sm"> دسته یکپارچه-فریم داخلی فلزی-پایه بشقابی فلزی با آبکاری طلایی مکانیزم تک‌دسته براکت دار ثابت رنگ کالا در مانیتورهای مختلف با اندکی تفاوت نمایش داده می شود. شما با انتخاب ری </p>
+              </div>
+              <div className="border-b border-black pb-5"> 
+                <div className="flex gap-16 "> 
+                  <span className="flex gap-2">
+                    <PersonIcon className={""}/> سعید
+                  </span>
+                  <span>۰۲/۰۶/۱۴۰۲</span>
+                </div>
+                <p className="pr-2 text-sm"> دسته یکپارچه-فریم داخلی فلزی-پایه بشقابی فلزی با آبکاری طلایی مکانیزم تک‌دسته براکت دار ثابت رنگ کالا در مانیتورهای مختلف با اندکی تفاوت نمایش داده می شود. شما با انتخاب ری </p>
+              </div>
+              <div className="border-b border-black pb-5"> 
+                <div className="flex gap-16 "> 
+                  <span className="flex gap-2">
+                    <PersonIcon className={""}/> سعید
+                  </span>
+                  <span>۰۲/۰۶/۱۴۰۲</span>
+                </div>
+                <p className="pr-2 text-sm"> دسته یکپارچه-فریم داخلی فلزی-پایه بشقابی فلزی با آبکاری طلایی مکانیزم تک‌دسته براکت دار ثابت رنگ کالا در مانیتورهای مختلف با اندکی تفاوت نمایش داده می شود. شما با انتخاب ری </p>
+              </div>
+            </div>
+             </div>
+           
           </div>:""}
-          <span onClick={()=>setShowMoreDescription(!showMoreDescription)} className="flex justify-between border-b-2 border-black ">
-          <span className="font-bold">جزییات بیشتر </span>
+          <span onClick={()=>setShowMoreDescription(!showMoreDescription)} className="flex justify-between border-b-2 border-black  ">
+          <span className="font-bold ">جزییات بیشتر </span>
             {showMoreDescription? <span className="text-secondary font-semibold  text-2xl hover:cursor-pointer "> −</span> :<span className="font-semibold hover:cursor-pointer text-2xl "> +</span>}
           </span>
           {showMoreDescription?<div className="border border-black rounded-xl mt-2 p-2  ">

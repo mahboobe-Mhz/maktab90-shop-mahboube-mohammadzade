@@ -11,8 +11,10 @@ interface Props{
 const ProductsSize = ({errors,register}:Props)=> {
   const[showSizeBox, setShowSizeBox]=useState("dimension")
   const[sofaSize,setSofaSize]=useState([])
-  const[sofaSize2,setSofaSize2]=useState([])
-  const[sofaValue1,setSofaValue1]=useState([])
+  const[sofaSize2,setSofaSize2]=useState<{  'length':string,
+  'width':string,
+  'height':string}[]>([])
+  const[sofaValue1,setSofaValue1]=useState<string[]>([])
   const[length,setLength]=useState("")
   const[width,setWidth]=useState("")
   const[height,setHeight]=useState("")

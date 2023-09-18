@@ -71,6 +71,8 @@ const Dashboard=React.lazy(()=>import("../screens/main/users/dashboard"))
 const HomeStore=React.lazy(()=>import("../screens/main/users/homeStore"))
 const OtherBrandPage=React.lazy(()=>import("../screens/main/users/otherBrandPage"))
 const OtherBrandSingleProductPage=React.lazy(()=>import("../screens/main/users/otherBrandSingleProductPage"))
+const SuperAdminDashboard=React.lazy(()=>import("../screens/main/admin/superAdminDashboard"))
+const ColleagueProductPage=React.lazy(()=>import("../screens/main/admin/colleagueProductPage"))
 
 const cookies = new Cookies();
 export const routes = {
@@ -87,6 +89,10 @@ export const routes = {
     discount: "/admin/control/discounts",
     price: "/admin/control/price",
     addProduct: "/admin/control/addProduct",
+    SuperAdminDashboard:"/admin/superAdminDashboard",
+    ColleagueProductPage:"/admin/colleagueProductPage"
+    
+
   },
   USERS: {
     home: "/",
@@ -113,10 +119,8 @@ export const routes = {
 
   },
 };
-const user = cookies.get("user");
-const userRol = user || {};
-console.log(userRol.role);
-
+// const user = cookies.get("user");
+// const userRol = user || {};
 
 export const router = createBrowserRouter([
   {
@@ -239,23 +243,20 @@ export const router = createBrowserRouter([
   {
     path: "/admin",
     element: 
-    userRol?.role === "ADMIN" ? (
+
     <SuspenseView>
      <AdminLayout />
   </SuspenseView>
-    ) : (
-      <Navigate to={"/login"} />
-    ),
+
+    ,
     children: [
-    
       {
         path: routes.ADMIN.main,
         element:(   <SuspenseView>
       <MainAdminPage />
         </SuspenseView>)
-        
-    
       },
+    
       {
         path: routes.ADMIN.index,
         element: (
@@ -337,9 +338,24 @@ export const router = createBrowserRouter([
             ),
           },
         ],
+      },  {
+        path: routes.ADMIN.SuperAdminDashboard,
+        element:(  
+           <SuspenseView>
+      <SuperAdminDashboard />
+        </SuspenseView>)
+      },  {
+        path: routes.ADMIN.ColleagueProductPage,
+        element:(  
+           <SuspenseView>
+      <ColleagueProductPage />
+        </SuspenseView>)
       },
     ],
   },
+
+
+
 
   {
     path: routes.USERS.login,

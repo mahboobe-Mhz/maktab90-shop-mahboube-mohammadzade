@@ -1,8 +1,11 @@
 import React from 'react'
+import ColleagueProductTable from '../../../../components/adminComponent/colleagueProductTable'
 
 function ColleagueProductPage() {
   return (
-    <div>ColleagueProductPage</div>
+    <div dir='rtl'>
+        <ColleagueProductTable/>
+    </div>
   )
 }
 

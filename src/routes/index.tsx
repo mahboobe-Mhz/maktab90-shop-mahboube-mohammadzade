@@ -74,6 +74,7 @@ const OtherBrandSingleProductPage=React.lazy(()=>import("../screens/main/users/o
 const SuperAdminDashboard=React.lazy(()=>import("../screens/main/admin/superAdminDashboard"))
 const ColleagueProductPage=React.lazy(()=>import("../screens/main/admin/colleagueProductPage"))
 const ColleagueAddProduct=React.lazy(()=>import("../screens/main/admin/colleagueAddProduct"))
+const AddSuperAdmin=React.lazy(()=>import("../screens/main/admin/addSuperAdmin"))
 
 const cookies = new Cookies();
 export const routes = {
@@ -92,7 +93,8 @@ export const routes = {
     addProduct: "/admin/control/addProduct",
     SuperAdminDashboard:"/admin/superAdminDashboard",
     ColleagueProductPage:"/admin/colleagueProductPage",
-    ColleagueAddProduct:"/admin/colleagueAddProduct"
+    ColleagueAddProduct:"/admin/colleagueAddProduct",
+    AddSuperAdmin:"/admin/addSuperAdmin"
     
 
   },
@@ -357,6 +359,12 @@ export const router = createBrowserRouter([
         element:(  
            <SuspenseView>
       <ColleagueAddProduct />
+        </SuspenseView>)
+      }, {
+        path: routes.ADMIN.AddSuperAdmin,
+        element:(  
+           <SuspenseView>
+      <AddSuperAdmin />
         </SuspenseView>)
       },
     ],

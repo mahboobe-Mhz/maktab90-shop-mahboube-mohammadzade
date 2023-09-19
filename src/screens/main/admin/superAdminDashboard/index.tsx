@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import MainButton from '../../../../components/kit/button'
-import { set } from 'react-hook-form'
+
 
 function SuperAdminDashboard() {
     const [adminName,setAdminName]=useState("")
@@ -16,8 +15,7 @@ function SuperAdminDashboard() {
     const handleDeleteAdminInfo =(event:any)=>{
   
            const newAdminInfo= adminInfo.filter((item:any)=> item.adminName !== event.target.id)
-            setAdminInfo(newAdminInfo)
-            
+            setAdminInfo(newAdminInfo)      
     }
   return (
     <div>

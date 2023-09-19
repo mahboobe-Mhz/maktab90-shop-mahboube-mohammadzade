@@ -71,7 +71,7 @@ const MainPage = () => {
       </Grid>
       <Grid item md={4} sm={6} xs={12}>
         <Paper
-        onClick={()=>{navigate("/admin/superAdminDashboard")}}
+        onClick={()=>{navigate("/admin/AddSuperAdmin")}}
           sx={{
             display: "flex",
             flexDirection: "column",

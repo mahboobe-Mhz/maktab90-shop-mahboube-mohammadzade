@@ -19,7 +19,7 @@ function SuperAdminDashboard() {
     }
   return (
     <div>
-          <form dir='rtl' className='flex flex-col gap-5 border p-10 border-gray-500 rounded-2xl bg-gray-50 mt-24 md:mt-0'>
+          <div dir='rtl' className='flex flex-col gap-5 border p-10 border-gray-500 rounded-2xl bg-gray-50 mt-24 md:mt-0'>
         <div className='flex gap-10 md:flex-row flex-col'>
         <div className='flex flex-col text-right'>
     <label className='pr-2' htmlFor=""> نام فروشگاه</label>
@@ -70,7 +70,7 @@ function SuperAdminDashboard() {
         <button onClick={handleInsertAdmin} className='bg-secondary text-white rounded-full md:px-10 h-[40px] md:mt-4'> +</button>
         </div>
 <button className='text-white bg-secondary px-20 py-1.5 rounded-full w-[200px] mx-auto mt-5'> ثبت</button>
-    </form>
+    </div>
     </div>
   
   )

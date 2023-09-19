@@ -2,8 +2,9 @@ import { AxiosError } from "axios";
 
 export type LoginUserType = {
     payload:{
-        username: string;
-        password:string;
+        name: string;
+        lastName:string;
+        phoneNumber:number;
     },
     response:{
         status: string;

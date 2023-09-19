@@ -89,7 +89,7 @@ const UserLogin = () => {
     
 
         <button
-          type="submit"
+        
           className="w-full  bg-[#ffff] hover:bg-blue-dark text-[#fd6e54] font-bold h-[40px]  rounded-full "
         >
           ثبت نام

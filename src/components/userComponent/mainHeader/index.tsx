@@ -30,7 +30,7 @@ const MainHeader = () => {
 
     return ( 
  
-      <div className="grid grid-cols-2 md:grid-cols-3 direction md:pt-2 border-b shadow-md border-[#3f3f3f]">
+      <div className="grid grid-cols-2 md:grid-cols-3 direction md:pt-2 border-b shadow-md border-[#3f3f3f] ">
           <div className="hidden md:flex flex-wrap md:pr-10  gap-1 relative">
             <button onClick={navigateToHome} className="text-black font-semibold hover:text-secondary 
             hover:cursor-pointer focus:text-secondary focus:outline-none focus:ring-none relative">صفحه اصلی</button>

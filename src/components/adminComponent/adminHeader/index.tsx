@@ -27,7 +27,7 @@ const AdminHeader = () => {
              <Grid sx={{display:"flex", justifyContent:"flex-end" , gap:"20px"}}  item md={4}>
             <h4>خروج</h4>
          
-            <span className="flashIcon" >
+            <span className="flashIcon hover:cursor-pointer" >
         <img width={20} onClick={navigateHome} src="/icons/icon-02.svg"></img>
         </span>
              </Grid>

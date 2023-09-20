@@ -10,18 +10,15 @@ import PopularBrand from "../../../../components/userComponent/homeComponent/pop
 import NewsAndArticle from "../../../../components/userComponent/homeComponent/newsAndArticle";
 
 const Home = () => {
-
-  
-
-
   return (
-    <div className="w-[100%] flex flex-col  gap-5 " dir="rtl">
+    <div className="w-[100%] flex flex-col  gap-5  " dir="rtl">
       <MainHeader />
+      <div className=" container mx-auto">
       <TopOfHome />
       <SearchProducts />
       <GroupingProduct />
-      <div className=" mainBanner  w-full hidden md:flex items-center justify-center relative px-10">
-        <div className="fa-homnet  absolute top-[-5px] right-[20px] pr-[100px] pl-[30px]  pb-3 pt-3 bg-white rounded-full  ">
+      <div className=" mainBanner  w-full hidden md:flex items-center justify-center relative ">
+        <div className="fa-homnet  absolute top-[-5px] right-[-20px] pr-[100px] pl-[30px]  pb-3 pt-3 bg-white rounded-full  ">
          <span> <img src="public\logo\logo2-01.png" className=" w-[220px]    md:text-4xl  rounded-full pb-2 px-2 pt-3 border-secondary 
          border-2"/></span> 
         </div>
@@ -29,7 +26,7 @@ const Home = () => {
           className=" rounded-3xl "
           src="public/picture/banner-01.jpg"
         />
-        <div className="en-homnet absolute bottom-[-20px] left-[20px] pl-[100px] pr-[30px] pb-8 pt-4 bg-white rounded-full ">
+        <div className="en-homnet absolute bottom-[-20px] left-[-20px] pl-[100px] pr-[30px] pb-8 pt-4 bg-white rounded-full ">
         <img src="public\logo\logo3-01.png" className=" w-[220px]  md:text-4xl  rounded-full pb-2 px-2 pt-3 border-secondary border-2"/> 
         </div>
       </div>
@@ -49,6 +46,8 @@ const Home = () => {
       <AboutProduct/>
       <PopularBrand/>
       <NewsAndArticle/>
+      </div>
+     
       <MainFooter />
     </div>
   );

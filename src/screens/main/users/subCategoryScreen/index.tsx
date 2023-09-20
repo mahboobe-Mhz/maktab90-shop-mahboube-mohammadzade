@@ -77,7 +77,8 @@ const SubCategoryScreen = () => {
   return (
     <div dir="rtl">
       <MainHeader />
-      <div className="md:mx-2">
+      <div className=" container mx-auto">
+      <div >
         <div className="mt-1 w-full">
           <img src="/picture/posterCategory.png" alt="" />
         </div>
@@ -85,7 +86,7 @@ const SubCategoryScreen = () => {
         <CategoryFilter/>
 
 </div>
-        <div className="flex md:mt-20 md:gap-5 gap-1 px-3 ">
+        <div className="flex md:mt-20 md:gap-5 gap-1  ">
           <div className="md:w-[30%] ">
             <h1 className="md:text-xl text-md font-semibold  w-[150px] md:w-full  border-b-2
              border-black pb-2">
@@ -147,6 +148,8 @@ const SubCategoryScreen = () => {
         </div>
       </div>
       <img className="md:h-[200px] w-full" src="/picture/footer.png" />
+      </div>
+ 
       <MainFooter />
     </div>
   );

@@ -47,7 +47,7 @@ function Checkout() {
   console.log(errors);
   return ( <div>
     <MainHeader/>
-     <form   onSubmit={handleSubmit(handleSaveUserInfo)} className='flex flex-col gap-5  items-center my-20' dir="rtl">
+     <form   onSubmit={handleSubmit(handleSaveUserInfo)} className='flex flex-col gap-5 container mx-auto items-center my-20' dir="rtl">
         <div className='flex md:gap-20 w-full md:justify-center flex-col md:flex-row items-center'>
     
         <div className='flex flex-col text-right md:w-[30%] w-[80%] '>

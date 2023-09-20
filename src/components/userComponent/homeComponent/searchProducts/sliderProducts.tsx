@@ -19,7 +19,7 @@ const ProductsSlider = () => {
   // navigate(`/product/${event.currentTarget.id}_${event.currentTarget.dataset.user}`)
  }
     return (
-    <div className='md:px-[80px] px-5 w-full relative' >
+    <div className='w-full relative' >
        <Swiper
           
          

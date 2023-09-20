@@ -59,7 +59,7 @@ const SuccessPayment = () => {
   return (
     <div className="h-full w-full ">
       <MainHeader />
-      <div className=" flex justify-center items-center h-full flex-col gap-20">
+      <div className=" flex justify-center items-center h-full flex-col gap-20 container mx-auto">
         <div className="flex justify-center items-center ">
           <span className="w-[300px] text-center">
             باتشکر از پرداخت شماسفارش شما ثبت شده و جهت هماهنگی با شما تماس

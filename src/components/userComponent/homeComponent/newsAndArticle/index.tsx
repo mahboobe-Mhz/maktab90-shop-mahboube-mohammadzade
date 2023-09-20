@@ -9,7 +9,7 @@ import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 const NewsAndArticle = () => {
   const [counter, setCounter] = useState<number>(0);
   return (
-    <div className="md:px-14 mt-4 md:mt-0 flex flex-col  " dir="ltr">
+    <div className=" mt-4 md:mt-0 flex flex-col  " dir="ltr">
         <h1 className="text-secondary md:text-4xl text-center text-3xl font-bold md:mb-5 pb-5 md:pb-10"> اخبار و مقالات</h1>
       <div className=" flex  flex-col md:flex-row items-center ">
       <div className="md:hidden flex  px-7 ">

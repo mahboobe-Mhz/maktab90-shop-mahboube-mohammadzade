@@ -52,7 +52,7 @@ const Cart = () => {
     <div dir="rtl">
       <MainHeader />
       <ToastContainer />
-      <div className="p-10">
+      <div className="py-10 container mx-auto">
         <DeleteOrderModal titleText={titleText} handleDelete={handleDelete} deleteId={deleteId} />
         <h1 className="text-3xl font-bold mb-10">سبد خرید</h1>
  

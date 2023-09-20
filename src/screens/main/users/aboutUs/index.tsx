@@ -4,7 +4,7 @@ import MainHeader from "../../../../components/userComponent/mainHeader";
 const AboutUs = () => {
     return ( <div className=" flex flex-col ">
         <MainHeader/>
-    <div className="md:mx-16 mt-10 ">
+    <div className="container mx-auto mt-10 ">
     <div className="absolute md:right-[35%] xl:top-[210px] top-[100px] right-[20%] sm:text-[70px] text-[40px]" >درباره <span className="text-secondary">هوم نت</span></div>
         <div className=" flex xl:justify-between justify-center md:items-start items-center flex-wrap gap-3 mt-[90px]">
    

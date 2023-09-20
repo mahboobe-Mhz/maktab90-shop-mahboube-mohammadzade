@@ -12,6 +12,7 @@ import MainMenu from "../tailwindMenu";
 import ResponsiveMenu from "../responsiveMenu";
 import React from "react";
 import SearchBox2 from "../searchBox2";
+import PersonIcon from "../../svg/personIcon";
 const MainHeader = () => {
   const navigate = useNavigate();
   const appState = useSelector(storeAppState);
@@ -29,8 +30,8 @@ const MainHeader = () => {
 
 
     return ( 
- 
-      <div className="grid grid-cols-2 md:grid-cols-3 direction md:pt-2 border-b shadow-md border-[#3f3f3f] ">
+ <div className="border-b shadow-md border-[#3f3f3f]">
+     <div className="grid grid-cols-2 md:grid-cols-3 direction md:pt-2 mx-auto max-w-[1440px] ">
           <div className="hidden md:flex flex-wrap md:pr-10  gap-1 relative">
             <button onClick={navigateToHome} className="text-black font-semibold hover:text-secondary 
             hover:cursor-pointer focus:text-secondary focus:outline-none focus:ring-none relative">صفحه اصلی</button>
@@ -81,8 +82,9 @@ const MainHeader = () => {
            text-white px-[5px] text-xs pb-[6px] h-4">{appState.OrderData.length}</span>}
          <BasketIcon />
          </span>
-
-      <UserInfo/>
+         <span className="mt-3"><PersonIcon className=''/></span>
+         
+      {/* <UserInfo/> */}
         
 
        
@@ -91,6 +93,8 @@ const MainHeader = () => {
     
           </div>
       </div>
+ </div>
+   
    );
 }
  

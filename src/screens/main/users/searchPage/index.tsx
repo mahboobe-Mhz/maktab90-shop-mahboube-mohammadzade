@@ -382,9 +382,9 @@ function SearchPage() {
   return (
     <div>
         <MainHeader/>
-        <div>
+        <div className=' container mx-auto'>
             <div>
-                <h1 className='text-right text-4xl p-10'> نتایج جستجو</h1>
+                <h1 className='text-right text-4xl py-10'> نتایج جستجو</h1>
             </div>
             <div className='mx-44 flex flex-wrap justify-around gap-20 pb-5 mt-5'>
               {

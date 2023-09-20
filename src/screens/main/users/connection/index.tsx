@@ -9,7 +9,7 @@ const Connection = () => {
     return (  
         <div>
             <MainHeader/>
-             <div className='text-center flex flex-col justify-center items-center  gap-20'> 
+             <div className='text-center flex flex-col justify-center items-center container mx-auto  gap-20'> 
         <h1 className=' font-bold text-4xl mt-10 '>
             ما اینجاییم تا به سوالات شما جواب بدهیم 
         </h1>

@@ -8,7 +8,7 @@ function SmsCode() {
         navigate("/");
       };
   return (
-    <div className="h-full w-full flex  justify-center items-center">
+    <div className="h-full w-full flex  justify-center items-center container mx-auto">
     <span
       onClick={naivgateHome}
       className="border p-1 border-gray-900 rounded-full fixed md:top-[90px] md:left-[50px] top-[20px] left-[20px]"
@@ -38,7 +38,7 @@ function SmsCode() {
           id="name"
           type="text"
         />
-  
+      <a className=' text-white text-sm mr-5 mt-2' href="#"> ارسال مجدد کد</a>
       </div>
   
   
@@ -49,10 +49,11 @@ function SmsCode() {
       >
       تایید
       </button>
+
     </form> 
    
 
-    
+
     </div>
 
   </div>

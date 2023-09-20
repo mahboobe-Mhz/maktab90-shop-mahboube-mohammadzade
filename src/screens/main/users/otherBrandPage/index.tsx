@@ -46,7 +46,7 @@ function OtherBrandPage() {
   return (
     <div>
       <MainHeader/>
-      <div className='' dir='rtl'>
+      <div className=' container mx-auto' dir='rtl'>
         <div>
         <img src="public\picture\posterCategory.png" alt="" />
         <img src="public\picture\28993615.png" className='md:w-[200px] w-[100px] absolute z-20 md:top-[200px] top-[10%] left-[42%] bg-white border px-3 rounded-3xl shadow-[0_3px_10px_rgb(0,0,0,0.1)] shadow-gray-500 hover:cursor-pointer' alt="" />

@@ -16,7 +16,7 @@ function Dashboard() {
     <div>
       <MainHeader/>
       <div>
-        <div className='flex gap-5 justify-center mt-10 flex-wrap' dir='rtl'> 
+        <div className='flex gap-5 justify-center mt-10 flex-wrap container mx-auto' dir='rtl'> 
             {
                 dashboardData.map((item:string)=> 
                     state===item? <span onClick={()=>setState(item)} className='bg-secondary px-10 py-1 rounded-full text-white hover:cursor-pointer'>

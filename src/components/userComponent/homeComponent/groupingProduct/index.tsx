@@ -18,11 +18,11 @@ const GroupingProduct = () => {
     return ( <div className="flex flex-col items-center direction gap-10 md:mt-10  md:mb-12 ">
          <h1 className="text-secondary md:text-4xl text-3xl font-bold md:mb-5"> دسته بندی محصولات</h1>
  
-      <div className='hidden md:flex flex-wrap pr-16 '>
+      <div className='hidden md:flex flex-wrap  '>
         {
         catData && catData.map((item, index)=>
           <div className="flex mt-16">
-          <div className=" relative group hover:cursor-pointer w-[200px]" id={item._id} data-user={item.slugname} onClick={navigateToCat}> 
+          <div className=" relative group hover:cursor-pointer w-[190px]" id={item._id} data-user={item.slugname} onClick={navigateToCat}> 
           <img className=" opacity-0 photo object-cover
            absolute text-center top-[-5px] right-5" height={60}  width={100} 
            src={`http://localhost:8000/images/categories/icons/${item.icon}`}></img>

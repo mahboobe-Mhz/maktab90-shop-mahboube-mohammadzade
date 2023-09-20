@@ -173,7 +173,7 @@ setSelectColor(event.currentTarget.id)
   return (
     <div dir="rtl">
       <MainHeader />
-      <div className="flex flex-col gap-2 p-10">
+      <div className="flex flex-col gap-2 py-10 container mx-auto">
         <div className=" flex md:gap-20 flex-col md:flex-row">
           <div className="md:w-[50%] ">
             <SingleProductSlider selectProduct={selectProduct} />

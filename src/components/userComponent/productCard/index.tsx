@@ -44,7 +44,7 @@ const ProductCart = ({productSelect}:Props) => {
   }
 
   
-    return (<div className="mt-2  md:w-[240px] w-[150px] "   >
+    return (<div className="mt-2  md:w-[240px] w-[150px] " dir="rtl"  >
         <div className="singleCard relative shadow-xl md:rounded-3xl rounded-xl w-full">
         <img onClick={navigateToSinglePage} id={productSelect._id} data-user={productSelect.slugname} 
           className="md:h-[190px] md:w-[240px]  h-[100px]  md:rounded-3xl rounded-xl border" 

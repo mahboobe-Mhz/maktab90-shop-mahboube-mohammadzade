@@ -139,7 +139,7 @@ setSelectColor(event.currentTarget.id)
   return (
     <div dir="rtl">
       <MainHeader />
-      <div className="flex flex-col gap-2 py-10 container mx-auto ">
+      <div className="flex flex-col gap-2 py-10 container mx-auto px-3 md:px-0 ">
         <div className=" flex md:gap-20 flex-col md:flex-row">
           <div className="md:w-[50%] ">
             <SingleProductSlider selectProduct={selectProduct} />
@@ -230,16 +230,16 @@ setSelectColor(event.currentTarget.id)
             </div>
           </div>
         </div>
-        <div className="mt-10">
-          <span onClick={()=>setShowDescription(!showDescription)} className="flex justify-between border-b-2 border-black ">
+        <div className="mt-10 ">
+          <span onClick={()=>setShowDescription(!showDescription)} className="flex justify-between border-b-2 border-black pb-1 ">
           <span className="font-bold">جزییات محصول</span>
             {showDescription? <span className="text-secondary font-semibold  text-2xl  hover:cursor-pointer"> −</span> :<span className="font-semibold  text-2xl hover:cursor-pointer"> +</span>}
           </span>
-          {showDescription?<div className="border border-black rounded-xl mt-2 p-2  ">
+          {showDescription?<div className="border border-black rounded-xl mt-2 p-2 mb-3 md:mb-0  ">
               <span>محصولی با مواد اولیه عالی</span>
           </div>:""}
           
-          <span onClick={()=>setComments(!comments)} className="flex justify-between border-b-2 border-black ">
+          <span onClick={()=>setComments(!comments)} className="flex justify-between border-b-2 border-black pb-1 pt-1">
           <span className="font-bold"> نظرات</span>
             {comments? <span className="text-secondary font-semibold  text-2xl  hover:cursor-pointer"> −</span> :<span className="font-semibold hover:cursor-pointer text-2xl "> +</span>}
           </span>
@@ -269,7 +269,7 @@ setSelectColor(event.currentTarget.id)
              <button
              type="submit"
                   onClick={insertToCart}
-                  className="bg-secondary rounded-full md:px-10  md:pb-2 md:pt-2 text-white mr-5 w-[40%]"
+                  className="bg-secondary rounded-full md:px-10  md:pb-2 md:pt-2 text-white mr-5 w-[40%]  mb-3 md:mb-0 "
                 >
                   {" "}
                   ثبــــت
@@ -319,7 +319,7 @@ setSelectColor(event.currentTarget.id)
              </div>
            
           </div>:""}
-          <span onClick={()=>setShowMoreDescription(!showMoreDescription)} className="flex justify-between border-b-2 border-black  ">
+          <span onClick={()=>setShowMoreDescription(!showMoreDescription)} className="flex justify-between border-b-2 border-black pb-1 pt-1 ">
           <span className="font-bold ">جزییات بیشتر </span>
             {showMoreDescription? <span className="text-secondary font-semibold  text-2xl hover:cursor-pointer "> −</span> :<span className="font-semibold hover:cursor-pointer text-2xl "> +</span>}
           </span>
@@ -328,7 +328,7 @@ setSelectColor(event.currentTarget.id)
           </div>:""}
         </div>
         <div>
-          <h1 className="md:text-2xl font-bold text-lg">محصولات مشابه</h1>
+          <h1 className="md:text-2xl font-bold text-lg mt-3">محصولات مشابه</h1>
           <div className="flex gap-3  w-full  overflow-x-scroll overflow-y-hidden">
             {similarProduct.map((item:Product) => (
               <div className="">

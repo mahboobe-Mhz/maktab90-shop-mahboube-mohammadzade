@@ -55,8 +55,10 @@ const MainHeader = () => {
            <ResponsiveMenu/>
 
             </div>
-
-            {!state &&  <img className= {`w-[100px] h-[30px]  md:w-[200px] mt-3 md:mt-[3px]  md:h-[50px]
+            <img className= {`w-[100px] h-[30px]  md:w-[200px] mt-3 md:mt-[3px]  md:h-[50px] hidden sm:flex
+            `} onClick={navigateToHome} 
+            src="/logo/logo-01.png"></img> 
+            {!state &&  <img className= {`w-[100px] h-[30px]  md:w-[200px] mt-3 md:mt-[3px]  md:h-[50px] flex sm:hidden
             `} onClick={navigateToHome} 
             src="/logo/logo-01.png"></img> }
          
@@ -74,16 +76,24 @@ const MainHeader = () => {
 {/* { state ? <SearchBox setState={setState} state={state} /> : <img className=" mt-3   transition-all " 
        onClick={()=>setState(true)}
           width={20} src="/icons/icon-04.svg"></img>} */}
-       
-       
-   {!state &&     <span onClick={navigateCart} className={`mt-3  `}>
+      <span onClick={navigateCart} className={`mt-3  hidden sm:flex`}>
           {appState.OrderData.length==0? <span></span> : 
           <span className="absolute top-[0] md:left-[65px] left-[30px] w-[17px]  bg-secondary rounded-full
            text-white px-[5px] text-xs pb-[6px] h-4">{appState.OrderData.length}</span>}
          <BasketIcon />
-         </span> }
+         </span>    
+       
+   {!state && 
+       <span onClick={navigateCart} className={`mt-3 flex sm:hidden `}>
+          {appState.OrderData.length==0? <span></span> : 
+          <span className="absolute top-[0] md:left-[65px] left-[30px] w-[17px]  bg-secondary rounded-full
+           text-white px-[5px] text-xs pb-[6px] h-4">{appState.OrderData.length}</span>}
+         <BasketIcon />
+         </span> 
+         }
+         <span className="mt-3 hidden sm:flex"><PersonIcon className=''/></span>
 
- { !state &&   <span className="mt-3"><PersonIcon className=''/></span>}
+ { !state &&   <span className="mt-3 flex sm:hidden "><PersonIcon className=''/></span>}
        
          
       {/* <UserInfo/> */}

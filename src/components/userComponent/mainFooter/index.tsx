@@ -21,28 +21,28 @@ const MainFooter = () => {
           <div className="flex flex-col">
             <h3 className="font-bold mb-2 md:text-md text-sm ">دفتر مرکزی</h3>
             <span className=" md:text-sm text-xs pb-2 border-b md:w-[200px] w-[100px] border-white font-semibold">
-              شیراز خیابان قصرودشت مجتمع تجاری اناهیتا۲ پلاک ۴۳
+              شیراز خیابان قصرودشت مجتمع تجاری آناهیتا۲ پلاک ۴۳
             </span>
             <span className="  mt-1 mb-2 font-bold md:text-md text-sm">شماره تماس</span>
-            <span className=" md:text-sm text-xs  font-semibold"> ۰۷۱۳۲۳۰۲۰۴۶</span>
+            <span className=" md:text-sm text-xs md:pb-0 pb-1 font-semibold"> ۰۷۱۳۲۳۰۲۰۴۶</span>
             <span className=" md:text-sm text-xs border-b w-[100px] border-white pb-2 font-semibold">
               ۰۹۱۷۷۹۰۳۴۸۴
             </span>
           </div>
           <div className="flex flex-col">
-            <h3 className="font-bold mb-2  md:text-md text-sm">پیوندهای مفید </h3>
-            <span onClick={navigateHome}   className=" text-sm  font-semibold hover:cursor-pointer"> فروشگاه هومنت</span>
-            <span className=" text-sm  font-semibold md:text-md text-sm">فروشگاه</span>
-            <span onClick={navigateAboutUsPage} className=" text-sm  font-semibold hover:cursor-pointer">درباره ما</span>
-            <span onClick={navigateConnectionPage} className=" text-sm   font-semibold border-b border-white pb-2 hover:cursor-pointer">
+            <h3 className="font-bold mb-2  md:text-md text-sm ">پیوندهای مفید </h3>
+            <span onClick={navigateHome}   className=" text-sm  font-semibold hover:cursor-pointer md:pb-0 pb-1 "> فروشگاه هومنت</span>
+            <span className=" text-sm  font-semibold md:text-md  md:pb-0 pb-1 ">فروشگاه</span>
+            <span onClick={navigateAboutUsPage} className=" text-sm  font-semibold hover:cursor-pointer md:pb-0 pb-1 ">درباره ما</span>
+            <span onClick={navigateConnectionPage} className=" text-sm   font-semibold border-b border-white pb-2 hover:cursor-pointer ">
               تماس با ما
             </span>
           </div>
           <div className="flex flex-col">
             <h3 className="font-bold mb-2 md:text-md text-sm"> حساب کاربری </h3>
-            <span className=" md:text-sm text-xs font-semibold "> حساب کاربری من </span>
-            <span className=" md:text-sm text-xs  font-semibold "> تسویه حساب </span>
-            <span className=" md:text-sm text-xs font-semibold "> رهگیری سفارشات </span>
+            <span className=" md:text-sm text-xs font-semibold md:pb-0 pb-1  "> حساب کاربری من </span>
+            <span className=" md:text-sm text-xs  font-semibold md:pb-0 pb-1  "> تسویه حساب </span>
+            <span className=" md:text-sm text-xs font-semibold md:pb-0 pb-1  "> رهگیری سفارشات </span>
             <span className=" md:text-sm text-xs  font-semibold border-b border-white pb-2 ">
               {" "}
               لیست علاقه مندی{" "}

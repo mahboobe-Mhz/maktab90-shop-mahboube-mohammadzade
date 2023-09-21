@@ -173,7 +173,7 @@ setSelectColor(event.currentTarget.id)
   return (
     <div dir="rtl">
       <MainHeader />
-      <div className="flex flex-col gap-2 py-10 container mx-auto">
+      <div className="flex flex-col gap-2 py-10 container mx-auto px-2">
         <div className=" flex md:gap-20 flex-col md:flex-row">
           <div className="md:w-[50%] ">
             <SingleProductSlider selectProduct={selectProduct} />
@@ -265,11 +265,11 @@ setSelectColor(event.currentTarget.id)
           </div>
         </div>
         <div className="mt-10">
-          <span onClick={()=>setShowDescription(!showDescription)} className="flex justify-between border-b-2 border-black ">
+          <span onClick={()=>setShowDescription(!showDescription)} className="flex justify-between border-b-2 border-black mb-2">
           <span className="font-bold">جزییات محصول</span>
             {showDescription? <span className="text-secondary font-semibold  text-2xl  hover:cursor-pointer"> −</span> :<span className="font-semibold  text-2xl hover:cursor-pointer"> +</span>}
           </span>
-          {showDescription?<div className="border border-black rounded-xl mt-2 p-2  ">
+          {showDescription?<div className="border border-black rounded-xl mt-2 p-2  mb-2">
               <span>محصولی با مواد اولیه عالی</span>
           </div>:""}
           

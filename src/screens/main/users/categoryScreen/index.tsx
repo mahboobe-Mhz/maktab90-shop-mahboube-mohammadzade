@@ -77,7 +77,7 @@ const CategoryScreen = () => {
   return (
     <div dir="rtl">
       <MainHeader />
-      <div className=" container mx-auto">
+      <div className=" container mx-auto px-3 md:px-0 ">
       <div className="md:mx-2">
         <div className="mt-1 w-full">
           <img src="/picture/posterCategory.png" alt="" />

@@ -23,7 +23,7 @@ const GroupingProduct = () => {
         catData && catData.map((item, index)=>
           <div className="flex mt-16">
           <div className=" relative group hover:cursor-pointer w-[190px]" id={item._id} data-user={item.slugname} onClick={navigateToCat}> 
-          <img className=" opacity-0 photo object-cover
+          <img className=" opacity-0 group-hover:animate-[showPhoto_1s_forwards] object-cover 
            absolute text-center top-[-5px] right-5" height={60}  width={100} 
            src={`http://localhost:8000/images/categories/icons/${item.icon}`}></img>
              <span className="absolute z-10 text-center group-hover:text-secondary 

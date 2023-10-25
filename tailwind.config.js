@@ -22,6 +22,18 @@ export default {
     backgroundImage: {
       'char': "url('public/picture/صندلی.jpg')",
       'footer-texture': "url('/img/footer-texture.png')",
+    },
+    keyframes :{
+      showPhoto: {
+      '0%': {
+        opacity:' 10%'
+      },
+      '100%' :{
+          opacity: '100%'
+      }
+    }},
+    animation: {
+      showPhoto: 'showPhoto  1s forwards',
     }
     },
   },

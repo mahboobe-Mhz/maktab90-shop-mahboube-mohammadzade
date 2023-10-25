@@ -2,6 +2,8 @@ import React, { ChangeEvent, useState } from 'react'
 import { Product } from '../../../api/interface/products'
 import ProductList from './productList'
 import ClearIcon from '@mui/icons-material/Clear';
+import { useNavigate } from 'react-router-dom';
+import { routes } from '../../../routes';
 interface Props{
     state:boolean
     setState:(state:boolean)=>void
@@ -383,16 +385,22 @@ function SearchBox2({setState,state}:Props) {
             "slugname": "sndly-wyzytwrykantr-mdl-:-k2022"
         }
     ]
+    const navigate =useNavigate()
     const handleQueryChange =(event:ChangeEvent<HTMLInputElement>)=>{
 setQuery(event.currentTarget.value)
 setSearchResults(productsData.filter(product=> product.name.toLocaleLowerCase().includes(event.currentTarget.value.toLocaleLowerCase())))
+    }
+    const handleKeyDown =(event:any)=>{
+        if (event.key === 'Enter') {
+            navigate(routes.USERS.SearchPage)
+          }
     }
   return (
     <div className='z-50 flex flex-col'>
         <div   className={` transition-all duration-400 bg-white	flex ${state? "opacity-100" :"opacity-0"} `}>
 
   <div className='border-2 border-black rounded-full  px-2  h-[30px] mt-2 w-[250px]'>
-        <input type='text' onChange={handleQueryChange} className='px-2  text-sm focus:outline-0 focus:border-none focus:ring-0 ' placeholder='جستجو در هومنت'/>
+        <input type='text' onChange={handleQueryChange}  onKeyDown={handleKeyDown} className='px-2  text-sm focus:outline-0 focus:border-none focus:ring-0 ' placeholder='جستجو در هومنت'/>
         </div>
         <span onClick={()=>{setState(false),setSearchResults([])}} className="mt-2 transition duration-200">
   <ClearIcon sx={{color:"secondary.main", width:30, height:30}}/></span>

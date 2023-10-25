@@ -395,6 +395,7 @@ setSearchResults(productsData.filter(product=> product.name.toLocaleLowerCase().
             navigate(routes.USERS.SearchPage)
           }
     }
+    document.body.addEventListener('click',()=>{ setSearchResults([])}, true); 
   return (
     <div className='z-50 flex flex-col'>
         <div   className={` transition-all duration-400 bg-white	flex ${state? "opacity-100" :"opacity-0"} `}>

@@ -37,8 +37,8 @@ export default function SingleProductSlider({selectProduct}:Props) {
         modules={[FreeMode, Navigation, Thumbs]}
         className=" rounded-3xl border "
       >
-         {selectProduct.images?.map((item:any) =>
-                  <SwiperSlide>
+         {selectProduct.images?.map((item:any,index:number) =>
+                  <SwiperSlide key={index}>
         
          <img className="object-contain "src={`http://localhost:8000/images/products/images/${item}`}/>
       
@@ -70,8 +70,8 @@ export default function SingleProductSlider({selectProduct}:Props) {
         modules={[FreeMode, Navigation, Thumbs]}
         className=" rounded-3xl "
       >
-         {selectProduct.images?.map((item:any) =>
-                  <SwiperSlide>
+         {selectProduct.images?.map((item:any,index:number) =>
+                  <SwiperSlide key={index}>
          
                   <img className=""src={`http://localhost:8000/images/products/images/${item}`}/>
                   </SwiperSlide>

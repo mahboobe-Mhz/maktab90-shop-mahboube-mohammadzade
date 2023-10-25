@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { routes } from '../../../../routes';
 
 function SmsCode() {
     const navigate = useNavigate();
@@ -7,6 +8,9 @@ function SmsCode() {
 
         navigate("/");
       };
+      const navigateAdminPage =()=>{
+          navigate(routes.ADMIN.main)
+      }
   return (
     <div className="h-full w-full flex  justify-center items-center container mx-auto">
     <span
@@ -44,7 +48,7 @@ function SmsCode() {
   
 
       <button
-        type="submit"
+     onClick={navigateAdminPage}
         className="w-full  bg-[#ffff] hover:bg-blue-dark text-[#fd6e54] font-bold h-[40px]  rounded-full "
       >
       تایید

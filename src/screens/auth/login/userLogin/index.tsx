@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import useLoginUsers from "./useLogin";
 import { useState } from "react";
+import { routes } from "../../../../routes";
 
 const UserLogin = () => {
   const navigate = useNavigate();
@@ -12,6 +13,9 @@ const UserLogin = () => {
     navigate("/");
   };
   const { handleLoginUser, register, handleSubmit, errors } = useLoginUsers();
+  const navigateSmsPage =()=>{
+    navigate(routes.USERS.SmsCode)
+  }
   return (
     <div className="h-full w-full flex justify-center items-center">
       <span
@@ -119,7 +123,7 @@ const UserLogin = () => {
    
 
         <button
-          type="submit"
+          onClick={navigateSmsPage}
           className="w-full  bg-[#ffff] hover:bg-blue-dark text-[#fd6e54] font-bold h-[40px]  rounded-full "
         >
       ورود

@@ -27,7 +27,9 @@ const MainHeader = () => {
   const navigateCart=()=>{
     navigate('/cart')
   }
-
+  const handleLogin=()=>{
+    navigate(routes.USERS.login)
+  }
 
     return ( 
  <div className="border-b shadow-md border-[#3f3f3f]">
@@ -91,9 +93,9 @@ const MainHeader = () => {
          <BasketIcon />
          </span> 
          }
-         <span className="mt-3 hidden sm:flex"><PersonIcon className=''/></span>
+         <span className="mt-3 hidden sm:flex" onClick={handleLogin} ><PersonIcon className=''/></span>
 
- { !state &&   <span className="mt-3 flex sm:hidden "><PersonIcon className=''/></span>}
+ { !state &&   <span onClick={handleLogin} className="mt-3 flex sm:hidden "><PersonIcon  className=''/></span>}
        
          
       {/* <UserInfo/> */}

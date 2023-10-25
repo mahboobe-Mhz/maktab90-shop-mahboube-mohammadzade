@@ -331,7 +331,7 @@ setSelectColor(event.currentTarget.id)
           <h1 className="md:text-2xl font-bold text-lg mt-3">محصولات مشابه</h1>
           <div className="flex gap-3  w-full  overflow-x-scroll overflow-y-hidden">
             {similarProduct.map((item:Product) => (
-              <div className="">
+              <div className="" key={item._id}>
                        <ProductCart productSelect={item} />
               </div>
        

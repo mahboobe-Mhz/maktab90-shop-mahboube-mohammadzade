@@ -8,7 +8,7 @@ import FlashIcon from '../../../svg/flashIcon';
 const TopSwiper = () => {
   
     return (
-    <div className='topSliderBox relative , w-[80%px] rounded-[30px]' >
+    <div className='topSliderBox relative , w-[80%px] rounded-[30px] ' >
        <Swiper
         spaceBetween={3}
         slidesPerView="auto"

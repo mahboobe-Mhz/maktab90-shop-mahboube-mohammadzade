@@ -87,20 +87,21 @@ const CategoryScreen = () => {
         <CategoryFilter/>
         </div>
 
-        <div className="flex md:mt-20 mt-5 md:gap-6 gap-1   px-3">
-          <div className="md:w-[30%] ">
+        <div className="flex md:flex-row flex-col md:mt-15 mt-5 md:gap-6 gap-1   px-3">
+          <div className="md:w-[30%] flex md:flex-col flex-row md:gap-0 gap-2">
+           
+            <div className="mt-3 flax flex-col gap-1  pb-2 md:h-[370px] h-[250px]   overflow-y-auto" >
             <h1 className="md:text-xl text-md font-semibold w-[150px] md:w-full  border-b-2
              border-black pb-2">
               {" "}
               دسته بندی محصولات
             </h1>
-            <div className="mt-3 flax flex-col gap-1 border-b-2 border-black pb-2">
               {allCategory.map((item:Category) => (
                 <div
                   onClick={handleShowCategoryProducts}
                   id={item._id}
                   data-user={item.slugname}
-                  className="mb-1 hover:cursor-pointer "
+                  className="mb-1 hover:cursor-pointer  "
                 >
                   {item._id === catId ? (
                     <span className="font-semibold text-secondary md:text-lg text-sm">
@@ -113,13 +114,18 @@ const CategoryScreen = () => {
                 </div>
               ))}
             </div>
-            <div className="mt-3 flax flex-col gap-3 ">
+            <div className="mt-3 flax flex-col gap-3 md:h-[250px] h-[250px]   overflow-y-auto">
+            <h1 className="md:text-xl text-md font-semibold w-[150px] md:w-full  border-b-2
+             border-black pb-1 ">
+              {" "}
+               زیر دسته  محصولات
+            </h1>
               {selectSubCategory.map((item:subcategory) => (
                 <div
                   id={item._id}
                   data-user={item.slugname}
                   onClick={handleShowSubCategoryProducts}
-                  className="mb-2"
+                  className="pb-2 "
                 >
                   <span className="font-semibold md:text-lg text-sm hover:cursor-pointer"> {item.name}</span>
                 </div>
@@ -127,7 +133,7 @@ const CategoryScreen = () => {
             </div>
           </div>
           <div>
-            <div className="px-10 flex flex-wrap justify-around gap-2">
+            <div className="md:px-10 px-0 md:mt-0 mt-10 flex flex-wrap justify-around gap-2">
               {!isLoading &&
                 data.data.products.map((item:Product) => (
                   <ProductCart productSelect={item} />

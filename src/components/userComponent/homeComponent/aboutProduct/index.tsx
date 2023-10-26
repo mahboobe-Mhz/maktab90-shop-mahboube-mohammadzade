@@ -7,6 +7,7 @@ const AboutProduct = () => {
   const [counter, setCounter] = useState<number>(0);
   return (
     <div className="  md:mt-20" dir="ltr">
+      <h1 className="text-secondary md:text-4xl text-3xl font-bold md:mb-5 text-center md:pb-10 pb-5 md:pt-0 pt-4"> فروشگاه های برتر</h1>
       <div className=" md:gap-3 flex md:flex-row flex-col items-center">
         <div className=" ">
         <BottomSlider setCounter={setCounter} counter={counter} />

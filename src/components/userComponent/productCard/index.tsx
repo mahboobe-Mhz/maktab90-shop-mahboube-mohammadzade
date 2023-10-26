@@ -5,6 +5,8 @@ import { setOrderData, storeAppState } from "../../../redux/slice/appSlice";
 import BasketIcon2 from "../../svg/basketIcon2";
 import { OrderDataType, OrderInfo } from "../../../api/interface/order";
 import { Product } from "../../../api/interface/products";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface Props{
   productSelect:Product
@@ -36,11 +38,9 @@ const ProductCart = ({productSelect}:Props) => {
     }else{
       dispatch(setOrderData({ OrderData: [...appState.OrderData, orderInfo] }));
     }
-         
-      
-   
- 
-
+    toast.success("محصول به سبد خرید اضافه ", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
   }
 
   

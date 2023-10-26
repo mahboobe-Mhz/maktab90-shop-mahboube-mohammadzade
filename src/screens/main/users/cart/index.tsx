@@ -57,7 +57,7 @@ const Cart = () => {
         <h1 className="text-3xl font-bold mb-10">سبد خرید</h1>
  
         <div className=" md:flex gap-4 mb-10 ">
-          <div className="border rounded-3xl border-black md:w-[70%]">
+          <div className="border rounded-3xl border-black md:w-[70%] py-2 px-1">
             <div className="p-4 space-y-5 overflow-y-scroll h-[400px]">
               <div className="flex justify-between border-b border-black pb-3 px-4">
                 <span className="font-semibold">محصول</span>

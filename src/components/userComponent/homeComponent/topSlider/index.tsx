@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Navigation, Pagination, Scrollbar, A11y,EffectFade,Autoplay } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
 
 import FlashIcon from '../../../svg/flashIcon';
@@ -11,13 +11,17 @@ const TopSwiper = () => {
     <div className='topSliderBox relative , w-[80%px] rounded-[30px] ' >
        <Swiper
         spaceBetween={3}
-        slidesPerView="auto"
-        modules={[Navigation, Pagination, A11y]}
+        modules={[Navigation, Pagination, A11y,   EffectFade,Autoplay]}
         navigation={{
           prevEl:`.pervPage` ,
           nextEl:`.nextPage`
         }}
-
+        effect={'fade'}
+   
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
    speed={2000}
       >
              <SwiperSlide><img className='rounded-3xl md:h-[500px] h-[300px]'

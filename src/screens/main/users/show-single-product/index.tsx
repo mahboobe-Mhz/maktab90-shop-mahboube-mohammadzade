@@ -267,8 +267,7 @@ setSelectColor(event.currentTarget.id)
              <span> <input type="checkbox" /> ذخیره نام ،ایمیل و وبسایت من در مرورگر برای زمانی که دوباره دیدگاهی می نویسم.</span>
                    
              <button
-             type="submit"
-                  onClick={insertToCart}
+       
                   className="bg-secondary rounded-full md:px-10  md:pb-2 md:pt-2 text-white mr-5 w-[40%]  mb-3 md:mb-0 "
                 >
                   {" "}

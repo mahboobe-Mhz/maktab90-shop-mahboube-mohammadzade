@@ -27,6 +27,9 @@ const MainHeader = () => {
   const navigateCart=()=>{
     navigate('/cart')
   }
+  const navigateDashboard=()=>{
+    navigate('/dashboard')
+  }
   const handleLogin=()=>{
     navigate(routes.USERS.login)
   }
@@ -46,7 +49,7 @@ const MainHeader = () => {
             {/* <button className=" hover:text-secondary hover:cursor-pointer focus:text-secondary 
             focus:outline-none focus:ring-none relative mt-1"><DropDownMenu /></button> */}
             <span className="mt-3">.</span>
-            <button onClick={navigateCart} className="font-semibold hover:text-secondary hover:cursor-pointer
+            <button onClick={navigateDashboard} className="font-semibold hover:text-secondary hover:cursor-pointer
              focus:text-secondary focus:outline-none focus:ring-none relative"> رهگیری سفارشات</button>
            <span className="mt-3">.</span>
             <button className="font-semibold hover:text-secondary hover:cursor-pointer

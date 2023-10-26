@@ -11,9 +11,11 @@ function ProductList({products}:Props) {
     console.log(event.currentTarget.id);
     navigate(`/product/${event.currentTarget.id}_${event.currentTarget.dataset.user}_${event.currentTarget.dataset.category}`)
   }
-  return ( <div className='fixed top-[40px]'>
+  return ( <div className='fixed top-[40px] '>
 
-<div className='flex flex-col gap-2 h-[200px] overflow-y-scroll border pt-3 pb-3 rounded-2xl z-50 mt-5 bg-white shadow-black shadow-2xl'>{
+<div className=' bg-white shadow-black shadow-2xl border rounded-2xl  mt-5 pl-1 py-1'>
+  <div className='flex flex-col gap-2  overflow-y-scroll  pt-3 pb-3 z-50 h-[200px] '>
+  {
         products.map(product=>(
             <div key={product._id} id={product._id} data-user={product.slugname} data-category={product.category._id} onClick={handleMoveToSinglePage} className='flex hover:bg-gray-200 hover:cursor-pointer '>
                   <img  src={`http://localhost:8000/images/products/images/${product.images?.[0]}`} alt="" className="w-16 rounded-xl" />
@@ -29,7 +31,10 @@ function ProductList({products}:Props) {
 
             </div>
         ))
-        }</div>
+        }
+  </div>
+ 
+        </div>
   </div>
 
   )

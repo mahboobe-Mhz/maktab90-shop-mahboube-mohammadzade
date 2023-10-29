@@ -62,15 +62,15 @@ const TopSwiper = () => {
         </span>
      </div>
       </div>
-      <div className=' firstDetail2 md:hidden absolute top-[100px] left-[-15px] z-10 rounded-full p-2 bg-white'>
-      <div className='flex flex-col items-center bg-white rounded-full pb-2 px-6 border-2 border-black' >
-      <span className='md:text-xl text-[7px] font-semibold text-secondary'> ارسال سریع</span>
-      <span className='md:text-xs text-[5px] text-secondary'> ارسال کالا در سریعترین زمان</span>
+      <div className=' firstDetail2 md:hidden absolute top-[100px] left-[-10px] z-10 rounded-full p-2 bg-white'>
+      <div className='flex flex-col items-center bg-white rounded-full pb-1 px-2 border-2 border-black' >
+      <span className='md:text-xl text-[8px] font-semibold text-secondary'> ارسال سریع</span>
+      <span className='md:text-xs text-[6px] text-secondary'> ارسال کالا در سریعترین زمان</span>
       </div>
       </div>
       <div className='secondDetail2  md:hidden absolute bottom-[-15px] right-[-10px] z-10 rounded-full p-2 bg-white '>
-      <div className='  bg-white md:text-xl  text-[7px] font-semibold
-     text-secondary rounded-full px-5 pt-1 pb-2 border-2 border-black'>
+      <div className='  bg-white md:text-xl  text-[8px] font-semibold
+     text-secondary rounded-full px-2 pt-1 pb-1 border-2 border-black'>
       <span className=''>
         تضمین کیفیت کالا 
         </span>

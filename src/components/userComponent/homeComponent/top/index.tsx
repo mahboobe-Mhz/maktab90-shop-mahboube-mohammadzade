@@ -3,7 +3,7 @@ import TopSwiper from "../topSlider";
 
 const TopOfHome = () => {
     return ( <div className="flex justify-center">
-<div className=" w-[100%]  "> <TopSwiper/></div>
+<div className=" w-[100%] pl-1  "> <TopSwiper/></div>
  
     
     </div> );

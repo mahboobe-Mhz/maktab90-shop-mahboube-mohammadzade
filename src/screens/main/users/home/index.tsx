@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <div className="w-[100%] flex flex-col  gap-5  " dir="rtl">
       <MainHeader />
-      <div className=" container mx-auto">
+      <div className=" container mx-auto px-1">
       <TopOfHome />
       <SearchProducts />
       <GroupingProduct />

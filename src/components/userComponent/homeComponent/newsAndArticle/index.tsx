@@ -5,12 +5,21 @@ import FlashIcon from "../../../svg/flashIcon";
 import NewsSlider from "./newsSlider";
 import PersonIcon from "../../../svg/personIcon";
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
+import { useNavigate } from "react-router-dom";
+import { routes } from "../../../../routes";
 
 const NewsAndArticle = () => {
   const [counter, setCounter] = useState<number>(0);
+  const navigate = useNavigate();
+  const navigateToNewsAndArticlePage =()=>{
+  navigate(routes.USERS.NewsAndTitle)
+  }
+  const navigateToNewsAndArticleSinglePage =()=>{
+    navigate(routes.USERS.NewsAndTileSinglePage) 
+  }
   return (
     <div className=" mt-4 md:mt-0 flex flex-col  " dir="ltr">
-        <h1 className="text-secondary md:text-4xl text-center text-3xl font-bold md:mb-5 pb-5 md:pb-10"> اخبار و مقالات</h1>
+        <h1 className="text-secondary md:text-4xl text-center text-3xl font-bold md:mb-5 pb-5 md:pb-10 hover:cursor-pointer" onClick={navigateToNewsAndArticlePage}> اخبار و مقالات</h1>
       <div className=" flex  flex-col md:flex-row items-center ">
       <div className="md:hidden flex  px-7 ">
         <NewsSlider setCounter={setCounter} counter={counter} />
@@ -33,6 +42,7 @@ const NewsAndArticle = () => {
            
               <div className="flex md:justify-between  md:flex-row flex-col items-center justify-center " >
               <button
+              onClick={navigateToNewsAndArticleSinglePage}
                 className="md:flex hidden text-black border-2 font-semibold pl-4 md:pr-2
                  pr-3 md:pt-2 md:pb-2 py-3 border-black  rounded-full  md:gap-2 
                 mt-5 md:w-[160px]"
@@ -225,6 +235,7 @@ const NewsAndArticle = () => {
          
             <div className="flex md:justify-between  md:flex-row flex-col items-center justify-center " >
             <button
+            
               className="md:flex hidden text-black border-2 font-semibold pl-4 md:pr-2
                pr-3 md:pt-2 md:pb-2 py-3 border-black  rounded-full  md:gap-2 
               mt-5 md:w-[160px]"

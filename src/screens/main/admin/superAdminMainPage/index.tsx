@@ -12,6 +12,10 @@ function SuperAdminMainPage() {
     const handleNavigateAddAdmin =()=>{
       navigate(routes.ADMIN.SuperAdminDashboard)
     }
+    const handleNavigateAddStoreInfo=()=>{
+      navigate(routes.ADMIN.AddHomeStoreInfo)
+      
+    }
   return (
     <div className=" w-full h-full"> 
       <AdminHeader/>
@@ -21,6 +25,9 @@ function SuperAdminMainPage() {
       </div>
       <div onClick={handleNavigateAddAdmin} className="bg-secondary py-10 px-20 rounded-2xl text-xl text-white hover:cursor-pointer ">
         <span> افزودن ادمین</span>
+      </div>
+      <div onClick={ handleNavigateAddStoreInfo} className="bg-secondary py-10 px-20 rounded-2xl text-xl text-white hover:cursor-pointer ">
+        <span> افزودن اطلاعات فروشگاه</span>
       </div>
       </div>
       

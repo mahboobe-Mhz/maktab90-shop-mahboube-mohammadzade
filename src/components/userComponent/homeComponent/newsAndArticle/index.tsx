@@ -60,7 +60,8 @@ const NewsAndArticle = () => {
               </span>
               </div>
               <button
-                className="md:hidden i  text-black border-2 font-semibold pl-4 md:pr-2
+               onClick={navigateToNewsAndArticleSinglePage}
+                className="md:hidden   text-black border-2 font-semibold pl-4 md:pr-2
                  pr-3 md:pt-2 md:pb-2 py-3 border-black flex rounded-full  gap-2 
                 mt-5 md:w-[160px]"
               >

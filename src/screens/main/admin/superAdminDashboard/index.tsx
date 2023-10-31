@@ -1,5 +1,7 @@
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
 import React, { useState } from 'react'
-
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 
 function SuperAdminDashboard() {
     const [adminName,setAdminName]=useState("")
@@ -18,47 +20,21 @@ function SuperAdminDashboard() {
             setAdminInfo(newAdminInfo)      
     }
   return (
-    <div>
-          <div dir='rtl' className='flex flex-col gap-5 border p-10 border-gray-500 rounded-2xl bg-gray-50 mt-24 md:mt-0'>
-        <div className='flex gap-10 md:flex-row flex-col'>
-        <div className='flex flex-col text-right'>
-    <label className='pr-2' htmlFor=""> نام فروشگاه</label>
-    <input type="text" className='border border-secondary rounded-full px-3 py-1' />
-  </div>
-  <div className='flex flex-col text-right'>
-    <label className='pr-2' htmlFor="">  شماره تماس فروشگاه</label>
-    <input type="number" className='border border-secondary rounded-full px-3 py-1' />
-  </div>
-        </div>
-        <div className='flex gap-10 md:flex-row flex-col'>
-        <div className='flex flex-col text-right'>
-    <label className='pr-2' htmlFor="">  لوگو فروشگاه</label>
-    <input type="file" className='border border-secondary rounded-full px-3 py-1' />
-  </div>
-  <div className='flex flex-col text-right'>
-    <label className='pr-2' htmlFor=""> بنر فروشگاه</label>
-    <input type='file'  className='border border-secondary rounded-full px-3 py-1' />
-  </div>
-        </div>
-        <div className='flex gap-10'>
-        <div className='flex flex-col text-right'>
-    <label className='pr-2' htmlFor="">   آدرس فروشگاه</label>
-    <textarea className='border border-secondary rounded-full px-3 py-1' />
-          </div>
-        </div>
-        <div className='flex flex-col gap-1'>
+    <div dir='rtl'>
+        
+{/*       
             {
                 adminInfo.length>0 && adminInfo.map((item:any,index:number)=>
                 <div className='flex gap-2' key={index} >
                     <span> {item.adminName}</span>
                     <span>{item.adminPhoneNumber}</span>
-                    <span id={item.adminName} className='text-secondary mr-10 hover:cursor-pointer' onClick={handleDeleteAdminInfo}> X</span>
+                    <span id={item.adminName} className='text-secondary mr-10 hover:cursor-pointer'> X</span>
                 </div>
                 
                 )
-            }
-        </div>
-        <div className='flex md:gap-10 gap-5 md:flex-row flex-col'>
+               
+            } */}
+                    <div className='flex md:gap-10 gap-5 md:flex-row flex-col'>
         <div className='flex flex-col text-right'>
     <label className='pr-2' htmlFor="">  نام ادمین</label>
     <input type="text" onChange={(e)=>setAdminName(e.currentTarget.value)} className='border border-secondary rounded-full px-3 py-1' />
@@ -69,9 +45,56 @@ function SuperAdminDashboard() {
   </div>
         <button onClick={handleInsertAdmin} className='bg-secondary text-white rounded-full md:px-10 h-[40px] md:mt-4'> +</button>
         </div>
-<button className='text-white bg-secondary px-20 py-1.5 rounded-full w-[200px] mx-auto mt-5'> ثبت</button>
+<button className='text-white bg-secondary px-20 py-1.5 rounded-full w-[200px] mx-auto mt-5 mb-10'> ثبت</button>
+           
+             <TableContainer  component={Paper}>
+ 
+             <Table sx={{ minWidth: 650 ,}} aria-label="simple table">
+               <TableHead>
+                 <TableRow> 
+                 <TableCell align="center">نام ادمین</TableCell>
+                     <TableCell align="center">شماره تماس </TableCell>
+                  
+                     <TableCell align="center"> </TableCell>
+               
+                 </TableRow>
+               </TableHead>
+               <TableBody>
+            {
+               adminInfo.length>0 && adminInfo.map((item:any,index:number)=>  
+               <TableRow
+               
+               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+               <TableCell align="center">{item.adminName}</TableCell>
+               <TableCell align="center">{item.adminPhoneNumber} </TableCell>
+              
+               <TableCell align="left">   
+                  <DeleteOutlineOutlinedIcon
+                  id={item.adminName}
+                  onClick={handleDeleteAdminInfo}
+                       sx={{ color: "secondary.main" }}
+                     />
+                     <ModeEditOutlineOutlinedIcon
+              
+                       sx={{ color: "secondary.main" }}
+                     /> 
+                     </TableCell>
+              
+                              </TableRow>)
+              
+            }
+                  
+              
+               </TableBody>
+             </Table>
+            </TableContainer>
+           
+
+
+
     </div>
-    </div>
+    
   
   )
 }

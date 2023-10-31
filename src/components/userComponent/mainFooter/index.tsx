@@ -2,6 +2,7 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import { useNavigate } from "react-router-dom";
+import { routes } from "../../../routes";
 const MainFooter = () => {
   const navigate = useNavigate();
   const navigateHome =()=>{
@@ -13,6 +14,18 @@ const MainFooter = () => {
   const navigateAboutUsPage=()=>{
     navigate('/aboutUs')
   }
+  const navigateToStore =()=>{
+    navigate(routes.USERS.homeStore)
+  }
+  const navigateToHome=()=>{
+    navigate('/')
+  }
+  const navigateToDashboard =()=>{
+    navigate(routes.USERS.Dashboard)
+  }
+  const navigateToNewsAndArticlePage =()=>{
+    navigate(routes.USERS.NewsAndTitle)
+    }
   return (
     <div className=" bg-black md:py-5 ">
        <div className="position:fixed button:0px text-white container mx-auto" dir="rtl">
@@ -30,9 +43,9 @@ const MainFooter = () => {
             </span>
           </div>
           <div className="flex flex-col">
-            <h3 className="font-bold mb-2  md:text-md text-sm ">پیوندهای مفید </h3>
-            <span onClick={navigateHome}   className=" text-sm  font-semibold hover:cursor-pointer md:pb-0 pb-1 "> فروشگاه هومنت</span>
-            <span className=" text-sm  font-semibold md:text-md  md:pb-0 pb-1 ">فروشگاه</span>
+            <h3  className="font-bold mb-2  md:text-md text-sm  ">پیوندهای مفید </h3>
+            <span onClick={navigateToHome}   className=" text-sm  font-semibold hover:cursor-pointer md:pb-0 pb-1 "> فروشگاه هومنت</span>
+            <span onClick={navigateToStore} className=" text-sm  font-semibold md:text-md  md:pb-0 pb-1 hover:cursor-pointer">فروشگاه</span>
             <span onClick={navigateAboutUsPage} className=" text-sm  font-semibold hover:cursor-pointer md:pb-0 pb-1 ">درباره ما</span>
             <span onClick={navigateConnectionPage} className=" text-sm   font-semibold border-b border-white pb-2 hover:cursor-pointer ">
               تماس با ما
@@ -40,13 +53,10 @@ const MainFooter = () => {
           </div>
           <div className="flex flex-col">
             <h3 className="font-bold mb-2 md:text-md text-sm"> حساب کاربری </h3>
-            <span className=" md:text-sm text-xs font-semibold md:pb-0 pb-1  "> حساب کاربری من </span>
-            <span className=" md:text-sm text-xs  font-semibold md:pb-0 pb-1  "> تسویه حساب </span>
-            <span className=" md:text-sm text-xs font-semibold md:pb-0 pb-1  "> رهگیری سفارشات </span>
-            <span className=" md:text-sm text-xs  font-semibold border-b border-white pb-2 ">
-              {" "}
-              لیست علاقه مندی{" "}
-            </span>
+            <span className=" md:text-sm text-xs font-semibold md:pb-0 pb-1  hover:cursor-pointer " onClick={navigateToDashboard}> حساب کاربری من </span>
+            <span className=" md:text-sm text-xs font-semibold md:pb-0 pb-1  hover:cursor-pointer " onClick={navigateToNewsAndArticlePage} >   بلاگ ها </span>
+            <span className=" md:text-sm text-xs font-semibold md:pb-0 pb-1   hover:cursor-pointer" onClick={navigateToDashboard}> رهگیری سفارشات </span>
+          
           </div>
           <div>
             {" "}

@@ -30,8 +30,8 @@ const MainMenu = () => {
     return (  
         <div ref={ref} className="relative group z-30">
  {/* Category item with subcategory */}
-  <button  className="text-black  font-semibold  hover:cursor-pointer hover:text-secondary  "
-   onMouseOver={()=>setShowCategory(true)} onClick={()=>setShowCategory(true)}>محصولات</button>
+  <span  className="text-black  font-semibold  hover:cursor-pointer hover:text-secondary  "
+   onMouseOver={()=>setShowCategory(true)} onClick={()=>setShowCategory(true)}>محصولات</span>
   
 {
 showCategory ?<div className="absolute  shadow-black  shadow-xl rounded-2xl bg-white mt-2

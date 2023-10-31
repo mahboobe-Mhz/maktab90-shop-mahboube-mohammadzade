@@ -45,12 +45,12 @@ const NewsSlider = ({setCounter,counter}:Props) => {
         <div className=' absolute bottom-[50%] z-10 w-full px-5'>
         <div className="flex md:gap-5 gap-2 justify-between ">
         <span  onClick={()=>{ counter>0 && setCounter(counter-1)}} 
-        className=" pervPage hover:cursor-pointer focus:outline-none" >   <FlashIcon  className=" md:w-[40px] md:h-[40px] w-[20px] h-[20px] rotate-180
+        className=" nextPage hover:cursor-pointer focus:outline-none" >   <FlashIcon  className=" md:w-[40px] md:h-[40px] w-[20px] h-[20px] rotate-180
           border  p-1 border-black 
          rounded-full hover:border-secondary transition duration-300 " /></span>
         <span 
         onClick={()=>{counter<4 && setCounter( counter+1)}}
-         className=" nextPage hover:cursor-pointer focus:outline-none"  >   <FlashIcon  className=" md:w-[40px] md:h-[40px] w-[20px] h-[20px] border 
+         className="  pervPage hover:cursor-pointer focus:outline-none"  >   <FlashIcon  className=" md:w-[40px] md:h-[40px] w-[20px] h-[20px] border 
           p-1 border-black  rounded-full hover:border-secondary transition duration-300  " /></span>
        
     

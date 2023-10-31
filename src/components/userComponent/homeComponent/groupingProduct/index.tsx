@@ -21,7 +21,7 @@ const GroupingProduct = () => {
       <div className='hidden md:flex flex-wrap  '>
         {
         catData && catData.map((item, index)=>
-          <div className="flex mt-16">
+          <div key={item._id} className="flex mt-16">
           <div className=" relative group hover:cursor-pointer w-[190px]" id={item._id} data-user={item.slugname} onClick={navigateToCat}> 
           <img className=" opacity-0 group-hover:animate-[showPhoto_1s_forwards] object-cover 
            absolute text-center top-[-5px] right-5" height={60}  width={100} 
@@ -40,7 +40,7 @@ const GroupingProduct = () => {
       <div className='flex flex-wrap gap-2 justify-center md:hidden'>
       {
         catData && catData.map((item,index)=>
-          <div className="flex  ">
+          <div key={item._id} className="flex  ">
           <div className="  group flex  w-[140px]" id={item._id} data-user={item.slugname} 
           onClick={navigateToCat}> 
           <img className=" " height={20}  width={40} 

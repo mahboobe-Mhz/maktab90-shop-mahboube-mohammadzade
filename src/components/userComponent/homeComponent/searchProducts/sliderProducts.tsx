@@ -53,7 +53,7 @@ const ProductsSlider = () => {
       speed={2000}
       >    
         {!isLoading && value.map((product:Product, index:number)=>
-          <SwiperSlide id={product._id} data-user={product.slugname} data-category={product.category._id} 
+          <SwiperSlide key={product._id} id={product._id} data-user={product.slugname} data-category={product.category._id} 
            onClick={showSingleProduct}>
                
           <div className='flex flex-col items-center md:pt-20 pt-10 '>

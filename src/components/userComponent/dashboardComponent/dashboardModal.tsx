@@ -41,7 +41,7 @@ export default function DashboardModal({open ,setOpen,modalData}:Props) {
       >
         <Box sx={style}>
       <div dir='rtl' className='flex flex-col h-[90%] overflow-y-auto text-sm md:text-lg p-1 md:p-4'>
-        <div className='flex justify-between pb-10'>
+        <div className='flex justify-between pb-10 md:mt-1 mt-5'>
             <span>
                 <img src="public\logo\logo-01.png" alt="" className='w-[200px]' />
             </span>

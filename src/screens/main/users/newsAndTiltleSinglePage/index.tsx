@@ -12,8 +12,8 @@ function NewsAndTileSinglePage() {
         <img src="/picture/posterCategory.png" alt="" />
         <div className='px-5 mb-10'>
       
-            <div className=' flex  justify-between pb-5'>
-                <h1 className='text-secondary text-3xl pt-2'> اسفنج ۴۰ کیلویی</h1>
+            <div className=' flex md:flex-row flex-col md:gap-0 gap-2  justify-between md:pb-5 md:2'>
+                <h1 className='text-secondary md:text-3xl text-xl font-bold pt-2'> اسفنج ۴۰ کیلویی</h1>
                 <div className="flex gap-5 text-sm">
                     <span> ۱۴۰۲/۱۲/۰۳</span>
                 <span className="flex gap-2">

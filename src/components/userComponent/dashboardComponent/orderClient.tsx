@@ -26,9 +26,9 @@ const[modalData,setModalData]=React.useState("")
         <div className='text-center'>
             <h1 className='font-bold'>سفارشات</h1>
         </div>
-        <table className='w-[70%] '>
+        <table className='md:w-[70%] w-full '>
      
-        <tr className='border-b rounded-full  border-secondary  '   >
+        <tr className='border-b rounded-full  border-secondary  md:text-lg text-xs'   >
             <th className='pb-2'> ردیف</th>
             <th className='pb-2'> تاریخ ثبت سفارش</th>
             <th className='pb-2'> شماره سفارش</th>
@@ -39,7 +39,7 @@ const[modalData,setModalData]=React.useState("")
         </tr>
       
             {
-                orderData.map((item:any, index:number)=> <tr className=' text-center  mt-5' dir='rtl'>
+                orderData.map((item:any, index:number)=> <tr className=' text-center  mt-5 md:text-lg text-xs' dir='rtl'>
                     <td  className='pt-2'> {(index+1).toLocaleString("fa-ir")}</td>
                     <td  className='pt-2'>{item.date}</td>
                     <td  className='pt-2'>{ item.orderNumber}</td>

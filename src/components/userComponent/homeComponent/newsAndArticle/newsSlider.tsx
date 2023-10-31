@@ -10,7 +10,7 @@ interface Props{
 const NewsSlider = ({setCounter,counter}:Props) => {
  
     return (
-    <div className=' relative  md:w-[500px] md:h-[500px] h-[180px] w-[320px]' >
+    <div className=' relative  md:w-[500px] md:h-[500px] h-[180px]  w-[360px]' >
        <Swiper
       
        // slidesPerView="auto"
@@ -34,12 +34,12 @@ const NewsSlider = ({setCounter,counter}:Props) => {
           nextEl:`.nextPage`
         }}
 
-   className='rounded-3xl'
+   className='md:rounded-3xl rounded-none'
       >
-             <SwiperSlide><img className=' md:w-[500px] md:h-[500px] h-[200px] w-[320px] '   src='public/picture/IMG_7172.JPG'/></SwiperSlide>
-             <SwiperSlide><img className=' md:w-[500px] md:h-[500px] h-[200px] w-[320px]'   src='public/picture/IMG_7172.JPG'/></SwiperSlide>
-             <SwiperSlide><img className=' md:w-[500px] md:h-[500px] h-[200px] w-[320px]'   src='public/picture/IMG_7172.JPG'/></SwiperSlide>
-             <SwiperSlide><img className=' md:w-[500px] md:h-[500px] h-[200px] w-[320px]'   src='public/picture/IMG_7172.JPG'/></SwiperSlide>
+             <SwiperSlide><img className=' md:w-[500px] md:h-[500px] h-[180px] w-[320px] md:rounded-none rounded-3xl '   src='public/picture/IMG_7172.JPG'/></SwiperSlide>
+             <SwiperSlide><img className=' md:w-[500px] md:h-[500px] h-[180px] w-[320px] md:rounded-none rounded-3xl'   src='public/picture/IMG_7172.JPG'/></SwiperSlide>
+             <SwiperSlide><img className=' md:w-[500px] md:h-[500px] h-[180px] w-[320px] md:rounded-none rounded-3xl'   src='public/picture/IMG_7172.JPG'/></SwiperSlide>
+             <SwiperSlide><img className=' md:w-[500px] md:h-[500px] h-[180px] w-[320px] md:rounded-none rounded-3xl'   src='public/picture/IMG_7172.JPG'/></SwiperSlide>
             
     
         <div className=' absolute bottom-[50%] z-10 w-full px-5'>

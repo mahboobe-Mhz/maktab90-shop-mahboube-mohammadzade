@@ -29,8 +29,8 @@
     height: 40px;
     position: absolute;
     border-radius: 30px 0px;
-    bottom: 14px;
-    left: -100px;
+    bottom: 15px;
+    left: -99px;
     box-shadow: 10px 12px 0 0 rgb(255, 255, 255);
   
 }
@@ -42,44 +42,44 @@
     position: absolute;
     border-radius: 30px 0px;
     bottom: 67px;
-    left: 155px;
+    left: 148px;
     box-shadow: 17px 12px 0 0 #ffffff;
   
 }
 .topSliderBox >.firstDetail2::before{
     content: "";
   display: block;
-  width: 100px;
+  width: 60px;
   height: 100px;
   position: absolute;
   border-radius: 0px 30px;
-  bottom: 45px;
-  left: 15px;
-  box-shadow: -20px 2px 0px 1px rgb(255, 255, 255);
+  bottom: 44px;
+  left: 10.5px;
+  box-shadow: -16px 5px 0px 1px rgb(255, 255, 255);
 
 }
 .topSliderBox >.firstDetail2::after{
     content: "";
   display: block;
-  width: 100px;
+  width: 60px;
   height: 100px;
   position: absolute;
   border-radius: 30px 0;
   bottom: -100px;
-  left: 15px;
-  box-shadow: -16px -5px 0 0 rgb(255, 255, 255);
+  left: 10.5px;
+  box-shadow: -16px -6px 0 0 rgb(255, 255, 255);
 
 }
 .topSliderBox >.secondDetail2::after{
     content: "";
     display: block;
     width: 100px;
-    height: 25px;
+    height: 23px;
     position: absolute;
     border-radius: 30px 0px;
-    bottom: 15px;
-    left: -94px;
-    box-shadow: 4px 5px 0 0 rgb(255, 255, 255);
+    bottom: 10px;
+    left: -97.5px;
+    box-shadow: 5px 9px 0 0 rgb(248, 248, 248);
   
 }
 .topSliderBox >.secondDetail2::before{
@@ -89,9 +89,9 @@
     height: 100px;
     position: absolute;
     border-radius: 30px 0px;
-    bottom: 41px;
-    left: 50px;
-    box-shadow: 13px 8px 0 0 #ffffff;
+    bottom: 39px;
+    left: 27.5px;
+    box-shadow: 13px 7px 0 0 rgb(255, 255, 255);
   
 }
 .mainBanner>.fa-homnet ::after{

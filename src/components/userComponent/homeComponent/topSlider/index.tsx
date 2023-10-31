@@ -8,7 +8,7 @@ import FlashIcon from '../../../svg/flashIcon';
 const TopSwiper = () => {
   
     return (
-    <div className='topSliderBox relative , w-[80%px] rounded-[30px] ' >
+    <div className='topSliderBox relative , md:w-[80%px] w-[100%] rounded-[30px] md:pr-0 pr-1 ' >
        <Swiper
         spaceBetween={3}
         modules={[Navigation, Pagination, A11y,   EffectFade,Autoplay]}
@@ -68,7 +68,7 @@ const TopSwiper = () => {
       <span className='md:text-xs text-[6px] text-secondary'> ارسال کالا در سریعترین زمان</span>
       </div>
       </div>
-      <div className='secondDetail2  md:hidden absolute bottom-[-15px] right-[-10px] z-10 rounded-full p-2 bg-white '>
+      <div className='secondDetail2  md:hidden absolute bottom-[-10px] right-[-10px] z-10 rounded-full p-2 bg-white '>
       <div className='  bg-white md:text-xl  text-[8px] font-semibold
      text-secondary rounded-full px-2 pt-1 pb-1 border-2 border-black'>
       <span className=''>

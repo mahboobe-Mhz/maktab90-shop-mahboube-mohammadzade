@@ -107,10 +107,10 @@ export default function ControlledAccordions() {
             onClick={() => {
               dispatch(
                 addBreadCrumb({
-                  BreadCrumb: "دسته ها",
+                  BreadCrumb: " زیردسته ها",
                 })
               ),
-                navigate(routes.ADMIN.category);
+                navigate(routes.ADMIN.SubCatTable);
             }}
             variant="text"
             sx={{

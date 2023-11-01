@@ -26,6 +26,9 @@ const ProductsTable = React.lazy(
 const CategoryTable = React.lazy(
   () => import("../components/adminComponent/categoryTable")
 );
+const SubCatTable = React.lazy(
+  () => import("../components/adminComponent/subCatTable")
+);
 const LabelTable = React.lazy(
   () => import("../components/adminComponent/labelTable")
 );
@@ -88,6 +91,7 @@ export const routes = {
     orders: "/admin/control/orders",
     products: "/admin/control/products",
     category: "/admin/control/category",
+    SubCatTable:"/admin/control/subCategory",
     label: "/admin/control/label",
     comments: "/admin/control/comments",
     reports: "/admin/control/reports",
@@ -317,6 +321,13 @@ export const router = createBrowserRouter([
             element: (
               <SuspenseView>
                 <CategoryTable />
+              </SuspenseView>
+            ),
+          },{
+            path: routes.ADMIN.SubCatTable,
+            element: (
+              <SuspenseView>
+                <SubCatTable />
               </SuspenseView>
             ),
           },

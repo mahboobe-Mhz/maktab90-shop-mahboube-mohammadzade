@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { setEditId, storeAppState } from "../../../../redux/slice/appSlice";
 import { Controller } from "react-hook-form";
 import {  useState } from "react";
+import { subcategory } from "../../../../api/interface/subCategory";
 
 interface Props{
-    subData:[]
+    subData:Array<subcategory> |undefined
     control:any
     errors:any
 }

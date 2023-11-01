@@ -26,7 +26,7 @@ const CatSidebar = ({errors,control }:Props) => {
     const [catSelect, setCatSelect]=useState(appState?.selectEditData?.category._id)
     const [selectRadio, setSelectRadio]=useState("")
     const { data, isLoading } = useGetAllCategory();
-    const [subData , setSubData]=useState([])
+    const [subData , setSubData]=useState<subcategory[]>([])
 
 
 
@@ -67,7 +67,8 @@ res.then(response=>{
 
 
    
-   return ( <Box  bgcolor={"#ffff"} borderRadius={"20px"} paddingBottom={2}>
+   return (
+     <Box  bgcolor={"#ffff"} borderRadius={"20px"} paddingBottom={2}>
         <Box >
         <Box sx={{display:"flex", gap:"30px", paddingX:3 , justifyContent:"space-around"}}>
         {

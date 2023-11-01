@@ -32,6 +32,9 @@ const SubCatTable = React.lazy(
 const LabelTable = React.lazy(
   () => import("../components/adminComponent/labelTable")
 );
+const AddBanner = React.lazy(
+  () => import("../components/adminComponent/addBanner")
+);
 const Comments = React.lazy(
   () => import("../components/adminComponent/comments")
 );
@@ -95,6 +98,7 @@ export const routes = {
     SubCatTable:"/admin/control/subCategory",
     label: "/admin/control/label",
     comments: "/admin/control/comments",
+    addBanner:"/admin/control/addBanner",
     reports: "/admin/control/reports",
     discount: "/admin/control/discounts",
     price: "/admin/control/price",
@@ -346,6 +350,13 @@ export const router = createBrowserRouter([
             element: (
               <SuspenseView>
                 <Comments />
+              </SuspenseView>
+            ),
+          },{
+            path: routes.ADMIN.addBanner,
+            element: (
+              <SuspenseView>
+                <AddBanner />
               </SuspenseView>
             ),
           },

@@ -11,6 +11,7 @@ import { addBreadCrumb } from "../../../redux/slice/appSlice";
 import { routes } from "../../../routes";
 import LogoutIcon from '@mui/icons-material/Logout';
 import Cookies from "universal-cookie";
+import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
 const SideBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -61,6 +62,24 @@ const SideBar = () => {
           }}
         >
           <ChatIcon sx={{ width: "30px" }} /> نظرات
+        </Button>
+        <Button
+          onClick={() => {
+            dispatch(
+              addBreadCrumb({
+                BreadCrumb: " بنرها",
+              })
+            ),
+              navigate(routes.ADMIN.addBanner);
+          }}
+          sx={{
+            color: "#ffff",
+            paddingY: "15px",
+            paddingLeft: "160px",
+            fontSize: "16px",
+          }}
+        >
+          <PhotoLibraryIcon sx={{ width: "30px" }} /> بنرها
         </Button>
         <Button
           onClick={() => {

@@ -1,127 +1,74 @@
-import {Box ,Typography,TextField, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Button} from '@mui/material'
-import { useState } from 'react'
-import { Form } from 'react-router-dom'
+import {Box ,Typography,TextField, Button} from '@mui/material'
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
-
-interface Props{
-  errors:any
-
-  register:any
-}
-const ProductsSize = ({errors,register}:Props)=> {
-  const[showSizeBox, setShowSizeBox]=useState("dimension")
-  const[sofaSize,setSofaSize]=useState([])
-  const[sofaSize2,setSofaSize2]=useState<{  'length':string,
-  'width':string,
-  'height':string}[]>([])
-  const[sofaValue1,setSofaValue1]=useState<string[]>([])
-  const[length,setLength]=useState("")
-  const[width,setWidth]=useState("")
-  const[height,setHeight]=useState("")
-
-const  handleChange=(e:any)=>{
-
-setShowSizeBox(e.currentTarget.value)
-}
-const handleInsertSize=()=>{
-  setSofaSize([...sofaSize,sofaValue1])
-}
-
-
-
-const handleInsertSize2=()=>{
-const data ={
-  'length':length,
-  'width':width,
-  'height':height
-
-}
-  setSofaSize2([...sofaSize2,data])
-
-  
-}
-
-    return (  <Box sx={{
+function ProductsSize() {
+  return (
+    <div>
+          <Box sx={{
         bgcolor:"#ffff" , borderRadius:"20px", marginTop:1, paddingBottom:4
     }}>
         <Box sx={{display:"flex", justifyContent:"space-between", padding:1.5,borderBottom:"solid", borderColor:"secondary.light"}}> 
-  
-            <FormControl>
-      <FormLabel id="demo-radio-buttons-group-label">سایز کالا</FormLabel>
-      <RadioGroup
-       onChange={handleChange}
-         row
-        aria-labelledby="demo-radio-buttons-group-label"
-        defaultValue="dimension"
-        name="radio-buttons-group"
-      >
-        <FormControlLabel value="dimension" control={<Radio   sx={{
-                       '&, &.Mui-checked': {
-                         color: 'secondary.main',
-                       },
-                     }} />} label="ابعاد" />
-        <FormControlLabel value="person" control={<Radio 
-          sx={{
-            '&, &.Mui-checked': {
-              color: 'secondary.main',
-            },
-          }}/>} label="چند نفره" />
-
-      </RadioGroup>
-    </FormControl>
+            <Typography> سایز کالا</Typography>
         </Box>
         <Box padding={1.5}>
-          {showSizeBox=="dimension" ?  
-          <Box>
-            <Box>
-              {sofaSize2.length>0 && sofaSize2.map((item:any, index:number)=>   <Box>
-           
-                <Box display={'flex'} gap={2}>
-                <Typography sx={{alignSelf:"center "}}> اندازه{index+1}   </Typography>
-                <Typography sx={{alignSelf:"center"}}>عرض : {item.width}  </Typography>
-                <Typography sx={{alignSelf:"center"}}> ارتفاع : {item.height}    </Typography>
-                <Typography sx={{alignSelf:"center"}}> طول : {item.length}   </Typography>
-                </Box>
-          
-
-
-              </Box>      )}
-  
-            </Box>
-                      <Box display={"flex"} gap={2} width={"100%"} marginTop={2}>
-          <Box sx={{display:"flex", flexDirection:"column"}}>
- <TextField onChange={(e:any)=>setWidth(e.currentTarget.value)}  id="standard-basic" label="عرض " variant="standard" />
-          </Box>
-      
-<Typography sx={{alignSelf:"center" ,marginTop:2}}>CM</Typography>
-<TextField onChange={(e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)=>setHeight(e.currentTarget.value)} id="standard-basic" label="ارتفاع" variant="standard" />
-<Typography sx={{alignSelf:"center" ,marginTop:2}}>CM</Typography>
-<TextField onChange={(e:any)=>setLength(e.currentTarget.value)} id="standard-basic" label="طول" variant="standard" />
-<Typography sx={{alignSelf:"center" ,marginTop:2}}>CM</Typography>
-<Button onClick={handleInsertSize2} sx={{color:"white", bgcolor:"secondary.main", marginRight:"20px", marginTop:"10px"}}> ثبت</Button>
-</Box>
-
-          </Box>
-
-
-:<Box>
-          {sofaSize.length>0 && sofaSize.map((item:string)=>
-            <Typography sx={{alignSelf:"center" ,marginTop:2}}>{item}</Typography>
-            )
-           
-          }
-          <Box >
-          <TextField id="sofaSize2" label="چند نفره" variant="standard" onChange={(e:any)=>setSofaValue1(e.currentTarget.value)} />
-          <Button onClick={handleInsertSize} sx={{color:"white", bgcolor:"secondary.main", marginRight:"20px", marginTop:"10px"}}> ثبت</Button>
-          </Box>
-
-
+        <Box display={"flex"} gap={2} width={"100%"}>
+        <TextField id="standard-basic"    label=" چند نفره" variant="standard" />
+<Box>
+<TextField id="standard-basic"  type='number'  label="  قیمت(تومان)" variant="standard" />
 
 </Box>
-}
-  
+<TextField id="standard-basic"  label=" قیمت تخفیفی (تومان)" variant="standard" />
+<TextField id="standard-basic" label="رنگ" variant="standard" />
+
+</Box>
+
         </Box>
-       </Box> );
+        <Button sx={{ bgcolor:"secondary.main", color:"white" , marginRight:"10px"}}>  افزودن +</Button>
+        <Box marginTop={5}>
+        <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow >
+            <TableCell align="right">چند نفره </TableCell>
+            <TableCell align="right">قیمت </TableCell>
+            <TableCell></TableCell>
+            <TableCell align="right"> قیمت تخفیفی </TableCell>
+            <TableCell align="right"> رنگ  </TableCell>
+            <TableCell>عملیات</TableCell>
+         
+          </TableRow>
+        </TableHead>
+        <TableBody>
+
+           <TableRow
+       
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell align="right" component="th" scope="row">دو نفره</TableCell>
+              <TableCell align="right" component="th" scope="row">۴,۰۰۰۰,۰۰۰ تومان</TableCell>
+              ‌<TableCell align="right"> ۳,۰۰۰۰,۰۰۰ تومان</TableCell>
+              <TableCell align="right"> بنفش </TableCell>
+            <TableCell>
+            <DeleteIcon/>
+            <EditIcon/>
+            </TableCell>
+            </TableRow>
+    
+        </TableBody>
+      </Table>
+    </TableContainer>
+        </Box>
+       </Box> 
+    </div>
+  )
 }
- 
-export default ProductsSize;
+
+export default ProductsSize

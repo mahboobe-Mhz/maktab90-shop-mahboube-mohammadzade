@@ -21,7 +21,8 @@ const InventoryProducts = ({register,errors}:Props)=> {
 
 
 
-    return (  <Box sx={{
+    return ( 
+       <Box sx={{
         bgcolor:"#ffff" , borderRadius:"20px", marginTop:1, paddingBottom:4
     }}>
         <Box sx={{display:"flex", justifyContent:"space-between", padding:1.5,borderBottom:"solid", borderColor:"secondary.light"}}> 

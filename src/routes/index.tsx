@@ -82,6 +82,7 @@ const SuperAdminMainPage=React.lazy(()=>import("../screens/main/admin/superAdmin
 const NewsAndTitle=React.lazy(()=>import("../screens/main/users/newsAndTitle"))
 const NewsAndTileSinglePage=React.lazy(()=>import("../screens/main/users/newsAndTiltleSinglePage"))
 const AddHomeStoreInfo=React.lazy(()=>import("../screens/main/admin/addHomeStoreInfo"))
+const ContactsPage=React.lazy(()=>import("../screens/main/admin/contactsPage"))
 const cookies = new Cookies();
 export const routes = {
   ADMIN: {
@@ -103,7 +104,8 @@ export const routes = {
     ColleagueAddProduct:"/admin/colleagueAddProduct",
     AddSuperAdmin:"/admin/addSuperAdmin",
     SuperAdminMainPage:"/admin/superAdminMainPage",
-    AddHomeStoreInfo:"/admin/addHomeStoreInfo"
+    AddHomeStoreInfo:"/admin/addHomeStoreInfo",
+    contactsPage:"/admin/contactsPage"
 
     
 
@@ -407,6 +409,12 @@ export const router = createBrowserRouter([
         element:(  
            <SuspenseView>
       <AddHomeStoreInfo />
+        </SuspenseView>)
+      },{
+        path: routes.ADMIN.contactsPage,
+        element:(  
+           <SuspenseView>
+      <ContactsPage />
         </SuspenseView>)
       },
     ],

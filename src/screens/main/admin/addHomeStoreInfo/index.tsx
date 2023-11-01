@@ -33,6 +33,7 @@ function AddHomeStoreInfo() {
         <div className='flex flex-col gap-1'></div>
         </div>
         <button className='text-white bg-secondary px-20 py-1.5 rounded-full w-[200px] mx-auto mt-5'> ثبت</button>
+        <button className='text-white bg-secondary px-20 py-1.5 rounded-full w-[200px] mx-auto mt-5 mr-2'> ویرایش</button>
     </div>
   )
 }

@@ -7,17 +7,18 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
+import DoneIcon from '@mui/icons-material/Done';
+import DeleteCommentModal from './deleteCommentModal';
 
 
 
 
 export default function CommentsTable() {
-
+  const[openDeleteModal,setOpenDeleteModal]=React.useState(false)
 
   return (
     <TableContainer  component={Paper}>
- 
+  <DeleteCommentModal setOpenDeleteModal={setOpenDeleteModal}  openDeleteModal={openDeleteModal } />
       <Table sx={{ minWidth: 650 ,}} aria-label="simple table">
         <TableHead>
           <TableRow> 
@@ -26,6 +27,7 @@ export default function CommentsTable() {
               <TableCell align="center">درپاسخ به </TableCell>
           
               <TableCell align="center"> تاریخ</TableCell>
+              <TableCell> حالت نظر</TableCell>
               <TableCell align="center"> </TableCell>
         
           </TableRow>
@@ -40,12 +42,13 @@ export default function CommentsTable() {
               <TableCell align="center">عالی </TableCell>
               <TableCell align="center">  صندلی</TableCell>
               <TableCell align="center">  42/05/02</TableCell>
+              <TableCell>در انتظار تایید </TableCell>
               <TableCell align="left">   
                  <DeleteOutlineOutlinedIcon
-     
+                  onClick={()=>setOpenDeleteModal(true)}
                       sx={{ color: "secondary.main" }}
                     />
-                    <ModeEditOutlineOutlinedIcon
+                    <DoneIcon
 
                       sx={{ color: "secondary.main" }}
                     /> 

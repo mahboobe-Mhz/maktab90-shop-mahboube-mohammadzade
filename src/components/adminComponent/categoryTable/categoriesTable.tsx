@@ -30,19 +30,21 @@ interface Props {
   setOpen:any
   setEditCat:any
   editCat:any
+  setEditFlag:(flag:boolean)=>void
 }
  type ShowCatData = {
   name: string;
   subCat: string[];
 } | boolean;
 
-export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, setEditCat,editCat}: Props) {
+export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, setEditCat,editCat,setEditFlag}: Props) {
   const dispatch = useDispatch();
   const [subCatData, steSubCatData] = React.useState();
   const { data, isLoading } = useGetAllSubCategory();
   const[openDeleteModal,setOpenDeleteModal]=React.useState(false)
   const [selected, setSelected] = React.useState<string[]>([]);
   const[titleText,setTitleText]=React.useState("")
+
   const showSub = (event: React.MouseEvent) => {
     const categoryId = event.currentTarget.id;
     dispatch(setModal({ Modal: true }));
@@ -52,15 +54,7 @@ export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, se
       !isLoading && dataCat.filter((item: any) => item.category === categoryId);
     steSubCatData(FindCatData);
   };
-  // const handleSelectAll = (event: any) => {
-  //   if (event.currentTarget.checked) {
-  //     const allCatIdArray: any[] | ((prevState: never[]) => never[]) = [];
-  //     AllCategoryData.map((item: any) => allCatIdArray.push(item._id));
-  //     setSelected(allCatIdArray);
-  //   } else {
-  //     setSelected([]);
-  //   }
-  // };
+
   const handelCheckBox = (event: any) => {
     if (selected.length !== 0) {
       selected.map((item: string) => {
@@ -79,6 +73,7 @@ export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, se
     }
   };
       const handleEditCat=(e:any)=>{
+        setEditFlag(true)
         setOpen(true)
         const dataCat = !isLoading && data.data.subcategories;
         const FindCatData = !isLoading && dataCat.filter((item: any) => item.category === e.currentTarget.id);
@@ -105,7 +100,7 @@ export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, se
       }
   return (
     <>
-      {!isLoading && subCatData && <BasicModal subData={subCatData} />}
+      {!isLoading && subCatData && <BasicModal subData={subCatData}  />}
       <DeleteCatModal setOpenDeleteModal={setOpenDeleteModal}  openDeleteModal={openDeleteModal } titleText={titleText}/>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -145,6 +140,7 @@ export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, se
                 key={row._id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
+           
                 <TableCell data-tag="category" sx={{ textAlign: "right" }}>
                   <Checkbox
                     id={row._id}
@@ -156,8 +152,12 @@ export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, se
                     onChange={handelCheckBox}
                     checked={handleCheckBox(row._id)}
                   />{" "}
+                 
                   {row.name}{" "}
                 </TableCell>
+                <TableCell sx={{ textAlign: "right" }}>
+               <img className="w-[50px] h-[50px]" src="/picture/لوسترروشنایی.jpg" alt="" />
+                </TableCell> 
                 <TableCell align="left">
                   <Box>
                     <DeleteOutlineOutlinedIcon

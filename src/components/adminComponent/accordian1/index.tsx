@@ -107,6 +107,27 @@ export default function ControlledAccordions() {
             onClick={() => {
               dispatch(
                 addBreadCrumb({
+                  BreadCrumb: "دسته ها",
+                })
+              ),
+                navigate(routes.ADMIN.category);
+            }}
+            variant="text"
+            sx={{
+              width: "100%",
+              color: "#ffff",
+              fontFamily: "nimkat",
+              paddingLeft: "140px",
+            }}
+          >
+            زیردسته ها
+          </Button>
+        </AccordionDetails>
+        <AccordionDetails>
+          <Button
+            onClick={() => {
+              dispatch(
+                addBreadCrumb({
                   BreadCrumb: "برچسب ها",
                 })
               ),

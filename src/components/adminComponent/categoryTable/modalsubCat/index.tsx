@@ -27,7 +27,8 @@ interface Props {
   subData: Array<{
     _id: string;
     name: string;
-  }>;
+  }>
+
 }
 
 export default function BasicModal({ subData }: Props) {

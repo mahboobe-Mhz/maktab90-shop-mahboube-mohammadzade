@@ -18,6 +18,7 @@ const ShowTableBox = () => {
   const [AllCategoryData, setAllCategoryData] = React.useState<Category[]>([]);
   const { data, isLoading, refetch } = useGetPaginationCategory(page, 5);
   const [open, setOpen] = React.useState<boolean>(false);
+  const[editFlag , setEditFlag]=React.useState(false)
   const [editCat , setEditCat]=React.useState<ShowCatData>({name :"", subCat:[]})
   React.useEffect(() => {
     const req = axios.get(
@@ -34,9 +35,10 @@ const ShowTableBox = () => {
     refetch();
   }, [page]);
 
+
   return (
     <>
-      <CategoryModal open={open} setOpen={setOpen} editCat={editCat}/>
+      <CategoryModal open={open} setOpen={setOpen} editCat={editCat} editFlag={editFlag} />
       <Box
         sx={{
           display: "flex",
@@ -63,7 +65,7 @@ const ShowTableBox = () => {
           دسته ها
         </Typography>
         <Button
-          onClick={() => setOpen(true)}
+        onClick={() => {setOpen(true) ,setEditFlag(false) }}
           sx={{
             color: "#ffff",
             paddingX: "30px",
@@ -102,6 +104,7 @@ const ShowTableBox = () => {
             setOpen={setOpen}
             editCat={editCat} 
              setEditCat={setEditCat}
+             setEditFlag={setEditFlag}
           />
         )}
         <PaginationControlled

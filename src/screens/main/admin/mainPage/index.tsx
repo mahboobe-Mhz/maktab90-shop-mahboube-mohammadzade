@@ -21,6 +21,7 @@ const MainPage = () => {
     >
       <Grid item md={4} sm={6} xs={12}>
         <Paper
+        onClick={   ()=>navigate(routes.ADMIN.addArticle)}
           sx={{
             display: "flex",
             flexDirection: "column",

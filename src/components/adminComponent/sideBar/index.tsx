@@ -12,6 +12,7 @@ import { routes } from "../../../routes";
 import LogoutIcon from '@mui/icons-material/Logout';
 import Cookies from "universal-cookie";
 import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
+import ArticleIcon from '@mui/icons-material/Article';
 const SideBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -81,6 +82,7 @@ const SideBar = () => {
         >
           <PhotoLibraryIcon sx={{ width: "30px" }} /> بنرها
         </Button>
+     
         <Button
           onClick={() => {
             dispatch(

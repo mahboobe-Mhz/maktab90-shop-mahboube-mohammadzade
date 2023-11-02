@@ -38,6 +38,9 @@ const AddBanner = React.lazy(
 const Comments = React.lazy(
   () => import("../components/adminComponent/comments")
 );
+const AddArticle = React.lazy(
+  () => import("../components/adminComponent/addArticle")
+);
 const Reports = React.lazy(
   () => import("../components/adminComponent/reportsPage")
 );
@@ -99,6 +102,7 @@ export const routes = {
     label: "/admin/control/label",
     comments: "/admin/control/comments",
     addBanner:"/admin/control/addBanner",
+    addArticle:"/admin/control/addArticle",
     reports: "/admin/control/reports",
     discount: "/admin/control/discounts",
     price: "/admin/control/price",
@@ -357,6 +361,13 @@ export const router = createBrowserRouter([
             element: (
               <SuspenseView>
                 <AddBanner />
+              </SuspenseView>
+            ),
+          },{
+            path: routes.ADMIN.addArticle,
+            element: (
+              <SuspenseView>
+                <AddArticle />
               </SuspenseView>
             ),
           },

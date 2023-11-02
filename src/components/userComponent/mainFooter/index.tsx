@@ -4,10 +4,12 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 import { useNavigate } from "react-router-dom";
 import { routes } from "../../../routes";
 const MainFooter = () => {
+
   const navigate = useNavigate();
   const navigateHome =()=>{
     navigate('/')
   }
+  
   const navigateConnectionPage=()=>{
     navigate('/connectedUs')
   }
@@ -18,7 +20,8 @@ const MainFooter = () => {
     navigate(routes.USERS.homeStore)
   }
   const navigateToHome=()=>{
-    navigate('/')
+    navigate('/category/649978c10d81c12153062d42_mblman-adary_page_1')
+  
   }
   const navigateToDashboard =()=>{
     navigate(routes.USERS.Dashboard)

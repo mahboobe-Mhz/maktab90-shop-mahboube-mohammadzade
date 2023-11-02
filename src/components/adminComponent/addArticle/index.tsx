@@ -18,7 +18,7 @@ function AddArticle() {
     const[openDeleteModal,setOpenDeleteModal]=React.useState(false)
     const[openInsertArticleModal, setOpenInsertArticleModal]=React.useState(false)
   return (
-    <div>
+    <div dir='rtl'>
         <DeleteArticleModal setOpenDeleteModal={setOpenDeleteModal}  openDeleteModal={openDeleteModal } />
        <AddNewArticleModal openInsertArticleModal={openInsertArticleModal} setOpenInsertArticleModal={setOpenInsertArticleModal} /> 
              <Box
@@ -31,7 +31,9 @@ function AddArticle() {
               paddingX: "20px",
               paddingY: "5px",
               borderRadius: "20px",
-              marginBottom:"10px"
+              marginBottom:"10px",
+              direction:"rtl"
+
             }}
           >
             <Typography

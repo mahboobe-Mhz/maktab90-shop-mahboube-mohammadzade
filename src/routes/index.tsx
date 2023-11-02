@@ -102,11 +102,11 @@ export const routes = {
     label: "/admin/control/label",
     comments: "/admin/control/comments",
     addBanner:"/admin/control/addBanner",
-    addArticle:"/admin/control/addArticle",
     reports: "/admin/control/reports",
     discount: "/admin/control/discounts",
     price: "/admin/control/price",
     addProduct: "/admin/control/addProduct",
+    addArticle:"/admin/addArticle",
     SuperAdminDashboard:"/admin/superAdminDashboard",
     ColleagueProductPage:"/admin/colleagueProductPage",
     ColleagueAddProduct:"/admin/colleagueAddProduct",
@@ -363,13 +363,6 @@ export const router = createBrowserRouter([
                 <AddBanner />
               </SuspenseView>
             ),
-          },{
-            path: routes.ADMIN.addArticle,
-            element: (
-              <SuspenseView>
-                <AddArticle />
-              </SuspenseView>
-            ),
           },
           {
             path: routes.ADMIN.reports,
@@ -421,6 +414,13 @@ export const router = createBrowserRouter([
       <AddSuperAdmin />
         </SuspenseView>)
       }, {
+        path: routes.ADMIN.addArticle,
+        element: (
+          <SuspenseView>
+            <AddArticle />
+          </SuspenseView>
+        ),
+      },{
         path: routes.ADMIN.SuperAdminMainPage,
         element:(  
            <SuspenseView>

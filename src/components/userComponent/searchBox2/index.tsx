@@ -8,6 +8,9 @@ interface Props{
     state:boolean
     setState:(state:boolean)=>void
 }
+
+
+
 function SearchBox2({setState,state}:Props) {
     const [query, setQuery]=useState("")
     const [products,setProducts]=useState<Product[]>([])
@@ -395,7 +398,22 @@ setSearchResults(productsData.filter(product=> product.name.toLocaleLowerCase().
             navigate(routes.USERS.SearchPage)
           }
     }
+    const handlelog =()=>{
+        setSearchResults([])
+        
+    }
     document.body.addEventListener('click',()=>{ setSearchResults([])}, true); 
+    window.onscroll = () => {
+        const {
+            scrollTop,
+            clientHeight,
+            scrollHeight,
+            
+        } = document.documentElement    
+        if (scrollTop > clientHeight/3) {
+            handlelog()
+            }
+        }
   return (
     <div className='z-50 flex flex-col'>
         <div   className={` transition-all duration-400 bg-white	flex ${state? "opacity-100" :"opacity-0"} `}>

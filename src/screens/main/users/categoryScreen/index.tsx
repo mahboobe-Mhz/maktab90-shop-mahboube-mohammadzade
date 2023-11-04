@@ -1,37 +1,48 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   useLocation,
   useNavigate,
   useParams,
-  useSearchParams,
+  Link
 } from "react-router-dom";
-import useGetAllProducts from "../../../../api/services/products/useGetAllProducts";
+import Pagination from '@mui/material/Pagination';
 import MainHeader from "../../../../components/userComponent/mainHeader";
 import ProductCart from "../../../../components/userComponent/productCard";
 import MainFooter from "../../../../components/userComponent/mainFooter";
 import useGetCategoryProducts from "../../../../api/services/products/useGetAllProductOfCategory";
-import ClientPagination from "../../../../components/userComponent/catClientPagination";
 import { toast } from "react-toastify";
 import CategoryFilter from "../../../../components/userComponent/categoryFilter";
 import { Category } from "../../../../api/interface/category";
 import { subcategory } from "../../../../api/interface/subCategory";
 import { Product } from "../../../../api/interface/products";
+import Stack from '@mui/material/Stack';
+import PaginationItem from '@mui/material/PaginationItem';
+import FlashIcon2 from "../../../../components/svg/flashIcon2";
+import FlashIcon3 from "../../../../components/svg/flashIcon3";
 
 const CategoryScreen = () => {
+
   //  const locationParams = useLocation();
   //const searchParams=useSearchParams()
   //   const url = window.location.href;
   const useParam = useParams();
 
   const catId = useParam.id?.split("_")[0];
+  const catName=useParam.id?.split("_")[1]
   const pageNum = useParam.id?.split("_")[3];
-
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  //const page = parseInt(query.get('page') || '1', 10);
   const { data, isLoading, refetch, isError } = useGetCategoryProducts(
     Number(pageNum),
     6,
     catId
   );
+  const [page, setPage] = React.useState(1);
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
   const [countPage, setCountPage] = useState<number>(0);
   const [selectSubCategory, setSelectSubCategory] = useState([]);
   const [allCategory, setAllCategory] = useState([]);
@@ -139,8 +150,31 @@ const CategoryScreen = () => {
                   <ProductCart productSelect={item} />
                 ))}
             </div>
-            <div className="w-full flex justify-center">
-              <ClientPagination countPage={countPage} />
+            <div className="w-full flex justify-center mt-10" dir="ltr">
+      <Stack>
+      <Pagination
+      page={page}
+      size="large"
+      count={9} 
+      siblingCount={0} 
+     // boundaryCount={2} 
+      onChange={handleChange}
+      renderItem={(item) => (
+        <PaginationItem
+
+          component={Link}
+          slots={{ previous:FlashIcon3 , next:FlashIcon2 }}
+          to={`/category/${catId}_${catName}_page_${item.page === 1 ? '1' : `${item.page}`}`}
+          {...item}
+        />
+      )}
+    />
+      </Stack>
+ 
+
+ 
+
+           {/* <ClientPagination countPage={countPage} /> */}
             </div>
           </div>
         </div>

@@ -22,7 +22,9 @@
 @font-face {
     font-family: 'Nimkat';
     src: url('/src/assets/font/Nimkat-Medium.woff2') format('woff2'),
-        url('/src/assets/font/Nimkat-Medium.woff') format('woff');
+    url('/src/assets/font/Nimkat-Medium.woff') format('woff');
+    /* src:url('src\assets\font\IRANSans.woff2') format('woff2');
+    src:url('src\assets\font\IRANSans.woff') format('woff'); */
     font-weight: 500;
     font-style: normal;
     font-display: swap;

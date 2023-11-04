@@ -402,7 +402,13 @@ setSearchResults(productsData.filter(product=> product.name.toLocaleLowerCase().
         setSearchResults([])
         
     }
-    document.body.addEventListener('click',()=>{ setSearchResults([])}, true); 
+
+        document.body.addEventListener('click',()=>{     setTimeout(() => {
+            setSearchResults([])
+            
+        }, 300)} , true)
+
+
     window.onscroll = () => {
         const {
             scrollTop,

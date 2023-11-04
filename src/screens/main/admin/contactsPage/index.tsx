@@ -6,22 +6,41 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { FormControl, InputLabel, MenuItem } from '@mui/material';
+import { Box, FormControl, Input, InputLabel, MenuItem } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
+import SearchIcon from '../../../../components/svg/searchIcon';
+import PaginationControlled from '../../../../components/adminComponent/pagination';
 
 
 
 
 function ContactsPage() {
   const [role, setRole] = React.useState('');
+  const [page, setPage] = React.useState<number>(1);
   const handleChange = (event: SelectChangeEvent) => {
     setRole(event.target.value);
   };
   return (
     <div dir='rtl'>
-
+  <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          borderRadius: "50px",
+          bgcolor: "#ffff",
+          marginTop: "20px",
+          paddingX: "20px",
+        }}
+      >
+        <SearchIcon sx={{ fill: "gray", marginTop: "3px" }} />
+        <Input
+          placeholder="جستجو"
+          sx={{ width: "100%", outline: "none" }}
+          type="text"
+        ></Input>
+      </Box>
 
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -68,7 +87,11 @@ function ContactsPage() {
         </TableBody>
       </Table>
     </TableContainer>
-
+    <PaginationControlled
+          setPage={setPage}
+          page={1}
+          countPage={2}
+        />
     </div>
   )
 }

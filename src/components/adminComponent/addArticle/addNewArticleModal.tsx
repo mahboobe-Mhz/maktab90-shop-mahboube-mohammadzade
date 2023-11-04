@@ -137,7 +137,17 @@ const handleClose = () => setOpenInsertArticleModal(false);
     </TableContainer>
       </Box>
             </Box>
-     
+            <Button
+            onClick={()=>setOpenInsertArticleModal(true)}
+          sx={{
+            color: "#ffff",
+            paddingX: "30px",
+            bgcolor: "secondary.main",
+            borderRadius: "50px",
+          }}
+        >
+          ثبت 
+        </Button>
         </Box>
       </Modal>
     </div>

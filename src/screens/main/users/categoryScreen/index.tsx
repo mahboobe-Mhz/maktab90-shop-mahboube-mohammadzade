@@ -31,9 +31,8 @@ const CategoryScreen = () => {
   const catId = useParam.id?.split("_")[0];
   const catName=useParam.id?.split("_")[1]
   const pageNum = useParam.id?.split("_")[3];
-  const location = useLocation();
-  const query = new URLSearchParams(location.search);
-  //const page = parseInt(query.get('page') || '1', 10);
+
+
   const { data, isLoading, refetch, isError } = useGetCategoryProducts(
     Number(pageNum),
     6,
@@ -171,10 +170,6 @@ const CategoryScreen = () => {
     />
       </Stack>
  
-
- 
-
-           {/* <ClientPagination countPage={countPage} /> */}
             </div>
           </div>
         </div>

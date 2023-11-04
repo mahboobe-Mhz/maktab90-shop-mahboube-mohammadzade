@@ -1,23 +1,25 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
-  useLocation,
+  Link,
   useNavigate,
   useParams,
-  useSearchParams,
 } from "react-router-dom";
 import MainHeader from "../../../../components/userComponent/mainHeader";
 import ProductCart from "../../../../components/userComponent/productCard";
 import MainFooter from "../../../../components/userComponent/mainFooter";
 import CheckIcon from "@mui/icons-material/Check";
 import useGetSubCategoryProducts from "../../../../api/services/products/useGetAllProductOfSubCat";
-import ClientSubPagination from "../../../../components/userComponent/subCatClientPaginationm";
 import { toast } from "react-toastify";
 import { Category } from "../../../../api/interface/category";
 import { subcategory } from "../../../../api/interface/subCategory";
 import { Product } from "../../../../api/interface/products";
 import CategoryFilter from "../../../../components/userComponent/categoryFilter";
-
+import Stack from '@mui/material/Stack';
+import PaginationItem from '@mui/material/PaginationItem';
+import FlashIcon2 from "../../../../components/svg/flashIcon2";
+import FlashIcon3 from "../../../../components/svg/flashIcon3";
+import { Pagination } from "@mui/material";
 const SubCategoryScreen = () => {
   //  const locationParams = useLocation();
   //const searchParams=useSearchParams()
@@ -34,6 +36,10 @@ const SubCategoryScreen = () => {
     subCatId,
     catId
   );
+  const [page, setPage] = React.useState(1);
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
   const [selectSubCategory, setSelectSubCategory] = useState([]);
   const [allCategory, setAllCategory] = useState([]);
   const navigate = useNavigate();
@@ -147,8 +153,26 @@ const SubCategoryScreen = () => {
                   <ProductCart productSelect={item} />
                 ))}
             </div>
-            <div className="w-full flex justify-center">
-              <ClientSubPagination countPage={countPage} />
+            <div className="w-full flex justify-center mt-10" dir="ltr">
+            <Stack>
+      <Pagination
+      page={page}
+      size="large"
+      count={9} 
+      siblingCount={0} 
+     // boundaryCount={2} 
+      onChange={handleChange}
+      renderItem={(item) => (
+        <PaginationItem
+
+          component={Link}
+          slots={{ previous:FlashIcon3 , next:FlashIcon2 }}
+          to={`/subcategory/${catId}_${subCatId}_${subCatName}_page_${item.page === 1 ? '1' : `${item.page}`}`}
+          {...item}
+        />
+      )}
+    />
+      </Stack>
             </div>
           </div>
         </div>

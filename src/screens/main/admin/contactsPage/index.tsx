@@ -10,7 +10,7 @@ import { Box, FormControl, Input, InputLabel, MenuItem } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
-import SearchIcon from '../../../../components/svg/searchIcon';
+import SearchIcon from "@mui/icons-material/Search";
 import PaginationControlled from '../../../../components/adminComponent/pagination';
 
 

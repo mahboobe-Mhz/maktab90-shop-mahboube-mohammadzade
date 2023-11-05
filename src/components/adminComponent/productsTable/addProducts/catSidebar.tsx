@@ -12,10 +12,6 @@ import { subcategory } from "../../../../api/interface/subCategory";
 interface Props{
   errors:any
   control: Control
-  setSubData: Dispatch<
-  SetStateAction<subcategory>
->
-
 
 }
 

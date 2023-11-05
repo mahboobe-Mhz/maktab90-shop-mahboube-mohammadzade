@@ -6,7 +6,6 @@ import AddPrice from './addPrice';
 import InventoryProducts from './inventory';
 import ProductsSize from './size';
 import CatSidebar from './catSidebar';
-import { Products } from '../../../../api/interface/products';
 import useAddNewProduct from '../../../../api/services/products/useAddNewProduct';
 import { useDispatch, useSelector } from 'react-redux';
 import {setEditId, setErrorMessage, setIsEditing, storeAppState } from '../../../../redux/slice/appSlice';
@@ -14,7 +13,6 @@ import { instance } from '../../../../api/constants';
 import { useNavigate } from 'react-router';
 import { routes } from '../../../../routes';
 import { useForm } from "react-hook-form";
-import SubCatSide from './subCatSide';
 import AddColor from './addColor';
 
 const AddProducts = () => {
@@ -132,7 +130,7 @@ const[showSubCat,setShowSubCat]=useState(false)
     <AddData control={control}    register={register} errors={errors}/>   
     <AddPrice   register={register} errors={errors}/>
     <InventoryProducts    register={register} errors={errors} />
-    <ProductsSize  register={register} errors={errors}/>
+    <ProductsSize  />
     <AddColor/>
     </Box>
         <Box width={"30%"}>

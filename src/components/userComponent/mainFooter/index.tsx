@@ -68,13 +68,13 @@ const MainFooter = () => {
               <img
                 width={80}
                 className="rounded-md"
-                src="picture/enamad.webp"
+                src="/picture/enamad.webp"
               />
             </span>
           </div>
         </div>
         <div className="pt-5 hidden md:flex md:flex-col items-center">
-          <img  onClick={navigateHome} width={120} src="public\logo\logo fotter-01.png"/>
+          <img  onClick={navigateHome} width={120} src="/public\logo\logo fotter-01.png"/>
       
           <span className="flex gap-2">
             <TelegramIcon sx={{ width: "15px" }} />{" "}
@@ -94,7 +94,7 @@ const MainFooter = () => {
       </div>
       <div className="flex text-center justify-center w-full ">
         <div className="pt-5  md:hidden ">
-          <img  className=" w-[120px]" src='public\logo\logo fotter-01.png'/>
+          <img  className=" w-[120px]" src='/public/logo/logo fotter-01.png'/>
    
           <span className="flex gap-2 justify-center">
             <TelegramIcon sx={{ width: "15px" }} />{" "}

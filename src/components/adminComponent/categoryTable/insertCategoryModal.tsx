@@ -67,7 +67,7 @@ editCat.subCat?.map((item:any)=>subCatArray.push(item.name))
         <Box sx={{borderBottom:"solid", borderColor:"secondary.light"}}>  
        {
         editFlag? <TextField onChange={(e)=>setCatName(e.currentTarget.value)} value={catName} sx={{marginX:2 , marginY:2 , width:"90%"}} label="نام دسته" variant="standard" />:
-        <TextField onChange={(e)=>setCatName(e.currentTarget.value)} value={""} sx={{marginX:2 , marginY:2 , width:"90%"}} label="نام دسته" variant="standard" />
+        <TextField onChange={(e)=>setCatName(e.currentTarget.value)} sx={{marginX:2 , marginY:2 , width:"90%"}} label="نام دسته" variant="standard" />
        }
          </Box>
           <Box sx={{display:"flex", flexDirection:"column",gap:"10px", width:400, paddingLeft:"10px" }}>

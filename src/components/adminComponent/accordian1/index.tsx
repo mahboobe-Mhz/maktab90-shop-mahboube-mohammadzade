@@ -144,6 +144,27 @@ export default function ControlledAccordions() {
             برچسب ها
           </Button>
         </AccordionDetails>
+        <AccordionDetails>
+          <Button
+            onClick={() => {
+              dispatch(
+                addBreadCrumb({
+                  BreadCrumb: " رنگ ها",
+                })
+              ),
+                navigate(routes.ADMIN.AddColor);
+            }}
+            variant="text"
+            sx={{
+              width: "100%",
+              color: "#ffff",
+              fontFamily: "nimkat",
+              paddingLeft: "135px",
+            }}
+          >
+        رنگ ها
+          </Button>
+        </AccordionDetails>
       </Accordion>
     </div>
   );

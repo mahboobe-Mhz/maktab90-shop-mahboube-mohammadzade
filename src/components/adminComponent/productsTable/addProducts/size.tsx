@@ -1,4 +1,4 @@
-import {Box ,Typography,TextField, Button} from '@mui/material'
+import {Box ,Typography,TextField, Button, FormControl, InputLabel, Select, MenuItem, SelectChangeEvent} from '@mui/material'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -12,30 +12,40 @@ import { useState } from 'react';
 interface ProductInfo{
   id:string
    size:string,
-    price:number|undefined,
+    price:string,
     disCountPrice:string,
+    inventory:string,
     color:string
 }
 
 function ProductsSize() {
 const [size , setSize]=useState("")
-const [price , setPrice]=useState<number|undefined>()
+const [price , setPrice]=useState("")
 const [disCountPrice , setDisCountPrice]=useState("")
-const [color , setColor]=useState("")
+const [inventory , setInventory]=useState("")
 const [editFlag,setEditFlag]=useState(false)
 const [editId,setEditId]=useState("")
 const[productData,setProductData]=useState<ProductInfo[]>([])
+const [color, setColor] = useState('');
 const productDataObj={
   id: crypto.randomUUID(),
   size,
   price,
   disCountPrice,
+  inventory,
   color
 }
+
+const colorArray=[{name:"قرمز", photo:"https://about.canva.com/wp-content/uploads/sites/8/2019/03/red.png"},{name:"زرد", photo:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAA1BMVEX6+jNOqqP9AAAAR0lEQVR4nO3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO8GxYgAAb0jQ/cAAAAASUVORK5CYII="},{name:"سبز", photo:"https://img.freepik.com/premium-photo/abstract-mint-green-gradient-background-empty-space-studio-room-display-product_8466-17.jpg"}]
+const handleChange = (event: SelectChangeEvent) => {
+
+  setColor(event.target.value);
+};
 const handleReset=()=>{
   setSize("")
-  setPrice(undefined)
+  setPrice("")
   setDisCountPrice("")
+  setInventory("")
   setColor("")
 }
 const handleAddNewInfo =()=>{
@@ -55,13 +65,15 @@ const handleEditItem =(e:any)=>{
   setSize(editItemInfo[0].size)
   setPrice(editItemInfo[0].price)
   setDisCountPrice(editItemInfo[0].disCountPrice)
+  setInventory(editItemInfo[0].inventory)
   setColor(editItemInfo[0].color)
 }
 const handleInsertNewEditInfo =()=>{
  const newInfo= productData.map((item)=>{ if(item.id=== editId){
     item.size = size
     item.price=price, item.disCountPrice= disCountPrice,
-   item.color= color
+   item.inventory= inventory
+   item.color=color
   }
   return item
 }  
@@ -84,11 +96,31 @@ handleReset()
         <Box display={"flex"} gap={2} width={"100%"}>
         <TextField id="standard-basic" value={size}  onChange={(e)=>setSize(e.currentTarget.value)} label=" چند نفره" variant="standard" />
 <Box >
-<TextField id="standard-basic" value={price}  onChange={(e)=>setPrice(Number(e.currentTarget.value) )} type='number'  label="  قیمت(تومان)" variant="standard" />
+<TextField id="standard-basic" value={price}  onChange={(e)=>setPrice(e.currentTarget.value )} type='number'  label="  قیمت(تومان)" variant="standard" />
 
 </Box>
 <TextField id="standard-basic" value={disCountPrice}  onChange={(e)=>setDisCountPrice(e.currentTarget.value)} label=" قیمت تخفیفی (تومان)" variant="standard" />
-<TextField id="standard-basic" value={color}  onChange={(e)=>setColor(e.currentTarget.value)} label="رنگ" variant="standard" />
+<TextField id="standard-basic" value={inventory}  onChange={(e)=>setInventory(e.currentTarget.value )} label="موجودی" variant="standard" />
+<FormControl variant="standard" sx={{ m: 0.5, minWidth: 120 }}>
+        <InputLabel id="demo-simple-select-filled-label">رنگ </InputLabel>
+        <Select
+        sx={{fontSize:"14px"}}
+          labelId="demo-simple-select-filled-label"
+          id="demo-simple-select-filled"
+          value={color}
+          onChange={handleChange}
+        >
+            {
+              colorArray.map((item:any)=>     <MenuItem  value={item.name} sx={{backgroundImage:`url(${item.photo})`}}>
+             {item.name}
+              </MenuItem>
+              )
+         
+            }
+    
+
+        </Select>
+      </FormControl>
 
 </Box>
 
@@ -105,6 +137,7 @@ handleReset()
             <TableCell align="right">قیمت </TableCell>
             <TableCell></TableCell>
             <TableCell align="right"> قیمت تخفیفی </TableCell>
+            <TableCell align="right"> موجودی  </TableCell>
             <TableCell align="right"> رنگ  </TableCell>
             <TableCell>عملیات</TableCell>
          
@@ -119,6 +152,7 @@ handleReset()
             <TableCell align="right" component="th" scope="row"> {item.size}</TableCell>
           <TableCell align="right" component="th" scope="row">{item.price} تومان</TableCell>
             ‌<TableCell align="right"> {item.disCountPrice} تومان</TableCell>
+            <TableCell align="right"> {item.inventory} </TableCell>
             <TableCell align="right"> {item.color} </TableCell>
           <TableCell>
           <DeleteIcon id={item.id} onClick={handleDeleteItem}/>

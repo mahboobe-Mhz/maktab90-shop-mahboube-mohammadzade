@@ -8,7 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { Box, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 function AddBanner() {
   return (
     <div >
@@ -55,12 +55,23 @@ function AddBanner() {
        
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell align="right" component="th" scope="row"> بنر اسلایدر اول هوم پیج</TableCell>
+              <TableCell align="right" component="th" scope="row">  افزودن بنر در حالت دسکتاپ </TableCell>
               <TableCell align="right" component="th" scope="row">
-                <input type="file" />
+                <input type="file"  multiple/>
               </TableCell>
        
             <TableCell>
+            <Button
+          sx={{
+            color: "#ffff",
+            paddingX: "30px",
+            bgcolor: "secondary.main",
+            borderRadius: "50px",
+          }}
+        >
+          {" "}
+           ثبت
+        </Button>
             <DeleteIcon sx={{color:"secondary.main"}} />
             <EditIcon sx={{color:"secondary.main"}}/>
             </TableCell>
@@ -69,30 +80,28 @@ function AddBanner() {
        
        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
      >
-       <TableCell align="right" component="th" scope="row"> بنر اسلایدر اول هوم پیج</TableCell>
+       <TableCell align="right" component="th" scope="row">    افزودن بنر در حالت موبایل </TableCell>
        <TableCell align="right" component="th" scope="row">
-         <input type="file" />
+         <input type="file" multiple />
        </TableCell>
 
      <TableCell>
+     <Button
+          sx={{
+            color: "#ffff",
+            paddingX: "30px",
+            bgcolor: "secondary.main",
+            borderRadius: "50px",
+          }}
+        >
+          {" "}
+           ثبت
+        </Button>
           <DeleteIcon sx={{color:"secondary.main"}} />
             <EditIcon sx={{color:"secondary.main"}}/>
      </TableCell>
              </TableRow>
-             <TableRow
-       
-       sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-     >
-       <TableCell align="right" component="th" scope="row"> بنر اسلایدر اول هوم پیج</TableCell>
-       <TableCell align="right" component="th" scope="row">
-         <input type="file" />
-       </TableCell>
-
-     <TableCell>
-     <DeleteIcon sx={{color:"secondary.main"}} />
-            <EditIcon sx={{color:"secondary.main"}}/>
-     </TableCell>
-             </TableRow>
+     
         </TableBody>
       </Table>
     </TableContainer>

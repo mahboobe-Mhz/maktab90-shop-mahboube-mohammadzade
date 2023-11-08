@@ -49,12 +49,12 @@ export default function CategoryFilter() {
         }
       <div className="absolute md:top-[50px] md:right-[45%] right-[40%] top-8 flex md:gap-5 gap-2 z-20">
       <span  
-        className=" nextPage hover:cursor-pointer focus:outline-none  " > 
+        className=" pervPage hover:cursor-pointer focus:outline-none  " > 
         <FlashIcon className="md:w-[40px] md:h-[40px] w-[20px] h-[20px] rotate-180 border-2 transition
          duration-200 p-1 border-black  rounded-full hover:border-secondary hover:fill-[#fd6e54]" />
         </span>
   <span  
-        className=" pervPage hover:cursor-pointer focus:outline-none   " > 
+        className="  nextPage hover:cursor-pointer focus:outline-none   " > 
         <FlashIcon className="md:w-[40px] md:h-[40px] w-[20px] h-[20px]  border-2 transition duration-200 p-1
          border-black fill-black rounded-full hover:border-secondary hover:fill-[#fd6e54]" />
         </span>

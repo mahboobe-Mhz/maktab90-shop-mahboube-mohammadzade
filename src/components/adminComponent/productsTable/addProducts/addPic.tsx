@@ -38,7 +38,7 @@ const AddPic = ({setFormValue,formValue ,register,errors}:Props) => {
         if(event.target.files){
              const filesArray=Array.from(event.target.files).map((file)=>URL.createObjectURL(file)) 
             setShowImage(filesArray)         
-            setImage(Array.from(event.target.files))     
+            setImage([...image,...Array.from(event.target.files)])     
                }  
     }
 
@@ -76,7 +76,7 @@ const newImageFile =image.filter((item:any,index:number)=> index !== deleteIndex
         <div className='imageUpload' onClick={handleClick}>
         <input onChange={handleImageSelect}    
           ref={hiddenFileInput}  
-     
+
                     id="images"
                     name="images"
                     type="file"

@@ -9,13 +9,20 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import DoneIcon from '@mui/icons-material/Done';
+import DeleteAddColorModal from './deleteAddColorModal';
 
 
 
 function AddColor() {
+    const [openDeleteModal,setOpenDeleteModal]=React.useState(false)
+const handleDeleteModal=()=>{
+  setOpenDeleteModal(true)
+
+}
     const colorArray=[{name:"قرمز", photo:"https://about.canva.com/wp-content/uploads/sites/8/2019/03/red.png"},{name:"زرد", photo:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAA1BMVEX6+jNOqqP9AAAAR0lEQVR4nO3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO8GxYgAAb0jQ/cAAAAASUVORK5CYII="},{name:"سبز", photo:"https://img.freepik.com/premium-photo/abstract-mint-green-gradient-background-empty-space-studio-room-display-product_8466-17.jpg"}]
   return (
     <Box>
+         <DeleteAddColorModal titleText='ایا از حذف برچسب اطمینان دارید؟' openDeleteModal={openDeleteModal} setOpenDeleteModal={setOpenDeleteModal}/>
            <Box
             sx={{
               display: "flex",
@@ -90,7 +97,7 @@ function AddColor() {
               
                     <TableCell align="left">   
                        <DeleteOutlineOutlinedIcon
-                      
+                      onClick={handleDeleteModal}
                             sx={{ color: "secondary.main" }}
                           />
                          

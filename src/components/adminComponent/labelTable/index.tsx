@@ -35,7 +35,7 @@ const ShowTableBox = () => {
           {" "}
           برچسب ها
         </Typography>
-        <Button
+        {/* <Button
           sx={{
             color: "#ffff",
             paddingX: "30px",
@@ -45,7 +45,7 @@ const ShowTableBox = () => {
         >
           {" "}
           افزودن برچسب
-        </Button>
+        </Button> */}
       </Box>
 
       <Box

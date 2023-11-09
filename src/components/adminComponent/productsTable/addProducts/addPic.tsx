@@ -29,11 +29,8 @@ interface Props{
 const AddPic = ({setFormValue,formValue ,register,errors}:Props) => {  
     const [image , setImage]=useState<File[]>([])
     const [showImage , setShowImage]=useState<string[]>([])
-    const hiddenFileInput = useRef<HTMLDivElement | null>(null);
+    const hiddenFileInput = useRef<HTMLDivElement | undefined>(undefined);
     const appState = useSelector(storeAppState);
-    const[showDeleteIcon , setShowDeleteIcon]=useState(false)
-
-
     const handleClick = ()=> {
         hiddenFileInput.current?.click();
       };
@@ -42,8 +39,7 @@ const AddPic = ({setFormValue,formValue ,register,errors}:Props) => {
              const filesArray=Array.from(event.target.files).map((file)=>URL.createObjectURL(file)) 
             setShowImage(filesArray)         
             setImage(Array.from(event.target.files))     
-               }
-            
+               }  
     }
 
 
@@ -52,11 +48,18 @@ const AddPic = ({setFormValue,formValue ,register,errors}:Props) => {
     },[image])
 //handel edit
 useEffect(()=>{
-
-   
         const editImage= appState.selectEditData?.images.map((item:string)=>`http://localhost:8000/images/products/images/${item}`) 
          setShowImage(editImage)
   },[appState.isEdit])
+  const handleDeleteImage =(e:any)=>{
+const newImageArray=showImage.filter((item:string)=>item !== e.currentTarget.id)
+setShowImage(newImageArray)
+const deleteIndex=showImage.findIndex((item:string)=> item === e.currentTarget.id)
+const newImageFile =image.filter((item:any,index:number)=> index !== deleteIndex)
+ setImage(newImageFile)
+  }
+
+  
     return (  <Box sx={{
         bgcolor:"#ffff" , borderRadius:"20px"
     }}>
@@ -87,13 +90,13 @@ useEffect(()=>{
      
         <Box sx={{display:"flex", gap:"10px" , overflowX:"scroll", paddingBottom:"10px"}}>
         {showImage && showImage.map((item:string)=>
-        <Box sx={{position:"relative",  bgcolor:"black", borderRadius:"10px"}}  className="photoClass" onMouseOver={()=>setShowDeleteIcon(true)} onMouseLeave={()=>setShowDeleteIcon(false)}>
+        <Box sx={{position:"relative",  bgcolor:"black", borderRadius:"10px"}}  className="photoClass" >
      <Box sx={{position:"relative" }}  className="boxClass" >
      <img key={item} src={item} width="150px"style={{overflow:"hidden",borderRadius:"10px" }} />
 
      </Box>
   
-        <DeleteOutlineOutlinedIcon sx={{position:"absolute", top:"70%", right:"40%", color:"white", ":hover":{cursor:"pointer"} , opacity:"0"} }
+        <DeleteOutlineOutlinedIcon id={item} onClick={handleDeleteImage} sx={{position:"absolute", top:"70%", right:"40%", color:"white", ":hover":{cursor:"pointer"} , opacity:"0"} }
         className="deleteClass"       
         />
                      

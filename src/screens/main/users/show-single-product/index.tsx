@@ -16,6 +16,7 @@ import PersonIcon from "../../../../components/svg/personIcon";
 
 
 const ShowSingleProduct = () => {
+  const colorArray=[{name:"قرمز", photo:"/color/green.jpg"},{name:"زرد", photo:"/color/red.jpg"},{name:"سبز", photo:"/color/yellow.jpg"}]
   const initialProduct =  {
     "rating": {
         "rate": 0,
@@ -134,7 +135,9 @@ const ShowSingleProduct = () => {
  const handleSelectColor =(event:any)=>{
 setSelectColor(event.currentTarget.id)
 
+
  }
+
 
   return (
     <div dir="rtl">
@@ -160,12 +163,12 @@ setSelectColor(event.currentTarget.id)
               {showColor? <span className="border-t border-black 
               ">
           <span  className="px-5 py-2 flex gap-1">
+          {
+            colorArray.map((item:any)=> selectedColor===item.name?  <span id={item.name} onClick={handleSelectColor} className="h-[20px]  w-[20px] rounded-md">
+               <img   src={item.photo}  className=" rounded-md hover:cursor-pointer  border-2 border-secondary"/></span> : 
+             <span onClick={handleSelectColor} id={item.name} className="h-[20px]  w-[20px] rounded-md "> <img  src={item.photo}  className=" rounded-md hover:cursor-pointer "/></span>)
+          }
      
-            <span  className="px-[10px] py-[0px] rounded-md bg-red-800 h-[20px] hover:cursor-pointer border-2 focus:text-red-600 border-secondary"></span>     
-            <span  className="px-[10px] py-[0px] rounded-md bg-green-800 h-[20px] hover:cursor-pointer"></span>
-            <span  className="px-[10px] py-[0px] rounded-md bg-blue-800 h-[20px] hover:cursor-pointer"></span>
-            <span  className="px-[10px] py-[0px] rounded-md bg-yellow-800 h-[20px] hover:cursor-pointer"></span>
-           
           </span>     </span>:""}
             
         

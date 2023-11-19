@@ -26,9 +26,9 @@ interface Props{
     errors:any
 }
 
-const AddPic = ({setFormValue,formValue ,register,errors}:Props) => {  
+const AddPic = ({setFormValue,formValue ,register,errors}:Props) => { 
+    const [showImage , setShowImage]=useState<string[]>([]) 
     const [image , setImage]=useState<File[]>([])
-    const [showImage , setShowImage]=useState<string[]>([])
     const hiddenFileInput = useRef<HTMLDivElement | undefined>(undefined);
     const appState = useSelector(storeAppState);
     const handleClick = ()=> {
@@ -37,9 +37,11 @@ const AddPic = ({setFormValue,formValue ,register,errors}:Props) => {
     const handleImageSelect =(event :React.ChangeEvent<HTMLInputElement>)=>{
         if(event.target.files){
              const filesArray=Array.from(event.target.files).map((file)=>URL.createObjectURL(file)) 
-            setShowImage(filesArray)         
-            setImage([...image,...Array.from(event.target.files)])     
-               }  
+
+             setShowImage(filesArray)        
+            setImage([...image,...Array.from(event.target.files)])   
+
+               }             
     }
 
 

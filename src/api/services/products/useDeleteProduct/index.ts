@@ -21,6 +21,8 @@ const useDeleteProduct = (setDeletionError:any) => {
         },
         onError: ({ message }) => {
           setDeletionError(message);
+        
+          
         },
       }
     );

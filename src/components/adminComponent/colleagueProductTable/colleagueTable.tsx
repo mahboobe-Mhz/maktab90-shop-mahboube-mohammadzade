@@ -27,14 +27,14 @@ interface Props{
     quantity:number;
     description:string
   }>
-  title:Array<[
-    name1:string|undefined,
-    name2:string,
-    name3:string,
-    name4?:string,
-    name5?:string
-  ]  
-  >
+  title:[
+    name1:string,
+    name2:string|undefined,
+    name3:string|undefined,
+    name4?:string|undefined,
+    name5?:string|undefined,
+    name6?:string|undefined,
+  ]
   refetch:any
 }
 

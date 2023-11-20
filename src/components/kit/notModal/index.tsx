@@ -33,7 +33,7 @@ export default function NotificationModal({titleText,deleteItem, refetch}:Props)
     setTimeout(() => {
       refetch()
     }, 200);
-
+   
   }
 
   return (

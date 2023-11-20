@@ -16,7 +16,7 @@ import axios from 'axios';
 
 import useDeleteProduct from '../../../api/services/products/useDeleteProduct';
 import NotificationModal from '../../kit/notModal';
-
+import { ToastContainer, toast } from "react-toastify";
 
 interface Props{
   rows:Array<{
@@ -28,7 +28,7 @@ interface Props{
     description:string
   }>
   title:Array<[
-    name1:string|undefined,
+    name1:string,
     name2:string,
     name3:string,
     name4?:string,
@@ -60,6 +60,8 @@ export default function BasicTable({rows,title,refetch}:Props) {
     dispatch(setIsEditing({isEdit:true}))
    
   }
+
+  
   React.useEffect(()=>{
     const req =  axios.get(`http://localhost:8000/api/products/${editId}`);
     req.then((res) => {
@@ -73,12 +75,21 @@ export default function BasicTable({rows,title,refetch}:Props) {
 
   const HandelDelete =(event:any)=>{
     dispatch(setNotMOdal({ notModal: true }));  
-    isDeleting?setTitleText(`برخورد کرده ایید  ${deletionError}   به مشکل`):setTitleText(`اطمینان  دارید ؟ ${event.target.dataset.user}  ایا از حذف `)
+    setTitleText(`اطمینان  دارید ؟ ${event.target.dataset.user}  ایا از حذف `)
     setDeleteId(event.currentTarget.id)
   }
 const deleteItem=()=>{
  mutate(deleteId) 
+
+ 
+  // isDeleting?   toast.warning(`مشکلی روی داده دوباره تلاش کنید`, {
+  //     position: toast.POSITION.TOP_RIGHT,
+  //   }): toast.warning(`hii`, {
+  //     position: toast.POSITION.TOP_RIGHT,
+  //   })
 }
+
+
   return (<Box>
     <NotificationModal titleText={titleText} deleteItem={deleteItem}     refetch={refetch}/>
     <TableContainer  component={Paper}>

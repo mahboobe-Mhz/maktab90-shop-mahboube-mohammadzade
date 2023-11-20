@@ -24,24 +24,24 @@ const TopSwiper = () => {
         }}
    speed={2000}
       >
-             <SwiperSlide><img className='rounded-3xl md:h-[500px] h-[300px]'
+             <SwiperSlide className='md:flex hidden'><img className='rounded-3xl h-[500px] '
               src='public/picture/banner2.jpg'/></SwiperSlide>
-        <SwiperSlide ><img className='rounded-[30px] w-full md:h-[500px] h-[300px]' 
+        <SwiperSlide ><img className='rounded-[30px] w-full h-[500px] ' 
         src='public/picture/IMG_7177.JPG'/></SwiperSlide>
    
-        <SwiperSlide><img className='rounded-[30px] md:h-[500px] h-[300px]' 
+        <SwiperSlide><img className='rounded-[30px] h-[500px] ' 
          src='public/picture/bannerj.jpg'/></SwiperSlide>
    
-        <SwiperSlide><img className='rounded-[30px] md:h-[500px] h-[300px]' 
+        <SwiperSlide><img className='rounded-[30px] h-[500px] ' 
           src='public/picture/banner-01.jpg'/></SwiperSlide>
-        <div className=' absolute md:bottom-[70px]  md:right-[40px] bottom-[50px]  right-[20px]   z-20'>
-        <div className="flex md:gap-5 gap-2 ">
+        <div className=' absolute bottom-[70px]  right-[40px]    z-20'>
+        <div className="flex gap-5  ">
         <span 
          className=" nextPage hover:cursor-pointer focus:outline-none"  > 
-          <FlashIcon className="z-50  md:w-[50px] md:h-[50px] w-[30px] h-[30px] border-2 transition duration-300 p-1 border-white fill-white  rounded-full hover:border-secondary hover:fill-[#fd6e54]" /></span>
+          <FlashIcon className="z-50  w-[50px] h-[50px]  border-2 transition duration-300 p-1 border-white fill-white  rounded-full hover:border-secondary hover:fill-[#fd6e54]" /></span>
         <span  
         className=" pervPage hover:cursor-pointer focus:outline-none" > 
-        <FlashIcon className="z-50 md:w-[50px] md:h-[50px] w-[30px] h-[30px] rotate-180 border-2  p-1 border-white fill-white rounded-full hover:border-secondary hover:fill-[#fd6e54]" /></span>
+        <FlashIcon className="z-50 w-[50px] h-[50px]  rotate-180 border-2  p-1 border-white fill-white rounded-full hover:border-secondary hover:fill-[#fd6e54]" /></span>
     
     </div>
         </div>
@@ -62,20 +62,7 @@ const TopSwiper = () => {
         </span>
      </div>
       </div>
-      <div className=' firstDetail2 md:hidden absolute top-[100px] left-[-10px] z-10 rounded-full p-2 bg-white'>
-      <div className='flex flex-col items-center bg-white rounded-full pb-1 px-2 border-2 border-black' >
-      <span className='md:text-xl text-[8px] font-semibold text-secondary'> ارسال سریع</span>
-      <span className='md:text-xs text-[6px] text-secondary'> ارسال کالا در سریعترین زمان</span>
-      </div>
-      </div>
-      <div className='secondDetail2  md:hidden absolute bottom-[-10px] right-[-10px] z-10 rounded-full p-2 bg-white '>
-      <div className='  bg-white md:text-xl  text-[8px] font-semibold
-     text-secondary rounded-full px-2 pt-1 pb-1 border-2 border-black'>
-      <span className=''>
-        تضمین کیفیت کالا 
-        </span>
-     </div>
-      </div>
+   
 
    
     </div>

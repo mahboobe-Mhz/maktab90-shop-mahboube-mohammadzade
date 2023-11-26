@@ -12,4 +12,11 @@
     transform: rotate(-12deg);
     top: 15px;
   }
-  
+  .price-slash2{
+    position: relative;
+    width: 60%;
+    height: 0;
+    border-top: 1px solid red;
+    transform: rotate(-9deg);
+    top: 14px;
+  }

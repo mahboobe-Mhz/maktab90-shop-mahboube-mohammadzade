@@ -19,12 +19,12 @@ const ShowSingleProduct = () => {
   const dataArray=[{nameColor:"قرمز", colorPhoto:"/color/red.jpg", sizeData:"تک نفره",priceData:210000},
   {nameColor:"قرمز", colorPhoto:"/color/red.jpg", sizeData:"دونفره",priceData:220000},
   {nameColor:"قرمز", colorPhoto:"/color/red.jpg", sizeData:"سه نفره",priceData:230000},
-  {nameColor:"زرد", colorPhoto:"/color/yellow.jpg", sizeData:"تک نفره",priceData:31000},
+
    {nameColor:"زرد", colorPhoto:"/color/yellow.jpg", sizeData:"دونفره",priceData:320000},
    {nameColor:"زرد", colorPhoto:"/color/yellow.jpg", sizeData:"سه نفره",priceData:330000},
 
   {nameColor:"سبز", colorPhoto:"/color/green.jpg", sizeData:"تک نفره",priceData:410000},
-  {nameColor:"سبز", colorPhoto:"/color/green.jpg", sizeData:"دونفره",priceData:420000},
+
   {nameColor:"سبز", colorPhoto:"/color/green.jpg", sizeData:"سه نفره",priceData:430000},
 ]
   // const colorArray=[{name:"قرمز", photo:"/color/yellow.jpg"},{name:"زرد", photo:"/color/red.jpg"},{name:"سبز", photo:"/color/yellow.jpg"}]
@@ -70,13 +70,13 @@ const ShowSingleProduct = () => {
   const [selectProduct, setSelectProduct] = useState<Product>(initialProduct);
   const [similarProduct, setSimilarProduct] = useState<Product[]>([]);
   const [orderCount, setOrderCount] = useState(0);
-  const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [totalPrice, setTotalPrice] = useState<number>(dataArray[0].priceData);
   const [showColor , setShowColor]=useState(false)
   const [showSize , setShowSize]=useState(false)
   const [sizeData , setSizeData]=useState<string[]>([])
   const [colorData ,setColorData]=useState<string[]>([])
-  const[selectedColor,setSelectColor]=useState("")
-  const[selectedSize,setSelectSize]=useState("")
+  const[selectedColor,setSelectColor]=useState(dataArray[0].colorPhoto)
+  const[selectedSize,setSelectSize]=useState()
  const [showDescription, setShowDescription]=useState(false)
  const[comments , setComments]=useState(false)
  const [showMoreDescription, setShowMoreDescription]=useState(false)
@@ -108,13 +108,14 @@ const ShowSingleProduct = () => {
      dataArray.map((item:any)=> useColor.push(item.colorPhoto))
      const useColor2= useColor.filter((item:any,
       index:number) => useColor.indexOf(item) === index);
-      const useSize:any=[]
-      dataArray.map((item:any)=> useSize.push(item.sizeData))
-      const useSize2=useSize.filter((item:any,
-        index:number) => useSize.indexOf(item) === index);
-        setSizeData(useSize2)
+      const firstSize:any=[]
+      const firstColor=dataArray[0].colorPhoto
+      dataArray.map((item:any)=>  {if( item.colorPhoto===firstColor){firstSize.push(item.sizeData)} }
+      
+      )
         setColorData(useColor2)
-
+        setSizeData(firstSize)
+        setTotalPrice(dataArray[0].priceData)
   }, [useParam]);
 
 
@@ -161,6 +162,9 @@ const ShowSingleProduct = () => {
       const handleSelectColor =(event:any)=>{
   setSelectColor(event.currentTarget.id)
   setOrderCount(1)
+  const sizeArr:any =[]
+  dataArray.map((item:any)=>  {if( item.colorPhoto===event.currentTarget.id){sizeArr.push(item.sizeData)} })
+  setSizeData(sizeArr)
      
  }
  const handleSelectSize=(event:any)=>{
@@ -197,8 +201,9 @@ useEffect(()=>{
             <h1 className="md:text-2xl font-bold text-lg"> {selectProduct?.name}</h1>
             <div
               dangerouslySetInnerHTML={{ __html: selectProduct?.description }}
+              
             />
-
+            <span className="text-secondary text-sm">    ابعاد محصول براساس رنگ تغییر میکند</span>
             <div  className="flex flex-col w-full gap-2" >
               <span className="flex flex-col border border-black rounded-3xl px-2 py-1">
              <span onClick={()=>setShowColor(!showColor)}
@@ -226,7 +231,7 @@ useEffect(()=>{
               :<span className="pl-3 font-semibold  text-xl hover:cursor-pointer"> ^</span>}   </span> 
               {showSize? <span className="border-t  border-black" >
           <span className="px-5 py-2 flex gap-1" >
-            {sizeData.map((item:any)=>      <span className="">   <input id={item} name="hi" className="" type="radio" onClick={handleSelectSize} /> <span className="px-2"> {item}</span></span>)}
+            {sizeData.map((item:any)=>      <span className="">   <input id={item} name="hi" className="" type="radio" onClick={handleSelectSize}  /> <span className="px-2"> {item}</span></span>)}
       
           </span>     </span>:""}
             
@@ -234,14 +239,27 @@ useEffect(()=>{
               </span>
             </div>
             <div className="flex md:justify-between flex-col xl:flex-row justify-center items-center ">
-              <span className="md:mt-2 md:mb-0 mb-3 pr-2 font-semibold ">
+              <div className=" flex flex-col pb-3">   
+       
+             
+              <span className="md:mt-0 md:mb-0 mb-0 pr-2 font-semibold ">
                 {" "}
-                {Number(totalPrice || selectProduct.price).toLocaleString(
+                {Number(totalPrice).toLocaleString(
                   "fa-IR"
                 )
                 }{" "}
                 تومان{" "}
               </span>
+              <div className="price-wrapper px-2">
+                <div className="price-slash2">      </div>
+                <span className='text-gray-400 text-[7px] text-sm ' > {Number(totalPrice ).toLocaleString(
+                  "fa-IR"
+                )} </span>
+          
+             
+              </div>
+              </div>
+          
 
               <div className="flex gap-10 lg:flex-row flex-col justify-center items-center">
                 <span className=" md:border md:border-black md:px-5 px-3  h-8
@@ -266,6 +284,7 @@ useEffect(()=>{
                     -
                   </span>
                 </span>
+              
                 <button
                   onClick={insertToCart}
                   className="bg-secondary rounded-full px-10 py-1 pb-2 text-white mr-5"
@@ -274,7 +293,9 @@ useEffect(()=>{
                   افزودن به سبد خرید
                 </button>
               </div>
+
             </div>
+            <span className="text-xs text-secondary pr-2 text-center md:text-right  "> تنها ۲عدد در انبار باقی مانده</span>
           </div>
         </div>
         <div className="mt-10 ">

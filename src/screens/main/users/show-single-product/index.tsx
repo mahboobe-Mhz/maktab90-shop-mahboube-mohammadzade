@@ -70,7 +70,7 @@ const ShowSingleProduct = () => {
   const [selectProduct, setSelectProduct] = useState<Product>(initialProduct);
   const [similarProduct, setSimilarProduct] = useState<Product[]>([]);
   const [orderCount, setOrderCount] = useState(0);
-  const [totalPrice, setTotalPrice] = useState<number>();
+  const [totalPrice, setTotalPrice] = useState<number>(0);
   const [showColor , setShowColor]=useState(false)
   const [showSize , setShowSize]=useState(false)
   const [sizeData , setSizeData]=useState<string[]>([])
@@ -119,7 +119,7 @@ const ShowSingleProduct = () => {
 
 
   useEffect(() => {
-    setTotalPrice(selectProduct.price * orderCount);
+    setTotalPrice(totalPrice * orderCount);
 
   }, [orderCount]);
 
@@ -160,10 +160,12 @@ const ShowSingleProduct = () => {
   };
       const handleSelectColor =(event:any)=>{
   setSelectColor(event.currentTarget.id)
+  setOrderCount(1)
      
  }
  const handleSelectSize=(event:any)=>{
   setSelectSize(event.currentTarget.id)
+  setOrderCount(1)
  }
 useEffect(()=>{
   dataArray.map((item:any)=>{

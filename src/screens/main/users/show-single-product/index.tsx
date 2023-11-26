@@ -16,7 +16,18 @@ import PersonIcon from "../../../../components/svg/personIcon";
 
 
 const ShowSingleProduct = () => {
-  const colorArray=[{name:"قرمز", photo:"/color/green.jpg"},{name:"زرد", photo:"/color/red.jpg"},{name:"سبز", photo:"/color/yellow.jpg"}]
+  const dataArray=[{nameColor:"قرمز", colorPhoto:"/color/red.jpg", sizeData:"تک نفره",priceData:210000},
+  {nameColor:"قرمز", colorPhoto:"/color/red.jpg", sizeData:"دونفره",priceData:220000},
+  {nameColor:"قرمز", colorPhoto:"/color/red.jpg", sizeData:"سه نفره",priceData:230000},
+  {nameColor:"زرد", colorPhoto:"/color/yellow.jpg", sizeData:"تک نفره",priceData:31000},
+   {nameColor:"زرد", colorPhoto:"/color/yellow.jpg", sizeData:"دونفره",priceData:320000},
+   {nameColor:"زرد", colorPhoto:"/color/yellow.jpg", sizeData:"سه نفره",priceData:330000},
+
+  {nameColor:"سبز", colorPhoto:"/color/green.jpg", sizeData:"تک نفره",priceData:410000},
+  {nameColor:"سبز", colorPhoto:"/color/green.jpg", sizeData:"دونفره",priceData:420000},
+  {nameColor:"سبز", colorPhoto:"/color/green.jpg", sizeData:"سه نفره",priceData:430000},
+]
+  // const colorArray=[{name:"قرمز", photo:"/color/yellow.jpg"},{name:"زرد", photo:"/color/red.jpg"},{name:"سبز", photo:"/color/yellow.jpg"}]
   const initialProduct =  {
     "rating": {
         "rate": 0,
@@ -62,10 +73,14 @@ const ShowSingleProduct = () => {
   const [totalPrice, setTotalPrice] = useState<number>();
   const [showColor , setShowColor]=useState(false)
   const [showSize , setShowSize]=useState(false)
+  const [sizeData , setSizeData]=useState<string[]>([])
+  const [colorData ,setColorData]=useState<string[]>([])
   const[selectedColor,setSelectColor]=useState("")
+  const[selectedSize,setSelectSize]=useState("")
  const [showDescription, setShowDescription]=useState(false)
  const[comments , setComments]=useState(false)
  const [showMoreDescription, setShowMoreDescription]=useState(false)
+
 
 
   const useParam = useParams();
@@ -89,12 +104,23 @@ const ShowSingleProduct = () => {
        
       });
 
-     
+     const useColor:any = []
+     dataArray.map((item:any)=> useColor.push(item.colorPhoto))
+     const useColor2= useColor.filter((item:any,
+      index:number) => useColor.indexOf(item) === index);
+      const useSize:any=[]
+      dataArray.map((item:any)=> useSize.push(item.sizeData))
+      const useSize2=useSize.filter((item:any,
+        index:number) => useSize.indexOf(item) === index);
+        setSizeData(useSize2)
+        setColorData(useColor2)
+
   }, [useParam]);
 
 
   useEffect(() => {
     setTotalPrice(selectProduct.price * orderCount);
+
   }, [orderCount]);
 
   const insertToCart = () => { 
@@ -132,12 +158,30 @@ const ShowSingleProduct = () => {
       });
     }
   };
- const handleSelectColor =(event:any)=>{
-setSelectColor(event.currentTarget.id)
-
-
+      const handleSelectColor =(event:any)=>{
+  setSelectColor(event.currentTarget.id)
+     
  }
+ const handleSelectSize=(event:any)=>{
+  setSelectSize(event.currentTarget.id)
+ }
+useEffect(()=>{
+  dataArray.map((item:any)=>{
+    if(item.colorPhoto===selectedColor&& item.sizeData===selectedSize){
+      setTotalPrice(item.priceData)
+    }
+  } 
 
+  )
+
+  dataArray.map((item:any)=>{
+    if(item.colorPhoto===selectedColor&& item.sizeData===selectedSize){
+      setTotalPrice(item.priceData)
+    }
+  } 
+
+  )
+},[selectedColor,selectedSize])
 
   return (
     <div dir="rtl">
@@ -164,9 +208,9 @@ setSelectColor(event.currentTarget.id)
               ">
           <span  className="px-5 py-2 flex gap-1">
           {
-            colorArray.map((item:any)=> selectedColor===item.name?  <span id={item.name} onClick={handleSelectColor} className="h-[20px]  w-[20px] rounded-md">
-               <img   src={item.photo}  className=" rounded-md hover:cursor-pointer  border-2 border-secondary"/></span> : 
-             <span onClick={handleSelectColor} id={item.name} className="h-[20px]  w-[20px] rounded-md "> <img  src={item.photo}  className=" rounded-md hover:cursor-pointer "/></span>)
+            colorData.map((item:any)=> selectedColor===item?  <span id={item} onClick={handleSelectColor} className="h-[20px]  w-[20px] rounded-md">
+               <img   src={item}  className=" rounded-md hover:cursor-pointer  border-2 border-secondary"/></span> : 
+             <span onClick={handleSelectColor} id={item} className="h-[20px]  w-[20px] rounded-md "> <img  src={item}  className=" rounded-md hover:cursor-pointer "/></span>)
           }
      
           </span>     </span>:""}
@@ -180,10 +224,8 @@ setSelectColor(event.currentTarget.id)
               :<span className="pl-3 font-semibold  text-xl hover:cursor-pointer"> ^</span>}   </span> 
               {showSize? <span className="border-t  border-black" >
           <span className="px-5 py-2 flex gap-1" >
-            <span className="">   <input name="hi" className="" type="radio"  /> <span className="px-2"> تک نفره</span></span>
-            <span className="">   <input name="hi" className=" text-secondary" type="radio"  /> <span className="px-2">دونفره </span> </span>
-          
-           
+            {sizeData.map((item:any)=>      <span className="">   <input id={item} name="hi" className="" type="radio" onClick={handleSelectSize} /> <span className="px-2"> {item}</span></span>)}
+      
           </span>     </span>:""}
             
         

@@ -29,7 +29,8 @@ interface Props{
 const AddPic = ({setFormValue,formValue ,register,errors}:Props) => { 
     const [showImage , setShowImage]=useState<string[]>([]) 
     const [image , setImage]=useState<File[]>([])
-    const hiddenFileInput = useRef<HTMLDivElement | undefined>(undefined);
+    //const hiddenFileInput = useRef<HTMLDivElement | undefined>(undefined);
+    const hiddenFileInput = useRef<any>(undefined);
     const appState = useSelector(storeAppState);
     const handleClick = ()=> {
         hiddenFileInput.current?.click();

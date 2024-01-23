@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react'
 import AdminHeader from '../../../../components/adminComponent/adminHeader'
+import AddHomeStoreInfoHeader from '../../../../components/adminComponent/homeStoreInfoHeader'
 function AddSuperAdmin() {
     const [adminName,setAdminName]=useState("")
     const [adminPhoneNumber,setAdminPhoneNumber]=useState(0)
@@ -22,10 +23,11 @@ function AddSuperAdmin() {
     }   
   return (
   <div className='flex flex-col h-full w-full md:gap-40 gap-10'>
-     <AdminHeader/>
+
+
      <div className='flex justify-center'>
      <div dir='rtl' className=' flex flex-col gap-5 border p-10 border-gray-500 rounded-2xl bg-gray-50 mt-24 md:mt-0'>
-   
+
    <div className='flex flex-col gap-1'>
         {
             adminInfo.length>0 && adminInfo.map((item:any,index:number)=>

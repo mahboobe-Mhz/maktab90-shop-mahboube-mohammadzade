@@ -6,7 +6,8 @@ import PaginationControlled from "../pagination";
 import useGetPaginationProducts from "../../../api/services/products/usePaginationProducts";
 import axios from "axios";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { routes } from "../../../routes";
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { useDispatch, useSelector } from "react-redux";
 import {
   setEditData,
@@ -18,6 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 const ColleagueProductTable = () => {
   const appState = useSelector(storeAppState);
   const [searchParams, setSearchParams] = useSearchParams();
+
   const [filter, setFilter] = React.useState("");
   const [page, setPage] = React.useState(1);
   const [countPage, setCountPage] = React.useState<number>();
@@ -26,6 +28,7 @@ const ColleagueProductTable = () => {
     4,
     filter
   );
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -53,6 +56,7 @@ const ColleagueProductTable = () => {
 
   //filter
   const quantityFun = () => {
+
     const req = axios.get(
       `http://localhost:8000/api/products?quantity=0&limit=100`
     );
@@ -65,6 +69,7 @@ const ColleagueProductTable = () => {
     setFilter("quantity=0");
   };
   const priceFun = () => {
+
     setPage(1);
     setFilter("price=0");
     const req = axios.get(
@@ -77,6 +82,7 @@ const ColleagueProductTable = () => {
     });
   };
   const allProducts = () => {
+
     setFilter("");
     setPage(1);
     const req = axios.get(`http://localhost:8000/api/products?limit=100`);
@@ -90,10 +96,20 @@ const ColleagueProductTable = () => {
     dispatch(setIsEditing({ isEdit: false }));
     navigate("/admin/colleagueAddProduct");
   };
-  //get edited data
+// tableInfo
+const [alignment, setAlignment] = React.useState<string | null>('right');
+
+const handleAlignment = (
+  event: React.MouseEvent<HTMLElement>,
+  newAlignment: string | null,
+) => {
+  setAlignment(newAlignment);
+};
+
 
   return (
-    <Box sx={{ height: "90%" }}>
+    <div >
+          <Box sx={{ height: "90%" }}>
       <Box
         sx={{
           display: "flex",
@@ -101,13 +117,14 @@ const ColleagueProductTable = () => {
           bgcolor: "#ffff",
           alignItems: "center",
           paddingX: "20px",
-          paddingY: "5px",
+        
           borderRadius: "20px",
         }}
       >
-        <Typography
+     <Typography
           sx={{
             color: "secondary.main",
+         
             fontSize: {
               lg: 30,
               md: 30,
@@ -119,6 +136,7 @@ const ColleagueProductTable = () => {
           {" "}
           محصولات
         </Typography>
+    
         <Button
           onClick={NavigateAddProduct}
           sx={{
@@ -156,15 +174,21 @@ const ColleagueProductTable = () => {
             xs: 1,
           },
         }}
-      >
-        <Typography
-          onClick={allProducts}
+      > 
+    <ToggleButtonGroup
+      value={alignment}
+      exclusive
+      onChange={handleAlignment}
+      aria-label="Platform"
+      sx={{direction:"ltr"}}
+    >
+      <ToggleButton value="left" >
+      <Typography
+          onClick={priceFun}
           sx={{
-            ":hover": {
-              cursor: "pointer",
-              borderBottom: "solid",
-              borderColor: "secondary.main",
-            },
+      
+            color:"gray",
+        
             fontSize: {
               lg: 16,
               md: 16,
@@ -173,17 +197,19 @@ const ColleagueProductTable = () => {
             },
           }}
         >
-          {" "}
-          تمام محصولات
+          بدون قیمت
         </Typography>
-        <Typography
+   
+      </ToggleButton>
+      <ToggleButton value="center" >
+      <Typography
           onClick={quantityFun}
           sx={{
-            ":hover": {
-              cursor: "pointer",
-              borderBottom: "solid",
-              borderColor: "secondary.main",
-            },
+        
+            
+            color:"gray",
+         
+            
             fontSize: {
               lg: 16,
               md: 16,
@@ -195,24 +221,33 @@ const ColleagueProductTable = () => {
           {" "}
           اتمام موجودی
         </Typography>
-        <Typography
-          onClick={priceFun}
+      </ToggleButton>
+      <ToggleButton value="right" >
+      <Typography
+          onClick={allProducts}
           sx={{
-            ":hover": {
-              cursor: "pointer",
-              borderBottom: "solid",
-              borderColor: "secondary.main",
-            },
+         
+            color:"gray",
+          
+            
             fontSize: {
               lg: 16,
               md: 16,
               sm: 15,
               xs: 12,
             },
+            
           }}
         >
-          بدون قیمت
+          {" "}
+          تمام محصولات
         </Typography>
+      </ToggleButton>
+  
+    </ToggleButtonGroup>
+      
+    
+   
   
       </Box>
       <Box
@@ -221,7 +256,7 @@ const ColleagueProductTable = () => {
           display: "flex",
           borderRadius: "50px",
           bgcolor: "#ffff",
-          marginBottom: "5px",
+         
           paddingX: "20px",
         }}
       >
@@ -232,7 +267,7 @@ const ColleagueProductTable = () => {
           type="text"
         ></Input>
       </Box>
-      <Box sx={{ marginBottom: 3 }}>
+      <Box >
         {!isLoading && (
           <ColleagueBasicTable
             refetch={refetch}
@@ -254,6 +289,8 @@ const ColleagueProductTable = () => {
         />
       </Box>
     </Box>
+    </div>
+
   );
 };
 

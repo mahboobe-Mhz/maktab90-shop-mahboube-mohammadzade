@@ -94,7 +94,6 @@ const ContactsPage=React.lazy(()=>import("../screens/main/admin/contactsPage"))
 const cookies = new Cookies();
 export const routes = {
   ADMIN: {
-    login: "/admin/auth/login",
     main: "/admin/mainPage",
     index: "/admin/control",
     orders: "/admin/control/orders",
@@ -401,6 +400,7 @@ export const router = createBrowserRouter([
           },
         ],
       },  {
+        
         path: routes.ADMIN.SuperAdminDashboard,
         element:(  
            <SuspenseView>

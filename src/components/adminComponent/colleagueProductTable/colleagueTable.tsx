@@ -53,7 +53,7 @@ export default function ColleagueBasicTable({rows,title,refetch}:Props) {
   const handelEdit=(event:any)=>{
     setEditedId(event.currentTarget.id)
     setTimeout(() => {
-           navigate(routes.ADMIN.addProduct)
+           navigate("/admin/colleagueAddProduct")
     }, 100);
 
     setState(!state)
@@ -81,7 +81,7 @@ const deleteItem=()=>{
 }
   return (<Box sx={{direction:""}}>
     <NotificationModal titleText={titleText} deleteItem={deleteItem}     refetch={refetch}/>
-    <TableContainer  component={Paper}>
+    <TableContainer  component={Paper} >
       <Table sx={{ minWidth: 650 ,}} aria-label="simple table">
         <TableHead>
           <TableRow>

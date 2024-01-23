@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
+import AddHomeStoreInfoHeader from '../../../../components/adminComponent/homeStoreInfoHeader'
 
 function AddHomeStoreInfo() {
+  const [logoImage, setLogoImage]=useState<string>()
+  const [bannerImage, setBannerImage]=useState<string>()
+  const handleBannerSelect =(event :React.ChangeEvent<HTMLInputElement>)=>{
+    if(event.target.files){
+         const filesArray=Array.from(event.target.files).map((file)=>URL.createObjectURL(file)) 
+         setBannerImage(filesArray[0])               
+           } }
+           const handleLogoSelect =(event :React.ChangeEvent<HTMLInputElement>)=>{
+            if(event.target.files){
+                 const filesArray=Array.from(event.target.files).map((file)=>URL.createObjectURL(file)) 
+                 setLogoImage(filesArray[0])               
+                   } }
   return (
     <div dir='rtl' >
-        <div>
-        <div className='flex gap-10 md:flex-row flex-col'>
+       <AddHomeStoreInfoHeader/>
+        <div className='p-5'>
+        <div className='flex gap-10 md:flex-row flex-col '>
         <div className='flex flex-col text-right'>
     <label className='pr-2' htmlFor=""> نام فروشگاه</label>
     <input type="text" className='border border-secondary rounded-full px-3 py-1' />
@@ -17,23 +31,40 @@ function AddHomeStoreInfo() {
         <div className='flex gap-10 md:flex-row flex-col'>
         <div className='flex flex-col text-right'>
     <label className='pr-2' htmlFor="">  لوگو فروشگاه</label>
-    <input type="file" className='border border-secondary rounded-full px-3 py-1' />
+    <input type='file'     name="images"
+     className='border border-secondary rounded-full px-3 py-1' 
+     onChange={handleLogoSelect}  
+     />
+{
+
+  <img className='w-[250px] mt-3' src={logoImage}/>
+  
+}
   </div>
   <div className='flex flex-col text-right'>
     <label className='pr-2' htmlFor=""> بنر فروشگاه</label>
-    <input type='file'  className='border border-secondary rounded-full px-3 py-1' />
+    <input type='file'     name="images"
+     className='border border-secondary rounded-full px-3 py-1' 
+     onChange={handleBannerSelect}  
+     />
+{
+
+  <img className='w-[250px] mt-3' src={bannerImage}/>
+  
+}
   </div>
         </div>
-        <div className='flex gap-10'>
+        <div className='flex gap-10 md:flex-row flex-col'>
         <div className='flex flex-col text-right'>
     <label className='pr-2' htmlFor="">   آدرس فروشگاه</label>
-    <textarea className='border border-secondary rounded-full px-3 py-1' />
+    <textarea className='border border-secondary rounded-full px-3 py-1 ' />
           </div>
         </div>
-        <div className='flex flex-col gap-1'></div>
-        </div>
+        <div className='flex gap-1 md:flex-row flex-col justify-center items-center'></div>
         <button className='text-white bg-secondary px-20 py-1.5 rounded-full w-[200px] mx-auto mt-5'> ثبت</button>
         <button className='text-white bg-secondary px-20 py-1.5 rounded-full w-[200px] mx-auto mt-5 mr-2'> ویرایش</button>
+        </div>
+
     </div>
   )
 }

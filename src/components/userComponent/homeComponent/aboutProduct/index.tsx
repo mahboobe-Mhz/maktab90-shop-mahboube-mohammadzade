@@ -8,7 +8,7 @@ const AboutProduct = () => {
   return (
     <div className="  md:mt-20" dir="ltr">
       <h1 className="text-secondary md:text-4xl text-3xl font-bold md:mb-5 text-center md:pb-10 pb-5 md:pt-0 pt-4"> فروشگاه های برتر</h1>
-      <div className=" md:gap-3 flex md:flex-row flex-col items-center">
+      <div className=" md:gap-3 flex md:flex-row flex-col items-center ">
         <div className=" ">
         <BottomSlider setCounter={setCounter} counter={counter} />
         </div>
@@ -21,12 +21,7 @@ const AboutProduct = () => {
             </h1>
             <div className="  flex flex-col md:px-7  items-center md:items-start ">
               <p className="font-semibold text-sm md:text-lg md:mt-5 md:text-right  ">
-                چوب روسی از جمله فرآورده‌های پر استفاده در صنعت تلقی می­شود که
-                به تمامی کشورها صادر یا وارد می‌شود. چوب روسی در هر کشوری با
-                توجه به اقلیم متفاوت و نوع درختان آن منطقه، متفاوت است که با
-                توجه به میزان مصرف آن در صنایع مختلف به کشورهای دیگر صادر
-                می‌شود. چوب روسی قیمت متفاوتی در نقاط مختلف دنیا دارد. اگر
-                تاکنون برای خرید مبلمان، سرویس خواب، کابینت و اقلامید،
+                چوب روسی از جمله فرآورده‌های پر استفاده در صنعت تلقی می­شود eeeeeeeeeeeeeeeeeeeeeeeeeeee
               </p>
               <button
                 className="text-black border-2 font-semibold pl-4 md:pr-2 md:pt-2 md:pb-2 py-3 pr-3

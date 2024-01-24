@@ -6,12 +6,12 @@ import ShowOrderTableBox from '../../../../components/adminComponent/colleagueOr
 function ColleagueProductPage() {
   const [state , setState]=useState("محصولات")
   return (
-    <div dir='rtl' className='  overflow-auto no-scrollbar'>
+    <div dir='rtl' className='  overflow-auto no-scrollbar ' >
        <AddHomeStoreInfoHeader/>
-       <div> 
-        <button  className='border-2 px-2 text-xl rounded-xl focus:bg-secondary focus:text-white hover:cursor-pointer' onClick={()=>setState("محصولات")}> محصولات </button> 
+       <div className='p-5'> 
+        <button  className='border-2 focus:outline-none px-2 text-xl rounded-xl focus:bg-secondary focus:text-white hover:cursor-pointer' onClick={()=>setState("محصولات")}> محصولات </button> 
         <span>/</span>
-        <button className='border-2 px-2 text-xl rounded-xl focus:bg-secondary focus:text-white hover:cursor-pointer'  onClick={()=>setState("سفارشات")}> سفارشات </button>
+        <button className='border-2 focus:outline-none px-2 text-xl rounded-xl focus:bg-secondary focus:text-white hover:cursor-pointer'  onClick={()=>setState("سفارشات")}> سفارشات </button>
        </div>
        {
         state==="محصولات"?   <ColleagueProductTable/> :<ShowOrderTableBox/>

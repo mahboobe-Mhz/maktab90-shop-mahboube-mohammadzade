@@ -136,6 +136,7 @@ const deleteItem=()=>{
           ))}
         </TableBody>
       </Table>
-    </TableContainer></Box>
+    </TableContainer>
+    </Box>
   );
 }

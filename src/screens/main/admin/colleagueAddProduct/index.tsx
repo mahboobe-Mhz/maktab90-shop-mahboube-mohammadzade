@@ -3,7 +3,7 @@ import ColleagueAddProducts from '../../../../components/adminComponent/colleagu
 
 function ColleagueAddProduct() {
   return (
-    <div className='h-full py-10  '><ColleagueAddProducts/></div>
+    <div className='h-full py-10 p-5 '><ColleagueAddProducts/></div>
   )
 }
 

@@ -36,7 +36,8 @@ const UserLogin = () => {
           
      
         </div>
-        {state==="ثبت"?  <form
+        {state==="ثبت"? 
+         <form
         onSubmit={handleSubmit(handleLoginUser)}
         className="flex flex-col"
       >

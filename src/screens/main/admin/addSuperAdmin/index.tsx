@@ -22,7 +22,7 @@ function AddSuperAdmin() {
             setAdminInfo(newAdminInfo)      
     }   
   return (
-  <div className='flex flex-col h-full w-full md:gap-40 gap-10'>
+  <div className='flex flex-col h-full w-full md:gap-40 gap-10 p-5'>
 
 
      <div className='flex justify-center'>

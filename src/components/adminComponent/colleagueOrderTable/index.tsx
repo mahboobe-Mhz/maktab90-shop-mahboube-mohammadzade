@@ -7,6 +7,8 @@ import useGetPaginationOrders from "../../../api/services/products/useGetAllpagi
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import BasicColleagueOrderTable from "./coleageOrderTable";
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 const ShowOrderTableBox = () => {
   const [page, setPage] = React.useState(1);
@@ -84,7 +86,15 @@ const ShowOrderTableBox = () => {
     });
     refetch();
   };
+//orderData
+const [alignment, setAlignment] = React.useState('allOrder');
 
+const handleChange = (
+  event: React.MouseEvent<HTMLElement>,
+  newAlignment: string,
+) => {
+  setAlignment(newAlignment);
+};
   return (
     <Box sx={{ height: "90%" }}>
       <Box
@@ -147,67 +157,24 @@ const ShowOrderTableBox = () => {
           },
         }}
       >
-        <Typography
-          onClick={allOrders}
-          sx={{
-            ":hover": {
-              cursor: "pointer",
-              borderBottom: "solid",
-              borderColor: "secondary.main",
-            },
-            fontSize: {
-              lg: 16,
-              md: 15,
-              xs: 12,
-            },
-          }}
-        >
-          {" "}
-          تمام سفارشات
-        </Typography>
-        <Typography
-          onClick={notPay}
-          sx={{
-            ":hover": {
-              cursor: "pointer",
-              borderBottom: "solid",
-              borderColor: "secondary.main",
-            },
-            fontSize: {
-              lg: 16,
-              md: 15,
-              xs: 12,
-            },
-          }}
-        >
-          {" "}
-          در انتظار پرداخت
-        </Typography>
-        <Typography
-          onClick={notAcceptOrders}
-          sx={{
-            ":hover": {
-              cursor: "pointer",
-              borderBottom: "solid",
-              borderColor: "secondary.main",
-            },
-            fontSize: {
-              lg: 16,
-              md: 15,
-              xs: 12,
-            },
-          }}
-        >
-          سفارشات منتظر تایید{" "}
-        </Typography>
-        <Typography
+        <ToggleButtonGroup
+        sx={{direction:"ltr"}}
+      color="primary"
+      value={alignment}
+      exclusive
+      onChange={handleChange}
+      aria-label="Platform"
+    >
+      <ToggleButton value="acceptOrder">
+      <Typography
           onClick={acceptOrders}
           sx={{
             ":hover": {
               cursor: "pointer",
-              borderBottom: "solid",
-              borderColor: "secondary.main",
+          
             },
+            color:"black"
+            ,
             fontSize: {
               lg: 16,
               md: 15,
@@ -218,6 +185,72 @@ const ShowOrderTableBox = () => {
           {" "}
           سفارشات تایید شده
         </Typography>
+      
+        </ToggleButton>
+      <ToggleButton value="notPay"><Typography
+          onClick={notPay}
+          sx={{
+            ":hover": {
+              cursor: "pointer",
+           
+            },
+            color:"black"
+            ,
+            fontSize: {
+              lg: 16,
+              md: 15,
+              xs: 12,
+            },
+          }}
+        >
+          {" "}
+          در انتظار پرداخت
+        </Typography></ToggleButton>
+      <ToggleButton value="notAcceptOrder">  <Typography
+          onClick={notAcceptOrders}
+          sx={{
+            ":hover": {
+              cursor: "pointer",
+      
+            },
+            color:"black"
+            ,
+            fontSize: {
+              lg: 16,
+              md: 15,
+              xs: 12,
+            },
+          }}
+        >
+          سفارشات منتظر تایید{" "}
+        </Typography></ToggleButton>
+      <ToggleButton value="allOrder">    
+      <Typography
+          onClick={allOrders}
+          sx={{
+            ":hover": {
+              cursor: "pointer",
+    
+            },
+            color:"black"
+            ,
+            fontSize: {
+              lg: 16,
+              md: 15,
+              xs: 12,
+            },
+          }}
+        >
+          {" "}
+          تمام سفارشات
+        </Typography>
+        </ToggleButton>
+    </ToggleButtonGroup>
+
+        
+        
+      
+   
    
       </Box>
       <Box>

@@ -14,14 +14,14 @@ const AboutProduct = () => {
         </div>
 
         {counter === 0 ? (
-          <div className="  flex flex-col md:text-right md:justify-center  text-center  mt-36  md:mt-0 ">
+          <div className="  flex flex-col md:text-right md:justify-center  text-center  mt-36  md:mt-0 w-full">
             <h1 className="md:text-5xl text-4xl  pb-3 md:pr-7 mt-2    ">
               {" "}
               سرویس خواب لیو{" "}
             </h1>
             <div className="  flex flex-col md:px-7  items-center md:items-start ">
-              <p className="font-semibold text-sm md:text-lg md:mt-5 md:text-right  ">
-                چوب روسی از جمله فرآورده‌های پر استفاده در صنعت تلقی می­شود eeeeeeeeeeeeeeeeeeeeeeeeeeee
+              <p className="font-semibold text-sm md:text-lg md:mt-5 md:text-right w-full ">
+                چوب روسی از جمله فرآورده‌های پر استفاده در صنعت تلقی می­شود 
               </p>
               <button
                 className="text-black border-2 font-semibold pl-4 md:pr-2 md:pt-2 md:pb-2 py-3 pr-3

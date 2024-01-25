@@ -33,13 +33,13 @@ function NewsAndTitle() {
             
                     </div>
               
-                 <div className='flex flex-col '>
+                 <div className='flex flex-col w-full'>
                     <div className=' grid grid-cols-1 md:grid-cols-3   '>
                         <div className='text-right pt-3 md:flex hidden'>
                         <h2 className='md:text-2xl text-lg'> اسفنج ۴۰ کیلویی</h2>
                         </div>
                     
-                        <div className="md:flex hidden md:gap-10 gap-5  pt-5 text-sm">
+                        <div className="md:flex hidden md:gap-10 gap-5  pt-5 text-sm w-full">
             <span className="flex md:gap-2 gap-1"> yasaman jalalian <PersonIcon className=""/>   </span>
             <span className="flex md:gap-2 gap-1">
               متریال ،طراحی داخلی
@@ -65,13 +65,10 @@ function NewsAndTitle() {
                     <div>
                         <span className=' text-sm'> ۱۴۰۲/۱۲/۲۵</span>
                     </div>
-                    <div>
-                        <p className=' text-sm'>
+                    <div className='w-full'>
+                        <p className=' text-sm w-full'>
                         چوب روسی از جمله فرآورده‌های پر استفاده در صنعت تلقی می­شود که
-              به تمامی کشورها صادر یا وارد می‌شود. چوب روسی در هر کشوری با
-              توجه به اقلیم متفاوت و نوع درختان آن منطقه، متفاوت است که با
-              توجه به میزان مصرف آن در صنایع مختلف به کشورهای دیگر صادر
-              می‌شود. چوب روسی قیمت متفاوتی در نقاط مختلف دنیا دارد. 
+              به تمامی کشورها صادر یا وارد می‌شود. چوب روسی در
                         </p>
                     </div>
                     <div className='md:hidden flex justify-end md:mt-0 mt-3 '>
@@ -94,7 +91,7 @@ function NewsAndTitle() {
                 <div className=' md:flex  gap-3 border-t pt-3  mb-5 border-black px-10' >
                     <div className='flex gap-10 items-center '>
                     <img className='w-32 h-32 rounded-3xl border' src="public\picture\میزصندلی.jpg" alt="" />
-                    <div className='md:hidden flex flex-col'>
+                    <div className='md:hidden flex flex-col w-full'>
               
                         <h2 className='md:text-2xl text-lg font-bold'> اسفنج ۴۰ کیلویی</h2>
                
@@ -109,7 +106,7 @@ function NewsAndTitle() {
             
                     </div>
               
-                 <div className='flex flex-col '>
+                 <div className='flex flex-col w-full '>
                     <div className=' grid grid-cols-1 md:grid-cols-3   '>
                         <div className='text-right pt-3 md:flex hidden'>
                         <h2 className='md:text-2xl text-lg'> اسفنج ۴۰ کیلویی</h2>
@@ -170,7 +167,7 @@ function NewsAndTitle() {
                 <div className=' md:flex  gap-3 border-t pt-3  mb-5 border-black px-10' >
                     <div className='flex gap-10 items-center '>
                     <img className='w-32 h-32 rounded-3xl border' src="public\picture\میزصندلی.jpg" alt="" />
-                    <div className='md:hidden flex flex-col'>
+                    <div className='md:hidden flex flex-col w-full'>
               
                         <h2 className='md:text-2xl text-lg font-bold'> اسفنج ۴۰ کیلویی</h2>
                

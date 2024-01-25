@@ -25,7 +25,7 @@ const NewsAndArticle = () => {
         <NewsSlider setCounter={setCounter} counter={counter} />
         </div>
         {counter === 0 ? (
-          <div className="  flex flex-col text-right justify-center  h-[350px] ">
+          <div className="  flex flex-col text-right justify-center  h-[350px] w-full">
             <h1 className="md:text-5xl text-4xl md:text-right text-center  md:pr-7  md:mt-0 ">
               {" "}
              متریال{" "}
@@ -75,14 +75,14 @@ const NewsAndArticle = () => {
             </div>
           </div>
         ) : counter === 1 ? (
-          <div className="  flex flex-col text-right justify-center  h-[350px] ">
+          <div className="  flex flex-col text-right justify-center  h-[350px] w-full">
           <h1 className="md:text-5xl text-4xl md:text-right text-center  md:pr-7  md:mt-0 ">
             {" "}
            متریال{" "}
           </h1>
           <div className="  flex flex-col px-7 w-full   ">
             <p className="font-semibold text-sm md:text-lg md:mt-5 mt-3 text-center md:text-right">
-             eeeeeeeeeeeeeeeeeeeeeeeeeee چوب روسی از جمله فرآورده‌های پر استفاده در صنعت تلقی می­شود 
+           چوب روسی از جمله فرآورده‌های پر استفاده در صنعت تلقی می­شود 
             </p>
          
             <div className="flex md:justify-between  md:flex-row flex-col items-center justify-center " >

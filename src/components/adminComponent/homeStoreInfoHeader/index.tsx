@@ -9,7 +9,7 @@ function AddHomeStoreInfoHeader() {
         <Link to={"/admin/superAdminDashboard"} className='bg-gray-200 px-2 rounded-2xl ml-5 hover:cursor-pointer hover:bg-gray-300' > افزودن ادمین</Link>
         <Link to={"/admin/addHomeStoreInfo"} className='bg-gray-200 px-2 rounded-2xl ml-5 hover:cursor-pointer hover:bg-gray-300' > افزودن اطلاعات فروشگاه</Link>
         <Link to={"/admin/identificationCode"} className='bg-gray-200 px-2 rounded-2xl ml-5 hover:cursor-pointer hover:bg-gray-300' > افزودن کد معرف/ایجاد کاربر</Link>
-        <Link to={""} className='bg-gray-200 px-2 rounded-2xl ml-5 hover:cursor-pointer hover:bg-gray-300' >
+        <Link to={"/admin/colleagueFactor"} className='bg-gray-200 px-2 rounded-2xl ml-5 hover:cursor-pointer hover:bg-gray-300' >
       فاکتورها</Link>
     </div>
     </div>

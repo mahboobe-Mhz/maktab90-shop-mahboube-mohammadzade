@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MainHeader from '../../../../components/userComponent/mainHeader'
 import MainFooter from '../../../../components/userComponent/mainFooter'
 
 import OtherBrandProductCard from '../../../../components/userComponent/homeStore/otherBrandProductCard'
 import FlashIcon from '../../../../components/svg/flashIcon'
+import ColleagueContentCart from '../../../../components/userComponent/colleagueContentCart'
 
 function OtherBrandPage() {
+  const [showProducts ,setShowProducts ]=useState(true)
   const productSample=   {
     "rating": {
         "rate": 0,
@@ -51,19 +53,60 @@ function OtherBrandPage() {
         <img src="public\picture\posterCategory.png" alt="" />
         <img src="public\picture\28993615.png" className='md:w-[200px] w-[100px] absolute z-20 md:top-[200px] top-[10%] left-[42%] bg-white border px-3 rounded-3xl shadow-[0_3px_10px_rgb(0,0,0,0.1)] shadow-gray-500 hover:cursor-pointer' alt="" />
         <div className='flex justify-between md:px-16 px-2 md:pt-1 pt-10 flex-wrap'>
-           <span  className=''>آدرس خیابان زرگری  حدفاصل کوچه ۱۷و۱۹</span>
+          <div className='flex flex-col'>
+          <span  className=''>آدرس خیابان زرگری  حدفاصل کوچه ۱۷و۱۹</span>
+          {showProducts?  <div>
+           <span onClick={()=>setShowProducts(true)} className='text-secondary md:text-2xl text-lg hover:cursor-pointer'> محصولات</span>
+           <span> /</span>
+           <span onClick={()=>setShowProducts(false)} className='md:text-2xl text-lg hover:cursor-pointer'> محتوی</span>
+          </div> :  <div>
+           <span onClick={()=>setShowProducts(true)} className=' md:text-2xl text-lg hover:cursor-pointer'> محصولات</span>
+           <span> /</span>
+           <span onClick={()=>setShowProducts(false)} className= 'text-secondary md:text-2xl text-lg hover:cursor-pointer'> محتوی</span>
+          </div>}
+        
+          </div>
+ 
            <span className=''> شماره تماس ۰۷۱۱۲۳۲۳۲۳-۰۷۱۱۲۳۲۳۲۳-۰۷۱۱۲۳۲۳۲۳</span>
            </div>
+
         </div>
-     <div className='flex flex-wrap md:px-16 px-2 justify-center md:gap-12 gap-5 md:pt-24 pt-10 pb-10'>
-     <OtherBrandProductCard productSelect={productSample} />
-     <OtherBrandProductCard productSelect={productSample} />
-     <OtherBrandProductCard productSelect={productSample} />
-     <OtherBrandProductCard productSelect={productSample} />
-     <OtherBrandProductCard productSelect={productSample} />
-     <OtherBrandProductCard productSelect={productSample} />
-     <OtherBrandProductCard productSelect={productSample} />
-     <OtherBrandProductCard productSelect={productSample} />
+        {
+          showProducts ?   
+          <div>
+          <div className='flex flex-wrap md:px-16 px-2 justify-center md:gap-12 gap-5 md:pt-24 pt-10 pb-10'>
+       <OtherBrandProductCard productSelect={productSample} />
+       <OtherBrandProductCard productSelect={productSample} />
+       <OtherBrandProductCard productSelect={productSample} />
+       <OtherBrandProductCard productSelect={productSample} />
+       <OtherBrandProductCard productSelect={productSample} />
+       <OtherBrandProductCard productSelect={productSample} />
+       <OtherBrandProductCard productSelect={productSample} />
+       <OtherBrandProductCard productSelect={productSample} />
+  
+  
+  
+       </div>
+       <div className='flex gap-5 justify-center pb-5' dir='ltr'>
+              <span>۱</span>
+              <span>۲</span>
+              <span>۳</span>
+              <span>...</span>
+              <span>۴۳</span>
+              <span className='flex gap-3'> صفحه بعد     <FlashIcon className=' w-[20px] pt-1'/></span>
+           
+          </div>
+        </div>
+        :     <div>
+        <div className='flex flex-wrap md:px-16 px-2 justify-center md:gap-12 gap-5 md:pt-24 pt-10 pb-10'>
+     <ColleagueContentCart productSelect={productSample} />
+     <ColleagueContentCart productSelect={productSample} />
+     <ColleagueContentCart productSelect={productSample} />
+     <ColleagueContentCart productSelect={productSample} />
+     <ColleagueContentCart productSelect={productSample} />
+     <ColleagueContentCart productSelect={productSample} />
+     <ColleagueContentCart productSelect={productSample} />
+     <ColleagueContentCart productSelect={productSample} />
 
 
 
@@ -78,6 +121,10 @@ function OtherBrandPage() {
          
         </div>
       </div>
+        }
+    
+        </div>
+  
       <MainFooter/>
     </div>
   )

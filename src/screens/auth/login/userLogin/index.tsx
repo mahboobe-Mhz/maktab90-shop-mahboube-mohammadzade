@@ -6,6 +6,7 @@ import { useState } from "react";
 import { routes } from "../../../../routes";
 
 const UserLogin = () => {
+  const [identificationCode, setIdentificationCod]=useState(false)
   const navigate = useNavigate();
   const [state,setState]=useState("ورود")
   const naivgateHome = () => {
@@ -92,7 +93,28 @@ const UserLogin = () => {
           </span>
         </div>
     
-
+        <div className="pb-3">
+        <span>  
+            اگر کد معرف دارید 
+            <span onClick={()=>setIdentificationCod(!identificationCode)} className="text-[#ffff] hover:cursor-pointer hover:text-gray-200"> کلیک کنید</span>
+             </span>
+          {identificationCode?   <div>
+                 <label className="block pr-5 text-[#ffff] text-sm font-bold mb-1">
+          کد معرف
+          </label>
+          <input
+            className=" bg-[#fd6e54] shadow appearance-none border border-red 
+            rounded-full w-full py-2 px-3 text-grey-darker "
+            id="phoneNumber"
+            {...register("phoneNumber")}
+            type="number"
+          />
+             </div>:    ""}
+ 
+          
+       
+      
+        </div>
         <button
         
           className="w-full  bg-[#ffff] hover:bg-blue-dark text-[#fd6e54] font-bold h-[40px]  rounded-full "

@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import MainHeader from '../../../../components/userComponent/mainHeader'
 import MainFooter from '../../../../components/userComponent/mainFooter'
-
+import Rating from '@mui/material/Rating';
 import OtherBrandProductCard from '../../../../components/userComponent/homeStore/otherBrandProductCard'
 import FlashIcon from '../../../../components/svg/flashIcon'
 import ColleagueContentCart from '../../../../components/userComponent/colleagueContentCart'
+import RatingModal from '../../../../components/userComponent/ratingMOdal';
 
 function OtherBrandPage() {
   const [showProducts ,setShowProducts ]=useState(true)
+  const [openModal,setOpenModal]=useState(false)
   const productSample=   {
     "rating": {
         "rate": 0,
@@ -49,10 +51,19 @@ function OtherBrandPage() {
     <div>
       <MainHeader/>
       <div className=' container mx-auto' dir='rtl'>
+        <RatingModal openModal={openModal} setOpenModal={setOpenModal}/>
         <div>
         <img src="public\picture\posterCategory.png" alt="" />
-        <img src="public\picture\28993615.png" className='md:w-[200px] w-[100px] absolute z-20 md:top-[200px] top-[10%] left-[42%] bg-white border px-3 rounded-3xl shadow-[0_3px_10px_rgb(0,0,0,0.1)] shadow-gray-500 hover:cursor-pointer' alt="" />
-        <div className='flex justify-between md:px-16 px-2 md:pt-1 pt-10 flex-wrap'>
+        <div className='flex flex-col  absolute z-20
+         md:top-[200px] top-[15%] left-[22%] md:left-[43%] justify-center items-center '>
+        <img src="public\picture\28993615.png" className='md:w-[200px] w-[100px] bg-white border px-3 rounded-3xl shadow-[0_3px_10px_rgb(0,0,0,0.1)]
+         shadow-gray-500 hover:cursor-pointer' alt="" />
+        <Rating name="read-only" value={3} readOnly sx={{direction:"rtl", marginTop:"5px"}}/>
+        <span onClick={()=>setOpenModal(true)} className=' hover:text-secondary hover:cursor-pointer'> 
+        کلیک کنید وبه این فروشگاه امتیاز دهید</span>
+        </div>
+       
+        <div className='flex justify-between md:px-16 px-2 md:pt-1 pt-24 flex-wrap'>
           <div className='flex flex-col'>
           <span  className=''>آدرس خیابان زرگری  حدفاصل کوچه ۱۷و۱۹</span>
           {showProducts?  <div>
@@ -74,7 +85,7 @@ function OtherBrandPage() {
         {
           showProducts ?   
           <div>
-          <div className='flex flex-wrap md:px-16 px-2 justify-center md:gap-12 gap-5 md:pt-24 pt-10 pb-10'>
+          <div className='flex flex-wrap md:px-16 px-2 justify-center md:gap-12 gap-5 md:pt-24 pt-10 pb-10 mt-10'>
        <OtherBrandProductCard productSelect={productSample} />
        <OtherBrandProductCard productSelect={productSample} />
        <OtherBrandProductCard productSelect={productSample} />

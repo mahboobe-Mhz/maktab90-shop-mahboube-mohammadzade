@@ -93,6 +93,7 @@ const AddHomeStoreInfo=React.lazy(()=>import("../screens/main/admin/addHomeStore
 const ContactsPage=React.lazy(()=>import("../screens/main/admin/contactsPage"))
 const IdentificationCode=React.lazy(()=>import("../screens/main/admin/IdentificationCode"))
 const ColleagueFactor=React.lazy(()=>import("../screens/main/admin/colleagueFactor"))
+const ColleagueSingleContentPage=React.lazy(()=>import("../screens/main/users/colleagueSingleContentPage"))
 const cookies = new Cookies();
 export const routes = {
   ADMIN: {
@@ -146,7 +147,8 @@ export const routes = {
     OtherBrandPage:"/otherBrandPage",
     OtherBrandSingleProductPage:"/otherBrandSingleProductPage",
     NewsAndTitle:"/newsAndArticle",
-    NewsAndTileSinglePage:"/newsAndArticleSinglePage/:id"
+    NewsAndTileSinglePage:"/newsAndArticleSinglePage/:id",
+    colleagueSingleContentPage:"/colleagueSingleContentPage"
   },
 };
 // const user = cookies.get("user");
@@ -279,6 +281,12 @@ export const router = createBrowserRouter([
     element:
       <SuspenseView>
         <Checkout />
+      </SuspenseView>
+  },  {
+    path: routes.USERS.colleagueSingleContentPage,
+    element:
+      <SuspenseView>
+        <ColleagueSingleContentPage />
       </SuspenseView>
   },
 

@@ -13,6 +13,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import Cookies from "universal-cookie";
 import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
 import ArticleIcon from '@mui/icons-material/Article';
+import WorkOutlinedIcon from '@mui/icons-material/WorkOutlined';
 const SideBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -63,6 +64,24 @@ const SideBar = () => {
           }}
         >
           <ChatIcon sx={{ width: "30px" }} /> نظرات
+        </Button>
+        <Button
+          onClick={() => {
+            dispatch(
+              addBreadCrumb({
+                BreadCrumb: " نظرات",
+              })
+            ),
+              navigate(routes.ADMIN.comments);
+          }}
+          sx={{
+            color: "#ffff",
+            paddingY: "15px",
+            paddingLeft: "160px",
+            fontSize: "16px",
+          }}
+        >
+          <WorkOutlinedIcon sx={{ width: "30px" }} /> اصناف
         </Button>
         <Button
           onClick={() => {

@@ -7,6 +7,7 @@ import { OrderDataType, OrderInfo } from "../../../api/interface/order";
 import { Product } from "../../../api/interface/products";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { routes } from "../../../routes";
 
 interface Props{
   productSelect:Product
@@ -29,19 +30,9 @@ const ColleagueContentCart = ({productSelect}:Props) => {
       slugName:productSelect.slugname
   };
   const navigateToSinglePage =(event:any)=>{
-    navigate(`/product/${event.currentTarget.id}_${event.currentTarget.dataset.user}_${productSelect.category._id}`)
+    navigate(routes.USERS.colleagueSingleContentPage)
   }
-  const handleInsertToCart=()=>{
-    if(appState.OrderData.length>0){
-       const newAppState =appState.OrderData.filter((item:OrderInfo) => item.id !==productSelect._id)
-      dispatch(setOrderData({ OrderData: [...newAppState, orderInfo] }));
-    }else{
-      dispatch(setOrderData({ OrderData: [...appState.OrderData, orderInfo] }));
-    }
-    toast.success("محصول به سبد خرید اضافه ", {
-      position: toast.POSITION.TOP_RIGHT,
-    });
-  }
+
 
   
     return (<div className="mt-2  md:w-[240px] w-[150px] " dir="rtl"  >

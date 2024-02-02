@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from '@mui/material'
+import { Box, Button, Input, TextField, Typography } from '@mui/material'
 import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -12,7 +12,7 @@ import DoneIcon from '@mui/icons-material/Done';
 import DeleteAddColorModal from './deleteAddColorModal';
 import PaginationControlled from '../pagination';
 import InsertColorModal from './insertColorModal';
-
+import SearchIcon from "../../svg/searchIcon";
 
 
 function AddColor() {
@@ -71,8 +71,27 @@ const handleDeleteModal=()=>{
           افزودن رنگ
         </Button>
           </Box>
-     
-     <Box sx={{ marginTop:5}}>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              borderRadius: "50px",
+              bgcolor: "#ffff",
+              marginTop: "20px",
+              paddingX: "20px",
+            }}
+          >
+            <Box sx={{ fill: "gray", marginTop: 1, paddingX: 1 }}>
+              <SearchIcon />
+            </Box>
+
+            <Input
+              placeholder="جستجو"
+              sx={{ width: "100%", outline: "none" }}
+              type="text"
+            ></Input>
+          </Box>
+     <Box sx={{ marginTop:2}}>
      <TableContainer  component={Paper}>
  
       <Table sx={{ minWidth: 650 ,}} aria-label="simple table">

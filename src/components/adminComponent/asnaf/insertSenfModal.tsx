@@ -15,14 +15,17 @@ interface Props{
 }
 const style = {
   position: 'absolute',
-  top: '0%',
+  top: '10%',
  left:{
   lg: '30%',
   md:"30%",
   sm: '30%',
-  xs:0
+  xs:'10%'
  },
-  width: "500px",
+  width: {
+    lg:"500px",
+    xs:"300px"
+  },
   bgcolor: 'white',
   borderRadius:3,
 

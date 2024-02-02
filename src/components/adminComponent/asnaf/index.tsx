@@ -7,7 +7,7 @@ import PaginationControlled from "../pagination";
 import AsnafTable from "./asnafTable";
 import InsertSenfModal from "./insertSenfModal";
 const Asnaf = () => {
-const [open , setOpen]=useState(true)
+const [open , setOpen]=useState(false)
   return (
     <Box sx={{ height: "90%" }}>
 
@@ -59,6 +59,7 @@ const [open , setOpen]=useState(true)
               bgcolor: "#ffff",
               marginTop: "20px",
               paddingX: "20px",
+              marginBottom:"20px"
             }}
           >
             <Box sx={{ fill: "gray", marginTop: 1, paddingX: 1 }}>
@@ -71,40 +72,7 @@ const [open , setOpen]=useState(true)
               type="text"
             ></Input>
           </Box>
-          <Box
-            sx={{
-              display: "flex",
-              gap: {
-                lg: 10,
-                md: 5,
-                xs: 1,
-              },
-              padding: "20px",
-              color: "gray",
-              height: {
-                lg: 70,
-              },
-            }}
-          >
-            <Typography
-              sx={{
-                ":hover": {
-                  cursor: "pointer",
-                  borderBottom: "solid",
-                  borderColor: "secondary.main",
-                },
-                fontSize: {
-                  lg: 16,
-                  md: 15,
-                  xs: 12,
-                },
-              }}
-            >
-              {" "}
-             تمام اصناف
-            </Typography>
-         
-          </Box>
+      
           <Box>
             <AsnafTable />
             <PaginationControlled countPage={1} page={1} setPage={1} />

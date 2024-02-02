@@ -111,6 +111,7 @@ const Comments = () => {
               bgcolor: "#ffff",
               marginTop: "20px",
               paddingX: "20px",
+              marginBottom:"10px"
             }}
           >
             

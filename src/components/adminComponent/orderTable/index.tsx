@@ -120,23 +120,6 @@ const ShowTableBox = () => {
         </Typography>
  
       </Box>
-      <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          borderRadius: "50px",
-          bgcolor: "#ffff",
-          marginTop: "20px",
-          paddingX: "20px",
-        }}
-      >
-        <SearchIcon sx={{ fill: "gray", marginTop: "3px", marginX: 1 }} />
-        <Input
-          placeholder="جستجو"
-          sx={{ width: "100%", outline: "none" }}
-          type="text"
-        ></Input>
-      </Box>
       <Box sx={{overflowX:"auto"}}>
       <Box
         sx={{
@@ -151,7 +134,11 @@ const ShowTableBox = () => {
           height: {
             lg: 70,
           },
-          width:"500px"
+          width:{
+            lg:'700px',
+            md:"600px",
+            xs:'500px'
+          }
         }}
       >
                  <Tabs
@@ -196,6 +183,25 @@ const ShowTableBox = () => {
    
       </Box>
       </Box>
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          borderRadius: "50px",
+          bgcolor: "#ffff",
+          marginTop: "20px",
+          paddingX: "20px",
+          marginBottom:"10px"
+        }}
+      >
+        <SearchIcon sx={{ fill: "gray", marginTop: "3px", marginX: 1 }} />
+        <Input
+          placeholder="جستجو"
+          sx={{ width: "100%", outline: "none" }}
+          type="text"
+        ></Input>
+      </Box>
+  
    
       <Box>
         {isLoading ? (

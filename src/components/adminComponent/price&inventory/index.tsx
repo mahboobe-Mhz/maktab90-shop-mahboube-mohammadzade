@@ -1,11 +1,12 @@
 import { Box, Typography, Button, Input } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import BasicTable from "./priceTable";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PaginationControlled from "../pagination";
 import axios from "axios";
 import useGetPaginationProducts from "../../../api/services/products/usePaginationProducts";
-
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
 
 const PriceTable = () => {
   const [page, setPage] = useState<number>(1);
@@ -61,6 +62,12 @@ const PriceTable = () => {
   };
   const handleAllChange = () => {
     console.log("hi");
+  };
+  //tabs
+  const [value, setValue] = React.useState('one');
+
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
   };
   return (
     <Box sx={{ height: "100%" }}>
@@ -121,60 +128,38 @@ const PriceTable = () => {
           },
         }}
       >
-        <Typography
-          onClick={allProducts}
-          sx={{
-            ":hover": {
-              cursor: "pointer",
-              borderBottom: "solid",
-              borderColor: "secondary.main",
-            },
-            fontSize: {
+           <Tabs
+        value={value}
+        onChange={handleChange}
+        aria-label="wrapped label tabs example"
+        sx={{
+          marginLeft: "auto",
+          "&& .Mui-selected": { // && are used to increase the specificity
+             color: "secondary.main",
+             borderBottomColor:"secondary.main",
+             borderBottom:{lg:"solid", md:"none",xs:"none"}
+          }
+        }}
+      >
+        <Tab onClick={allProducts}  value="one" label="تمام محصولات" wrapped 
+        sx={{color:"black", fontSize: {
               lg: 16,
-              md: 16,
-              sm: 15,
+              md: 15,
               xs: 12,
-            },
-          }}
-        >
-          تمام محصولات
-        </Typography>
-        <Typography
-          onClick={priceFun}
-          sx={{
-            ":hover": {
-              cursor: "pointer",
-              borderBottom: "solid",
-              borderColor: "secondary.main",
-            },
-            fontSize: {
+            },}}  />
+        <Tab      onClick={priceFun} value="two" label="اتمام موجودی"    sx={{color:"black", fontSize: {
               lg: 16,
-              md: 16,
-              sm: 15,
+              md: 15,
               xs: 12,
-            },
-          }}
-        >
-          اتمام موجودی
-        </Typography>
-        <Typography
-          onClick={quantityFun}
-          sx={{
-            ":hover": {
-              cursor: "pointer",
-              borderBottom: "solid",
-              borderColor: "secondary.main",
-            },
-            fontSize: {
+            },}}/>
+        <Tab  onClick={quantityFun} value="three" label="بدون قیمت"    sx={{color:"black", fontSize: {
               lg: 16,
-              md: 16,
-              sm: 15,
+              md: 15,
               xs: 12,
-            },
-          }}
-        >
-          بدون قیمت
-        </Typography>
+            },}}/>
+      </Tabs>
+    
+ 
       </Box>
       <Box
         sx={{

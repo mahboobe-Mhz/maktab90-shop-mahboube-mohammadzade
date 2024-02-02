@@ -7,7 +7,8 @@ import axios from "axios";
 import useGetPaginationOrders from "../../../api/services/products/useGetAllpaginatonOrders";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
 const ShowTableBox = () => {
   const [page, setPage] = React.useState(1);
   const [filter, setFilter] = React.useState("");
@@ -84,7 +85,11 @@ const ShowTableBox = () => {
     });
     refetch();
   };
+  //tabs
+  const [value, setValue] = React.useState('one');
 
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);}
   return (
     <Box sx={{ height: "90%" }}>
       <Box
@@ -132,6 +137,7 @@ const ShowTableBox = () => {
           type="text"
         ></Input>
       </Box>
+      <Box sx={{overflowX:"auto"}}>
       <Box
         sx={{
           display: "flex",
@@ -145,81 +151,52 @@ const ShowTableBox = () => {
           height: {
             lg: 70,
           },
+          width:"500px"
         }}
       >
-        <Typography
-          onClick={allOrders}
-          sx={{
-            ":hover": {
-              cursor: "pointer",
-              borderBottom: "solid",
-              borderColor: "secondary.main",
-            },
-            fontSize: {
+                 <Tabs
+        value={value}
+        onChange={handleChange}
+        aria-label="wrapped label tabs example"
+        sx={{
+          marginLeft: "auto",
+          "&& .Mui-selected": { // && are used to increase the specificity
+             color: "secondary.main",
+             borderBottomColor:"secondary.main",
+             borderBottom:{lg:"solid", md:"none",xs:"none"}
+          }
+        }}
+      >
+        <Tab onClick={allOrders}  value="one" label=" تمام سفارشات " wrapped 
+        sx={{color:"black", fontSize: {
               lg: 16,
               md: 15,
               xs: 12,
-            },
-          }}
-        >
-          {" "}
-          تمام سفارشات
-        </Typography>
-        <Typography
-          onClick={notPay}
-          sx={{
-            ":hover": {
-              cursor: "pointer",
-              borderBottom: "solid",
-              borderColor: "secondary.main",
-            },
-            fontSize: {
+            },}}  />
+        <Tab      onClick={notPay} value="two" label="    در انتظار پرداخت"    sx={{color:"black", fontSize: {
               lg: 16,
               md: 15,
               xs: 12,
-            },
-          }}
-        >
-          {" "}
-          در انتظار پرداخت
-        </Typography>
-        <Typography
-          onClick={notAcceptOrders}
-          sx={{
-            ":hover": {
-              cursor: "pointer",
-              borderBottom: "solid",
-              borderColor: "secondary.main",
-            },
-            fontSize: {
+            },}}/>
+        <Tab  onClick={notAcceptOrders} value="three" label="  سفارشات در انتظار تایید"    sx={{color:"black", fontSize: {
               lg: 16,
               md: 15,
               xs: 12,
-            },
-          }}
-        >
-          سفارشات منتظر تایید{" "}
-        </Typography>
-        <Typography
-          onClick={acceptOrders}
-          sx={{
-            ":hover": {
-              cursor: "pointer",
-              borderBottom: "solid",
-              borderColor: "secondary.main",
-            },
-            fontSize: {
+            },}}/>
+        <Tab  onClick={acceptOrders} value="four" label="    سفارشات تایید شده"    sx={{color:"black", fontSize: {
               lg: 16,
               md: 15,
               xs: 12,
-            },
-          }}
-        >
-          {" "}
-          سفارشات تایید شده
-        </Typography>
+            },}}/>
+      </Tabs>
+      
+    
+  
+     
    
       </Box>
+      </Box>
+   
       <Box>
         {isLoading ? (
           <span>loading ...</span>

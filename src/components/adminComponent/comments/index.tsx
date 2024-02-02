@@ -1,11 +1,19 @@
 import { Box, Typography, Paper, Button, Input } from "@mui/material";
 import MessageOutlinedIcon from "@mui/icons-material/MessageOutlined";
-import { useState } from "react";
+import React, { useState } from "react";
 import SearchIcon from "../../svg/searchIcon";
 import CommentsTable from "./commentsTable";
 import PaginationControlled from "../pagination";
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
 const Comments = () => {
   const [isComments, setIsComments] = useState<boolean>(true);
+    //tabs
+    const [value, setValue] = React.useState('one');
+
+    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+      setValue(newValue);
+    };
   return (
     <Box sx={{ height: "90%" }}>
       {isComments ? (
@@ -37,26 +45,7 @@ const Comments = () => {
               نظرات
             </Typography>
           </Box>
-          <Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              borderRadius: "50px",
-              bgcolor: "#ffff",
-              marginTop: "20px",
-              paddingX: "20px",
-            }}
-          >
-            <Box sx={{ fill: "gray", marginTop: 1, paddingX: 1 }}>
-              <SearchIcon />
-            </Box>
-
-            <Input
-              placeholder="جستجو"
-              sx={{ width: "100%", outline: "none" }}
-              type="text"
-            ></Input>
-          </Box>
+          <Box overflow={"auto"} >
           <Box
             sx={{
               display: "flex",
@@ -70,78 +59,73 @@ const Comments = () => {
               height: {
                 lg: 70,
               },
+              width:{
+                lg:"500px",
+                xs:"410px"
+              }
             }}
           >
-            <Typography
-              sx={{
-                ":hover": {
-                  cursor: "pointer",
-                  borderBottom: "solid",
-                  borderColor: "secondary.main",
-                },
-                fontSize: {
-                  lg: 16,
-                  md: 15,
-                  xs: 12,
-                },
-              }}
-            >
-              {" "}
-              تمام نظرات
-            </Typography>
-            <Typography
-              sx={{
-                ":hover": {
-                  cursor: "pointer",
-                  borderBottom: "solid",
-                  borderColor: "secondary.main",
-                },
-                fontSize: {
-                  lg: 16,
-                  md: 15,
-                  xs: 12,
-                },
-              }}
-            >
-              {" "}
-              در انتظار تایید
-            </Typography>
-
-            <Typography
-              sx={{
-                ":hover": {
-                  cursor: "pointer",
-                  borderBottom: "solid",
-                  borderColor: "secondary.main",
-                },
-                fontSize: {
-                  lg: 16,
-                  md: 15,
-                  xs: 12,
-                },
-              }}
-            >
-              {" "}
-              تایید شده
-            </Typography>
-            <Typography
-              sx={{
-                ":hover": {
-                  cursor: "pointer",
-                  borderBottom: "solid",
-                  borderColor: "secondary.main",
-                },
-                fontSize: {
-                  lg: 16,
-                  md: 15,
-                  xs: 12,
-                },
-              }}
-            >
-              {" "}
-              نظرات حذف شده
-            </Typography>
+                 <Tabs
+        value={value}
+        onChange={handleChange}
+        aria-label="wrapped label tabs example"
+        sx={{
+          marginLeft: "auto",
+          "&& .Mui-selected": { // && are used to increase the specificity
+             color: "secondary.main",
+             borderBottomColor:"secondary.main",
+             borderBottom:{lg:"solid", md:"none",xs:"none"}
+          }
+        }}
+      >
+        <Tab  value="one" label=" تمام نظرات" wrapped 
+        sx={{color:"black", fontSize: {
+              lg: 16,
+              md: 15,
+              xs: 12,
+            },}}  />
+        <Tab       value="two" label=" در انتظار تایید"    sx={{color:"black", fontSize: {
+              lg: 16,
+              md: 15,
+              xs: 12,
+            },}}/>
+        <Tab   value="three" label="   تایید شده"    sx={{color:"black", fontSize: {
+              lg: 16,
+              md: 15,
+              xs: 12,
+            },}}/>
+             <Tab   value="four" label="     نظرات حذف شده"    sx={{color:"black", fontSize: {
+              lg: 16,
+              md: 15,
+              xs: 12,
+            },}}/>
+      </Tabs>
+ 
           </Box>
+          </Box>
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              borderRadius: "50px",
+              bgcolor: "#ffff",
+              marginTop: "20px",
+              paddingX: "20px",
+            }}
+          >
+            
+            <Box sx={{ fill: "gray", marginTop: 1, paddingX: 1 }}>
+              <SearchIcon />
+            </Box>
+
+            <Input
+              placeholder="جستجو"
+              sx={{ width: "100%", outline: "none" }}
+              type="text"
+            ></Input>
+          </Box>
+        
+        
           <Box>
             <CommentsTable />
             <PaginationControlled countPage={1} page={1} setPage={1} />

@@ -6,13 +6,11 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
 function ColleagueProductPage() {
-  const [state , setState]=useState("محصولات")
+
   const [value, setValue] = React.useState('one');
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
-    console.log(value);
-    
   };
   return (
     <div dir='rtl' className='  overflow-auto no-scrollbar ' >

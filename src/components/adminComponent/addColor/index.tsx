@@ -10,19 +10,30 @@ import Paper from '@mui/material/Paper';
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import DoneIcon from '@mui/icons-material/Done';
 import DeleteAddColorModal from './deleteAddColorModal';
+import PaginationControlled from '../pagination';
 
 
 
 function AddColor() {
     const [openDeleteModal,setOpenDeleteModal]=React.useState(false)
+    const [bannerImage, setBannerImage]=React.useState<string>()
 const handleDeleteModal=()=>{
   setOpenDeleteModal(true)
 
 }
-    const colorArray=[{name:"قرمز", photo:"https://about.canva.com/wp-content/uploads/sites/8/2019/03/red.png"},{name:"زرد", photo:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAA1BMVEX6+jNOqqP9AAAAR0lEQVR4nO3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO8GxYgAAb0jQ/cAAAAASUVORK5CYII="},{name:"سبز", photo:"https://img.freepik.com/premium-photo/abstract-mint-green-gradient-background-empty-space-studio-room-display-product_8466-17.jpg"}]
+    const colorArray=[{name:"قرمز", photo:"https://about.canva.com/wp-content/uploads/sites/8/2019/03/red.png"},
+    {name:"زرد", photo:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAA1BMVEX6+jNOqqP9AAAAR0lEQVR4nO3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO8GxYgAAb0jQ/cAAAAASUVORK5CYII="},
+    {name:"سبز", photo:"https://img.freepik.com/premium-photo/abstract-mint-green-gradient-background-empty-space-studio-room-display-product_8466-17.jpg"},{name:"قرمز", photo:"https://about.canva.com/wp-content/uploads/sites/8/2019/03/red.png"},
+    {name:"زرد", photo:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAA1BMVEX6+jNOqqP9AAAAR0lEQVR4nO3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO8GxYgAAb0jQ/cAAAAASUVORK5CYII="},
+   ]
+   const handleBannerSelect =(event :React.ChangeEvent<HTMLInputElement>)=>{
+    if(event.target.files){
+         const filesArray=Array.from(event.target.files).map((file)=>URL.createObjectURL(file)) 
+         setBannerImage(filesArray[0])               
+           } }
   return (
     <Box>
-         <DeleteAddColorModal titleText='ایا از حذف برچسب اطمینان دارید؟' openDeleteModal={openDeleteModal} setOpenDeleteModal={setOpenDeleteModal}/>
+         <DeleteAddColorModal titleText='ایا از حذف رنگ اطمینان دارید؟' openDeleteModal={openDeleteModal} setOpenDeleteModal={setOpenDeleteModal}/>
            <Box
             sx={{
               display: "flex",
@@ -50,11 +61,12 @@ const handleDeleteModal=()=>{
               افزودن رنگ
             </Typography>
           </Box>
-        <Box sx={{ display:"flex" , gap:3, marginTop:5}}>
-        <TextField variant='standard' label="نام رنگ"></TextField>
-        <Box> 
-            <Typography> تصویر رنگ را اضافه کنید</Typography>
-            <input type="file" name='عکس رنگ'  />
+        <Box sx={{ display:"flex" ,flexDirection:"column", gap:3, marginTop:5}}>
+        <TextField sx={{width:"200px"}} variant='standard' label="نام رنگ"></TextField>
+        <Box sx={{ display:"flex" , gap:3 ,marginTop:"30px"}}> 
+            <Typography > تصویر رنگ را اضافه کنید</Typography>
+            <input type="file" name='عکس رنگ'    onChange={handleBannerSelect}  />
+            <img className='w-[150px] mt-3' src={bannerImage}/>
         </Box>
         <Button
           sx={{
@@ -63,7 +75,8 @@ const handleDeleteModal=()=>{
             bgcolor: "secondary.main",
             borderRadius: "50px",
             height:"30px",
-            marginTop:3
+            marginTop:3,
+            width:"200px"
           }}
         >
           {" "}
@@ -110,6 +123,11 @@ const handleDeleteModal=()=>{
         </TableBody>
       </Table>
     </TableContainer>
+    <PaginationControlled
+          setPage={1}
+          page={2}
+          countPage={2}
+        />
      </Box>
  
     </Box>

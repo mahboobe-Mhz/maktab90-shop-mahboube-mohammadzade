@@ -15,15 +15,17 @@ interface Props{
 }
 const style = {
   position: 'absolute',
-  top: '0%',
+  top: '10%',
  left:{
   lg: '30%',
   md:"30%",
   sm: '30%',
-  xs:0
+  xs:'10%'
  },
   width: {
-    xl:500
+    xl:500,
+    xs:300
+
   },
   bgcolor: 'white',
   borderRadius:3,
@@ -44,7 +46,12 @@ editCat.subCat?.map((item:any)=>subCatArray.push(item.name))
   setAddSubCat(subCatArray)
   
 },[editCat])
-
+const [bannerImage, setBannerImage]=React.useState<string>()
+const handleBannerSelect =(event :React.ChangeEvent<HTMLInputElement>)=>{
+  if(event.target.files){
+       const filesArray=Array.from(event.target.files).map((file)=>URL.createObjectURL(file)) 
+       setBannerImage(filesArray[0])               
+         } }
 
   return (
     <div dir='rtl'>
@@ -59,20 +66,21 @@ editCat.subCat?.map((item:any)=>subCatArray.push(item.name))
        <Box >
         <Box sx={{display:"flex",justifyContent:"space-between", bgcolor:"secondary.main", 
         color:"white", paddingX:"10px", paddingY:"6px",borderStartEndRadius:"10px",
-         borderStartStartRadius:"10px", width:"100%"}}>
+         borderStartStartRadius:"10px",}}>
         <ClearIcon onClick={handleClose}/>
             <Typography >  افزودن دسته جدید </Typography>
         </Box>
-     <Box sx={{display:"flex", flexDirection:"column",gap:"10px", width:400 }}>
+     <Box sx={{display:"flex", flexDirection:"column",gap:"10px" }}>
         <Box sx={{borderBottom:"solid", borderColor:"secondary.light"}}>  
        {
         editFlag? <TextField onChange={(e)=>setCatName(e.currentTarget.value)} value={catName} sx={{marginX:2 , marginY:2 , width:"90%"}} label="نام دسته" variant="standard" />:
         <TextField onChange={(e)=>setCatName(e.currentTarget.value)} sx={{marginX:2 , marginY:2 , width:"90%"}} label="نام دسته" variant="standard" />
        }
          </Box>
-          <Box sx={{display:"flex", flexDirection:"column",gap:"10px", width:400, paddingLeft:"10px" }}>
-    <span> افزودن عکس</span>
-          <input type="file"  />
+          <Box sx={{display:"flex", flexDirection:"column",gap:"10px", paddingRight:"10px", alignItems:"end" }}>
+    <span>  تصویر دسته را اضافه کنید</span>
+          <input type="file"   onChange={handleBannerSelect} />
+          <img className='w-[150px] mt-3' src={bannerImage}/>
     </Box>
   
  {

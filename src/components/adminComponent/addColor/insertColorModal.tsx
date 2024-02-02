@@ -14,7 +14,7 @@ interface Props{
 }
 const style = {
   position: 'absolute',
-  top: '0%',
+  top: '10%',
  left:{
   lg: '30%',
   md:"30%",
@@ -57,7 +57,7 @@ export default function InsertColorModal({open,setOpen}:Props) {
         <Box padding={1}>
         <Box sx={{display:"flex", flexDirection:"column",gap:"10px", alignItems:"end"}}>
     
-    <TextField sx={{width:"200px"}} variant='standard' label="نام رنگ"></TextField>
+    <TextField sx={{width:"90%"}} variant='standard' label="نام رنگ"></TextField>
  
     <Box sx={{display:"flex", flexDirection:"column",gap:"10px" , alignItems:"end"}}>
     <Typography > تصویر رنگ را اضافه کنید</Typography>

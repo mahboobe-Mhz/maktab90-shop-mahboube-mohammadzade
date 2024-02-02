@@ -11,12 +11,14 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import DoneIcon from '@mui/icons-material/Done';
 import DeleteAddColorModal from './deleteAddColorModal';
 import PaginationControlled from '../pagination';
+import InsertColorModal from './insertColorModal';
 
 
 
 function AddColor() {
     const [openDeleteModal,setOpenDeleteModal]=React.useState(false)
-    const [bannerImage, setBannerImage]=React.useState<string>()
+ 
+    const [open, setOpen] = React.useState<boolean>(false);
 const handleDeleteModal=()=>{
   setOpenDeleteModal(true)
 
@@ -26,13 +28,10 @@ const handleDeleteModal=()=>{
     {name:"سبز", photo:"https://img.freepik.com/premium-photo/abstract-mint-green-gradient-background-empty-space-studio-room-display-product_8466-17.jpg"},{name:"قرمز", photo:"https://about.canva.com/wp-content/uploads/sites/8/2019/03/red.png"},
     {name:"زرد", photo:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAA1BMVEX6+jNOqqP9AAAAR0lEQVR4nO3BAQEAAACCIP+vbkhAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAO8GxYgAAb0jQ/cAAAAASUVORK5CYII="},
    ]
-   const handleBannerSelect =(event :React.ChangeEvent<HTMLInputElement>)=>{
-    if(event.target.files){
-         const filesArray=Array.from(event.target.files).map((file)=>URL.createObjectURL(file)) 
-         setBannerImage(filesArray[0])               
-           } }
+
   return (
     <Box>
+        <InsertColorModal open={open} setOpen={setOpen} />
          <DeleteAddColorModal titleText='ایا از حذف رنگ اطمینان دارید؟' openDeleteModal={openDeleteModal} setOpenDeleteModal={setOpenDeleteModal}/>
            <Box
             sx={{
@@ -58,31 +57,21 @@ const handleDeleteModal=()=>{
               }}
             >
               {" "}
-              افزودن رنگ
+               رنگ ها
             </Typography>
-          </Box>
-        <Box sx={{ display:"flex" ,flexDirection:"column", gap:3, marginTop:5}}>
-        <TextField sx={{width:"200px"}} variant='standard' label="نام رنگ"></TextField>
-        <Box sx={{ display:"flex" , gap:3 ,marginTop:"30px"}}> 
-            <Typography > تصویر رنگ را اضافه کنید</Typography>
-            <input type="file" name='عکس رنگ'    onChange={handleBannerSelect}  />
-            <img className='w-[150px] mt-3' src={bannerImage}/>
-        </Box>
-        <Button
+            <Button
+        onClick={() => {setOpen(true)}}
           sx={{
             color: "#ffff",
             paddingX: "30px",
             bgcolor: "secondary.main",
             borderRadius: "50px",
-            height:"30px",
-            marginTop:3,
-            width:"200px"
           }}
         >
-          {" "}
-           ثبت
+          افزودن رنگ
         </Button>
-        </Box>
+          </Box>
+     
      <Box sx={{ marginTop:5}}>
      <TableContainer  component={Paper}>
  

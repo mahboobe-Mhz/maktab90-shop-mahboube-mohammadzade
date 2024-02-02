@@ -69,10 +69,10 @@ const SideBar = () => {
           onClick={() => {
             dispatch(
               addBreadCrumb({
-                BreadCrumb: " نظرات",
+                BreadCrumb: " اصناف",
               })
             ),
-              navigate(routes.ADMIN.comments);
+              navigate(routes.ADMIN.asnaf);
           }}
           sx={{
             color: "#ffff",

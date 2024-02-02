@@ -45,7 +45,7 @@ const MainPage = () => {
           onClick={() => {
             dispatch(
               addBreadCrumb({
-                BreadCrumb: "سفارشات",
+                BreadCrumb: "محصولات",
               })
             ),
               navigate(routes.ADMIN.products);

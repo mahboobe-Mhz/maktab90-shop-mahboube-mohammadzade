@@ -101,7 +101,7 @@ const handleChange = (
         sx={{
           display: "flex",
           justifyContent: "space-between",
-          marginTop: "20px",
+       
           bgcolor: "#ffff",
           alignItems: "center",
           paddingX: "20px",
@@ -125,23 +125,7 @@ const handleChange = (
         </Typography>
  
       </Box>
-      <Box
-        sx={{
-          width: "100%",
-          display: "flex",
-          borderRadius: "50px",
-          bgcolor: "#ffff",
-          marginTop: "20px",
-          paddingX: "20px",
-        }}
-      >
-        <SearchIcon sx={{ fill: "gray", marginTop: "3px", marginX: 1 }} />
-        <Input
-          placeholder="جستجو"
-          sx={{ width: "100%", outline: "none" }}
-          type="text"
-        ></Input>
-      </Box>
+     
       <Box
         sx={{
           display: "flex",
@@ -252,6 +236,23 @@ const handleChange = (
       
    
    
+      </Box>
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          borderRadius: "50px",
+          bgcolor: "#ffff",
+          marginTop: "20px",
+          paddingX: "20px",
+        }}
+      >
+        <SearchIcon sx={{ fill: "gray", marginTop: "3px", marginX: 1 }} />
+        <Input
+          placeholder="جستجو"
+          sx={{ width: "100%", outline: "none" }}
+          type="text"
+        ></Input>
       </Box>
       <Box>
         {isLoading ? (

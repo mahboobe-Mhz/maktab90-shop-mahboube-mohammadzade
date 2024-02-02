@@ -187,7 +187,7 @@ const handleAlignment = (
           onClick={priceFun}
           sx={{
       
-            color:"gray",
+            color:"black",
         
             fontSize: {
               lg: 16,
@@ -207,7 +207,7 @@ const handleAlignment = (
           sx={{
         
             
-            color:"gray",
+            color:"black",
          
             
             fontSize: {
@@ -227,7 +227,7 @@ const handleAlignment = (
           onClick={allProducts}
           sx={{
          
-            color:"gray",
+            color:"black",
           
             
             fontSize: {

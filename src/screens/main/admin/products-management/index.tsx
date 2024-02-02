@@ -19,9 +19,9 @@ const ProductsManagement = () => {
   const name = AppState.BreadCrumb;
 
   return (
-    <Box sx={{ display: "flex", direction: "rtl", height: "100%", width:"100%" }}>
+    <Box sx={{ display: "flex", direction: "rtl", height: "100vh", width:"100%" }}>
 
-      <div className="md:flex hidden">
+      <div className="md:flex hidden ">
         <SideBar />
       </div>
       <div className="flex md:hidden">

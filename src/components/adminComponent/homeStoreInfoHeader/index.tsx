@@ -11,6 +11,8 @@ function AddHomeStoreInfoHeader() {
         <Link to={"/admin/identificationCode"} className='bg-gray-200 px-2 rounded-2xl ml-5 hover:cursor-pointer hover:bg-gray-300' > افزودن کد معرف/ایجاد کاربر</Link>
         <Link to={"/admin/colleagueFactor"} className='bg-gray-200 px-2 rounded-2xl ml-5 hover:cursor-pointer hover:bg-gray-300' >
       فاکتورها</Link>
+      <Link to={"/"} className='bg-gray-200 px-2 rounded-2xl ml-5 hover:cursor-pointer hover:bg-gray-300' >
+      خروج</Link>
     </div>
     </div>
  

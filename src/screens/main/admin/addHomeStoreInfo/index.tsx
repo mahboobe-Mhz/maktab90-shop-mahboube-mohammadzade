@@ -1,9 +1,16 @@
 import React, { useState } from 'react'
 import AddHomeStoreInfoHeader from '../../../../components/adminComponent/homeStoreInfoHeader'
-
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 function AddHomeStoreInfo() {
   const [logoImage, setLogoImage]=useState<string>()
   const [bannerImage, setBannerImage]=useState<string>()
+
+  const asnaf = [
+    { label: "لوازم خانگی"},
+    { label: "فرش"},
+  
+  ];
   const handleBannerSelect =(event :React.ChangeEvent<HTMLInputElement>)=>{
     if(event.target.files){
          const filesArray=Array.from(event.target.files).map((file)=>URL.createObjectURL(file)) 
@@ -14,6 +21,7 @@ function AddHomeStoreInfo() {
                  const filesArray=Array.from(event.target.files).map((file)=>URL.createObjectURL(file)) 
                  setLogoImage(filesArray[0])               
                    } }
+
   return (
     <div dir='rtl' >
        <AddHomeStoreInfoHeader/>
@@ -28,7 +36,35 @@ function AddHomeStoreInfo() {
     <input type="number" className='border border-secondary rounded-full px-3 py-1' />
   </div>
         </div>
-        <div className='flex gap-10 md:flex-row flex-col'>
+        <div className='flex gap-10 md:flex-row flex-col '>
+
+   
+        <Autocomplete
+      disablePortal
+
+      options={asnaf}
+      sx={{ width: 200 }}
+      renderInput={(params) => <TextField {...params} label="صنف" variant='standard' />}
+    />
+
+
+
+<label className='pr-2' htmlFor="">  نام شهر</label>
+    <input type="text" className='border border-secondary rounded-full px-3 py-1' />
+
+ 
+        </div>
+        <div className='flex gap-10 md:flex-row flex-col mt-5'>
+        <div className='flex flex-col text-right'>
+    <label className='pr-2' htmlFor=""> تعداد سال خدمات پس از فروش </label>
+    <input type="text" className='border border-secondary rounded-full px-3 py-1' />
+  </div>
+  <div className='flex flex-col text-right'>
+    <label className='pr-2' htmlFor="">    تعداد سال سابقه</label>
+    <input type="number" className='border border-secondary rounded-full px-3 py-1' />
+  </div>
+        </div>
+        <div className='flex gap-10 md:flex-row flex-col mt-5'>
         <div className='flex flex-col text-right'>
     <label className='pr-2' htmlFor="">  لوگو فروشگاه</label>
     <input type='file'     name="images"
@@ -54,7 +90,7 @@ function AddHomeStoreInfo() {
 }
   </div>
         </div>
-        <div className='flex gap-10 md:flex-row flex-col'>
+        <div className='flex gap-10 md:flex-row flex-col mt-5'>
         <div className='flex flex-col text-right'>
     <label className='pr-2' htmlFor="">   آدرس فروشگاه</label>
     <textarea className='border border-secondary rounded-full px-3 py-1 ' />

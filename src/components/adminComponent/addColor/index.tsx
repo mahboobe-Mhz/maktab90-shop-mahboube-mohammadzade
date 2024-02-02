@@ -119,7 +119,7 @@ const handleDeleteModal=()=>{
                     <TableCell align="left">   
                        <DeleteOutlineOutlinedIcon
                       onClick={handleDeleteModal}
-                            sx={{ color: "secondary.main" }}
+                            sx={{ color: "secondary.main", ":hover":{cursor:"pointer"} }}
                           />
                          
                           </TableCell>

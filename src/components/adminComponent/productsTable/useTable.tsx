@@ -27,14 +27,15 @@ interface Props{
     quantity:number;
     description:string
   }>
-  title:Array<[
+  title:[
     name1:string,
     name2:string,
     name3:string,
-    name4?:string,
-    name5?:string
+    name4:string,
+    name5:string,
+    name6:string
   ]  
-  >
+  
   refetch:any
 }
 
@@ -133,13 +134,13 @@ const deleteItem=()=>{
                        id={row._id}
                     onClick={HandelDelete}
                     data-user={row.name}
-                      sx={{ color: "secondary.main" }}
+                      sx={{ color: "secondary.main", ":hover":{cursor:"pointer"} }}
                     />
                     <ModeEditOutlineOutlinedIcon
                         id={row._id}
                         data-user={row.name}
                     onClick={handelEdit}
-                      sx={{ color: "secondary.main" }}
+                      sx={{ color: "secondary.main", ":hover":{cursor:"pointer"} }}
                     />
                 
                   </Box></TableCell>

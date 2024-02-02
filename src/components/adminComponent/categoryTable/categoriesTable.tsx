@@ -163,18 +163,18 @@ export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, se
                     <DeleteOutlineOutlinedIcon
                     id={row.name}
                     onClick={handleDeleteModal}
-                      sx={{ color: "secondary.main" }}
+                      sx={{ color: "secondary.main" , ":hover":{cursor:"pointer"} }}
                     />
                     <ModeEditOutlineOutlinedIcon
                        id={row._id}
                        data-user={row.name} 
                     onClick={handleEditCat}
-                      sx={{ color: "secondary.main" }}
+                      sx={{ color: "secondary.main"  , ":hover":{cursor:"pointer"}}}
                     />
                     <MenuOutlinedIcon
                       onClick={showSub}
                       id={row._id}
-                      sx={{ color: "secondary.main" }}
+                      sx={{ color: "secondary.main" , ":hover":{cursor:"pointer"} }}
                     />
                   </Box>
                 </TableCell>

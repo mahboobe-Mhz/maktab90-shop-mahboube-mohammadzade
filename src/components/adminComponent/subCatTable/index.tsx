@@ -103,9 +103,9 @@ function SubCatTable() {
       <TableCell align="center">
         <TableRow sx={{display:"flex", flexDirection:"column"}}>
           
-          <TableCell sx={{ display:"flex" , justifyContent:"space-between" , }}> {item.name} <Box>  <DeleteOutlineOutlinedIcon sx={{ color: "secondary.main" }} /> <ModeEditOutlineOutlinedIcon id={item._id}  sx={{ color: "secondary.main" }} />  </Box> </TableCell>
-          <TableCell sx={{ display:"flex" , justifyContent:"space-between" , }}> {item.name} <Box>  <DeleteOutlineOutlinedIcon sx={{ color: "secondary.main" }} /> <ModeEditOutlineOutlinedIcon id={item._id}  sx={{ color: "secondary.main" }} />  </Box> </TableCell>
-          <TableCell sx={{ display:"flex" , justifyContent:"space-between" , }}> {item.name} <Box>  <DeleteOutlineOutlinedIcon sx={{ color: "secondary.main" }} /> <ModeEditOutlineOutlinedIcon id={item._id}  sx={{ color: "secondary.main" }} />  </Box> </TableCell>
+          <TableCell sx={{ display:"flex" , justifyContent:"space-between" , ":hover":{cursor:"pointer"} }}> {item.name} <Box>  <DeleteOutlineOutlinedIcon sx={{ color: "secondary.main", ":hover":{cursor:"pointer"} }} /> <ModeEditOutlineOutlinedIcon id={item._id}  sx={{ color: "secondary.main", ":hover":{cursor:"pointer"} }} />  </Box> </TableCell>
+          <TableCell sx={{ display:"flex" , justifyContent:"space-between" , ":hover":{cursor:"pointer"} }}> {item.name} <Box>  <DeleteOutlineOutlinedIcon sx={{ color: "secondary.main", ":hover":{cursor:"pointer"} }} /> <ModeEditOutlineOutlinedIcon id={item._id}  sx={{ color: "secondary.main", ":hover":{cursor:"pointer"} }} />  </Box> </TableCell>
+          <TableCell sx={{ display:"flex" , justifyContent:"space-between" ,":hover":{cursor:"pointer"} }}> {item.name} <Box>  <DeleteOutlineOutlinedIcon sx={{ color: "secondary.main", ":hover":{cursor:"pointer"} }} /> <ModeEditOutlineOutlinedIcon id={item._id}  sx={{ color: "secondary.main", ":hover":{cursor:"pointer"} }} />  </Box> </TableCell>
 
  
  

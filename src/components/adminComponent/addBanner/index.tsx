@@ -231,7 +231,7 @@ const handleEditDesktop =()=>{
       }
       </Box>
             </TableCell>
-            <TableCell> <ModeEditOutlineOutlinedIcon  onClick={handleEditDesktop} sx={{ color: "secondary.main" }}/> </TableCell>
+            <TableCell> <ModeEditOutlineOutlinedIcon  onClick={handleEditDesktop} sx={{ color: "secondary.main", ":hover":{cursor:"pointer"} }}/> </TableCell>
             </TableRow>
             <TableRow
        
@@ -245,7 +245,7 @@ const handleEditDesktop =()=>{
       }
       </Box>
             </TableCell>
-            <TableCell> <ModeEditOutlineOutlinedIcon  onClick={handleMobileEdit} sx={{ color: "secondary.main" }}/> </TableCell>
+            <TableCell> <ModeEditOutlineOutlinedIcon  onClick={handleMobileEdit} sx={{ color: "secondary.main", ":hover":{cursor:"pointer"} }}/> </TableCell>
             </TableRow>
      
         </TableBody>

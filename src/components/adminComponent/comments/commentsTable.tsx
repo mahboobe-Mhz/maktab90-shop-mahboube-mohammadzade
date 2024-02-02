@@ -46,11 +46,11 @@ export default function CommentsTable() {
               <TableCell align="left">   
                  <DeleteOutlineOutlinedIcon
                   onClick={()=>setOpenDeleteModal(true)}
-                      sx={{ color: "secondary.main" }}
+                      sx={{ color: "secondary.main", ":hover":{cursor:"pointer"} }}
                     />
                     <DoneIcon
 
-                      sx={{ color: "secondary.main" }}
+                      sx={{ color: "secondary.main", ":hover":{cursor:"pointer"} }}
                     /> 
                     </TableCell>
           

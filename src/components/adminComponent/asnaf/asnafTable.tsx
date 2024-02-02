@@ -40,7 +40,7 @@ export default function AsnafTable() {
               <TableCell align="left">   
                  <DeleteOutlineOutlinedIcon
                   onClick={()=>setOpenDeleteModal(true)}
-                      sx={{ color: "secondary.main" }}
+                      sx={{ color: "secondary.main" , ":hover":{cursor:"pointer"}}}
                     />
                  
                     </TableCell>

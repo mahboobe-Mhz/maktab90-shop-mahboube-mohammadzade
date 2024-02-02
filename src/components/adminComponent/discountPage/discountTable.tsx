@@ -47,11 +47,11 @@ const handleEditModal=()=>{
               <TableCell align="left">   
                  <DeleteOutlineOutlinedIcon
                  onClick={handleDeleteModal}
-                      sx={{ color: "secondary.main" }}
+                      sx={{ color: "secondary.main", ":hover":{cursor:"pointer"} }}
                     />
                     <ModeEditOutlineOutlinedIcon
                 onClick={handleEditModal}
-                      sx={{ color: "secondary.main" }}
+                      sx={{ color: "secondary.main", ":hover":{cursor:"pointer"} }}
                     /> </TableCell>
           
             </TableRow>

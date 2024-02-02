@@ -8,8 +8,6 @@ import TableRow from '@mui/material/TableRow';
 import {Paper,Box, TextField} from '@mui/material';
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import EasyEdit from 'react-easy-edit';
-import { instance } from '../../../api/constants';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPriceInventory, storeAppState } from '../../../redux/slice/appSlice';
 
@@ -106,7 +104,7 @@ export default function BasicTable({rows,title}:Props) {
             <TableCell align="center">  {title[0]}</TableCell>
             <TableCell align="center">  {title[1]}</TableCell>
             <TableCell align="center">  {title[2]}</TableCell>
-            <TableCell align="center">  {title[3]}</TableCell>
+            {/* <TableCell align="center">  {title[3]}</TableCell> */}
             
    
            
@@ -148,13 +146,14 @@ export default function BasicTable({rows,title}:Props) {
                 
                 </TableCell>
             
-              <TableCell align="center">   <Box>
+              {/* <TableCell align="center">   <Box>
                    
                     <ModeEditOutlineOutlinedIcon
                       sx={{ color: "secondary.main" }}
+               
                     />
                 
-                  </Box></TableCell>
+                  </Box></TableCell> */}
             </TableRow>
           ))}
         </TableBody>

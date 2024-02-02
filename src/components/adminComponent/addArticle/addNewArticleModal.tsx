@@ -37,8 +37,24 @@ interface Props{
 export default function AddNewArticleModal({openInsertArticleModal,setOpenInsertArticleModal}:Props) {
 
 const handleClose = () => setOpenInsertArticleModal(false);
- 
- 
+const [bannerSecondImage, setSecondBannerImage]=React.useState<string|undefined>()
+const handleSecondBannerSelect =(event :React.ChangeEvent<HTMLInputElement>)=>{
+  if(event.target.files){
+       const filesArray=Array.from(event.target.files).map((file)=>URL.createObjectURL(file)) 
+       setSecondBannerImage(filesArray[0])               
+         } }
+         const [bannerFirstImage, setFirstBannerImage]=React.useState<string|undefined>()
+         const handleFirstBannerSelect =(event :React.ChangeEvent<HTMLInputElement>)=>{
+           if(event.target.files){
+                const filesArray=Array.from(event.target.files).map((file)=>URL.createObjectURL(file)) 
+                setFirstBannerImage(filesArray[0])               
+                  } }
+         const [bannerThirdImage, setThirdBannerImage]=React.useState<string|undefined>()
+         const handleThirdBannerSelect =(event :React.ChangeEvent<HTMLInputElement>)=>{
+           if(event.target.files){
+                const filesArray=Array.from(event.target.files).map((file)=>URL.createObjectURL(file)) 
+                setThirdBannerImage(filesArray[0])               
+                  } }
   return (
     <div>
 
@@ -96,11 +112,12 @@ const handleClose = () => setOpenInsertArticleModal(false);
             >
               <TableCell align="right" component="th" scope="row">  بنر اول مقاله  </TableCell>
               <TableCell align="right" component="th" scope="row">
-                <input type="file" />
+              <input type="file" onChange={handleFirstBannerSelect} />
+         <img className='w-[150px] mt-3' src={bannerFirstImage}/>
               </TableCell>
        
             <TableCell>
-            <DeleteIcon sx={{color:"secondary.main"}} />
+            <DeleteIcon sx={{color:"secondary.main", ":hover":{cursor:"pointer"}}}  onClick={()=> setFirstBannerImage("") }/>
 
             </TableCell>
             </TableRow>
@@ -110,11 +127,12 @@ const handleClose = () => setOpenInsertArticleModal(false);
      >
        <TableCell align="right" component="th" scope="row"> بنر دوم مقاله  </TableCell>
        <TableCell align="right" component="th" scope="row">
-         <input type="file" />
+         <input type="file" onChange={handleSecondBannerSelect} />
+         <img className='w-[150px] mt-3' src={bannerSecondImage}/>
        </TableCell>
 
      <TableCell>
-          <DeleteIcon sx={{color:"secondary.main"}} />
+          <DeleteIcon sx={{color:"secondary.main", ":hover":{cursor:"pointer"}}} onClick={()=> setSecondBannerImage("") } />
  
      </TableCell>
              </TableRow>
@@ -124,11 +142,12 @@ const handleClose = () => setOpenInsertArticleModal(false);
      >
        <TableCell align="right" component="th" scope="row">     عکس کاور مقاله</TableCell>
        <TableCell align="right" component="th" scope="row">
-         <input type="file" />
+       <input type="file" onChange={handleThirdBannerSelect} />
+         <img className='w-[150px] mt-3' src={bannerThirdImage}/>
        </TableCell>
 
      <TableCell>
-     <DeleteIcon sx={{color:"secondary.main"}} />
+     <DeleteIcon sx={{color:"secondary.main", ":hover":{cursor:"pointer"}}} onClick={()=> setThirdBannerImage("") } />
 
      </TableCell>
              </TableRow>

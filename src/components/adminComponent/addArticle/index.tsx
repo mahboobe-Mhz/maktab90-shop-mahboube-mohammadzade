@@ -91,11 +91,11 @@ function AddArticle() {
               <TableCell align="left">   
                  <DeleteOutlineOutlinedIcon
                onClick={()=>setOpenDeleteModal(true)}
-                      sx={{ color: "secondary.main" }}
+                      sx={{ color: "secondary.main", ":hover":{cursor:"pointer"} }}
                     />
                   <ModeEditOutlineOutlinedIcon
                     onClick={()=>setOpenInsertArticleModal(true)}
-                      sx={{ color: "secondary.main" }}
+                      sx={{ color: "secondary.main", ":hover":{cursor:"pointer"} }}
                     />
                     </TableCell>
           

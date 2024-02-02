@@ -428,7 +428,7 @@ setSearchResults(productsData.filter(product=> product.name.toLocaleLowerCase().
         <input type='text' onChange={handleQueryChange}  onKeyDown={handleKeyDown} className='px-2  text-sm focus:outline-0 focus:border-none focus:ring-0 ' placeholder='جستجو در هومنت'/>
         </div>
         <span onClick={()=>{setState(false),setSearchResults([])}} className="mt-2 transition duration-200">
-  <ClearIcon sx={{color:"secondary.main", width:30, height:30}}/></span>
+  <ClearIcon sx={{color:"secondary.main", width:30, height:30, ":hover":{cursor:"pointer"}}}/></span>
         </div>
      
 {

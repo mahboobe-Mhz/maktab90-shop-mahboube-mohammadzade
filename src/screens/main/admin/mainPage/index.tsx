@@ -34,6 +34,7 @@ const MainPage = () => {
             paddingY: "30px",
             backgroundColor: "secondary.main",
             color: "#ffff",
+            ":hover":{cursor:"pointer"}
           }}
         >
           <ChatIcon sx={{ width: "80px", height: "80px", fill: "#ffff" }} />
@@ -62,6 +63,7 @@ const MainPage = () => {
             paddingY: "30px",
             backgroundColor: "secondary.main",
             color: "#ffff",
+            ":hover":{cursor:"pointer"}
           }}
         >
           <StorefrontIcon
@@ -85,6 +87,7 @@ const MainPage = () => {
             paddingY: "30px",
             backgroundColor: "secondary.main",
             color: "#ffff",
+            ":hover":{cursor:"pointer"}
           }}
         >
           <PeopleIcon sx={{ width: "80px", height: "80px", fill: "#ffff" }} />
@@ -105,6 +108,7 @@ const MainPage = () => {
             paddingY: "30px",
             backgroundColor: "secondary.main",
             color: "#ffff",
+            ":hover":{cursor:"pointer"}
           }}
         >
           <EmailIcon sx={{ width: "80px", height: "80px", fill: "#ffff" }} />
@@ -126,6 +130,7 @@ const MainPage = () => {
             paddingY: "30px",
             backgroundColor: "secondary.main",
             color: "#ffff",
+            ":hover":{cursor:"pointer"}
           }}
         >
           <PersonIcon sx={{ width: "80px", height: "80px", fill: "#ffff" }} />

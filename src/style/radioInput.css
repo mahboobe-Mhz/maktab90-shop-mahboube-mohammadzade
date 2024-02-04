@@ -1,4 +1,14 @@
 
 input[type="radio"]:checked {
     background-color: rgb(34, 255, 0);
+
   }
+
+  input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: #fd6e54;
+  }
+
+ 
+

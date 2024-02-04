@@ -91,7 +91,7 @@ const MainPage = () => {
           }}
         >
           <PeopleIcon sx={{ width: "80px", height: "80px", fill: "#ffff" }} />
-          <h1>همکاران</h1>
+          <h1>افزودن نماینده فروشگاه</h1>
         </Paper>
       </Grid>
       <Grid item md={4} sm={6} xs={12}>

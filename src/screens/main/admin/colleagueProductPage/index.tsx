@@ -31,16 +31,31 @@ function ColleagueProductPage() {
              color: "secondary.main",
              borderBottomColor:"secondary.main",
              borderBottom:"solid"
-          }
+          }, marginBottom:2
+          
         }}
       >
         <Tab
           value="one"
           label="محصولات"
-          wrapped sx={{color:"black", fontSize:"20px"}}
+          wrapped sx={{color:"black", 
+          fontSize:{
+            lg:"14px",
+            sx:"12px"
+          }, paddingBottom:"0px",
+       }}
+
         />
-        <Tab value="two" label="سفارشات"  sx={{color:"black", fontSize:"20px"}}/>
-        <Tab value="three" label="محتوی"  sx={{color:"black", fontSize:"20px"}}/>
+        <Tab value="two" label="سفارشات"  sx={{color:"black",
+          fontSize:{
+            lg:"14px",
+            sx:"12px"
+          }, paddingBottom:"0px",}}/>
+        <Tab value="three" label="محتوی"  sx={{color:"black",
+          fontSize:{
+            lg:"14px",
+            sx:"12px"
+          }, paddingBottom:"0px",}}/>
       </Tabs>
     </Box>
        {

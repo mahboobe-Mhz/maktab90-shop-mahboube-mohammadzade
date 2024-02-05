@@ -109,7 +109,7 @@ function OtherBrandPage() {
           </div>
         </div>
         :     <div>
-        <div className='flex flex-wrap md:px-16 px-2 justify-center md:gap-12 gap-5 md:pt-24 pt-10 pb-10'>
+        <div className='flex flex-wrap md:px-16 px-2 justify-center md:gap-12 gap-5 md:pt-24 pt-10 pb-10 mt-10'>
      <ColleagueContentCart productSelect={productSample} />
      <ColleagueContentCart productSelect={productSample} />
      <ColleagueContentCart productSelect={productSample} />

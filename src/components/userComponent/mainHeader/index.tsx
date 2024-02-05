@@ -51,7 +51,7 @@ const MainHeader = () => {
              focus:text-secondary focus:outline-none focus:ring-none relative"> رهگیری سفارشات</button>
            <span className="mt-3">.</span>
             <button className="font-semibold hover:text-secondary hover:cursor-pointer
-             focus:text-secondary focus:outline-none focus:ring-none relative" onClick={()=>{navigate("/homeStore")}}> هوم استور </button>
+             focus:text-secondary focus:outline-none focus:ring-none relative" onClick={()=>{navigate("/homeStore/فروشگاه ها")}}> هوم استور </button>
           </div>
           <div className="flex gap-5 md:pr-10 md:justify-center">
             <div  className="md:hidden flex mt-3">

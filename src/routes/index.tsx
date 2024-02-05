@@ -147,7 +147,7 @@ export const routes = {
     SmsCode:"/smsCode",
     AdminLogin:"/adminLogin",
     Dashboard:"/dashboard",
-    homeStore:"/homeStore",
+    homeStore:"/homeStore/:id",
     OtherBrandPage:"/otherBrandPage",
     OtherBrandSingleProductPage:"/otherBrandSingleProductPage",
     NewsAndTitle:"/newsAndArticle",

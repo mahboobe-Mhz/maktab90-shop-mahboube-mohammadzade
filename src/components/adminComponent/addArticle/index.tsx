@@ -12,6 +12,7 @@ import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutl
 import DeleteArticleModal from './deleteArticleModal';
 import AddNewArticleModal from './addNewArticleModal';
 import PaginationControlled from '../pagination';
+import HomeNetMenu from '../../userComponent/homenetMenu';
 
 
 function AddArticle() {
@@ -19,6 +20,10 @@ function AddArticle() {
     const[openInsertArticleModal, setOpenInsertArticleModal]=React.useState(false)
   return (
     <div dir='rtl'>
+      <div className='text-left'>
+      <HomeNetMenu/>
+      </div>
+ 
         <DeleteArticleModal setOpenDeleteModal={setOpenDeleteModal}  openDeleteModal={openDeleteModal } />
        <AddNewArticleModal openInsertArticleModal={openInsertArticleModal} setOpenInsertArticleModal={setOpenInsertArticleModal} /> 
              <Box

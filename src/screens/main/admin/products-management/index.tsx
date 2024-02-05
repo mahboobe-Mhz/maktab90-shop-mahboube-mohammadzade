@@ -12,6 +12,7 @@ import ChatIcon from "@mui/icons-material/Chat";
 import EqualizerIcon from "@mui/icons-material/Equalizer";
 import LogoutIcon from '@mui/icons-material/Logout';
 import DiscountIcon from '@mui/icons-material/Discount';
+import HomeNetMenu from "../../../../components/userComponent/homenetMenu";
 const ProductsManagement = () => {
   const AppState = useSelector(storeAppState);
   const [showMenu,setShowMenu]=useState<boolean>(false)
@@ -20,7 +21,7 @@ const ProductsManagement = () => {
 
   return (
     <Box sx={{ display: "flex", direction: "rtl", height: "100vh", width:"100%" }}>
-
+  
       <div className="md:flex hidden ">
         <SideBar />
       </div>
@@ -40,8 +41,12 @@ const ProductsManagement = () => {
              </Box>
         }
       </div>
+     
+    
       <Box onClick={()=>setShowMenu(false)} sx={{ padding: "15px", bgcolor: "#F3F3F5", width: "100%" ,overflowY:"scroll"}}>
-        <Box sx={{ display: "flex" }}>
+   <Box sx={{display:"flex" , justifyContent:"space-between"}}>
+   <Box sx={{ display: "flex" }}>
+          
           <Typography sx={{ color: "secondary.main" }}> برنامه ها</Typography>
           <KeyboardArrowLeftIcon />
           <Typography> فروشگاه</Typography>
@@ -50,7 +55,12 @@ const ProductsManagement = () => {
               <KeyboardArrowLeftIcon /> <Typography>{name} </Typography>{" "}
             </>
           )}
+            
         </Box>
+        <span>  <HomeNetMenu/></span>
+         </Box>
+      
+   
         <Outlet />
       </Box>
     </Box>

@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import AdminHeader from '../../../../components/adminComponent/adminHeader'
 import AddHomeStoreInfoHeader from '../../../../components/adminComponent/homeStoreInfoHeader'
+import HomeNetMenu from '../../../../components/userComponent/homenetMenu'
 function AddSuperAdmin() {
     const [adminName,setAdminName]=useState("")
     const [adminPhoneNumber,setAdminPhoneNumber]=useState(0)
@@ -22,8 +23,12 @@ function AddSuperAdmin() {
             setAdminInfo(newAdminInfo)      
     }   
   return (
-  <div className='flex flex-col h-full w-full md:gap-40 gap-10 p-5'>
+    <div>
+          <div className='text-left'>
+      <HomeNetMenu/>
+      </div>
 
+          <div className='flex flex-col h-full w-full md:gap-40 gap-10 p-5'>
 
      <div className='flex justify-center'>
      <div dir='rtl' className=' flex flex-col gap-5 border p-10 border-gray-500 rounded-2xl bg-gray-50 mt-24 md:mt-0'>
@@ -59,6 +64,8 @@ function AddSuperAdmin() {
      </div>
 
   </div>
+    </div>
+
 
  
   )

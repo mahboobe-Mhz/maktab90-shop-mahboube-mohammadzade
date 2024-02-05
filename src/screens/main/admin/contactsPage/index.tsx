@@ -12,6 +12,7 @@ import React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SearchIcon from "@mui/icons-material/Search";
 import PaginationControlled from '../../../../components/adminComponent/pagination';
+import HomeNetMenu from '../../../../components/userComponent/homenetMenu';
 
 
 
@@ -24,6 +25,10 @@ function ContactsPage() {
   };
   return (
     <div dir='rtl'>
+        <div className='text-left'>
+      <HomeNetMenu/>
+      </div>
+
   <Box
         sx={{
           width: "100%",

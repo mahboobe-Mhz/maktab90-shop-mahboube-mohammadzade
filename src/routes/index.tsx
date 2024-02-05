@@ -43,6 +43,9 @@ const Comments = React.lazy(
 const Asnaf = React.lazy(
   () => import("../components/adminComponent/asnaf")
 );
+const AddCity = React.lazy(
+  () => import("../components/adminComponent/addCity")
+);
 const AddArticle = React.lazy(
   () => import("../components/adminComponent/addArticle")
 );
@@ -110,6 +113,7 @@ export const routes = {
     AddColor: "/admin/control/addColor",
     comments: "/admin/control/comments",
     asnaf: "/admin/control/asnaf",
+    addCity: "/admin/control/addCity",
     addBanner:"/admin/control/addBanner",
     reports: "/admin/control/reports",
     discount: "/admin/control/discounts",
@@ -386,6 +390,13 @@ export const router = createBrowserRouter([
             element: (
               <SuspenseView>
                 <Asnaf />
+              </SuspenseView>
+            ),
+          },{
+            path: routes.ADMIN.addCity,
+            element: (
+              <SuspenseView>
+                <AddCity/>
               </SuspenseView>
             ),
           }

@@ -12,7 +12,7 @@ import { routes } from "../../../routes";
 import LogoutIcon from '@mui/icons-material/Logout';
 import Cookies from "universal-cookie";
 import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
-import ArticleIcon from '@mui/icons-material/Article';
+import LocationCityIcon from '@mui/icons-material/LocationCity';
 import WorkOutlinedIcon from '@mui/icons-material/WorkOutlined';
 const SideBar = () => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const SideBar = () => {
         width: "250px",
         bgcolor: "secondary.main",
         color: "#ffff",
-        height: "100%",
+        height: "100vh",
       }}
     >
       <Box
@@ -39,12 +39,13 @@ const SideBar = () => {
           borderBottom: "solid",
           height: "100px",
           width: "100%",
+          
         }}
       >
         <StorefrontIcon sx={{ width: "50px", height: "50px" }} />
         <Typography fontSize={30}>فروشگاه</Typography>
       </Box>
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Box sx={{ display: "flex", flexDirection: "column" , bgcolor: "secondary.main",}}>
         <ControlledAccordions />
         <ControlledAccordions2 />
         <Button
@@ -82,6 +83,24 @@ const SideBar = () => {
           }}
         >
           <WorkOutlinedIcon sx={{ width: "30px" }} /> اصناف
+        </Button>
+        <Button
+          onClick={() => {
+            dispatch(
+              addBreadCrumb({
+                BreadCrumb: " شهر ها",
+              })
+            ),
+              navigate(routes.ADMIN.addCity);
+          }}
+          sx={{
+            color: "#ffff",
+            paddingY: "15px",
+            paddingLeft: "160px",
+            fontSize: "16px",
+          }}
+        >
+          <LocationCityIcon sx={{ width: "30px" }} /> شهر ها
         </Button>
         <Button
           onClick={() => {

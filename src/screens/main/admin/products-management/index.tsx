@@ -43,7 +43,7 @@ const ProductsManagement = () => {
       </div>
      
     
-      <Box onClick={()=>setShowMenu(false)} sx={{ padding: "15px", bgcolor: "#F3F3F5", width: "100%" ,overflowY:"scroll"}}>
+      <Box onClick={()=>setShowMenu(false)} sx={{ padding: "15px", bgcolor: "#F3F3F5", width: "100%", height:"100%"}}>
    <Box sx={{display:"flex" , justifyContent:"space-between"}}>
    <Box sx={{ display: "flex" }}>
           

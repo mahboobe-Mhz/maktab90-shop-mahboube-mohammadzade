@@ -5,6 +5,7 @@ import ShowOrderTableBox from '../../../../components/adminComponent/colleagueOr
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
+import ColleagueContentTable from '../../../../components/adminComponent/colleagueAddContent';
 function ColleagueProductPage() {
 
   const [value, setValue] = React.useState('one');
@@ -59,7 +60,7 @@ function ColleagueProductPage() {
       </Tabs>
     </Box>
        {
-        value==="one"?   <ColleagueProductTable/> :value==="two" ?<ShowOrderTableBox/>:""
+        value==="one"?   <ColleagueProductTable/> :value==="two" ?<ShowOrderTableBox/>:<ColleagueContentTable/>
        }
      
     </div>

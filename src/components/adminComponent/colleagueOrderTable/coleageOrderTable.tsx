@@ -60,7 +60,7 @@ export default function BasicColleagueOrderTable({rows,title,refetch}:Props) {
               <TableCell align="center">{row?.totalPrice }</TableCell>
               <TableCell align="center">{row?.deliveryStatus?" ارسال شده":"در حال بررسی"}</TableCell>
               <TableCell align="center">{new Date(row.deliveryDate).toLocaleDateString('fa-IR')}</TableCell>
-              <TableCell onClick={handleShowOrderModal} id={row?._id} align="center"> <MenuIcon/></TableCell>
+              <TableCell onClick={handleShowOrderModal} id={row?._id} align="center" sx={{":hover":{cursor:"pointer"}}}> <MenuIcon/></TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -122,13 +122,13 @@ const deleteItem=()=>{
                        id={row._id}
                     onClick={HandelDelete}
                     data-user={row.name}
-                      sx={{ color: "secondary.main" }}
+                      sx={{ color: "secondary.main",":hover":{cursor:"pointer"} }}
                     />
                     <ModeEditOutlineOutlinedIcon
                         id={row._id}
                         data-user={row.name}
                     onClick={handelEdit}
-                      sx={{ color: "secondary.main" }}
+                      sx={{ color: "secondary.main",":hover":{cursor:"pointer"} }}
                     />
                 
                   </Box></TableCell>

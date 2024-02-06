@@ -1,13 +1,11 @@
 import { Box, Typography, Button, Input } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import ColleagueBasicTable from "./colleagueTable";
+
 import * as React from "react";
 import PaginationControlled from "../pagination";
 import useGetPaginationProducts from "../../../api/services/products/usePaginationProducts";
 import axios from "axios";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { useDispatch, useSelector } from "react-redux";
 import {
   setEditData,
@@ -16,10 +14,12 @@ import {
 } from "../../../redux/slice/appSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const ColleagueProductTable = () => {
+import ColleagueBasicTable from "./contentTable";
+import AddContentModal from "./addContentModal";
+const ColleagueContentTable = () => {
   const appState = useSelector(storeAppState);
   const [searchParams, setSearchParams] = useSearchParams();
-
+const [open ,setOpen]=React.useState(false)
   const [filter, setFilter] = React.useState("");
   const [page, setPage] = React.useState(1);
   const [countPage, setCountPage] = React.useState<number>();
@@ -55,43 +55,9 @@ const ColleagueProductTable = () => {
   }, [page, filter, searchParams.get("status"), appState.isEdit]);
 
   //filter
-  const quantityFun = () => {
 
-    const req = axios.get(
-      `http://localhost:8000/api/products?quantity=0&limit=100`
-    );
-    req.then((res) => {
-      const lengthCat = res.data.data.products.length / 4 + 0.26;
-      const correctNum = Number(lengthCat.toFixed());
-      setCountPage(correctNum);
-    });
-    setPage(1);
-    setFilter("quantity=0");
-  };
-  const priceFun = () => {
 
-    setPage(1);
-    setFilter("price=0");
-    const req = axios.get(
-      `http://localhost:8000/api/products?price=0&limit=100`
-    );
-    req.then((res) => {
-      const lengthCat = res.data.data.products.length / 4 + 0.26;
-      const correctNum = Number(lengthCat.toFixed());
-      setCountPage(correctNum);
-    });
-  };
-  const allProducts = () => {
 
-    setFilter("");
-    setPage(1);
-    const req = axios.get(`http://localhost:8000/api/products?limit=100`);
-    req.then((res) => {
-      const lengthCat = res.data.data.products.length / 4 + 0.26;
-      const correctNum = Number(lengthCat.toFixed());
-      setCountPage(correctNum);
-    });
-  };
   const NavigateAddProduct = () => {
     dispatch(setIsEditing({ isEdit: false }));
     navigate("/admin/colleagueAddProduct");
@@ -109,6 +75,7 @@ const handleAlignment = (
 
   return (
     <div >
+        <AddContentModal open={open} setOpen={setOpen} />
           <Box sx={{ height: "90%" , paddingX:"20px"}}>
       <Box
         sx={{
@@ -134,11 +101,11 @@ const handleAlignment = (
           }}
         >
           {" "}
-          محصولات
+          محتوی
         </Typography>
     
         <Button
-          onClick={NavigateAddProduct}
+          onClick={()=>setOpen(true)}
           sx={{
             color: "#ffff",
             paddingX: "30px",
@@ -147,109 +114,10 @@ const handleAlignment = (
           }}
         >
           {" "}
-          افزودن محصول
+          افزودن محتوی
         </Button>
       </Box>
 
-      <Box
-        sx={{
-          display: "flex",
-          gap: {
-            lg: 5,
-            md: 5,
-            sm: 2,
-            xs: 2,
-          },
-          color: "gray",
-          height: {
-            lg: 80,
-            md: 50,
-            sm: 40,
-            xs: 40,
-          },
-          padding: {
-            lg: 3,
-            md: 2,
-            sm: 2,
-            xs: 1,
-          },
-        }}
-      > 
-    <ToggleButtonGroup
-      value={alignment}
-      exclusive
-      onChange={handleAlignment}
-      aria-label="Platform"
-      sx={{direction:"ltr"}}
-    >
-      <ToggleButton value="left" >
-      <Typography
-          onClick={priceFun}
-          sx={{
-      
-            color:"black",
-        
-            fontSize: {
-              lg: 16,
-              md: 16,
-              sm: 15,
-              xs: 12,
-            },
-          }}
-        >
-          بدون قیمت
-        </Typography>
-   
-      </ToggleButton>
-      <ToggleButton value="center" >
-      <Typography
-          onClick={quantityFun}
-          sx={{
-        
-            
-            color:"black",
-         
-            
-            fontSize: {
-              lg: 16,
-              md: 16,
-              sm: 15,
-              xs: 12,
-            },
-          }}
-        >
-          {" "}
-          اتمام موجودی
-        </Typography>
-      </ToggleButton>
-      <ToggleButton value="right" >
-      <Typography
-          onClick={allProducts}
-          sx={{
-         
-            color:"black",
-          
-            
-            fontSize: {
-              lg: 16,
-              md: 16,
-              sm: 15,
-              xs: 12,
-            },
-            
-          }}
-        >
-          {" "}
-          تمام محصولات
-        </Typography>
-      </ToggleButton>
-  
-    </ToggleButtonGroup>
-      
-    
-   
-  
-      </Box>
       <Box
         sx={{
           width: "100%",
@@ -269,14 +137,14 @@ const handleAlignment = (
       </Box>
       <Box >
         {!isLoading && (
-          <ColleagueBasicTable
+          <ColleagueBasicTable 
+          open={open}
+          setOpen={setOpen}
             refetch={refetch}
             rows={data.data.products}
             title={[
               "عکس محصول",
               "نام محصول",
-              "قیمت",
-              "موجودی",
               "توضیحات",
               "عملیات",
             ]}
@@ -294,4 +162,4 @@ const handleAlignment = (
   );
 };
 
-export default ColleagueProductTable;
+export default ColleagueContentTable;

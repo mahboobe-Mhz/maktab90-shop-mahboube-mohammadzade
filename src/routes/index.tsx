@@ -91,6 +91,7 @@ const OtherBrandSingleProductPage=React.lazy(()=>import("../screens/main/users/o
 const SuperAdminDashboard=React.lazy(()=>import("../screens/main/admin/superAdminDashboard"))
 const ColleagueProductPage=React.lazy(()=>import("../screens/main/admin/colleagueProductPage"))
 const ColleagueAddProduct=React.lazy(()=>import("../screens/main/admin/colleagueAddProduct"))
+
 const AddSuperAdmin=React.lazy(()=>import("../screens/main/admin/addSuperAdmin"))
 const SuperAdminMainPage=React.lazy(()=>import("../screens/main/admin/superAdminMainPage"))
 const NewsAndTitle=React.lazy(()=>import("../screens/main/users/newsAndTitle"))

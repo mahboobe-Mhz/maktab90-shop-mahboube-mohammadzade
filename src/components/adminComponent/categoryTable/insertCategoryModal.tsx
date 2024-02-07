@@ -10,7 +10,8 @@ interface Props{
     open:boolean,
     setOpen:(open:boolean)=>void
     editCat:{name:string,   subCat: string[];}
-    editFlag:boolean
+    editFlag:boolean,
+    catPic:string
 
 }
 const style = {
@@ -32,9 +33,9 @@ const style = {
 
 };
 
-export default function CategoryModal({open,setOpen, editCat,editFlag}:Props) {
+export default function CategoryModal({open,setOpen, editCat,editFlag, catPic}:Props) {
 const [addSubCat,setAddSubCat]= React.useState<string[]>([]);
-
+const [bannerImage, setBannerImage]=React.useState<string>()
 const[catName , setCatName]=React.useState<string>("")
 
   const handleClose = () => setOpen(false);
@@ -44,13 +45,16 @@ editCat.subCat?.map((item:any)=>subCatArray.push(item.name))
 
   setCatName(editCat.name)
   setAddSubCat(subCatArray)
+  setBannerImage(catPic)
   
 },[editCat])
-const [bannerImage, setBannerImage]=React.useState<string>()
+
 const handleBannerSelect =(event :React.ChangeEvent<HTMLInputElement>)=>{
   if(event.target.files){
        const filesArray=Array.from(event.target.files).map((file)=>URL.createObjectURL(file)) 
-       setBannerImage(filesArray[0])               
+       setBannerImage(filesArray[0])      
+       console.log(filesArray);
+                
          } }
 
   return (

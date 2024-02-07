@@ -31,19 +31,21 @@ interface Props {
   setEditCat:any
   editCat:any
   setEditFlag:(flag:boolean)=>void
+  setCatPic:(catPic:string)=>void
 }
  type ShowCatData = {
   name: string;
   subCat: string[];
 } | boolean;
 
-export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, setEditCat,editCat,setEditFlag}: Props) {
+export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, setEditCat,editCat,setEditFlag, setCatPic}: Props) {
   const dispatch = useDispatch();
   const [subCatData, steSubCatData] = React.useState();
   const { data, isLoading } = useGetAllSubCategory();
   const[openDeleteModal,setOpenDeleteModal]=React.useState(false)
   const [selected, setSelected] = React.useState<string[]>([]);
   const[titleText,setTitleText]=React.useState("")
+
 
   const showSub = (event: React.MouseEvent) => {
     const categoryId = event.currentTarget.id;
@@ -83,6 +85,8 @@ export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, se
           subCat:FindCatData
         }
         !isLoading && setEditCat(showCatData)
+        setCatPic(
+          "blob:http://localhost:5173/fa4064e8-10d8-4070-9d63-9dc234c9b854")
       }
 
       const handleDeleteModal =(e:any)=>{
@@ -101,7 +105,7 @@ export default function BasicCategoryTable({ rows, AllCategoryData , setOpen, se
   return (
     <>
       {!isLoading && subCatData && <BasicModal subData={subCatData}  />}
-      <DeleteCatModal setOpenDeleteModal={setOpenDeleteModal}  openDeleteModal={openDeleteModal } titleText={titleText}/>
+      <DeleteCatModal setOpenDeleteModal={setOpenDeleteModal}  openDeleteModal={openDeleteModal } titleText={titleText} />
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>

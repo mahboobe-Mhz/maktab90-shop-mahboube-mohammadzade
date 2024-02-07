@@ -20,6 +20,7 @@ const ShowTableBox = () => {
   const [open, setOpen] = React.useState<boolean>(false);
   const[editFlag , setEditFlag]=React.useState(false)
   const [editCat , setEditCat]=React.useState<ShowCatData>({name :"", subCat:[]})
+  const [catPic, setCatPic]=React.useState<string>("")
   React.useEffect(() => {
     const req = axios.get(
       `http://localhost:8000/api/categories?sort=-createdAt`
@@ -38,7 +39,7 @@ const ShowTableBox = () => {
 
   return (
     <>
-      <CategoryModal open={open} setOpen={setOpen} editCat={editCat} editFlag={editFlag} />
+      <CategoryModal open={open} setOpen={setOpen} editCat={editCat} editFlag={editFlag} catPic={catPic} />
       <Box
         sx={{
           display: "flex",
@@ -107,6 +108,7 @@ const ShowTableBox = () => {
             editCat={editCat} 
              setEditCat={setEditCat}
              setEditFlag={setEditFlag}
+             setCatPic={setCatPic}
           />
         )}
         <PaginationControlled

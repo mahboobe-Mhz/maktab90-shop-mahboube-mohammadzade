@@ -422,7 +422,7 @@ setSearchResults(productsData.filter(product=> product.name.toLocaleLowerCase().
         }
   return (
     <div className='z-50 flex flex-col'>
-        <div   className={` transition-all duration-400 bg-white	flex ${state? "opacity-100" :"opacity-0"} `}>
+        <div   className={` transition-all duration-500 bg-white	flex ${state? "opacity-100" :"opacity-0"} `}>
 
   <div className='border-2 border-black rounded-full  px-2  h-[30px] mt-2 w-[250px]'>
         <input type='text' onChange={handleQueryChange}  onKeyDown={handleKeyDown} className='px-2  text-sm focus:outline-0 focus:border-none focus:ring-0 ' placeholder='جستجو در هومنت'/>

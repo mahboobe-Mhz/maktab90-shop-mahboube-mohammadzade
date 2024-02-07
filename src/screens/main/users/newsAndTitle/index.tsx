@@ -4,8 +4,14 @@ import MainFooter from '../../../../components/userComponent/mainFooter'
 import FlashIcon from '../../../../components/svg/flashIcon'
 import PersonIcon from '../../../../components/svg/personIcon'
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
+import { routes } from '../../../../routes'
+import { useNavigate } from 'react-router-dom'
 
 function NewsAndTitle() {
+  const navigate = useNavigate();
+  const handleGoToSinglePage =()=>{
+    navigate(routes.USERS.NewsAndTileSinglePage)
+  }
   return (
     <div>
         <MainHeader/>
@@ -51,7 +57,7 @@ function NewsAndTitle() {
               className="flex  text-black border-2 font-semibold pl-2 md:pr-2
                pr-2 md:pt-2 md:pb-1  border-black  rounded-full  md:gap-2 
              md:w-[150px] "
-          
+             onClick={handleGoToSinglePage}
             >
                  <span>
                 <FlashIcon className=" md:w-[28px] w-[20px]  " />{" "}
@@ -76,7 +82,7 @@ function NewsAndTitle() {
               className="flex  text-black border-2 font-semibold pl-2 md:pr-2
                pr-2 md:pt-2 md:pb-1  border-black  rounded-full  md:gap-2 gap-1 pt-1
              md:w-[150px] "
-          
+          onClick={handleGoToSinglePage}
             >
                  <span>
                 <FlashIcon className=" md:w-[28px] w-[20px]  " />{" "}

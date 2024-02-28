@@ -25,7 +25,7 @@ useEffect(()=>{
     <div>
       <MainHeader />
       <div className="pt-5 container mx-auto flex flex-col">
-        <img src="/public\picture\home-01.png" alt="" />
+        <img src="/public\logo\b1-01.png" alt="" />
         <div  className=" relative md:mt-10  mt-6 flex justify-around">
             {
                 productsSort.map((item:string, index:number)=>

@@ -20,7 +20,8 @@ const style = {
     justifyContent:"center",
     flexDirection:"column",
     alignItems:"center",
-    gap:"15px"
+    gap:"15px",
+
 
 };
 interface Props{
@@ -40,6 +41,7 @@ export default function RatingModal({openModal,setOpenModal}:Props) {
       <Modal
         open={openModal}
         onClose={handleClose}
+      sx={{direction:"rtl"}}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
    
@@ -47,7 +49,7 @@ export default function RatingModal({openModal,setOpenModal}:Props) {
         <Box sx={style}>
             <Typography> به دیجی کالا امتیاز دهید</Typography>
         <Rating
-        sx={{direction:"rtl"}}
+       
         name="simple-controlled"
         value={value}
         onChange={(event, newValue) => {

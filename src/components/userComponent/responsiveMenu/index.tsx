@@ -36,6 +36,7 @@ const ResponsiveMenu = () => {
     <span>  <CategoryResMenu/> </span> 
    <Link to='http://localhost:5173/cart'> رهگیری سفارشات</Link>
    <Link to='/admin/mainPage'>پنل نمایندگان </Link>
+   <Link to='/homeStore/فروشگاه ها'> هوم استور </Link>
         </div>   
        </div>:""
     

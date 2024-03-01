@@ -33,9 +33,9 @@ const ResponsiveMenu = () => {
         <div className="flex flex-col pr-3 gap-2">
         <Link to="http://localhost:5173/">صفحه اصلی </Link>
    <span> </span>
-    <span>  <CategoryResMenu/> </span> 
+    {/* <span>  <CategoryResMenu/> </span>  */}
+    <Link to="https://thehomenet.ir">محصولات</Link>
    <Link to='http://localhost:5173/cart'> رهگیری سفارشات</Link>
-   <Link to='/admin/mainPage'>پنل نمایندگان </Link>
    <Link to='/homeStore/فروشگاه ها'> هوم استور </Link>
         </div>   
        </div>:""

@@ -1,6 +1,6 @@
 
 import { routes } from "../../../routes";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { storeAppState } from "../../../redux/slice/appSlice";
@@ -43,8 +43,12 @@ const MainHeader = () => {
            
             <span className="mt-3">.</span>
            
-              <button>  <MainMenu/></button>
-            
+              {/* <button>  <MainMenu/></button> */}
+              <button>
+              <Link to="https://thehomenet.ir" className="text-black font-semibold hover:text-secondary  
+            hover:cursor-pointer focus:text-secondary focus:outline-none focus:ring-none relative"> محصولات</Link>
+              </button>
+         
            
             {/* <button className=" hover:text-secondary hover:cursor-pointer focus:text-secondary 
             focus:outline-none focus:ring-none relative mt-1"><DropDownMenu /></button> */}

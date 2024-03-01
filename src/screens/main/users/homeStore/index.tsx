@@ -20,7 +20,7 @@ useEffect(()=>{
   setProductsState(catId)
 },[])
   
-  const productsSort= ["محصولات روزانه" ," محتوی روزانه","فروشگاه ها"]
+  const productsSort= ["محصولات روزانه" ," محتوا روزانه","فروشگاه ها"]
   return (
     <div>
       <MainHeader />

@@ -24,15 +24,15 @@ const TopMobileSlider = () => {
         }}
    speed={2000}
       >
-             <SwiperSlide ><img className='rounded-3xl h-[300px]'
-              src='public/picture/تخت.jpg'/></SwiperSlide>
-        <SwiperSlide ><img className='rounded-[30px] w-full  h-[300px]' 
+             <SwiperSlide ><img className='rounded-3xl h-[300px] w-full'
+              src='public/picture/banner-01 - Copy.jpg'/></SwiperSlide>
+        <SwiperSlide ><img className='rounded-[30px] w-full  h-[300px] w-full' 
         src='public/picture/IMG_7177.JPG'/></SwiperSlide>
    
-        <SwiperSlide><img className='rounded-[30px]  h-[300px]' 
+        <SwiperSlide><img className='rounded-[30px]  h-[300px] w-full ' 
          src='public/picture/خانهوشمند.jpg'/></SwiperSlide>
    
-        <SwiperSlide><img className='rounded-[30px]  h-[300px]' 
+        <SwiperSlide><img className='rounded-[30px]  h-[300px] w-full' 
           src='public/picture/صنایعدستی.jpg'/></SwiperSlide>
         <div className=' absolute bottom-[50px]  right-[30px]   z-20'>
         <div className="flex md:gap-5 gap-2 ">
